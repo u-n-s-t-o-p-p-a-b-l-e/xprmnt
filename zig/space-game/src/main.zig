@@ -1,9 +1,9 @@
 const std = @import("std");
-const rl = @import("raylib");
+const rl = @import("raylib-zig");
 
 pub fn main() !void {
     std.debug.print("Hi There!\n", .{});
-    rl.initWindow(1200, 720, "LARGE SPACE ROCKS");
+    rl.initWindow(1280, 720, "LARGE SPACE ROCKS");
     rl.setTargetFPS(60);
 
     while (!rl.windowShouldClose()) {
