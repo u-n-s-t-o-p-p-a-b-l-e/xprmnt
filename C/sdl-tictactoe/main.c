@@ -1,11 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include <SDL2/SDL.h>
+
 #include "./game.h"
 #include "./logic.h"
 #include "./rendering.h"
 
-#include <SDL2/SDL.h>
 
 
 int main(int argc, char *argv[])
@@ -35,28 +36,46 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
+	game_t game = {
+		.board = { EMPTY, EMPTY, EMPTY, 
+			       EMPTY, EMPTY, EMPTY, 
+			       EMPTY, EMPTY, EMPTY }, 
+		.player = PLAYER_X,
+		.state = RUNNING_STATE
+	};
+
+	const float cell_width = SCREEN_WIDTH / N;
+	const float cell_height = SCREEN_HEIGHT / N;
+
+
+
 	SDL_Event e;
-	int quit = 0;
-	while (!quit) {
+	while (game.state != QUIT_STATE) {
 		while (SDL_PollEvent(&e)) {
 			switch (e.type) {
 				case SDL_QUIT:
-					quit = 1;
+					game.state = QUIT_STATE;
 					break;
+
+
+				case SDL_MOUSEBUTTONDOWN:
+					click_on_cell(&game,
+							e.button.y / cell_height,
+							e.button.x / cell_width);
+					break;
+
 				default: {}
 			}
 		}
 
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 		SDL_RenderClear(renderer);
+		render_game(renderer, &game);
 		SDL_RenderPresent(renderer);
 	}
 
 	SDL_DestroyWindow(window);
 	SDL_Quit();
-
-
-
 
 	return EXIT_SUCCESS;
 }
