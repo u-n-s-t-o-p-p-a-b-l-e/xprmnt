@@ -1,4 +1,8 @@
 # Procedural SDL Tic Tac Toe
+
+![](https://github.com/u-n-s-t-o-p-p-a-b-l-e/xprmnt/blob/main/C/sdl-tictactoe/scr/procedural-game-state.png)
++ Playing state
+
 ![](https://github.com/u-n-s-t-o-p-p-a-b-l-e/xprmnt/blob/main/C/sdl-tictactoe/scr/procedural-red-winning-state.png)
 + Red winning State
 
@@ -14,4 +18,9 @@
 + Just click the board to reset the game while in winning or tie state.
 
 
-
+# Guide
++ Download & cd into it
++ mkdir build && cd build
++ cmake ..
++ make
++ ./procedural
