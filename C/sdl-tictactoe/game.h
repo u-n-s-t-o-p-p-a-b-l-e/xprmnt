@@ -2,8 +2,11 @@
 #define GAME_H_
 
 #define N 3
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
+#define SCREEN_WIDTH 640.0
+#define SCREEN_HEIGHT 480.0
+#define CELL_WIDTH (SCREEN_WIDTH / N)
+#define CELL_HEIGHT (SCREEN_HEIGHT / N)
+
 
 #define EMPTY 0
 #define PLAYER_X 1
@@ -17,7 +20,7 @@
 
 
 typedef struct {
-	int board[N + N];
+	int board[N * N];
 	int player;
 	int state;
 
