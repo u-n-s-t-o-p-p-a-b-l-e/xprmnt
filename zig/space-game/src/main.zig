@@ -1,5 +1,5 @@
 const std = @import("std");
-const rl = @import("raylib-zig");
+const rl = @import("raylib");
 
 pub fn main() !void {
     std.debug.print("Hi There!\n", .{});
