@@ -119,7 +119,7 @@ function animate() {
 
 	player.velocity.x = 0
 	enemy.velocity.x = 0
-    // Player movement
+	// Player movement
 	if (keys.a.pressed && player.lastKey === 'a') {
 		player.velocity.x = -1
 	} else if (keys.d.pressed && player.lastKey === 'd') {
@@ -190,7 +190,7 @@ window.addEventListener('keyup', (event) => {
 		case 'a':
 			keys.a.pressed = false
 			break
-	
+
 
 	}	
 
@@ -202,7 +202,7 @@ window.addEventListener('keyup', (event) => {
 		case 'ArrowLeft':
 			keys.ArrowLeft.pressed = false
 			break
-	
+
 
 	}
 
