@@ -26,6 +26,7 @@ class Sprite {
 		}
 		this.color = color
 		this.isAttacking
+		this.health = 100
 	}
 
 
@@ -41,7 +42,6 @@ class Sprite {
 				this.attackBox.position.y, 
 				this.attackBox.width, 
 				this.attackBox.height)
-
 		}
 	}
 
@@ -139,15 +139,15 @@ function animate() {
 	enemy.velocity.x = 0
 	// Player movement
 	if (keys.a.pressed && player.lastKey === 'a') {
-		player.velocity.x = -1
+		player.velocity.x = -10
 	} else if (keys.d.pressed && player.lastKey === 'd') {
-		player.velocity.x = 1
+		player.velocity.x = 10
 	}
 	// Enemy movement
 	if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
-		enemy.velocity.x = -1
+		enemy.velocity.x = -10
 	} else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
-		enemy.velocity.x = 1
+		enemy.velocity.x = 10
 	}
 	//detect for collision
 	if (
@@ -158,7 +158,8 @@ function animate() {
 		player.isAttacking
 	) {
 		player.isAttacking = false
-		console.log('go')
+		enemy.health -= 20
+		document.querySelector('#enemyHealth').style.width = enemy.health + '%'
 	}
 
 	if (
@@ -169,7 +170,8 @@ function animate() {
 		enemy.isAttacking
 	) {
 		enemy.isAttacking = false
-		console.log('enemy attack succesful')
+		player.health -= 20
+		document.querySelector('#playerHealth').style.width = player.health + '%'
 	}
 
 }
@@ -205,12 +207,9 @@ window.addEventListener('keydown', (event) => {
 		case 'ArrowUp':
 			enemy.velocity.y = -20
 			break
-
-
 		case 'ArrowDown':
 			enemy.isAttacking = true
 			break
-
 	}
 	console.log(event.key)
 })
@@ -223,8 +222,6 @@ window.addEventListener('keyup', (event) => {
 		case 'a':
 			keys.a.pressed = false
 			break
-
-
 	}	
 
 	switch (event.key) {
@@ -235,9 +232,6 @@ window.addEventListener('keyup', (event) => {
 		case 'ArrowLeft':
 			keys.ArrowLeft.pressed = false
 			break
-
-
 	}
-
 	console.log(event.key)
 })
