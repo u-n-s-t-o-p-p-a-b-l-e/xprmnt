@@ -28,6 +28,7 @@ function decreaseTimer() {
 		timer--
 		document.querySelector('#timer').innerHTML = timer
 	}
+
 	if (timer === 0) {
 	determineWinner({player, enemy, timerId })
 	}
