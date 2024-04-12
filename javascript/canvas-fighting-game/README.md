@@ -1,7 +1,7 @@
 # FIghthing Game Using Canvas
 ![](https://github.com/u-n-s-t-o-p-p-a-b-l-e/xprmnt/blob/main/javascript/canvas-fighting-game/img/fighting-game.png)
 
-+ 2 player sword fighting game using Javascript and HTML canvas
++ 2 players sword fighting game using Javascript and HTML canvas
 + Including timer and health indicators
 + Smoke animations using frames
 
