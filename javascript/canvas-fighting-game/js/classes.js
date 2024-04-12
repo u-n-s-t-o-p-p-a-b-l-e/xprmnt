@@ -160,6 +160,7 @@ class Fighter extends Sprite {
 				this.framesCurrent = 0
 			}
 			break
+
 		case 'run':
 			if (this.image !== this.sprites.run.image) {
 				this.image = this.sprites.run.image
@@ -167,6 +168,7 @@ class Fighter extends Sprite {
 				this.framesCurrent = 0
 			}
 			break
+
 		case 'jump':
 			if (this.image !== this.sprites.jump.image) {
 				this.image = this.sprites.jump.image
@@ -174,13 +176,15 @@ class Fighter extends Sprite {
 				this.framesCurrent = 0
 			}
 			break
+
 		case 'fall':
 			if (this.image !== this.sprites.fall.image) {
-				this.image = this.sprites.jump.image
+				this.image = this.sprites.fall.image
 				this.framesMax = this.sprites.fall.framesMax
 				this.framesCurrent = 0
 			}
 			break
+
 		case 'attack1':
 			if (this.image !== this.sprites.attack1.image) {
 				this.image = this.sprites.attack1.image
@@ -188,6 +192,7 @@ class Fighter extends Sprite {
 				this.framesCurrent = 0
 			}
 			break
+
 		case 'takeHit':
 			if (this.image !== this.sprites.takeHit.image) {
 				this.image = this.sprites.takeHit.image
@@ -195,6 +200,7 @@ class Fighter extends Sprite {
 				this.framesCurrent = 0
 			}
 			break
+
 		case 'death':
 			if (this.image !== this.sprites.death.image) {
 				this.image = this.sprites.death.image
