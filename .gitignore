@@ -1,6 +1,6 @@
-/rust/rustula/tula
-/rust/rustula/practice.rs
-/rust/rustula/Cargo.toml
-/rust/rustula/Cargo.lock
-/rust/rustula/src/
-/rust/rustula/target/
+/rust/**/rustula/tula
+/rust/**/rustula/practice.rs
+/rust/**/rustula/Cargo.toml
+/rust/**/rustula/Cargo.lock
+/rust/**/rustula/src/
+/rust/**/rustula/target/
