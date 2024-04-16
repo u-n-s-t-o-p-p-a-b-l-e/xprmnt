@@ -11,5 +11,5 @@ fn main() -> Result<()> {
 
     println!("{source}");
 
-    Ok(())
+    Ok(());
 }
