@@ -4,3 +4,4 @@ rust/**/rustula/Cargo.toml
 rust/**/rustula/Cargo.lock
 rust/rustula/src/
 rust/rustula/target/
+rust/**/cli/grrs/src/practice.rs
