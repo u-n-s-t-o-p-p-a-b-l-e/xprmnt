@@ -12,7 +12,7 @@ fn main() {
 
     let args = Cli {
         pattern: pattern,
-        path: std::path::PathBuf::from(path),
+        path: path::PathBuf::from(path),
     };
 
     println!("pattern: {:?}, path: {:?}", args.pattern, args.path);
