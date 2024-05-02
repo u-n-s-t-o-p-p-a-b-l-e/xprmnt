@@ -45,6 +45,7 @@ fn perform_operation(op: char) {
         '/' => {
             if num2 == 0.0 {
                 println!("Error: Division by zero");
+                return;
             }
             num1 / num2
         }
