@@ -1,4 +1,4 @@
-#!/ust/bin/env node
+#!/usr/bin/env node
 
 import * as readlineSync from 'readline-sync';
 
