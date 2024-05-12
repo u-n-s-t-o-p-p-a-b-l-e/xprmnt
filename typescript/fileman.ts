@@ -13,4 +13,9 @@ function moveFile (source: string, destination: string): void {
 	console.log(`File moved from ${source} to #{destination}`);
 }
 
+function deleteFile(filePath: string): void {
+	fs.unlinkSync(filePath);
+	console.log(`File deleted: ${filePath}`);
+}
+
 
