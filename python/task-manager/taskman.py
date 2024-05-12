@@ -9,7 +9,7 @@ def show_menu():
 
 def add_task():
     task = input("Enter the task: ")
-    tasks.append({"task": ttask, "done": False})
+    tasks.append({"task": task, "done": False})
     print("Task added succesfully!")
 
 def view_tasks():
@@ -17,7 +17,7 @@ def view_tasks():
         print("No tasks added yet.")
     else:
         print("Tasks:")
-        for i, task enumerate(tasks, start=1):
+        for i, task in enumerate(tasks, start=1):
             status = "Done" if task["done"] else "Pending"
             print(f"{i}. [{status}] {task['task']}")
 
@@ -32,3 +32,23 @@ def mark_task_done():
             print("Task marked as done.")
         else:
             print("Invalid task index.")
+
+def main():
+    while True:
+        show_menu()
+        choice = input("Enter your choice: ")
+        if choice == "1":
+            add_task()
+        elif choice == "2":
+            view_tasks()
+        elif choice == "3":
+            mark_task_done()
+        elif choice == "4":
+            print("Thank you for using the To-Do List Manager. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
+
