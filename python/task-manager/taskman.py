@@ -21,3 +21,14 @@ def view_tasks():
             status = "Done" if task["done"] else "Pending"
             print(f"{i}. [{status}] {task['task']}")
 
+def mark_task_done():
+    if not tasks:
+        print("No tasks added yet.")
+    else:
+        view_tasks()
+        index = int(input("Enter the index of the task to mark as done: ")) - 1
+        if 0 <= index < len(tasks):
+            tasks[index]["done"] = True
+            print("Task marked as done.")
+        else:
+            print("Invalid task index.")
