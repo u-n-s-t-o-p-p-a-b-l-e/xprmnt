@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "task": "eat",
+    "completed": true
+  },
+  {
+    "id": 2,
+    "task": "drink",
+    "completed": false
+  },
+  {
+    "id": 3,
+    "task": "eat",
+    "completed": false
+  },
+  {
+    "id": 4,
+    "task": "drink",
+    "completed": false
+  }
+]
