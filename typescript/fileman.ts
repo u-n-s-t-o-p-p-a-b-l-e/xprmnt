@@ -8,4 +8,9 @@ function copyFile (source: string, destination: string): void {
 	console.log(`File copied from ${source} to ${destination}`);
 }
 
+function moveFile (source: string, destination: string): void {
+	fs.renameSync(source, destination);
+	console.log(`File moved from ${source} to #{destination}`);
+}
+
 
