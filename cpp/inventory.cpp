@@ -15,3 +15,10 @@ void removeItem(std::map<std::string, int>& inventory, const std::string& item, 
 		std::cout << "Error: Insufficient quantity of " << item << " in inventory." << std::endl;
 	}
 }
+
+void viewInventory(const std::map<std::string, int>& inventory) {
+	std::cout << "Current Inventory:\n";
+	for (const auto& item : inventory) {
+		std::cout << item.first << ": " << item.second << std::endl;
+	}
+}
