@@ -20,11 +20,57 @@ void viewContacts(const std::map<std::string, Contact>& contacts) {
 	}
 }
 
-void searchContacts(const std::map<std::string, Contact>& contacts, const std::string& name) {
+void searchContact(const std::map<std::string, Contact>& contacts, const std::string& name) {
 	auto it = contacts.find(name);
 	if (it != contacts.end()) {
 		std::cout << "Name: " << it->second.name << ", Phone Number: " << it->second.phoneNumber << std::endl;
 	} else {
 		std::cout << "Contact not found." << std::endl;
 	}
+}
+
+int main() {
+	std::map<std::string, Contact> contacts;
+
+	while (true) {
+		std::cout << "\nContact Management System\n";
+		std::cout << "1. Add Contact\n";
+		std::cout << "2. View Contacts\n";
+		std::cout << "3. Search Contact\n";
+		std::cout << "4. Exit\n";
+		std::cout << "Enter your choice: ";
+
+		int choice;
+		std::cin >> choice;
+
+		switch (choice) {
+			case 1: {
+						std::string name, phoneNumber;
+						std::cout << "Enter contact name: ";
+						std::cin >> name;
+						std::cout << "Enter contact phone number: ";
+						std::cin >> phoneNumber;
+						addContact(contacts, name, phoneNumber);
+						break;
+					}
+			case 2:
+					viewContacts(contacts);
+					break;
+			case 3: {
+						std::string name;
+						std::cout << "Enter name to search: ";
+						std::cin >> name;
+						searchContact(contacts, name);
+						break;
+					}
+			case 4:
+					std::cout << "Exiting...\n";
+					return 0;
+			default:
+					std::cout << "Invalid choice. Please try again.\n";
+		}
+	}
+
+	return 0;
+
 }
