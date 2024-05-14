@@ -40,4 +40,14 @@ function listTasks(): void {
 	})
 }
 
-
+function markTasksAsCompleted(id: number): void {
+	let tasks = loadTasks();
+	const taskIndex = tasks.findIndex(task => task.id === id);
+	if (taskIndex !== =1) {
+		tasks[taskIndex].completed = true;
+		saveTasks(tasks);
+		console.log('Task marked as completed');
+	} else {
+		console.log(' Task not found. ');
+	}
+}
