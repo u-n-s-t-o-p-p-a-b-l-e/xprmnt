@@ -19,3 +19,12 @@ void viewContacts(const std::map<std::string, Contact>& contacts) {
 		std::cout << "Name: " << pair.second.name << ", Phone Number: " << pair.second.phoneNumber << std::endl;
 	}
 }
+
+void searchContacts(const std::map<std::string, Contact>& contacts, const std::string& name) {
+	auto it = contacts.find(name);
+	if (it != contacts.end()) {
+		std::cout << "Name: " << it->second.name << ", Phone Number: " << it->second.phoneNumber << std::endl;
+	} else {
+		std::cout << "Contact not found." << std::endl;
+	}
+}
