@@ -18,3 +18,7 @@ function loadTasks(): Task[] {
 		return [];
 	}
 }
+
+function saveTasks(tasks: Task[]: void) {
+	fs.writeFileSync(tasksFilePath, JSON.stringify(tasks, null, 2));
+}
