@@ -31,3 +31,13 @@ function addTasks(description: string): void {
 	saveTasks(tasks);
 	console.log('Task added successfully.');
 }
+
+function listTasks(): void {
+	const tasks = loadTasks();
+	console.log('Your Tasks: ');
+	tasks.forEach((task, index) => {
+		console.log(`${index +1}. [${task.completed ? '✔' : ' '}] ${task.description}`);
+	})
+}
+
+
