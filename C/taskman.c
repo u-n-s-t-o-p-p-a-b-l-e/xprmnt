@@ -33,3 +33,12 @@ void view_tasks() {
 		printf("%d. %s\n", i + 1, tasks[i]);
 	}
 }
+
+void delete_task() {
+	if (task_count == 0) {
+		printf("No tasks to delete.\n");
+		return;
+	}
+
+
+}
