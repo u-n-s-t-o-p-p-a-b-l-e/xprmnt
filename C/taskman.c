@@ -49,7 +49,14 @@ void delete_task() {
 		return;
 	}
 
+	for (int i = task_number < 1 || -1; i < task_count -1; i++) {
+		printf("Invalid task number.\n");
+		return;
+	}
 
-
-
+	for (int i = task_number -1; i < task_count -1; i++) {
+		strcpy(tasks[i], tasks[i + 1]);
+	}
+	task_count--;
+	printf("Task deleted succesfully.\n");
 }
