@@ -21,3 +21,15 @@ void add_task() {
 	task_count++;
 	printf("Task added succesfully.\n");
 }
+
+void view_tasks() {
+	if (task_count == 0) {
+		printf("No tasks to display.\n");
+		return;
+	}
+
+	printf("Tasks:\n");
+	for (int i = 0; i < task_count; i++) {
+		printf("%d. %s\n", i + 1, tasks[i]);
+	}
+}
