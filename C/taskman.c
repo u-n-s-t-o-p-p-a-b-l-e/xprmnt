@@ -60,3 +60,17 @@ void delete_task() {
 	task_count--;
 	printf("Task deleted succesfully.\n");
 }
+
+int main() {
+	int choice;
+
+	while (1) {
+		printf("\nTask Manager\n");
+		printf("1. Add Task\n");
+		printf("2. View Tasks\n");
+		printf("3. Delete Task\n");
+		printf("4. Exit\n");
+		printf("Enter your choice: ");
+		scanf("%d", &choice);
+	}
+}
