@@ -40,5 +40,16 @@ void delete_task() {
 		return;
 	}
 
+	int task_number;
+	printf("Enter the task number to delete: ");
+	scanf("%d", &task_number);
+
+	if (task_number < 1 || task_number > task_count) {
+		printf("Invalid task number.\n");
+		return;
+	}
+
+
+
 
 }
