@@ -1,0 +1,6 @@
+this is a regex test file
+get this word
+use it in <pattern> and this <filename>
+love
+
+cargo run love file.txt
