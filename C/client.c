@@ -32,10 +32,10 @@ if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
 }
 
 send(sock, hello, strlen(hello), 0);
-printf("Hi message sent");
+printf("\nHi message sent\n");
 
 read(sock, buffer, BUFFER_SIZE);
-printf("Message from server: %s\n", buffer);
+printf("\nMessage from server: %s\n", buffer);
 
 close(sock);
 
