@@ -13,4 +13,9 @@ int main() {
 	int addrlen = sizeof(address);
 	char buffer[BUFFER_SIZE] = {0};
 	const char *hello = "Hi from server";
+
+	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+		perror("socket failed");
+		exit(EXIT_FAILURE);
+	}
 }
