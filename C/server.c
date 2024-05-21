@@ -42,4 +42,7 @@ int main() {
 		close(server_fd);
 		exit(EXIT_FAILURE);
 	}
+
+	read(new_socket, buffer, BUFFER_SIZE);
+	printf("Message from client: %s\n", buffer);
 }
