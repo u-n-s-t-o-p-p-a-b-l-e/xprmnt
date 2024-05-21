@@ -45,4 +45,12 @@ int main() {
 
 	read(new_socket, buffer, BUFFER_SIZE);
 	printf("Message from client: %s\n", buffer);
+
+	send(new_socket, hello, strlen(hello), 0);
+	printf("Hi message sent\n");
+
+	close(new_socket);
+	close(server_fd);
+
+	return 0;
 }
