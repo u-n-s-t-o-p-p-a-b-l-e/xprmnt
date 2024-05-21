@@ -12,7 +12,6 @@ int main() {
 	struct sockaddr_in serv_addr;
 	char buffer[BUFFER_SIZE] = {0};
 	const char *hello = "Hi from client";
-}
 
 if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
 	printf("\n Socket creation error \n");
@@ -34,3 +33,12 @@ if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
 
 send(sock, hello, strlen(hello), 0);
 printf("Hi message sent");
+
+read(sock, buffer, BUFFER_SIZE);
+printf("Message from server: %s\n", buffer);
+
+close(sock);
+
+return 0;
+
+}
