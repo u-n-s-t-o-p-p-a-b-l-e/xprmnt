@@ -13,3 +13,8 @@ int main() {
 	char buffer[BUFFER_SIZE] = {0};
 	const char *hello = "Hi from client";
 }
+
+if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+	printf("\n Socket creation error \n");
+	return -1;
+}
