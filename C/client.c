@@ -31,3 +31,6 @@ if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
 	printf("\nConnection failed\n");
 	return -1;
 }
+
+send(sock, hello, strlen(hello), 0);
+printf("Hi message sent");
