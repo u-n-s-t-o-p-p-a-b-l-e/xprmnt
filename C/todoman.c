@@ -77,4 +77,21 @@ void delete_task() {
 			fprintf(file, "%s\n", tasks[i]);
 		}
 	}
+	fclose(file);
+
+	printf("Task deleted successfully.\n");
+}
+
+int main() {
+	int choice;
+
+	while (1) {
+		printf("\nTo-Do List Manager\n");
+		printf("1. Add Task\n");
+		printf("2. View Tasks\n");
+		printf("3. Delete Task\n");
+		printf("4. Exit\n");
+		printf("Enter your choice: ");
+		scanf("%d", &choice);
+	}
 }
