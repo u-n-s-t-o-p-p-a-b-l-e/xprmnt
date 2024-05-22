@@ -65,4 +65,16 @@ void delete_task() {
 		printf("Invalid task number.\n");
 		return;
 	}
+
+	file = fopen(FILENAME, "w");
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
+
+	for (int i = 0; i < task_count; i++) {
+		if (i != task_number -1) {
+			fprintf(file, "%s\n", tasks[i]);
+		}
+	}
 }
