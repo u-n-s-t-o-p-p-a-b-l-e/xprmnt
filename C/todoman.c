@@ -40,3 +40,11 @@ void view_tasks() {
 	}
 	fclose(file);
 }
+
+void delete_task() {
+	FILE *file = fopen(FILENAME, "r");
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
+}
