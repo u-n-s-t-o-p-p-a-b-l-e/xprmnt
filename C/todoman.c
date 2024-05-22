@@ -23,3 +23,11 @@ void add_task() {
 
 	printf("Task added successfully.\n");
 }
+
+void view_tasks() {
+	FILE *file = fopen(FILENAME, "r");
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
+}
