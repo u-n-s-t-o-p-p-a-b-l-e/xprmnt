@@ -30,4 +30,13 @@ void view_tasks() {
 		perror("Unable to open file");
 		return;
 	}
+
+	char task[MAX_TASK_LENGTH];
+	int task_number = 1;
+
+	printf("To-Do List:\n");
+	while (fgets(task, MAX_TASK_LENGTH, file) != NULL) {
+		printf("%d. %s", task_number++, task);
+	}
+	fclose(file);
 }
