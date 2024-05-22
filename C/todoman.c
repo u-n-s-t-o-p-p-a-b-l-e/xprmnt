@@ -11,4 +11,15 @@ void add_task() {
 		perror("Unable to open file");
 		return;
 	}
+
+	char task[MAX_TASK_LENGTH];
+	printf("Enter the task: ");
+	getchar();
+	fgets(task, MAX_TASK_LENGTH, stdin);
+	task[strcspn(task, "\n")] = '\0';
+
+	fprintf(file, "%s\n", task);
+	fclose(file);
+
+	printf("Task added successfully.\n");
 }
