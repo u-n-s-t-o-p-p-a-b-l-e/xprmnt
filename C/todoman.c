@@ -47,4 +47,12 @@ void delete_task() {
 		perror("Unable to open file");
 		return;
 	}
+
+	char tasks[MAX_TASK_LENGTH][MAX_TASK_LENGTH];
+	int task_count = 0;
+
+	while (fgets(tasks[task_count], MAX_TASK_LENGTH, file) != NULL) {
+		tasks[task_count][strcspn(tasks[task_count], "\n")] = '\0';
+		task_count++;
+	}
 }
