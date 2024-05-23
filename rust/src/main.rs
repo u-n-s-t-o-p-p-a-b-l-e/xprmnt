@@ -52,4 +52,14 @@ fn main() -> io::Result<()> {
         true => TaskList::load_from_file(filename)?,
         false => TaskList::new(),
     };
+
+    loop {
+        println!("1. Add Task");
+        println!("2. Save and Exit");
+        print!("> ");
+
+        io::stdout().flush()?;
+        let mut input = String::new();
+        io::stdin().read_line(&mut input)?;
+    }
 }
