@@ -1,0 +1,19 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "coding",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "title": "hacking",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "title": "debugging",
+      "completed": false
+    }
+  ]
+}

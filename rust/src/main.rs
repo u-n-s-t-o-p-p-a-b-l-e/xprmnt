@@ -16,7 +16,7 @@ struct TaskList {
     tasks: Vec<Task>,
 }
 
-impl Tasklist {
+impl TaskList {
     fn new() -> Self {
         TaskList { tasks: Vec::new() }
     }
@@ -74,7 +74,7 @@ fn main() -> io::Result<()> {
                 println!("Tasks saved to {}", filename);
                 break;
             }
-            _ => println!("Invalid input");
+            _ => println!("Invalid input"),
         }
     }
 
