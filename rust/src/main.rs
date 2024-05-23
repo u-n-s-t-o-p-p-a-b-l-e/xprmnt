@@ -36,4 +36,11 @@ impl Tasklist {
         serde_json::to_writer_pretty(file, self)?;
         Ok(())
     }
+
+    fn load_from_file(filename: &str) ->  io::Result<Self> {
+        let file = File::open(filename)?;
+        let reader = io::BufReader::new(file);
+        let task_list: TaskList = serde_json::from_reader(reader)?;
+        Ok(task_list)
+    }
 }
