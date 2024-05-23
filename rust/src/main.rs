@@ -30,4 +30,10 @@ impl Tasklist {
         };
         self.tasks.push(task);
     }
+
+    fn save_to_file(&self, filename: &str) ->  io::Result<()> {
+        let file = File::create(filename)?;
+        serde_json::to_writer_pretty(file, self)?;
+        Ok(())
+    }
 }
