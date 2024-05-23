@@ -61,5 +61,22 @@ fn main() -> io::Result<()> {
         io::stdout().flush()?;
         let mut input = String::new();
         io::stdin().read_line(&mut input)?;
+
+        match input.trim() {
+            "1" => {
+                println!("Enter task title: ");
+                let mut task_title = String::new();
+                io::stdin().read_line(&mut task_title)?;
+                task_list.add_task(task_title.trim().to_string());
+            }
+            "2" => {
+                task_list.save_to_file(filename)?;
+                println!("Tasks saved to {}", filename);
+                break;
+            }
+            _ => println!("Invalid input");
+        }
     }
+
+    Ok(())
 }
