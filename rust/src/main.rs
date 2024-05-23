@@ -44,3 +44,12 @@ impl Tasklist {
         Ok(task_list)
     }
 }
+
+fn main() -> io::Result<()> {
+    let filename = "tasks.json";
+
+    let mut task_list = match Path::new(filename).exists() {
+        true => TaskList::load_from_file(filename)?,
+        false => TaskList::new(),
+    };
+}
