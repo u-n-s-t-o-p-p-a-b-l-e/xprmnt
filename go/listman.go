@@ -33,6 +33,17 @@ func main() {
 				fmt.Println("Task cannot be empty.")
 			}
 		case "2":
+			if len(tasks) == 0 {
+				fmt.Println("No tasks.")
+			} else {
+				fmt.Println("Tasks:")
+				for i, task := range tasks {
+					fmt.Printf("%dd. %s\n", i+1, task)
+					
+				}
+				
+			}
+		case 3:
 			
 		}
 		
