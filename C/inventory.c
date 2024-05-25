@@ -46,5 +46,22 @@ void delete_item() {
 
 	Item items[MAX_ITEMS];
 	int item_count = 0;
+
+	while (fscanf(file, "%s %d %f", items[item_count].name, &items[item_count].quantity, &items[item_count].price) != EOF) {
+		item_count++;
+	}
+	fclose(file);
+
+	char item_name[MAX_ITEM_NAME_LENGTH];
+	printf("Enter the name of the item to delete: ");
+	getchar();
+	fgets(item_name, MAX_ITEM_NAME_LENGTH, stdin);
+	item_name[strscpn(item_name, "\n")] = '\0';
+
+	file = fopen(FILENAME, "w");
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
 }
 
