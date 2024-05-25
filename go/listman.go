@@ -13,8 +13,8 @@ func main() {
 	fmt.Println("\nSimple To-Do List Manager")
 	for {
 		fmt.Println("\n1. Add Task")
-		fmt.Println("\n2. View Tasks")
-		fmt.Println("\n3. Exit")
+		fmt.Println("2. View Tasks")
+		fmt.Println("3. Exit")
 		fmt.Println("Choose an option: ")
 
 		reader := bufio.NewReader(os.Stdin)
@@ -24,7 +24,7 @@ func main() {
 		switch option {
 		case "1":
 			fmt.Print("Enter task: ")
-			task, _ := reeader.ReadString('\n')
+			task, _ := reader.ReadString('\n')
 			task = strings.TrimSpace(task)
 			if task != "" {
 				tasks = append(tasks, task)
@@ -43,7 +43,7 @@ func main() {
 				}
 				
 			}
-		case 3:
+		case "3":
 			fmt.Println("Exiting..")
 			return
 		default:
