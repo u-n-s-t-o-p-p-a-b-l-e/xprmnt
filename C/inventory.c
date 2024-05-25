@@ -23,7 +23,7 @@ void add_item() {
 	printf("Enter the item name: ");
 	getchar();
 	fgets(item.name, MAX_ITEM_NAME_LENGTH, stdin);
-	item.name[strscpn(item.name, "\n")] = '\0';
+	item.name[strcspn(item.name, "\n")] = '\0';
 
 	printf("Enter the quantity: ");
 	scanf("%d", &item.quantity);
@@ -36,6 +36,24 @@ void add_item() {
 
 	printf("Item added successfully");
 }
+
+void view_items() {
+	FILE *file = fopen(FILENAME, "r");
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
+
+	Item item;
+	printf("Inventory:\n");
+	printf("%-20s %-10d %-10.2f\n", "Name", "Quantity", "Price");
+	 while (fscanf(file, "%s %d %f", item.name, &item.quantity, &item.price) != EOF
+		   ) {
+		 printf("%-20s %-10d %-10.2f\n", item.name, item.quantity, item.price);
+	 }
+	 fclose(file);
+}
+
 
 void delete_item() {
 	FILE *file = fopen(FILENAME, "r");;
@@ -56,7 +74,7 @@ void delete_item() {
 	printf("Enter the name of the item to delete: ");
 	getchar();
 	fgets(item_name, MAX_ITEM_NAME_LENGTH, stdin);
-	item_name[strscpn(item_name, "\n")] = '\0';
+	item_name[strcspn(item_name, "\n")] = '\0';
 
 	file = fopen(FILENAME, "w");
 	if (file == NULL) {
