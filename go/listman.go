@@ -44,11 +44,12 @@ func main() {
 				
 			}
 		case 3:
-			
+			fmt.Println("Exiting..")
+			return
+		default:
+			fmt.Println("Invalid option. Please choose again.")
 		}
-		
 	}
-	
 }
 
 
