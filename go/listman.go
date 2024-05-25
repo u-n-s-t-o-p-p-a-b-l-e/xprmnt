@@ -16,7 +16,28 @@ func main() {
 		fmt.Println("\n2. View Tasks")
 		fmt.Println("\n3. Exit")
 		fmt.Println("Choose an option: ")
+
+		reader := bufio.NewReader(os.Stdin)
+		option, _ := reader.ReadString('\n')
+		option = strings.TrimSpace(option)
+
+		switch option {
+		case "1":
+			fmt.Print("Enter task: ")
+			task, _ := reeader.ReadString('\n')
+			task = strings.TrimSpace(task)
+			if task != "" {
+				tasks = append(tasks, task)
+				fmt.Println("Task added successfully")
+			} else {
+				fmt.Println("Task cannot be empty.")
+			}
+		case "2":
+			
+		}
 		
 	}
 	
 }
+
+
