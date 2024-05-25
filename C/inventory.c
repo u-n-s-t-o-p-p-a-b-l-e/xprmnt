@@ -92,5 +92,24 @@ int main() {
 		printf("4. Exit\n");
 		printf("5. Enter your choice: ");
 		scanf("%d", &choice);
+
+		switch (choice) {
+			case 1:
+				add_item();
+				break;
+			case 2:
+				view_items();
+				break;
+			case 3:
+				delete_item();
+				break;
+			case 4:
+				printf("Exiting the program\n");
+				exit(0);
+			default:
+				printf("Invalid choice. Please tyr again.\n");
+		}
 	}
+
+	return 0;
 }
