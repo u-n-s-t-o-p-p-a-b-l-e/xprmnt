@@ -81,3 +81,16 @@ void delete_item() {
 	}
 }
 
+int main() {
+	int choice;
+
+	while (1) {
+		printf("\nInventory Manager\n");
+		printf("1. Add Item\n");
+		printf("2. View Items\n");
+		printf("3. Delete Item\n");
+		printf("4. Exit\n");
+		printf("5. Enter your choice: ");
+		scanf("%d", &choice);
+	}
+}
