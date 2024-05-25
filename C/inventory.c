@@ -63,5 +63,21 @@ void delete_item() {
 		perror("Unable to open file");
 		return;
 	}
+
+	int found = 0;
+	for (int i = 0; i < item_count; i++) {
+		if (strcmp(items[i].name, item_name) != 0) {
+			fprintf(file, "%s %d %.2f\n", items[i].name, items[i].quantity, items[i].price);
+		} else {
+			found = 1;
+		}
+	}
+	fclose(file);
+
+	if (found) {
+		printf("Item deleted successfully\n");
+	} else {
+		printf("Item not found.\n");
+	}
 }
 
