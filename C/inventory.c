@@ -12,4 +12,10 @@ typedef struct {
 	float price;
 } Item;
 
-
+void add_item() {
+	FILE *file = fopen(FILENAME, "a");
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
+}
