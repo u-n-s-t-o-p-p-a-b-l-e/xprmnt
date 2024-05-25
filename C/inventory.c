@@ -18,4 +18,21 @@ void add_item() {
 		perror("Unable to open file");
 		return;
 	}
+
+	Item item;
+	printf("Enter the item name: ");
+	getchar();
+	fgets(item.name, MAX_ITEM_NAME_LENGTH, stdin);
+	item.name[strscpn(item.name, "\n")] = '\0';
+
+	printf("Enter the quantity: ");
+	scanf("%d", &item.quantity);
+
+	printf("Enter the price: ");
+	scanf("%f", &item.price);
+
+	fprintf(file, "%s %d %.2f\n", item.name, item.quantity, item.price);
+	flose(file);
+
+	printf("Item added successfully");
 }
