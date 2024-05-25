@@ -32,7 +32,19 @@ void add_item() {
 	scanf("%f", &item.price);
 
 	fprintf(file, "%s %d %.2f\n", item.name, item.quantity, item.price);
-	flose(file);
+	fclose(file);
 
 	printf("Item added successfully");
 }
+
+void delete_item() {
+	FILE *file = fopen(FILENAME, "r");;
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
+
+	Item items[MAX_ITEMS];
+	int item_count = 0;
+}
+
