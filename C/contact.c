@@ -11,3 +11,11 @@ typedef struct {
 	char phone[MAX_PHONE_LENGTH];
 } contact;
 
+void add_contact() {
+	FILE *file = fopen(FILENAME, "a");
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
+}
+
