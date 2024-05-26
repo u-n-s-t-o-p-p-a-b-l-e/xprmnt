@@ -34,3 +34,11 @@ void add_contact() {
 	printf("Contact added successfully.\n");
 }
 
+void view_contacts() {
+	FILE *file = fopen(FILENAME, "r");
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
+}
+
