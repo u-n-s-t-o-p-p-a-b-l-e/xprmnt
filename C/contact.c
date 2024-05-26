@@ -17,5 +17,20 @@ void add_contact() {
 		perror("Unable to open file");
 		return;
 	}
+
+	Contact contact;
+	printf("Enter the contact name: ");
+	getchar();
+	fgets(contact.name, MAX_NAME_LENGTH, stdin);
+	contact.name[strcspn(contact.name, "\n")] = '\0';
+
+	printf("Enter the phone number: ");
+	fgets(contact.phone, MAX_NAME_LENGTH, stdin);
+	contact.phone[strcspn(contact.phone, "\n")] = '\0';
+
+	fprintf(file, "%s %s\n", contact.name, contact.phone);
+	fclose(file);
+
+	printf("Contact added successfully.\n");
 }
 
