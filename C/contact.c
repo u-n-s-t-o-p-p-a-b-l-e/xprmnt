@@ -40,5 +40,14 @@ void view_contacts() {
 		perror("Unable to open file");
 		return;
 	}
+
+	Contact contact;
+	printf("Contacts:\n");
+	printf("%-20s %-15s\n", "Name", "Phone");
+
+	while (fscanf(file, "%s %s", contact.name, contact.phone) != EOF) {
+		printf("%-20s %-15s\n", contact.name, contact.phone);
+	}
+	fclose(file);
 }
 
