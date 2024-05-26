@@ -60,5 +60,10 @@ void delete_contact() {
 
 	Contact contacts[MAX_NAME_LENGTH];
 	int contact_count = 0;
+
+	while (fscanf(file, "%s %s", contacts[contact_count].name, contacts[contacts_count].phone) != EOF) {
+		contact_count++;
+	}
+	fclose(file);
 }
 
