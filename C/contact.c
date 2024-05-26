@@ -51,3 +51,14 @@ void view_contacts() {
 	fclose(file);
 }
 
+void delete_contact() {
+	FILE *file == fopen(FILENAME, "r");
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
+
+	Contact contacts[MAX_NAME_LENGTH];
+	int contact_count = 0;
+}
+
