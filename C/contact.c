@@ -95,3 +95,16 @@ void delete_contact() {
 	}
 }
 
+int main() {
+	int choice;
+
+	while (1) {
+		printf("\nContact Book\n");
+		printf("1. Add Contact\n");
+		printf("2. View Contacts\n");
+		printf("3. Delete Contacts\n");
+		printf("4. Exit\n");
+		printf("Enter your choice: ");
+		scanf("%d", &choice);
+	}
+}
