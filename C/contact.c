@@ -9,7 +9,7 @@
 typedef struct {
 	char name[MAX_NAME_LENGTH];
 	char phone[MAX_PHONE_LENGTH];
-} contact;
+} Contact;
 
 void add_contact() {
 	FILE *file = fopen(FILENAME, "a");
@@ -52,7 +52,7 @@ void view_contacts() {
 }
 
 void delete_contact() {
-	FILE *file == fopen(FILENAME, "r");
+	FILE *file = fopen(FILENAME, "r");
 	if (file == NULL) {
 		perror("Unable to open file");
 		return;
@@ -61,7 +61,7 @@ void delete_contact() {
 	Contact contacts[MAX_NAME_LENGTH];
 	int contact_count = 0;
 
-	while (fscanf(file, "%s %s", contacts[contact_count].name, contacts[contacts_count].phone) != EOF) {
+	while (fscanf(file, "%s %s", contacts[contact_count].name, contacts[contact_count].phone) != EOF) {
 		contact_count++;
 	}
 	fclose(file);
