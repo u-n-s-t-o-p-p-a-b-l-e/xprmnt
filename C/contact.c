@@ -65,5 +65,33 @@ void delete_contact() {
 		contact_count++;
 	}
 	fclose(file);
+
+	char contact_name[MAX_NAME_LENGTH];
+	printf("Enter the name of the contact to delete: ");
+	getchar();
+	fgets(contact_name, MAX_NAME_LENGTH, stdin);
+	contact_name[strcspn(contact_name, "\n")] = '\0';
+
+	file = fopen(FILENAME, "w");
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
+
+	int found = 0;
+	for (int i = 0; i < contact_count; i++) {
+		if (strcmp(contacts[i].name, contact_name) != 0) {
+			fprintf(file, "%s %s\n", contacts[i].name, contacts[i].phone);
+		} else {
+			found = 1;
+		}
+	}
+	fclose(file);
+
+	if (found) {
+		printf("Contact deleted successfully.\n");
+	} else {
+		printf("Contact not found.\n");
+	}
 }
 
