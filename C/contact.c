@@ -106,5 +106,24 @@ int main() {
 		printf("4. Exit\n");
 		printf("Enter your choice: ");
 		scanf("%d", &choice);
+
+		switch (choice) {
+			case 1:
+				add_contact();
+				break;
+			case 2:
+				view_contacts();
+				break;
+			case 3:
+				delete_contact();
+				break;
+			case 4:
+				printf("Exiting the program.\n");
+				exit(0);
+			default: 
+				printf("Invalid choice. Please try again.\n");
+		}
 	}
+
+	return 0;
 }
