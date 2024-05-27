@@ -39,3 +39,12 @@ void view_notes() {
 	}
 	fclose(file);
 }
+
+void delete_notes() {
+	FILE *file = fopen(FILENAME, "w");
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
+	fclose(file);
+}
