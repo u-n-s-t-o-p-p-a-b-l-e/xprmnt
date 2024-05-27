@@ -23,3 +23,11 @@ void add_note() {
 
 	printf("Note added successfully.\n");
 }
+
+void view_notes() {
+	FILE *file = fopen(FILENAME, "r");
+	if (file == NULL) {
+		perror("Unable to open file");
+		return;
+	}
+}
