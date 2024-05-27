@@ -47,4 +47,20 @@ void delete_notes() {
 		return;
 	}
 	fclose(file);
+
+	printf("All notes deleted successfully.\n");
 }
+
+int main() {
+	int choice;
+	while (1) {
+		printf("\nNotepad\n");
+		printf("1. Add Note\n");
+		printf("2. View Notes\n");
+		printf("3. Delete All Notes\n");
+		printf("4. Exit\n");
+		printf("Enter your choice: ");
+		scanf("%d", &choice);
+	}
+}
+
