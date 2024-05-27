@@ -11,4 +11,15 @@ void add_note() {
 		perror("Unable to open file");
 		return;
 	}
+
+	char note[MAX_NOTE_LENGTH];
+	printf("Enter your note: ");
+	getchar();
+	fgets(note, MAX_NOTE_LENGTH, stdin);
+	note[strcspn(note, "\n")] = '\0';
+
+	fprintf(file, "%s\n", note);
+	fclose(file);
+
+	printf("Note added successfully.\n");
 }
