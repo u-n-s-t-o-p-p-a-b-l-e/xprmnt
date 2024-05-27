@@ -30,4 +30,12 @@ void view_notes() {
 		perror("Unable to open file");
 		return;
 	}
+
+	char note[MAX_NOTE_LENGTH];
+	printf("Notes:\n");
+
+	while (fgets(note, MAX_NOTE_LENGTH, file) != NULL) {
+		printf("%s", note);
+	}
+	fclose(file);
 }
