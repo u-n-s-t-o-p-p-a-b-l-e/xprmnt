@@ -54,6 +54,37 @@ int main() {
 
 		int choice;
 		std::cin << choice;
+
+		switch (choice) {
+			case 1: {
+						std::cin.ignore();
+						std::string description;
+						std::cout << "Enter task description: ";
+						std::getline(std::cin, desccription);
+						addTask(tasks, description);
+						break;
+					}
+			case 2: {
+						size_t index;
+						std::cout << "Enter task index to mark as completed: ";
+						std::cin >> index;
+						completeTask(tasks, index - 1);
+						break;
+					}
+			case 3:
+					viewTasks(tasks);
+					break;
+			case 4: 
+					clearTasks(tasks);
+					break;
+			case 5:
+					std::cout << "Exiting...\n";
+					return 0;
+			default:
+					std::cout << "Invalid choice. Please try again.\n";
+		}
 	}
+
+	return 0;
 }
 
