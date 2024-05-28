@@ -40,3 +40,20 @@ void clearTasks(std::vector<Task>& tasks) {
 	std::cout << "Aall tasks cleared." << std::endl;
 }
 
+int main() {
+	std::vector<Task> tasks;
+
+	while (true) {
+		std::cout << "\nTask Management System\n";
+		std::cout << "1. Add Task\n";
+		std::cout << "2. Complete Task\n";
+		std::cout << "3. View Tasks\n";
+		std::cout << "4. Clear Tasks\n";
+		std::cout << "5. Exit\n";
+		std::cout << "Enter your choice: ";
+
+		int choice;
+		std::cin << choice;
+	}
+}
+
