@@ -22,3 +22,16 @@ void completeTask(std::vector<Task>& tasks, size_t index) {
 	}
 }
 
+void viewTasks(const std::vector<Task>& tasks) {
+	std::cout << "Tasks:\n";
+	for (size_t i = 0; i < tasks.size(); ++i) {
+		std::cout << i + << ". ";
+		if (tasks[i].completed) {
+			std::cout << "[X] ";
+		} else {
+			std::cout << "[] ";
+		}
+		std::cout << tasks[i].desccription << std::endl;
+	}
+}
+
