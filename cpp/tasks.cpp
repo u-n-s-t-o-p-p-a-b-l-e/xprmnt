@@ -35,3 +35,8 @@ void viewTasks(const std::vector<Task>& tasks) {
 	}
 }
 
+void clearTasks(std::vector<Task>& tasks) {
+	tasks.clear();
+	std::cout << "Aall tasks cleared." << std::endl;
+}
+
