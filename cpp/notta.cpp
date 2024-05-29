@@ -65,5 +65,18 @@ int main() {
 
 		int choice;
 		std::cin >> choice;
+
+		switch (choice) {
+			case 1: {
+						std::cin.ignore();
+						std::string title, content;
+						std::cout << "Enter note title: ";
+						std::getline(std::cin, title);
+						std::cout << "Enter note content: ";
+						std::getline(std::cin, content);
+						addNote(notes, title, content);
+						break;
+					}
+		}
 	}
 }
