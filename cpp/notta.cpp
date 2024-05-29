@@ -35,4 +35,18 @@ void searchNotes(const std::vector<Note>& notes, const std::string& keyword) {
 			found = true;
 		}
 	}
+	if (!found) {
+		std::cout << "No matching notes found.\n";
+	}
+}
+
+void deleteNote(std::vector<Note>& notes, const std::string& title) {
+	auto it = std::find_if(notes.begin(), notes.end(), [&](const Note& n) {
+			return n.title == title; });
+		if(it != notes.end()) {
+			notes.erase(it);
+			std::cout << "Note deleted: " << title << std::endl;
+		} else {
+			std::cout << "Note not found.\n";
+		}
 }
