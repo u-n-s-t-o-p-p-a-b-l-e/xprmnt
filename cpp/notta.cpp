@@ -50,3 +50,20 @@ void deleteNote(std::vector<Note>& notes, const std::string& title) {
 			std::cout << "Note not found.\n";
 		}
 }
+
+int main() {
+	std::vector<Note> notes;
+
+	while(true) {
+		std::cout << "\nNote-Taking Tool\n";
+		std::cout << "1. Add Note\n";
+		std::cout << "2. View Notes\n";
+		std::cout << "3. Search Notes\n";
+		std::cout << "4. Delete Note\n";
+		std::cout << "5. Exit\n";
+		std::cout << "Enter your choice: ";
+
+		int choice;
+		std::cin >> choice;
+	}
+}
