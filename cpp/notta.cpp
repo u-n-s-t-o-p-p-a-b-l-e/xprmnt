@@ -96,6 +96,13 @@ int main() {
 						deleteNote(notes, title);
 						break;
 					}
+			case 5:
+					std::cout << "Exiting...\n";
+					return 0;
+			default: 
+					std::cout << "Invalid choice. Please try again.\n";
 		}
 	}
+
+	return 0;
 }
