@@ -77,6 +77,17 @@ int main() {
 						addNote(notes, title, content);
 						break;
 					}
+			case 2:
+					viewNotes(notes);
+					break;
+			case 3: {
+						std::cin.ignore();
+						std::string keyword;
+						std::cout << "Enter keyword to search: ";
+						std::getline(std::cin, keyword);
+						searchNotes(notes, keyword);
+						break;
+					}
 		}
 	}
 }
