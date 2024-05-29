@@ -88,6 +88,14 @@ int main() {
 						searchNotes(notes, keyword);
 						break;
 					}
+			case 4: {
+						std::cin.ignore();
+						std::string title;
+						std::cout << "Enter title of note to delete: ";
+						std::getline(std::cin, title);
+						deleteNote(notes, title);
+						break;
+					}
 		}
 	}
 }
