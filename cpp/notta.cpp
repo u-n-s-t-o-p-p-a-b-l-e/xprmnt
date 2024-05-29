@@ -25,3 +25,14 @@ void viewNotes(const std::vector<Note>& notes) {
 		}
 	}
 }
+
+void searchNotes(const std::vector<Note>& notes, const std::string& keyword) {
+	std::cout << "Search results for keyword '" << keyword << "':\n";
+	bool found = false;
+	for (const auto& note : notes) {
+		if (note.title.find(keyword) != std::string::npos || note.content.find(keyword) != std::string::npos) {
+			std::cout << "Title: " << note.title << "\n";
+			found = true;
+		}
+	}
+}
