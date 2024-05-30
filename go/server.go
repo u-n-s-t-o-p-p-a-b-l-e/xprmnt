@@ -25,5 +25,20 @@ func main() {
 
 			go handleConnection(conn)
 		}
+}
+
+func handleConnection(conn net.Conn) {
+	defer conn.Close()
+
+	fmt.Println("Client connected: ", conn.RemoteAddr())
+
+	scanner := bufio.NewScanner(conn)
+	for scanner.Scan() {
+		message := scanner.Text()
+		fmt.Println("Received message from", conn.RemoteAddr(), ":", message)
+		fmt.Fprintln(conn, "Server received:", message)
 		
+		
+	}
+	
 }
