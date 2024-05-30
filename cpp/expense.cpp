@@ -46,7 +46,7 @@ int main() {
 						std::cin.ignore();
 						std::string description;
 						double amount;
-						std::cout << "Enter expense description";
+						std::cout << "Enter expense description: ";
 						std::getline(std::cin, description);
 						std::cout << "Enter expense amount: $";
 						std::cin >> amount;
