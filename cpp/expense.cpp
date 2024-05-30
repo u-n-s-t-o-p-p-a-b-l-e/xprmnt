@@ -27,3 +27,18 @@ void viewExpenses(const std::vector<Expense>& expenses) {
 		std::cout << "Total expenses: $" << std::fixed << std::setprecision(2) << total << std::endl;
 	}
 }
+
+int main() {
+	std::vector<Expense> expenses;
+
+	while (true) {
+		std::cout << "\nExpense Tracker\n";
+		std::cout << "1. Add Expense\n";
+		std::cout << "2. View Expenses\n";
+		std::cout << "3. Exit\n";
+		std::cout << "Enter your choice: ";
+
+		int choice;
+		std::cin >> choice;
+	}
+}
