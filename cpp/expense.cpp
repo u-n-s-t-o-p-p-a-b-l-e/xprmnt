@@ -40,5 +40,29 @@ int main() {
 
 		int choice;
 		std::cin >> choice;
+
+		switch (choice) {
+			case 1: {
+						std::cin.ignore();
+						std::string description;
+						double amount;
+						std::cout << "Enter expense description";
+						std::getline(std::cin, description);
+						std::cout << "Enter expense amount: $";
+						std::cin >> amount;
+						addExpense(expenses, description, amount);
+						break;
+					}
+			case 2:
+					viewExpenses(expenses);
+					break;
+			case 3:
+					std::cout << "Exiting...\n";
+					return 0;
+			default:
+					std::cout << "Invalid choice. Please try again.\n";
+		}
 	}
+
+	return 0;
 }
