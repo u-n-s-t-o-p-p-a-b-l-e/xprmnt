@@ -37,8 +37,5 @@ func handleConnection(conn net.Conn) {
 		message := scanner.Text()
 		fmt.Println("Received message from", conn.RemoteAddr(), ":", message)
 		fmt.Fprintln(conn, "Server received:", message)
-		
-		
 	}
-	
 }
