@@ -50,4 +50,13 @@ int main() {
 
 	std::cout << "Welcome to Tic-Tac-Toe!\n";
 	printBoard(board);
+
+	while (!gameWon && !gameDraw) {
+		int row, col;
+		std::cout << "Player " << currentPlayer << ", enter your move (row and column: 1 1, 1 2, etc.): ";
+		std::cin >> row >> col;
+
+		row--;
+		col--;
+	}
 }
