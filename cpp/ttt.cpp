@@ -42,4 +42,12 @@ void makeMove(std::vector<std::vector<char>>& board, int row, int col, char play
 	}
 }
 
+int main() {
+	std::vector<std::vector<char>> board(3, std::vector<char>(3, ' '));
+	char currentPlayer = 'X';
+	bool gameWon = false;
+	bool gameDraw = false;
 
+	std::cout << "Welcome to Tic-Tac-Toe!\n";
+	printBoard(board);
+}
