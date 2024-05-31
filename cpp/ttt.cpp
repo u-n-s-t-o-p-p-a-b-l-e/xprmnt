@@ -15,7 +15,7 @@ void printBoard(const std::vector<std::vector<char>>& board) {
 
 bool checkWin(const std::vector<std::vector<char>>& board, char player) {
 	for (int i = 0; i < 3; ++i) {
-		if ((boaard[i][0] ==  player && board[i][1] == player && board[i][2] == player) || (board[0][i] ==  player && board[1][i] == player && board[2][i] == player)) {
+		if ((board[i][0] ==  player && board[i][1] == player && board[i][2] == player) || (board[0][i] ==  player && board[1][i] == player && board[2][i] == player)) {
 			return true;
 		}
 	}
@@ -58,5 +58,24 @@ int main() {
 
 		row--;
 		col--;
+
+		if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == ' ') {
+			makeMove(board, row, col, currentPlayer);
+			printBoard(board);
+
+			if (checkWin(board, currentPlayer)) {
+				std::cout << "Player " << currentPlayer << " wins!\n";
+				gameWon = true;
+			} else if (checkDraw(board)) {
+				std::cout << "It's a draw!\n";
+				gameDraw = true;
+			} else {
+				currentPlayer = (currentPlayer == 'X') ? '0' : 'X';
+			}
+		} else {
+			std::cout << "Invalid move! Please try again.\n";
+		}
 	}
+
+	return 0;
 }
