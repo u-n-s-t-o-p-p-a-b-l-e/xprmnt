@@ -33,3 +33,13 @@ bool checkDraw(const std::vector<std::vector<char>>& board) {
 	}
 	return true;
 }
+
+void makeMove(std::vector<std::vector<char>>& board, int row, int col, char player) {
+	if (board[row][col] == ' ') {
+		board[row][col] = player;
+	} else {
+		std::cout << "Cell already occupied! Choose a different cell.\n";
+	}
+}
+
+
