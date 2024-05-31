@@ -24,3 +24,12 @@ bool checkWin(const std::vector<std::vector<char>>& board, char player) {
 	}
 	return false;
 }
+
+bool checkDraw(const std::vector<std::vector<char>>& board) {
+	for (const auto& row : board) {
+		for (char cell : row) {
+			if (cell == ' ') return false;
+		}
+	}
+	return true;
+}
