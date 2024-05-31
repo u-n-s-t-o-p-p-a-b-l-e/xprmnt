@@ -12,3 +12,11 @@ void printBoard(const std::vector<std::vector<char>>& board) {
 		if (row < 2) std::cout << "--+---+--\n";
 	}
 }
+
+bool checkWin(const std::vector<std::vector<char>>& board, char player) {
+	for (int i = 0; i < 3; ++i) {
+		if ((boaard[i][0] ==  player && board[i][1] == player && board[i][2] == player) || (board[0][i] ==  player && board[1][i] == player && board[2][i] == player)) {
+			return true;
+		}
+	}
+}
