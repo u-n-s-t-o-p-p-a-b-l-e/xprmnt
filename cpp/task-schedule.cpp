@@ -36,3 +36,13 @@ void viewTasks(const std::vector<Task>& tasks) {
 		std::cout << tasks[i].description << " (Due: " << ctime(&tasks[i].dueDate) << ")";
 	}
 }
+
+void remindUpcomingTasks(const std::vector<Task>& tasks) {
+	time_t currentTime = time(nullptr);
+	std::cout << "Upcoming tasks:\n";
+	for (const auto& task : tasks) {
+		if (!task.completed && task.dueDate > currentTime && task.dueDate <= currentTime + 86400) {
+			std::cout << task.description << " (Due: " << ctime(&task.dueDate) << ")";
+		}
+	}
+}
