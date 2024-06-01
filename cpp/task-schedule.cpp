@@ -56,5 +56,22 @@ int main() {
 		std::cout << "4. Remind Upcoming Tasks\n";
 		std::cout << "5. Exit\n";
 		std::cout << "Enter your choice: ";
+
+		int choice;
+		std::cin >> choice;
+
+		switch (choice) {
+			case 1: {
+						std::cin.ignore();
+						std::string description;
+						std::cout << "Enter task description: ";
+						std::getline(std::cin, description);
+						time_t dueDate;
+						std::cout << "enter due date and time (YYYY-MM-DD HH::MM): ";
+						std::cin >> std::get_time(&dueDate, "%Y-%m-%d %H:%M");
+						addTask(tasks, description, dueDate);;;
+						break;
+					}
+		}
 	}
 }
