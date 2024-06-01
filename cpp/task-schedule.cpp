@@ -46,3 +46,15 @@ void remindUpcomingTasks(const std::vector<Task>& tasks) {
 		}
 	}
 }
+
+int main() {
+	while (true) {
+		std::cout << "\nTask Scheduler\n";
+		std::cout << "1. Add Task\n";
+		std::cout << "2. Complete Task\n";
+		std::cout << "3. View Tasks\n";
+		std::cout << "4. Remind Upcoming Tasks\n";
+		std::cout << "5. Exit\n";
+		std::cout << "Enter your choice: ";
+	}
+}
