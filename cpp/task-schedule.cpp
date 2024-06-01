@@ -23,3 +23,16 @@ void completeTask(std::vector<Task>& task, size_t index) {
 		std::cout << "Invalid task index." << std::endl;
 	}
 }
+
+void viewTasks(const std::vector<Task>& tasks) {
+	std::cout << "Tasks:\n";
+	for (size_t i = 0; i < tasks.size(); ++i) {
+		std::cout << i + 1 << ". ";
+		if (tasks[i].completed) {
+			std::cout << "[X] ";
+		} else {
+			std::cout << "[  ] ";
+		}
+		std::cout << tasks[i].description << " (Due: " << ctime(&tasks[i].dueDate) << ")";
+	}
+}
