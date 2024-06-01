@@ -67,11 +67,31 @@ int main() {
 						std::cout << "Enter task description: ";
 						std::getline(std::cin, description);
 						time_t dueDate;
-						std::cout << "enter due date and time (YYYY-MM-DD HH::MM): ";
+						std::cout << "Enter due date and time (YYYY-MM-DD HH::MM): ";
 						std::cin >> std::get_time(&dueDate, "%Y-%m-%d %H:%M");
 						addTask(tasks, description, dueDate);;;
 						break;
 					}
+			case 2: {
+						size_t index;
+						std::cout << "Enter task index to mark as completed: ";
+						std::cin >> index;
+						completeTask(tasks, index - 1);
+						break;
+					}
+			case 3:
+					viewTasks(tasks);
+					break;
+			case 4:
+					remindUpcomingTasks(tasks);
+					break;
+			case 5:
+					std::cout << "Exiting...\n ";
+					return 0;
+			default:
+					std::cout << "Invalid choice. Please try again.\n";
 		}
 	}
+
+	return 0;
 }
