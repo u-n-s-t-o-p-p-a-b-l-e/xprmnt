@@ -59,6 +59,9 @@ void playQuiz(const std::vector<Question>& questions) {
 }
 
 	int main() {
+		std::string filename = "quiz_questions.txt";
+		std::vector<Question> questions = readQuestionsFromFile(filename);
+		shuffleQuestions(questions);
 
 		std::cout << "Welcome to the Quiz Game\n";
 		std::cout << "You will be presented with a series of questions.\n";
