@@ -30,3 +30,9 @@ std::vector<Question> readQuestionsFromFile(const std::string& filename) {
 	file.close();
 	return questions;
 }
+
+void shuffleQuestions(std::vector<Question>& questions) {
+	static std::random_device rd;
+	static std::mt19937 g(rd());
+	std::shuffle(questions.begin(), questions.end(), g);
+}
