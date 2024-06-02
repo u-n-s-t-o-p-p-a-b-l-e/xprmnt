@@ -20,7 +20,7 @@ std::vector<Question> readQuestionsFromFile(const std::string& filename) {
 
 	std::vector<Question> questions;
 	std::string line;
-	while (stdd::getline(file, line)) {
+	while (std::getline(file, line)) {
 		Question q;
 		q.questionText = line;
 		std::getline(file, q.correctAnswer);
@@ -53,4 +53,20 @@ void playQuiz(const std::vector<Question>& questions) {
 			std::cout << "Incorrect! The correct answer is: " << q.correctAnswer << std::endl;
 		}
 	}
+
+	std::cout << "Quiz completed!\n";
+	std::cout << "Your scored: " << score << "/" << questions.size() << std::endl;
 }
+
+	int main() {
+
+		std::cout << "Welcome to the Quiz Game\n";
+		std::cout << "You will be presented with a series of questions.\n";
+		std::cout << "Enter your answer for each question.\n";
+
+		playQuiz(questions);
+
+		return 0;
+
+	}
+
