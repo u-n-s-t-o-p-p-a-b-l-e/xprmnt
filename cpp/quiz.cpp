@@ -36,3 +36,21 @@ void shuffleQuestions(std::vector<Question>& questions) {
 	static std::mt19937 g(rd());
 	std::shuffle(questions.begin(), questions.end(), g);
 }
+
+void playQuiz(const std::vector<Question>& questions) {
+	int score = 0;
+	for (const auto& q : questions) {
+		std::cout << "Question: " << q.questionText << std::endl;
+		std::string userAnswer;
+		std::cout << "Your answer: ";
+		std::cin.ignore();
+		std::getline(std::cin, userAnswer);
+
+		if (userAnswer == q.correctAnswer) {
+			std::cout << "Correct!\n";
+			score++;
+		} else {
+			std::cout << "Incorrect! The correct answer is: " << q.correctAnswer << std::endl;
+		}
+	}
+}
