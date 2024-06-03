@@ -14,4 +14,19 @@ func main() {
 		return
 	}
 	defer conn.Close()
+
+	fmt.Println("Connected to server. Type your message below:")
+
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		message := scanner.Text()
+		fmt.Fprintln(conn, message)
+
+		response, err := bufio.NewReader(conn).ReadString('\n')
+		if err != nil {
+			fmt.Println("Error reading from server:", err)
+			return
+		}
+		fmt.Println("Server response:", response)
+	}
 }
