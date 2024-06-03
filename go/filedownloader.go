@@ -20,4 +20,11 @@ func main() {
 	}
 
 	fileName := filepath.Base(url)
+
+	file, err := os.Create(fileName)
+	if err != nil {
+		fmt.Println("Error creating file:", err)
+		return
+		
+	}
 }
