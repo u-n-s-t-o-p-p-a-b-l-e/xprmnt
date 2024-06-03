@@ -25,6 +25,13 @@ func main() {
 	if err != nil {
 		fmt.Println("Error creating file:", err)
 		return
+	}
+	defer file.Close()
+
+	response, err := http.Get(url)
+	if err != nil {
+		fmt.Println("Error downloading file:", err)
+		return
 		
 	}
 }
