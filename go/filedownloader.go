@@ -32,6 +32,13 @@ func main() {
 	if err != nil {
 		fmt.Println("Error downloading file:", err)
 		return
+	}
+	defer response.Body.Close()
+
+	_, err = io.Copy(file, response.Body)
+	if err != nil {
+		fmt.Println("Error writing to file:", err)
+		return
 		
 	}
 }
