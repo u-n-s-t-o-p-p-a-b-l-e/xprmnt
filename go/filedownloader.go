@@ -10,5 +10,7 @@ import (
 )
 
 func main() {
-
+	var url string
+	flag.StringVar(&url, "url", "", "URL of the file to download")
+	flag.Parse()
 }
