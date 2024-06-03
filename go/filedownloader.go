@@ -39,6 +39,11 @@ func main() {
 	if err != nil {
 		fmt.Println("Error writing to file:", err)
 		return
-		
 	}
+
+	fmt.Println("File downloaded successfully:", fileName)
+	
 }
+
+// sample run command:
+// go run downloader.go -url https://example.com/file.txt
