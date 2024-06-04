@@ -6,3 +6,7 @@ def get_weather(city):
     response = requests.get(url)
     data = response.json()
     return data
+
+def main():
+    print("Welcome to the Simple Weather App!")
+    city = input("Enter city name: ")
