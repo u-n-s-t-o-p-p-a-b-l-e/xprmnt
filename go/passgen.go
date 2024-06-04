@@ -20,4 +20,8 @@ func main() {
 	var length int
 	flag.IntVar(&length, "length", 12, "Length of the password")
 	flag.Parse()
+
+	password := GeneratePassword(length)
+	fmt.Printf("Generated password: %s\n", password)
+	
 }
