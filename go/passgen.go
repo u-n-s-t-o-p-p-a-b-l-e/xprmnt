@@ -8,7 +8,8 @@ import (
 )
 
 func GeneratePassword(length int) string {
-	const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"rand.Seed(time.Now().UnixNano())
+	const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	rand.Seed(time.Now().UnixNano())
 	passwordj := make([]byte, length)
 	for i := range password {
 		password[i] = charset[rand.Intn(len(charset))]
