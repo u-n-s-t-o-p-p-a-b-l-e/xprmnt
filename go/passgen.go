@@ -15,3 +15,9 @@ func GeneratePassword(length int) string {
 	}
 	return string(password)
 }
+
+func main() {
+	var length int
+	flag.IntVar(&length, "length", 12, "Length of the password")
+	flag.Parse()
+}
