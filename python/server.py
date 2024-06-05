@@ -20,3 +20,8 @@ def server():
         print("Received from client:", data.decode())
 
         client_socket.sendall(b"Server received your message. Thanks!")
+
+        client_socket.close()
+
+if __name__ == "__main__":
+    server()
