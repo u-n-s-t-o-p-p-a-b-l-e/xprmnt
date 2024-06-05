@@ -11,3 +11,7 @@ def server():
     server_socket.listen(5)
 
     print("Server listening on {}:{}".format(host, port))
+
+    while True:
+        client_socket, addr = server_socket.accept()
+        print('Got connection from', addr)
