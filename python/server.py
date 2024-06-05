@@ -15,3 +15,6 @@ def server():
     while True:
         client_socket, addr = server_socket.accept()
         print('Got connection from', addr)
+
+        data = client_socket.recv(1024)
+        print("Received from client:", data.decode())
