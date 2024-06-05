@@ -18,3 +18,5 @@ def server():
 
         data = client_socket.recv(1024)
         print("Received from client:", data.decode())
+
+        client_socket.sendall(b"Server received your message. Thanks!")
