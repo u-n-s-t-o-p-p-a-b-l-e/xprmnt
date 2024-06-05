@@ -7,3 +7,7 @@ def server():
     port = 12345
 
     server_socket.bind((host, port))
+
+    server_socket.listen(5)
+
+    print("Server listening on {}:{}".format(host, port))
