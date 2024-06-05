@@ -5,3 +5,5 @@ def server():
 
     host = socket.gethostname()
     port = 12345
+
+    server_socket.bind((host, port))
