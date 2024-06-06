@@ -18,3 +18,10 @@ const quotes: Quote[] = [
     { text: "The only impossible journey is the one you never begin.", author: "Tony Robbins" },
     { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" }
 ];
+
+function getRandomQuotes (): Quote {
+	const randomIndex = Math.floor(Math.random() * quotes.length);
+	return quotes[randomIndex];
+}
+
+
