@@ -20,5 +20,13 @@ function main(): void {
 		console.log("Usage: countdown <seconds>");
 		return;
 	}
+	const seconds = parseInt(args[0]);
+	if (isNaN(seconds) || seconds <= 0) {
+		console.log("Invalid input. Please provide a positive integer for the number of seconds.");
+		return;
+	}
+	countdown(seconds);
 
 }
+
+main();
