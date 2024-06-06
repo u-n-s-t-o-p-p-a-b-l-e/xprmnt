@@ -24,4 +24,10 @@ function getRandomQuotes (): Quote {
 	return quotes[randomIndex];
 }
 
+function main(): void {
+	const randomQuote = getRandomQuotes();
+	console.log(`"${randomQuote.text}"`);
+	console.log(`- ${randomQuote.author}`);
+}
 
+main();
