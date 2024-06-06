@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-function countdown (seconds: number) {
+function countdown (seconds: number): void {
 	let remainingSeconds = seconds;
 	const interval = setInterval(() => {
 		if (remainingSeconds <= 0) {
@@ -12,4 +12,13 @@ function countdown (seconds: number) {
 		}
 
 	}, 1000);
+}
+
+function main(): void {
+	const args = process.argv.slice(2);
+	if (args.length != 1) {
+		console.log("Usage: countdown <seconds>");
+		return;
+	}
+
 }
