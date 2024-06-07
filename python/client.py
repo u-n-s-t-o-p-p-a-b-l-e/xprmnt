@@ -7,3 +7,6 @@ def client():
     port = 12345
 
     client_socket.connect((host, port))
+
+    message = client_socket.recv(1024)
+    print("Received from server:", data.encode())
