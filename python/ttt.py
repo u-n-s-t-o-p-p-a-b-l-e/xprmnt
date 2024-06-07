@@ -43,4 +43,27 @@ def main():
             print("That cell is already taken. Try again.")
             continue
 
+        board[row][col] != " ":
+            print("That cell is already taken. Try again.")
+            continue
+
+        board[row][col] = current_player
+
+        winner = check_winner(board)
+        if winner:
+            print_board(board)
+            print(f"Player {winner} wins!")
+            break
+        elif is_board_full(board):
+            print_board(board)
+            print("It's a tie!")
+            break
+
+        current_player = "0" if current_player == "X" else "X"
+
+if __name__ == "__main__":
+    main()
+
+
+
 
