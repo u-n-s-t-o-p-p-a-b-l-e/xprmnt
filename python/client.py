@@ -5,3 +5,5 @@ def client():
 
     host = socket.gethostname()
     port = 12345
+
+    client_socket.connect((host, port))
