@@ -10,3 +10,8 @@ def client():
 
     message = client_socket.recv(1024)
     print("Received from server:", data.encode())
+
+    client_socket.close()
+
+if __name__ == "__main__":
+    client()
