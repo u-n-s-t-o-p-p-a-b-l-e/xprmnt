@@ -43,7 +43,7 @@ def main():
             print("That cell is already taken. Try again.")
             continue
 
-        board[row][col] != " ":
+        if board[row][col] != " ":
             print("That cell is already taken. Try again.")
             continue
 
