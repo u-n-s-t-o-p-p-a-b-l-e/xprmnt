@@ -31,3 +31,16 @@ def main():
     current_player = "X"
 
     print("Welcome to TicTacToe")
+
+    while True:
+        print_board(board)
+        print(f"Player {current_player}'s turn")
+
+        row = int(input("Enter row (0, 1, or 2): "))
+        col = int(input("Enter column (0, 1, or 2): "))
+
+        if board[row][col] != " ":
+            print("That cell is already taken. Try again.")
+            continue
+
+
