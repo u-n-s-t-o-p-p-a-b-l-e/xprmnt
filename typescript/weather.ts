@@ -18,5 +18,16 @@ async function getWeather(city: string): Promise<void> {
 	} catch (error) {
 		console.error(`Error fetching weather data: ${error.message}`);
 	}
-
 }
+
+function main(): void {
+	const city = process.argv[2];
+	if (!city) {
+		console.log("Please provide a city name as an argument");
+		return;
+	}
+
+	getWeather(city);
+}
+
+main();
