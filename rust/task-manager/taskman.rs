@@ -12,4 +12,20 @@ fn main() {
         eprintln!("Usage: {} <command> [args]", args[0]);
         std::process::exit(1);
     }
+
+    let command = &args[1];
+
+    match command.as_str() {
+        "add" => {
+            if args.len() != 3 {
+                eprintln!("Usage: {} add <task>", args[0]);
+                std::process::exit(1);
+            }
+            let task = &args[2];
+            if let Err(e) = add_task(task) {
+                eprintln!("Error adding task: {}", e);
+                std::process::exit(1);
+            }
+        }
+    }
 }
