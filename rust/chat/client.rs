@@ -31,3 +31,17 @@ fn handle_read(mut stream: TcpStream) {
         }
     }
 }
+
+fn handle_write(mut stream: TcpStream) {
+    let stdin = io::stdin();
+    let mut stdin = stdin.lock();
+
+    loop {
+        let mut message = String::new();
+        stdin.read_line(&mut message).unwrap();
+        if message.trim().is_empty() {
+            continue;
+        }
+        stream.write_all(message.as_bytes()).unwrap();
+    }
+}
