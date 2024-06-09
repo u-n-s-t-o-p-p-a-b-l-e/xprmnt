@@ -33,5 +33,27 @@ fn main() {
                 std::process::exit(1);
             }
         }
+        "remove" => {
+            if args.len() != 3 {
+                eprintln!("Usage: {} remove <task_number>", args[0]);
+                std::process::exit(1);
+            }
+            let task_number: usize = match args[2].parse() {
+                Ok(n) => n,
+                Err(_) => {
+                    eprintln!("Invalid task number: {}", args[2]);
+                    std::process::exit(1);
+                }
+            };
+            if let Err(e) = remove_task(task_number) {
+                eprintln!("Error removing task: {}", e);
+                std::process::exit(1);
+            }
+            
+        }
+        _ => {
+            eprintln!("Unknown commnd: {}", command);
+            std::process::exit(1);
+        }
     }
 }
