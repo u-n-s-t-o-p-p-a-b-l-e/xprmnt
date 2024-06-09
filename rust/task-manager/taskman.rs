@@ -58,7 +58,6 @@ fn main() {
     }
 }
 
-
 fn add_tasks(task: &str) -> io::Result<()> {
     let mut file = OpenOptions::new().append(true).create(true).open(TASKS_FILE)?;
     writeln!(file, "{}", task)?;
@@ -80,10 +79,18 @@ fn remove_task(task_number: usize) -> io::Result<()> {
     let file = OpenOptions::new().read(true).open(&path)?;
     let reader = BufReader::new(file);
 
-    let tasks: Vec<String> reader.lines().collect::<Result<_, _>>()?;
+    let tasks: Vec<String> = reader.lines().collect::<Result<_, _>>()?;
 
     if task_number == 0 || task_number > tasks.len() {
         eprintln!("Invalid task number: {}", task_number);
         return Ok(());
     }
+
+    let mut file = OpenOptions::new().write(true).truncate(true).open(&path)?;
+    for (index, task) in tasks.into_iter().enumerate() {
+        if index + 1 != task_number {
+            writeln!(file, "{}", task)?;
+        }
+    }
+    Ok(())
 }
