@@ -74,3 +74,16 @@ fn list_tasks() -> io::Result<()> {
     }
     Ok(())
 }
+
+fn remove_task(task_number: usize) -> io::Result<()> {
+    let path = Path::new(TASKS_FILE);
+    let file = OpenOptions::new().read(true).open(&path)?;
+    let reader = BufReader::new(file);
+
+    let tasks: Vec<String> reader.lines().collect::<Result<_, _>>()?;
+
+    if task_number == 0 || task_number > tasks.len() {
+        eprintln!("Invalid task number: {}", task_number);
+        return Ok(());
+    }
+}
