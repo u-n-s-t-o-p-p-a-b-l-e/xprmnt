@@ -3,7 +3,7 @@ use std::fs::OpenOptions;
 use std::io::{self, BufRead, BufReader, Write};
 use std::path::Path;
 
-const TASK_FILE: &str = "tasks.txt";
+const TASKS_FILE: &str = "tasks.txt";
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -58,7 +58,7 @@ fn main() {
     }
 }
 
-fn add_tasks(task: &str) -> io::Result<()> {
+fn add_task(task: &str) -> io::Result<()> {
     let mut file = OpenOptions::new().append(true).create(true).open(TASKS_FILE)?;
     writeln!(file, "{}", task)?;
     Ok(())
@@ -66,7 +66,7 @@ fn add_tasks(task: &str) -> io::Result<()> {
 }
 
 fn list_tasks() -> io::Result<()> {
-    let mut file = OpenOptions::new().read(true).create(true).open(TASKS_FILE)?;
+    let file = OpenOptions::new().read(true).create(true).open(TASKS_FILE)?;
     let reader = BufReader::new(file);
     for (index, line) in reader.lines().enumerate() {
         println!("{}: {}", index + 1, line?);
