@@ -57,3 +57,12 @@ fn main() {
         }
     }
 }
+
+fn list_tasks(task: &str) -> io::Result<()> {
+    let mut file = OpenOptions::new().append(true).create(true).open(TASKS_FILE)?;
+    let reader = BufReader::new(file);
+    for (index, line) in reader.lines().enumerate() {
+        println!("{}: {}", index + 1, line?);
+    }
+    Ok(())
+}
