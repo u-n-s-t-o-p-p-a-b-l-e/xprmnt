@@ -1,0 +1,9 @@
+#usage example:
+
+rustc taskman.rs
+
+./taskman add "Buy Groceries"
+
+./taskman list
+
+./taskman remove 1
