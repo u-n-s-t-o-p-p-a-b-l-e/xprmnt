@@ -27,5 +27,11 @@ fn main() {
                 std::process::exit(1);
             }
         }
+        "list" => {
+            if let Err(e) = list_tasks() {
+                eprintln!("Error listing tasks: {}", e);
+                std::process::exit(1);
+            }
+        }
     }
 }
