@@ -20,3 +20,14 @@ fn main() -> io::Result<()> {
 
     Ok(())
 }
+
+fn handle_read(mut stream: TcpStream) {
+    let reader = BufReader::new(stream.try_clone().unwrap());
+
+    for line in reader.lines() {
+        match line {
+            Ok(message) => println!("{}", message),
+            Err(_) => break,
+        }
+    }
+}
