@@ -14,4 +14,6 @@ fun handleConnection(conn net.Conn) {
 	defer conn.Close()
 
 	clients[conn] = conn.RemoteAddr().String()
+
+	messages <- fmt.Sprintf("%s joined the chat", clients[conn])
 }
