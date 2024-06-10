@@ -32,3 +32,12 @@ func handleConnection(conn net.Conn) {
 	messages <- fmt.Sprintf("%s left the chat", clients[conn])
 
 }
+
+func broadcastMessages() {
+	for {
+		msg := <-messages
+		for conn := range clients {
+			fmt.Fprintln(conn, msg)
+		}
+	}
+}
