@@ -55,7 +55,8 @@ func main() {
 	fmt.Println("Chat server started on port 8080")
 
 	for {
-		conn, err := nil {
+		conn, err := listener.Accept() 
+		if err != nil {
 			fmt.Println("Error accepting connection:", err)
 			continue
 		}
