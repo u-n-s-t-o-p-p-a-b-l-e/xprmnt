@@ -14,4 +14,13 @@ func main() {
 		return
 		
 	}
+	defer conn.Close()
+
+	go func() {
+		scanner := bufio.NewScanner(conn)
+		for scanner.Scan() {
+			fmt.Println(scanner.Text())
+			
+		}
+	}()
 }
