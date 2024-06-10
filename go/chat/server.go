@@ -10,7 +10,7 @@ import (
 var clients = make(map[net.Conn]string)
 var messages = make(chan string)
 
-fun handleConnection(conn net.Conn) {
+func handleConnection(conn net.Conn) {
 	defer conn.Close()
 
 	clients[conn] = conn.RemoteAddr().String()
@@ -25,4 +25,8 @@ fun handleConnection(conn net.Conn) {
 		}
 		messages <- fmt.Sprintf("%s: %s", clients[conn], text)
 	}
+
+
+	delete(clients, conn)
+
 }
