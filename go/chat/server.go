@@ -53,5 +53,13 @@ func main() {
 	go broadcastMessages()
 
 	fmt.Println("Chat server started on port 8080")
+
+	for {
+		conn, err := nil {
+			fmt.Println("Error accepting connection:", err)
+			continue
+		}
+		go handleConnection(conn)
+	}
 	
 }
