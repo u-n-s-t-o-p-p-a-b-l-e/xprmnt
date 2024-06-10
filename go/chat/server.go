@@ -29,4 +29,6 @@ func handleConnection(conn net.Conn) {
 
 	delete(clients, conn)
 
+	messages <- fmt.Sprintf("%s left the chat", clients[conn])
+
 }
