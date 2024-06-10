@@ -16,4 +16,13 @@ fun handleConnection(conn net.Conn) {
 	clients[conn] = conn.RemoteAddr().String()
 
 	messages <- fmt.Sprintf("%s joined the chat", clients[conn])
+
+	scanner := bufio.NewScanner(conn)
+	for scanner.Scan() {
+		text := scanner.Text()
+		if strings.TrimSpace(text) == "QUIT" {
+			break
+		}
+		messages <- fmt.Sprintf("%s: %s", clients[conn], text)
+	}
 }
