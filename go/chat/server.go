@@ -41,3 +41,17 @@ func broadcastMessages() {
 		}
 	}
 }
+
+func main() {
+	listener, err := net.Listen("tcp", ":8080")
+	if err != nil {
+		fmt.Println("Error starting server:", err)
+		return
+	}
+	defer listener.Close()
+
+	go broadcastMessages()
+
+	fmt.Println("Chat server started on port 8080")
+	
+}
