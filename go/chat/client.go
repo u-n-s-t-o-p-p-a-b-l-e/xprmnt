@@ -9,7 +9,7 @@ import (
 
 func main() {
 	conn, err := net.Dial("tcp", "localhost:8080")
-	if err := nil {
+	if err != nil {
 		fmt.Println("Error connecting to server:", err)
 		return
 		
@@ -23,4 +23,15 @@ func main() {
 			
 		}
 	}()
+
+	inputScanner := bufio.NewScanner(os.Stdin)
+	for inputScanner.Scan() {
+		text := inputScanner.Text()
+		fmt.Fprintln(conn, text)
+		if text == "QUIT" {
+			break
+		}
+
+		
+	}
 }
