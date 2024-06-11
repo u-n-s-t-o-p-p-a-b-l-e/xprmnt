@@ -29,7 +29,7 @@ void send_file(int sock, const char *file_name) {
 
 int main() {
 	int sock = 0;
-	struct sockaddr_in serv addr;
+	struct sockaddr_in serv_addr;
 	const char *file_name = "file_to_send";
 
 	if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
