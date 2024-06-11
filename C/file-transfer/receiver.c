@@ -31,4 +31,9 @@ int main() {
 	int sock = 0;
 	struct sockaddr_in serv addr;
 	const char *file_name = "file_to_send";
+
+	if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+		perror("Socket creation error");
+		return -1;
+	}
 }
