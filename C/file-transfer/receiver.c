@@ -18,4 +18,11 @@ void send_file(int sock, const char *file_name) {
 		perror("File open error");
 		return;
 	}
+
+	while ((bytes_read = read(file_fd, buffer, BUFFER_SIZE)) > 0) {
+		send(sock, buffer, bytes_read, 0);
+	}
+
+	printf("File sent succesfully\n");
+	close(file_fd);
 }
