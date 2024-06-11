@@ -26,3 +26,9 @@ void send_file(int sock, const char *file_name) {
 	printf("File sent succesfully\n");
 	close(file_fd);
 }
+
+int main() {
+	int sock = 0;
+	struct sockaddr_in serv addr;
+	const char *file_name = "file_to_send";
+}
