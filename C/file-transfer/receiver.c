@@ -44,4 +44,15 @@ int main() {
 		perror("Invalid address/ Address not supported");
 		return -1;
 	}
+
+	if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) <0) {
+		perror("Connection Failed");
+		return -1;
+	}
+
+	send_file(sock, file_name);
+
+	close(sock);
+
+	return 0;
 }
