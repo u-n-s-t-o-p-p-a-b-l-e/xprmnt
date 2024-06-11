@@ -13,4 +13,9 @@ void send_file(int sock, const char *file_name) {
 	int bytes_read;
 	int file_fd;
 
+	file_fd = open(file_name, O_RDONLY);
+	if (file_fd < 0) {
+		perror("File open error");
+		return;
+	}
 }
