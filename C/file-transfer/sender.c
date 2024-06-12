@@ -57,4 +57,10 @@ int main() {
 	}
 
 	printf("Server listening on port %d\n", PORT);
+
+	if ((new_socket = accept(server_fd, (struct sockaddr *) &address, (socklen_t*)&addrlen)) < 0) {
+		perror("accept failed");
+		close(server_fd);
+		exit(EXIT_FAILURE);
+	}
 }
