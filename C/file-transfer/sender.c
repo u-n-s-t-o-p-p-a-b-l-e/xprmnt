@@ -14,7 +14,7 @@ void handle_client(int new_socket) {
 	int bytes_read;
 	int file_fd;
 
-	file_fd = open(file_name, 0_WRONLY | O_CREAT | O_TRUNC, 0664);
+	file_fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (file_fd < 0) {
 		perror("File open error");
 		close(new_socket);
@@ -63,4 +63,10 @@ int main() {
 		close(server_fd);
 		exit(EXIT_FAILURE);
 	}
+
+	handle_client(new_socket);
+
+	close(server_fd);
+
+	return 0;
 }
