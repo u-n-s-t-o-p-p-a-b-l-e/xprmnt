@@ -21,6 +21,14 @@ void handle_client(int new_socket) {
 		return;
 	}
 
+	while ((bytes_read = read(new_socket, buffer, BUFFER_SIZE)) > 0) {
+		write(file_fd, buffer, bytes_read);
+	}
+
+	printf("File received succesfully\n");
+	close(file_fd);
+	close(new_socket);
+
 
 
 
