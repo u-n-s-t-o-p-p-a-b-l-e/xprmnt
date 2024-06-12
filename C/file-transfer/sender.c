@@ -28,8 +28,15 @@ void handle_client(int new_socket) {
 	printf("File received succesfully\n");
 	close(file_fd);
 	close(new_socket);
+}
 
+int main() {
+	int server_fd, new_socket;
+	struct sockaddr_in address;
+	int addrlen = sizeof(address);
 
-
-
+	if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+		perror("socket failed");
+		exit(EXIT_FAILURE);
+	}
 }
