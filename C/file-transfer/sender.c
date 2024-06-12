@@ -14,5 +14,14 @@ void handle_client(int new_socket) {
 	int bytes_read;
 	int file_fd;
 
+	file_fd = open(file_name, 0_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (file_fd < 0) {
+		perror("File open error");
+		close(new_socket);
+		return;
+	}
+
+
+
 
 }
