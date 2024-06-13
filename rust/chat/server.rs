@@ -28,3 +28,8 @@ fn main() ->  io::Result<()> {
 
     Ok(())
 }
+
+fn handle_client(stream: TcpStream, clients: Clients) {
+    let mut reader = BufReader::new(stream.try_clone().unwrap());
+    let mut name = String::new();
+}
