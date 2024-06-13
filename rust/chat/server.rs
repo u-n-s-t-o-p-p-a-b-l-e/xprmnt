@@ -84,5 +84,13 @@ fn broadcast_messages(name: String, clients: Clients, reader: BufReader<TcpStrea
         if message.is_empty() {
             continue;
         }
+
+        let message_to_send = format!("{}: {}\n", name, message);
+        let clients = clients.lock().unwrap();
+        for (client_name, client_stream) in clients.iter() {
+            if client_name != &name {
+                let _ = client_stream.write_all(message_to_send.as_bytes());
+            }
+        }
     }
 }
