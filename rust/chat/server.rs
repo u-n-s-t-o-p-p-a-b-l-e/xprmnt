@@ -80,5 +80,9 @@ fn broadcast_messages(name: String, clients: Clients, reader: BufReader<TcpStrea
         if reader.read_line(&mut message).is_err() {
             break;
         }
+        let message = message.trim().to_string();
+        if message.is_empty() {
+            continue;
+        }
     }
 }
