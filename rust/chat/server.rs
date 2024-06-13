@@ -36,5 +36,7 @@ fn handle_client(stream: TcpStream, clients: Clients) {
     if reader.read_line(&mut name).is_ok() {
         name = name.trim().to_string();
         println!("{} has joined", name);
+
+        clients.lock().unwrap().insert(name.clone(), stream.try_clone().unwrap());
     }
 }
