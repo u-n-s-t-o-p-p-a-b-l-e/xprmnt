@@ -70,3 +70,15 @@ fn handle_client(stream: TcpStream, clients: Clients) {
         println!("{} has left", name);
     }
 }
+
+fn broadcast_messages(name: String, clients: Clients, reader: BufReader<TcpStream>) {
+    let clients = Arc::clone(&clients);
+    let mut reader = reader;
+
+    loop {
+        let mut message = String::new();
+        if reader.read_line(&mut message).is_err() {
+            break;
+        }
+    }
+}
