@@ -56,6 +56,17 @@ fn handle_client(stream: TcpStream, clients: Clients) {
             if message.is_empty() {
                 continue;
             }
+
+            let message_to_send = format1!("{}: {}\n", name, message);
+            let clients = clients.lock().unwrap();
+            for (client_name, client_stream) in clients.iter() {
+                if client_name != &name {
+                    let _ = client_stream.write_all(message_to_send.as_bytes());
+                }
+            }
         }
+
+        clients.lock().unwrap().remove(&name);
+        println!("{} has left", name);
     }
 }
