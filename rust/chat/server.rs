@@ -32,4 +32,9 @@ fn main() ->  io::Result<()> {
 fn handle_client(stream: TcpStream, clients: Clients) {
     let mut reader = BufReader::new(stream.try_clone().unwrap());
     let mut name = String::new();
+
+    if reader.read_line(&mut name).is_ok() {
+        name = name.trim().to_string();
+        println!("{} has joined", name);
+    }
 }
