@@ -45,5 +45,13 @@ fn handle_client(stream: TcpStream, clients: Clients) {
         thread::spawn(move || {
             broadcast_messages(name.clone(), clients, reader);
         });
+
+        let mut stream = stream_clone;
+        loop {
+            let mut message = String::new();
+            if reader.read_line(&mut message).is_err() {
+                break;
+            }
+        }
     }
 }
