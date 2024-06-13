@@ -38,5 +38,12 @@ fn handle_client(stream: TcpStream, clients: Clients) {
         println!("{} has joined", name);
 
         clients.lock().unwrap().insert(name.clone(), stream.try_clone().unwrap());
+
+        let clients = Arc::clone(&clients);
+        let stream_clone = stream.try_clone().unwrap();
+
+        thread::spawn(move || {
+            broadcast_messages(name.clone(), clients, reader);
+        });
     }
 }
