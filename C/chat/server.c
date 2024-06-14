@@ -55,4 +55,10 @@ int main() {
 	address.sin_family = AF_INET;
 	address.sin_addr.s_addr = INADDR_ANY;
 	address.sin_port = htons(PORT);
+
+	if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+		perror("bind failed");
+		close(server_fd);
+		exit(EXIT_FAILURE);
+	}
 }
