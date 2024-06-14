@@ -43,7 +43,7 @@ void *send_messages(void *arg) {
 
 int main() {
 	int server_fd, new_socket;
-	struct sockaddr_in addrress;
+	struct sockaddr_in address;
 	int addrlen = sizeof(address);
 	pthread_t client_thread, send_thread;
 
