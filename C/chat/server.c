@@ -61,4 +61,10 @@ int main() {
 		close(server_fd);
 		exit(EXIT_FAILURE);
 	}
+
+	if (listen(server_fd, 3) < 0) {
+		perror("listen failed");
+		close(server_fd);
+		exit(EXIT_FAILURE);
+	}
 }
