@@ -40,3 +40,10 @@ void *send_messages(void *arg) {
 
 	return NULL;
 }
+
+int main() {
+	int server_fd, new_socket;
+	struct sockaddr_in addrress;
+	int addrlen = sizeof(address);
+	pthread_t client_thread, send_thread;
+}
