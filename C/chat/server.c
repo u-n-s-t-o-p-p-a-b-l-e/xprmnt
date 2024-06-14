@@ -12,4 +12,15 @@ void *handle_client(void *arg) {
 	int new_socket = *((int *)arg);
 	char buffer[BUFFER_SIZE] = {0};
 	char *welcome_message = "Welcome to the chat server!\n";
+
+	send(new_socket, welcome_message, strlen(welcome_message), 0);
+	printf("Welcome message sent\n");
+
+	while (1) {
+		memset(buffer, 0, BUFFER_SIZE);
+		int valread = read(new_socket, buffer, BUFFER_SIZE);
+		if (valread > 0) {
+			printf("Client: %s", buffer);
+		}
+	}
 }
