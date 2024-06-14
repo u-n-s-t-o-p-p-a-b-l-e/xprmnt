@@ -46,4 +46,9 @@ int main() {
 	struct sockaddr_in addrress;
 	int addrlen = sizeof(address);
 	pthread_t client_thread, send_thread;
+
+	if ((server_fd == socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+		perror("socket failed");
+		exit(EXIT_FAILURE);
+	}
 }
