@@ -67,4 +67,14 @@ int main() {
 		close(server_fd);
 		exit(EXIT_FAILURE);
 	}
+
+	pthread_create(&client_thread, NULL, handle_client, &new_socket);
+	pthread_create(&send_thread, NULL, send_messages, &new_socket);
+
+	pthread_join(client_thread, NULL);
+	pthread_join(send_thread, NULL);
+
+	close(server_fd);
+
+	return 0;
 }
