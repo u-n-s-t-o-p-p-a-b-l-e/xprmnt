@@ -31,4 +31,12 @@ void *handle_client(void *arg) {
 void *send_messages(void *arg) {
 	int new_socket = *((int *)arg);
 	char buffer[BUFFER_SIZE] = {0};
+
+	while (1) {
+		printf("Server: ");
+		fgets(buffer, BUFFER_SIZE, stdin);
+		send(new_socket, buffer, strlen(buffer), 0);
+	}
+
+	return NULL;
 }
