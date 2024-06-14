@@ -23,4 +23,12 @@ void *handle_client(void *arg) {
 			printf("Client: %s", buffer);
 		}
 	}
+
+	close(new_socket);
+	return NULL;
+}
+
+void *send_messages(void *arg) {
+	int new_socket = *((int *)arg);
+	char buffer[BUFFER_SIZE] = {0};
 }
