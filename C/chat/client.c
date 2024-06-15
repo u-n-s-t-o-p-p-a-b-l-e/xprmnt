@@ -46,4 +46,9 @@ int main() {
 		perror("Connection failed");
 		return -1;
 	}
+
+	read(sock, buffer, BUFFER_SIZE);
+	printf("%s", buffer);
+
+	pthread_create(&receive_thread, NULL, receive_messages, &sock);
 }
