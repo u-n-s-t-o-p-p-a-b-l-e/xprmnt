@@ -41,4 +41,9 @@ int main() {
 		perror("Invalid address/ Address not supported");
 		return -1;
 	}
+
+	if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+		perror("Connection failed");
+		return -1;
+	}
 }
