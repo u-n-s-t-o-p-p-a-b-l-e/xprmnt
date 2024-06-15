@@ -51,4 +51,15 @@ int main() {
 	printf("%s", buffer);
 
 	pthread_create(&receive_thread, NULL, receive_messages, &sock);
+
+	while (1) {
+		printf("You: ");
+		fgets(buffer, BUFFER_SIZE, stdin);
+		send(sock, buffer, strlen(buffer), 0);
+	}
+
+	pthread_join(receive_thread, NULL);
+	close(sock);
+
+	return 0;
 }
