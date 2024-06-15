@@ -28,4 +28,9 @@ int main() {
 	struct sockaddr_in serv_addr;
 	char buffer[BUFFER_SIZE] = {0};
 	pthread_t receive_thread;
+
+	if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+		perror("Socket creation error");
+		return -1;
+	}
 }
