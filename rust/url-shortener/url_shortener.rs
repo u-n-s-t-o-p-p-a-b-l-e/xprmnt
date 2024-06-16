@@ -60,3 +60,25 @@ fn shorten_url(url: &str, url_map: UrlMap) ->  String {
 fn retrieve_url(key: &str, url_map: UrlMap) ->  Option<String> {
     url_map.lock().unwrap().get(key).cloned()
 }
+
+fn load_urls(path: &str) ->  io::Result<HashMap<String, String>> {
+    let file = File::open(path)?;
+    let reader = BufReader::new(file);
+    let mut url_map = HashMap::new();
+
+    for line in reader.lines() {
+        let line = line?;
+        let mut parts = line.splitn(2, ' ');
+        if let (Some(key), Some(url)) = (parts.next(), parts.next()) {
+            url_map.insert(key.to_string(), url.to_string());
+        }
+    }
+
+    Ok(url_map)
+}
+
+fn save_url(key: &str, url: &str, path: &str) ->  io::Result<()> {
+    let mut file = OpenOptions::new().append(true).create(true).open(path)?;
+    writeln!(file, "{} {}", key, url)?;
+    Ok(())
+}
