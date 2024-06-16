@@ -27,7 +27,8 @@ fn main() {
                 std::process::exit(1);
             }
             let url = &args[2];
-            let key Err(e) = save_url(&key, url, DATA_FILE) {
+            let key = shorten_url(url, url_map.clone());
+            if let Err(e) = save_url(&key, url, DATA_FILE) {
                 eprintln!("Error saving URL: {}", e);
                 std::process::exit(1);
             }
