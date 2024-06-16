@@ -50,3 +50,9 @@ fn main() {
         }
     }
 }
+
+fn shorten_url(url: &str, url_map: UrlMap) ->  String {
+    let key = generate_key();
+    url_map.lock().unwrap().insert(key.clone(), url.to_string());
+    key
+}
