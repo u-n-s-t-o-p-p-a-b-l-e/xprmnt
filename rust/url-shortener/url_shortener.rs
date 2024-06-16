@@ -16,4 +16,16 @@ fn main() {
         eprintln!("Usage: {} <command> [args]", args[0]);
         std::process::exit(1);
     }
+
+    let command = &args[1];
+    let url_map = Arc::new(Mutex::new(load_urls(DATA_FILE).unwrap_or_default()));
+
+    match command.as_str() {
+        "shorten" => {
+            if args.len() != 3 {
+                eprintln!("Usage: {} shorten <URL>", args[0]);
+                std::process::exit(1);
+            }
+        }
+    }
 }
