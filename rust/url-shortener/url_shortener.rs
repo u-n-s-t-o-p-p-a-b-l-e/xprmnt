@@ -56,3 +56,7 @@ fn shorten_url(url: &str, url_map: UrlMap) ->  String {
     url_map.lock().unwrap().insert(key.clone(), url.to_string());
     key
 }
+
+fn retrieve_url(key: &str, url_map: UrlMap) ->  Option<String> {
+    url_map.lock().unwrap().get(key).cloned()
+}
