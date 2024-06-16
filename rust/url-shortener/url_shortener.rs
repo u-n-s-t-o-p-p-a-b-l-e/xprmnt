@@ -82,3 +82,9 @@ fn save_url(key: &str, url: &str, path: &str) ->  io::Result<()> {
     writeln!(file, "{} {}", key, url)?;
     Ok(())
 }
+
+fn generate_key() ->  String {
+    use rand::{distributions::Alphanumeric, Rng};
+    let key: String = rand::thread_rng().sample_iter(&Alphanumeric).take(6).map(char::from).collect();
+    key
+}
