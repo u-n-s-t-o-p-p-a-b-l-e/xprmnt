@@ -26,6 +26,12 @@ fn main() {
                 eprintln!("Usage: {} shorten <URL>", args[0]);
                 std::process::exit(1);
             }
+            let url = &args[2];
+            let key Err(e) = save_url(&key, url, DATA_FILE) {
+                eprintln!("Error saving URL: {}", e);
+                std::process::exit(1);
+            }
+            println!("Shortened URL: {}", key);
         }
     }
 }
