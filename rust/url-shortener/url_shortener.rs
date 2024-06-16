@@ -33,5 +33,20 @@ fn main() {
             }
             println!("Shortened URL: {}", key);
         }
+        "retrieve" => {
+            if args.len() != 3 {
+                eprintln!("Usage: {} retrieve <shortened-key>", args[0]);
+                std::process::exit(1);
+            }
+            let key = &args[2];
+            match retrieve_url(key, url_map.clone()) {
+                Some(url) => println!("Original URL: {}", url),
+                None => eprintln!("Key not found: {}", key),
+            }
+        }
+        _ => {
+            eprintln!("Unknown command: {}", command);
+            std::process::exit(1);
+        }
     }
 }
