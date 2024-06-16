@@ -22,3 +22,4 @@ Original URL: https://www.example.com
 ```
 
 ps: need to download rand and place it in 'vendor' directory in this project.
+The purpose of this is running the project without cargo and using only rustc.
