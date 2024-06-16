@@ -1,3 +1,6 @@
+extern crate rand;
+
+use rand::{distributions::Alphanumeric, Rng};
 use std::collections::HashMap;
 use std::env;
 use std::fs::{File, OpenOptions};
@@ -89,3 +92,5 @@ fn generate_key() ->  String {
     let key: String = rand::thread_rng().sample_iter(&Alphanumeric).take(6).map(char::from).collect();
     key
 }
+
+
