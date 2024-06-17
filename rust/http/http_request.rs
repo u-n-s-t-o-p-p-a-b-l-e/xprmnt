@@ -10,4 +10,10 @@ fn main() {
         eprintln!("Usage: {} <URL>", args[0]);
         std::process::exit(1);
     }
+
+    let url = &args[1];
+    match fetch_url(url) {
+        Ok(response) => println!("{}", response),
+        Err(e) => eprintln!("Error: {}", e),
+    }
 }
