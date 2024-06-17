@@ -21,5 +21,15 @@ fn main() {
 fn fetch_url(url: &str) ->  Result<String, Box<dyn std::error::Error>> {
     let (host, path) = parse_url(url)?;
     let request = format!(
-        "GET {} HTTP/1.1\r\nHost: {}\r\nConnection: close\r\n\r\n", path, host)
-};
+        "GET {} HTTP/1.1\r\nHost: {}\r\nConnection: close\r\n\r\n", path, host
+        );
+
+    let mut stream = TcpStream::connect(format!("{}:80", host));
+    stream.write_all(request.as_bytes())?;
+
+    let mut response = String::new();
+    stream.read_to_string(&mut response)?;
+
+    let body = extract_body(&response)?;
+    Ok(body.to_string())
+}
