@@ -33,3 +33,10 @@ fn fetch_url(url: &str) ->  Result<String, Box<dyn std::error::Error>> {
     let body = extract_body(&response)?;
     Ok(body.to_string())
 }
+
+fn parse_url(url: &str) ->  Result<(&str, &str), Box<dyn std::error::Error>> {
+    let mut parts = url.splitn(2, '/');
+    let host = parts.next().ok_or("Invalid URL")?;
+    let path = parts.next().unwrap_or("/");
+    Ok((host, path))
+}
