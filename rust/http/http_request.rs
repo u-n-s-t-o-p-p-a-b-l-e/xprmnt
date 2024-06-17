@@ -40,3 +40,11 @@ fn parse_url(url: &str) ->  Result<(&str, &str), Box<dyn std::error::Error>> {
     let path = parts.next().unwrap_or("/");
     Ok((host, path))
 }
+
+fn extract_body(response: &str) ->  Result<&str, Box<dyn std::error::Error>> { 
+    let parts: Vec<&str> = response.split("\r\n\r\n").collect();
+    if parts.len() < 2 {
+        return Err("Invalid HTTP response".into());
+    }
+    Ok(parts[1])
+}
