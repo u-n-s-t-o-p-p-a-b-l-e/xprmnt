@@ -17,3 +17,9 @@ fn main() {
         Err(e) => eprintln!("Error: {}", e),
     }
 }
+
+fn fetch_url(url: &str) ->  Result<String, Box<dyn std::error::Error>> {
+    let (host, path) = parse_url(url)?;
+    let request = format!(
+        "GET {} HTTP/1.1\r\nHost: {}\r\nConnection: close\r\n\r\n", path, host)
+};
