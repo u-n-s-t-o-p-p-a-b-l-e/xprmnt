@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::{self, Write, Read};
+use std::io::{self, Write, Read, BufReader, BufRead};
 use std::net::{TcpListener, TcpStream};
 use std::thread;
 
@@ -23,19 +23,20 @@ fn main() -> io::Result<()> {
     Ok(())
 }
 
-fn handle_client(mut stream: TcpStream) -> io::Result<()> {
-    let mut buffer = [0; 512];
-    let bytes_read = stream.read(&mut buffer)?;
-    let filename = std::str::from_utf8(&buffer[..bytes_read]).expect("Invalid UTF-8").trim().to_string();
+fn handle_client(stream: TcpStream) -> io::Result<()> {
+    let mut reader = BufReader::new(stream);
+    let mut filename = String::new();
+    
+    // Read the filename
+    reader.read_line(&mut filename)?;
+    let filename = filename.trim();  // Remove any newline characters
 
     let mut file = File::create(&filename)?;
-    loop {
-        let bytes_read = stream.read(&mut buffer)?;
-        if bytes_read == 0 {
-            break;
-        }
-        file.write_all(&buffer[..bytes_read])?;
-    }
+
+    // Read the file content
+    let mut buffer = Vec::new();
+    reader.read_to_end(&mut buffer)?;
+    file.write_all(&buffer)?;
 
     println!("File received: {}", filename);
     Ok(())

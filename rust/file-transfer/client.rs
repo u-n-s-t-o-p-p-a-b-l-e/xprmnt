@@ -17,9 +17,10 @@ fn main() -> io::Result<()> {
 
     let filename = file_path.split('/').last().unwrap_or("file");
     let mut stream = TcpStream::connect("127.0.0.1:7878")?;
-    stream.write_all(filename.as_bytes())?;
+    stream.write_all(format!("{}\n", filename).as_bytes())?;
     stream.write_all(&buffer)?;
 
     println!("File sent: {}", filename);
     Ok(())
 }
+
