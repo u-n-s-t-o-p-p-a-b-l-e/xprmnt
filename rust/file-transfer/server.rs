@@ -23,13 +23,12 @@ fn main() -> io::Result<()> {
     Ok(())
 }
 
-fn handle_client(mut stream: TcpStream) ->  io::Result<()> {
+fn handle_client(mut stream: TcpStream) -> io::Result<()> {
     let mut buffer = [0; 512];
     let bytes_read = stream.read(&mut buffer)?;
-    let filename = std::str::from_utf8(&buffer[..bytes_read]).expect("Invalid UTF-8");
-    let filename = filename.trim();
-    
-    let mut file = File::create(filename)?;
+    let filename = std::str::from_utf8(&buffer[..bytes_read]).expect("Invalid UTF-8").trim().to_string();
+
+    let mut file = File::create(&filename)?;
     loop {
         let bytes_read = stream.read(&mut buffer)?;
         if bytes_read == 0 {
