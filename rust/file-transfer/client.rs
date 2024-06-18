@@ -9,4 +9,9 @@ fn main() -> io::Result<()> {
         eprintln!("Usage: {} <file_path>", args[0]);
         std::process::exit(1);
     }
+
+    let file_path = &args[1];
+    let mut file = File::open(file_path)?;
+    let mut buffer = Vec::new();
+    file.read_to_end(&mut buffer)?;
 }
