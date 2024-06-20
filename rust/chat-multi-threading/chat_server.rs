@@ -8,4 +8,20 @@ type ClientList = Arc<Mutex<Vec<TcpStream>>>;
 fn main() -> io::Result<()> {
     let listener = TcpListener::bind("127.0.0.1:7878")?;
     println!("Chat server listening on port 7878");
+
+    let clients: ClientList = Arc::new(Mutex::new(Vec::new()));
+
+    for stream in listener.incoming() {
+        match stream {
+            Ok(stream) => {
+                let clients = Arc::clone(&clients);
+                thread::spawn(move || {
+                    handle_client(stream, clients).unwrap_or_else(|error| eprintln!("{:?}", error));
+                });
+            }
+            Err(e) => {
+                eprintln!("Failed to accept a client: {}", e);
+            }
+        }
+    }
 }
