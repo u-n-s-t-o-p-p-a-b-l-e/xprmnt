@@ -24,4 +24,11 @@ fn main() -> io::Result<()> {
             }
         }
     }
+
+    Ok(())
+}
+
+fn handle_client(stream: TcpStream, clients: ClientList) ->  io::Result<()> {
+    let peer_addr = stream.peer_addr()?;
+    println!("Client connected: {}", peer_addr);
 }
