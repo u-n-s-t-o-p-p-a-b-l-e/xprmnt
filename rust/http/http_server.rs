@@ -27,4 +27,9 @@ fn main() -> io::Result<()> {
 fn handle_client(mut stream: TcpStream) ->  io::Result<()> {
     let mut buffer = [0; 512];
     stream.read(&mut buffer)?;
+
+    let request = String::from_utf8_lossy(&buffer[..]);
+    let mut parts = request.split_whitespace();
+    let method = parts.next().unwrap();
+    let path = parts.next().unwrap_or("/");
 }
