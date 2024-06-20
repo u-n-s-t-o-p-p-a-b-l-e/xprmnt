@@ -56,4 +56,11 @@ fn handle_client(mut stream: TcpStream) ->  io::Result<()> {
         let response = "HTTP/1.1 404 NOT FOUND\r\n\r\n";
         stream.write_all(response.as_bytes())?;
     }
+} else {
+    let response = "HTTP/1.1 405 METHOD NOT ALLOWED\r\n\r\n";
+    stream.write_all(response.as_bytes())?;
 }
+
+stream.flush()?;
+Ok(())
+    }
