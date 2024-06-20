@@ -39,5 +39,14 @@ fn handle_client(mut stream: TcpStream) ->  io::Result<()> {
         } else {
             &path[1..]
         };
+
+        if Path::new(file_path).exitst() {
+            let mut file = File::open(file_path)?;
+            let mut contents = String::new();
+            file.read_to_string(&mut contents)?;
+
+            let response = format!)
+                ""
+        }
     }
 }
