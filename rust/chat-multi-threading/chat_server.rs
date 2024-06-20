@@ -31,4 +31,11 @@ fn main() -> io::Result<()> {
 fn handle_client(stream: TcpStream, clients: ClientList) ->  io::Result<()> {
     let peer_addr = stream.peer_addr()?;
     println!("Client connected: {}", peer_addr);
+
+    {
+        let mut clients = clients.lock().unwrap();
+        clients.push(stream.try_clone()?);
+    }
+
+    let reader = BufReader::new(stream.try_clone()?);
 }
