@@ -5,4 +5,16 @@ use std::thread;
 fn main() -> io::Result<()> {
     let stream = TcpStream::connect("127.0.0.1:7878")?;
     println!("Connected to the chat server at 127.0.0.1:7878");
+
+    let read_stream = stream.try_clone()?;
+
+    thread::spawn(move || {
+        let reader = BufReader::new(read_stream);
+        for line in reader.lines() {
+            match line {
+                Ok(msg) => println!("{}", msg),
+                Err(_) => break,
+            }
+        }
+    });
 }
