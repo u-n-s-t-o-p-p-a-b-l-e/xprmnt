@@ -1,6 +1,6 @@
 use std::fs::File;
 use std::io::{self, Read, Write};
-use std::net::{TcpListener, TcpStreammm};
+use std::net::{TcpListener, TcpStream};
 use std::thread;
 use std::path::Path;
 
@@ -22,6 +22,9 @@ fn main() -> io::Result<()> {
     }
 
     Ok(())
+}
 
-
+fn handle_client(mut stream: TcpStream) ->  io::Result<()> {
+    let mut buffer = [0; 512];
+    stream.read(&mut buffer)?;
 }
