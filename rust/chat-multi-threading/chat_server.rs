@@ -57,3 +57,16 @@ fn handle_client(stream: TcpStream, clients: ClientList) ->  io::Result<()> {
     println!("Client disconnected: {}", peer_addr);
     Ok(())
 }
+
+fn broadcast_message(message: &str, sender_addr: &std::net::SocketAddr, clients: &ClientList) ->  io::Result<()> {
+    let clients = clients.lock().unwrap();
+
+    for client in clients.iter() {
+        if client.peer_addr().unwrap() != *sender_addr {
+            let mut client = client.try_clone()?;
+            writeln!(client, "{}: {}", sender_addr, message)?;
+        }
+    }
+
+    Ok(())
+}
