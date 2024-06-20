@@ -17,4 +17,15 @@ fn main() -> io::Result<()> {
             }
         }
     });
+
+    let stdin = io::stdin();
+    let mut handle = stream;
+
+    for line in stdin.lock().lines() {
+        let message = line?;
+        handle.write_all(message.as_bytes())?;
+        handle.write_all(b"\n")?;
+    }
+
+    Ok(())
 }
