@@ -48,4 +48,12 @@ fn handle_client(stream: TcpStream, clients: ClientList) ->  io::Result<()> {
         println!("Received from {}: {}", peer_addr, message);
         broadcast_message(&message, &peer_addr, &clients)?;
     }
+
+    {
+        let mut clients = clients.lock().unwrap();
+        clients.retain(|client| client.peer_addr().unwrap() != peer_addr);
+    }
+
+    println!("Client disconnected: {}", peer_addr);
+    Ok(())
 }
