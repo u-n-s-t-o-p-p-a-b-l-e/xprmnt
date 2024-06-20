@@ -32,4 +32,12 @@ fn handle_client(mut stream: TcpStream) ->  io::Result<()> {
     let mut parts = request.split_whitespace();
     let method = parts.next().unwrap();
     let path = parts.next().unwrap_or("/");
+
+    if method == "GET" {
+        let file_path = if path == "/" {
+            "index.html"
+        } else {
+            &path[1..]
+        };
+    }
 }
