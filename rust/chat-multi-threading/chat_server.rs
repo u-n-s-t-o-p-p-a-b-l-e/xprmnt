@@ -38,4 +38,14 @@ fn handle_client(stream: TcpStream, clients: ClientList) ->  io::Result<()> {
     }
 
     let reader = BufReader::new(stream.try_clone()?);
+
+    for line in reader.lines() {
+        let message = match line {
+            Ok(msg) => msg,
+            Err(_) => break,
+        };
+
+        println!("Received from {}: {}", peer_addr, message);
+        broadcast_message(&message, &peer_addr, &clients)?;
+    }
 }
