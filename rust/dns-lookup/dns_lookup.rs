@@ -23,3 +23,17 @@ fn main() -> io::Result<()> {
 
     Ok(())
 }
+
+fn dns_lookup(domain: &str) ->  io::Result<Vec<String>> {
+    let mut addresses = Vec::new();
+    let query = format!("{}:53", domain);
+    match query.to_socket_address() {
+        Ok(addrs) => {
+            for addr in addrs {
+                addresses.push(addr.to_string());
+            }
+            Ok(addresses)
+        }
+        Err(e) => Err(io::Error::new(io::ErrorKind::Other, e.to_string()))
+    }
+}
