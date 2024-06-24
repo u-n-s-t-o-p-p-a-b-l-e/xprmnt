@@ -9,4 +9,14 @@ fn main() -> io::Result<()> {
         eprintln!("Usage: {} <domain>", args[0]);
         std::process::exit(1);
     }
+
+    let domain = &args[1];
+    match dns_lookup(domain) {
+        Ok(addresses) => {
+            println!("IP addresses for {}:" domain);
+            for address in addresses {
+                println!("{}", address);
+            }
+        }
+    }
 }
