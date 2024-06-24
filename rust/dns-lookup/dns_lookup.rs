@@ -18,5 +18,8 @@ fn main() -> io::Result<()> {
                 println!("{}", address);
             }
         }
+        Err(e) => eprintln!("Error looking up {}: {}", domain, e),
     }
+
+    Ok(())
 }
