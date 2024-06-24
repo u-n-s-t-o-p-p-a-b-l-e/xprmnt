@@ -24,3 +24,13 @@ fn main() -> io::Result<()> {
     }
     Ok(())
 }
+
+fn dns_lookup(domain: &str) ->  io::Result<Vec<String>> {
+    let mut addresses = Vec::new();
+    let resolver = Resolver::new(ResolverConfig::default(), ResolverOpts::default()).unwrap();
+    let response = resolver.lookup_ip(domain).map_err(|e| io::Error::new::(io::ErrorKind::Other, e.to_string()))?;
+    for addr in response.iter() {
+        addresses.push(addr.to_string());
+    }
+    Ok(addresses)
+}
