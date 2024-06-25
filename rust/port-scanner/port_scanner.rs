@@ -19,4 +19,10 @@ fn main() -> io::Result<()> {
     });
 
     println!("Scanning {} for open ports...", host);
+
+    for port in ports {
+        if let Ok(_) = scan_port(host, port) {
+            println!("Port {} is open", port);
+        }
+    }
 }
