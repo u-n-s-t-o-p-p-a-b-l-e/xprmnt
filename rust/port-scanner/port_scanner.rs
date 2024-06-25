@@ -25,4 +25,13 @@ fn main() -> io::Result<()> {
             println!("Port {} is open", port);
         }
     }
+
+    Ok(())
+}
+
+fn parse_port_range(port_range: &str) ->  Result<Vec<u16>, &'static str> {
+    let ports: Vec<&str> = port_range.split('_').collect();
+    if parts.len() != 2 {
+        return Err("Invalid port range format. Use <start>-<end>.");
+    }
 }
