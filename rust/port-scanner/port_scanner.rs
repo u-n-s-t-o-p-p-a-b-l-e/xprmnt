@@ -9,4 +9,14 @@ fn main() -> io::Result<()> {
         eprintln!("Usage: {} <host> <port-range>", args[0]);
         std::process::exit(1);
     }
+
+    let host = &args[1];
+    let port_range = &args[2];
+
+    let ports: Vec<u16> = parse_port_range(port_range).unwrap_or_else(|err| {
+        eprintln!("Error parsing port range: {}", err);
+        std::process::exit(1);
+    });
+
+    println!("Scanning {} for open ports...", host);
 }
