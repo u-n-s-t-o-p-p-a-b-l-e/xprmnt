@@ -34,4 +34,11 @@ fn parse_port_range(port_range: &str) ->  Result<Vec<u16>, &'static str> {
     if parts.len() != 2 {
         return Err("Invalid port range format. Use <start>-<end>.");
     }
+
+    let start: u16 = parts[0].parse().map_err(|_| "Invalid start port")?;
+    let end: u16 = parts[1].parse().map_err(|_| "Invalid end port")?;
+
+    if start > end {
+        return Err("Start port must be less than or equal to end port");
+    }
 }
