@@ -49,4 +49,12 @@ fn scan_port(host: &str, port: u16) ->  io::Result<()> {
     let address = format!("{}:{}", host, port);
     let timeout = Duration::from_secs(1);
     let addrs: Vec<_> = address.to_socket_addrs()?.collect();
+
+    for addr in addrs {
+        if TcpStream::connect_timeout(&addr, timeout).is_ok() {
+            return Ok(());
+        }
+    }
+
+    Err(io::Error::new(io::ErrorKind::Other, "Port is closed"))
 }
