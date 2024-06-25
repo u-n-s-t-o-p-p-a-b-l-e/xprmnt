@@ -41,4 +41,12 @@ fn parse_port_range(port_range: &str) ->  Result<Vec<u16>, &'static str> {
     if start > end {
         return Err("Start port must be less than or equal to end port");
     }
+
+    Ok((start..=end).collect())
+}
+
+fn scan_port(host: &str, port: u16) ->  io::Result<()> {
+    let address = format!("{}:{}", host, port);
+    let timeout = Duration::from_secs(1);
+    let addrs: Vec<_> = address.to_socket_addrs()?.collect();
 }
