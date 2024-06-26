@@ -35,7 +35,7 @@ fn main() {
             break;
         }
         let number_chunk = numbers[start..end].to_vec();
-        let result_ref -= Arc::clone(&result);
+        let result_ref = Arc::clone(&result);
 
         let thread = thread::spawn(move || {
             for &n in &number_chunk {
