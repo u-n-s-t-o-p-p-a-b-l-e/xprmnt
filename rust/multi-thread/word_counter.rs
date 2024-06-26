@@ -44,3 +44,20 @@ fn count_words(file_path: &str, word: &str, thread_count: usize) ->  std::io::Re
         let final_result = result.lock().unwrap();
         Ok(*final_result)
 }
+
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    if args.len() != 4 {
+        eprintln!("Usage: {} <file> <word> <thread_count>", args[0]);
+        std::process::exit(1);
+    }
+
+    let file_path = &args[1];
+    let word = &args[2];
+    let thread_count: usize = args[3].parse().expect("Invalid number of threads");
+
+    match count_words(file_path, word, thread_count) {
+        Ok(count) => println!("The word '{}' occurs {} times in the file", word, count);
+        Err(e) => eprintln!("Error: {}", e);
+    }
+}
