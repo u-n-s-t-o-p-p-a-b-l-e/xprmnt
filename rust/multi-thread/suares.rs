@@ -42,5 +42,14 @@ fn main() {
                 square(n, &result_ref);
             }
         });
+
+        threads.push(thread);
     }
+
+    for thread in threads {
+        thread.join().unwrap();
+    }
+
+    let final_results = result.lock().unwrap();
+    println!("Squares: {:?}", final_results);
 }
