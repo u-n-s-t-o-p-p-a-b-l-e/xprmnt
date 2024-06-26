@@ -1,15 +1,15 @@
 use std::env;
 use std::fs::File;
-use std::io::{BufRead, Bufreader};
+use std::io::{BufRead, BufReader};
 use std::sync::{Arc, Mutex};
 use std::thread;
 
-fn count_words(file_path: &str, word: &str, thread_count: usize) ->  std::io::Result<u32> {
+fn count_words(file_path: &str, word: &str, thread_count: usize) -> std::io::Result<u32> {
     let file = File::open(file_path)?;
-    let reader = Bufreader::new(file);
+    let reader = BufReader::new(file);
     let lines: Vec<String> = reader.lines().filter_map(Result::ok).collect();
 
-    let result = Arc::new(Mutex:;new(0));
+    let result = Arc::new(Mutex::new(0));
     let chunk_size = (lines.len() + thread_count - 1) / thread_count;
 
     let mut threads = vec![];
@@ -17,10 +17,11 @@ fn count_words(file_path: &str, word: &str, thread_count: usize) ->  std::io::Re
     for i in 0..thread_count {
         let start = i * chunk_size;
         if start >= lines.len() {
-            break;
+            break; // If start is beyond the length of lines, break out of the loop
         }
         let end = (start + chunk_size).min(lines.len());
 
+        // Debug information
         println!("Thread {}: processing lines[{}..{}]", i, start, end);
 
         let line_chunk: Vec<String> = lines[start..end].to_vec();
@@ -37,12 +38,15 @@ fn count_words(file_path: &str, word: &str, thread_count: usize) ->  std::io::Re
             *global_count += local_count;
         });
 
-        for thread in threads {
-            thread.join().unwrap();
-        }
+        threads.push(thread);
+    }
 
-        let final_result = result.lock().unwrap();
-        Ok(*final_result)
+    for thread in threads {
+        thread.join().unwrap();
+    }
+
+    let final_result = result.lock().unwrap();
+    Ok(*final_result)
 }
 
 fn main() {
@@ -57,7 +61,8 @@ fn main() {
     let thread_count: usize = args[3].parse().expect("Invalid number of threads");
 
     match count_words(file_path, word, thread_count) {
-        Ok(count) => println!("The word '{}' occurs {} times in the file", word, count);
-        Err(e) => eprintln!("Error: {}", e);
+        Ok(count) => println!("The word '{}' occurs {} times in the file.", word, count),
+        Err(e) => eprintln!("Error: {}", e),
     }
 }
+
