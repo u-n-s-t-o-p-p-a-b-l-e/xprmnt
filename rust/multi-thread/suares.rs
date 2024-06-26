@@ -27,4 +27,12 @@ fn main() {
     let chunk_size = (numbers.len() + thread_count - 1) / thread_count;
 
     let mut threads = vec![];
+
+    for i in 0..thread_count {
+        let start = i * chunk_size;
+        let end = ((i + 1) * chunk_size).min(numbers.len());
+        if start >= numbers.len() {
+            break;
+        }
+    }
 }
