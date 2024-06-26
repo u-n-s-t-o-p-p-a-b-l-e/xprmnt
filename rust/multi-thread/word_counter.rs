@@ -26,5 +26,21 @@ fn count_words(file_path: &str, word: &str, thread_count: usize) ->  std::io::Re
         let line_chunk: Vec<String> = lines[start..end].to_vec();
         let result_ref = Arc::clone(&result);
         let word = word.to_string();
-    }
+
+        let thread = thread::spawn(move || {
+            let mut local_count = 0;
+            for line in line_chunk {
+                local_count += line.split_whitespace().filter(|&w| w == word).count() as u32;
+            }
+
+            let mut global_count = result_ref.lock().unwrap();
+            *global_count += local_count;
+        });
+
+        for thread in threads {
+            thread.join().unwrap();
+        }
+
+        let final_result = result.lock().unwrap();
+        Ok(*final_result)
 }
