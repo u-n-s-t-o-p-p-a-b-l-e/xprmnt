@@ -1,0 +1,4 @@
+Rust is a systems programming language.
+Rust provides memory safety without using garbage collection.
+Concurrency is one of Rust's strengths.
+Rust is fast and memory-efficient.
