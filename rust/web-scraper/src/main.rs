@@ -41,4 +41,13 @@ async fn main() {
 
         handles.push(handle);
     }
+
+    for handle in handles {
+        handle.await.unwrap();
+    }
+
+    let results = results.lock().unwrap();
+    for result in results.iter() {
+        println!("{}", result);
+    }
 }
