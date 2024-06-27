@@ -25,5 +25,20 @@ async fn main() {
         let results = Arc::clone(&results);
         let url = url.clone();
         let output_directory = output_directory.clone();
+
+        let handle = task::spawn(async move {
+            match fetch_and_save(&url, &output_directory, index).await {
+                Ok(filename) => {
+                    let mut results = results.lock().unwrap();
+                    results.push(format!("saved {} to {}", url, filename));
+                }
+                Err(e) => {
+                    let mut results = results.lock().unwrap();
+                    results.push(format!("Failed to fetch {}: {}", url, e));
+                }
+            }
+        });
+
+        handles.push(handle);
     }
 }
