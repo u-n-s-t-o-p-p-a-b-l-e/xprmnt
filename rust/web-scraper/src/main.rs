@@ -20,4 +20,10 @@ async fn main() {
     let results = Arc::new(Mutex::new(Vec::new()));
 
     let mut handles = vec![];
+
+    for (index, url) in urls.iter().enumerate() {
+        let results = Arc::clone(&results);
+        let url = url.clone();
+        let output_directory = output_directory.clone();
+    }
 }
