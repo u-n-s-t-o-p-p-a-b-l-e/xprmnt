@@ -13,4 +13,11 @@ async fn main() {
         eprintln!("Usage: {} <output_directory> <url1> <url2> ... <urlN>", args[0]);
         std::process::exit(1);
     }
+
+    let output_directory = &args[1];
+    let urls: Vec<String> = args[2..].to_vec();
+
+    let results = Arc::new(Mutex::new(Vec::new()));
+
+    let mut handles = vec![];
 }
