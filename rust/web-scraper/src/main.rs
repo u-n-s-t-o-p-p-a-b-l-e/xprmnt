@@ -51,3 +51,11 @@ async fn main() {
         println!("{}", result);
     }
 }
+
+async fn fetch_and_save(url: &str, output_directory: &str, index: usize) ->  Result<String, reqwest::Error> {
+    let response = reqwest::get(url).await?.text().await?;
+    let filename = format!("{}/{}.html", output_directory, index);
+    let mut file = File::create(&filename).expect("Could not create file");
+    file.write_all(response.as_bytes()).expect("Could not write to file");
+    Ok(filename)
+}
