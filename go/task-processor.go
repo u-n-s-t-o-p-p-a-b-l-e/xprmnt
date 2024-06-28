@@ -31,4 +31,8 @@ func main() {
 		wg.Add(1)
 		go worker(i, tasks, &wg)
 	}
+
+	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Println("Enter tsks in ther format 'name duration(s)' (e.g., 'task1 2s').Enter 'exit' to finish.")
+	
 }
