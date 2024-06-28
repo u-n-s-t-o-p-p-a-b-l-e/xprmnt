@@ -40,6 +40,14 @@ func main() {
 		if input == "exit" {
 			break
 		}
+
+		var name string
+		var duration time.Duration
+		_, err :=  fmt.Sscanf(input, "%s %ds", &name, &duration)
+		if err != nil {
+			fmt.Println("Invalid input. Please enter in the format 'name duration(s)' (e.g., 'task1 2s').")
+			continute
+		}
 	}
 	
 }
