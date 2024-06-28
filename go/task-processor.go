@@ -26,4 +26,9 @@ func main() {
 	const numWorkers = 3
 	tasks := make(chan Task)
 	var wg sync.WaitGroup
+
+	for i := 1; i <= numWorkers; i++ {
+		wg.Add(1)
+		go worker(i, tasks, &wg)
+	}
 }
