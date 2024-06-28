@@ -46,8 +46,15 @@ func main() {
 		_, err :=  fmt.Sscanf(input, "%s %ds", &name, &duration)
 		if err != nil {
 			fmt.Println("Invalid input. Please enter in the format 'name duration(s)' (e.g., 'task1 2s').")
-			continute
+			continue
 		}
+
+		tasks <- Task{Name: name, Duration: duration * time.Second}
 	}
+
+	close(tasks)
+	wg.Wait()
+	fmt.Println("All tasks processed. Exiting")
+	
 	
 }
