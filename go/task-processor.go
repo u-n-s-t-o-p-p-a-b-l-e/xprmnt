@@ -21,3 +21,9 @@ func worker(id int, tasks <-chan Task, wg *sync.WaitGroup) {
 		fmt.Printf("Worker %d: Finished task %s\n", id, task.Name)
 	}
 }
+
+func main() {
+	const numWorkers = 3
+	tasks := make(chan Task)
+	var wg sync.WaitGroup
+}
