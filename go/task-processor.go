@@ -34,5 +34,12 @@ func main() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 	fmt.Println("Enter tsks in ther format 'name duration(s)' (e.g., 'task1 2s').Enter 'exit' to finish.")
+
+	for scanner.Scan() {
+		input := scanner.Text()
+		if input == "exit" {
+			break
+		}
+	}
 	
 }
