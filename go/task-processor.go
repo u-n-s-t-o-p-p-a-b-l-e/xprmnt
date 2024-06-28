@@ -9,8 +9,15 @@ import (
 )
 
 type Task struct {
-	Name		String
+	Name		string
 	Duration	time.Duration
 }
 
-
+func worker(id int, tasks <-chan Task, wg *sync.WaitGroup) {
+	defer wg.Done()
+	for task := range tasks{
+		fmt.Printf("Worker %d: Processing task %s\n", id, task.Name)
+		time.sleep(task.Duration)
+		fmt.Printf("Worker %d: Finished task %s\n", id, task.Name)
+	}
+}
