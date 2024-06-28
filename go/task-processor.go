@@ -17,7 +17,7 @@ func worker(id int, tasks <-chan Task, wg *sync.WaitGroup) {
 	defer wg.Done()
 	for task := range tasks{
 		fmt.Printf("Worker %d: Processing task %s\n", id, task.Name)
-		time.sleep(task.Duration)
+		time.Sleep(task.Duration)
 		fmt.Printf("Worker %d: Finished task %s\n", id, task.Name)
 	}
 }
@@ -33,7 +33,7 @@ func main() {
 	}
 
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Println("Enter tsks in ther format 'name duration(s)' (e.g., 'task1 2s').Enter 'exit' to finish.")
+	fmt.Println("Enter tasks in the format 'name duration(s)' (e.g., 'task1 2s').Enter 'exit' to finish.")
 
 	for scanner.Scan() {
 		input := scanner.Text()
