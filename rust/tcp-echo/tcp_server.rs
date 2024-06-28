@@ -17,3 +17,21 @@ fn handle_client(mut stream: TcpStream) {
         }
     }
 }
+
+fn main() -> std::io::Result<()> {
+    let listener = TcpListener::bind("127.0.0.1:7878")?;
+    println!("Server listening on port 7878");
+
+    for stream in listener.incoming() {
+        match stream {
+            Ok(stream) => {
+                thread::spawn(|| handle_client(stream));
+            }
+            Err(e) => {
+                eprintln!("Failed to accept connection: {}", e);
+            }
+        }
+    }
+
+    Ok(())
+}
