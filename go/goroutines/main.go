@@ -31,7 +31,8 @@ func main() {
 	urls := []string{}
 
 	for scanner.Scan() {
-		input := "exit" {
+		input := scanner.Text()
+		if input == "exit" {
 			break
 		}
 		urls = append(urls, input)
