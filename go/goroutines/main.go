@@ -38,5 +38,14 @@ func main() {
 	}
 
 	jobs := make(chan string)
+
+	for i := 1; i <= numWorkers; i++ {
+		go func(id int) {
+			for url := range jobs {
+				wg.Add(1)
+				fetchURL(&wg, url, id)
+			}
+		}(i)
+	}
 	
 }
