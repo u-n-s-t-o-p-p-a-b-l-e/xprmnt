@@ -19,5 +19,9 @@ func fetchURL(wg *sync.WaitGroup, url string, id int) {
 	defer resp.Body.Close()
 
 	fmt.Printf("Worker %d: Fetched %s - Status: %s\n", id, url, resp.Status)
-	
+}
+
+func main() {
+	const numWorkers = 5
+	var wg sync.WaitGroup
 }
