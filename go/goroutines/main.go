@@ -47,5 +47,10 @@ func main() {
 			}
 		}(i)
 	}
+
+	for _, url := range urls {
+		jobs <- url
+	}
+	close(jobs)
 	
 }
