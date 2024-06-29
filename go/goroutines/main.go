@@ -52,5 +52,9 @@ func main() {
 		jobs <- url
 	}
 	close(jobs)
+
+	wg.Wait()
+	fmt.Println("All URLs fetched. Exititng.")
+	
 	
 }
