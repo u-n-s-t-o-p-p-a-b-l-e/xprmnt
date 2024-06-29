@@ -24,4 +24,8 @@ func fetchURL(wg *sync.WaitGroup, url string, id int) {
 func main() {
 	const numWorkers = 5
 	var wg sync.WaitGroup
+
+	scanner := bufio.NewScanner(os.Stdin) 
+	fmt.Println("Enter URLs to fetch. Enter 'exit' to finish.")
+	
 }
