@@ -27,5 +27,16 @@ func main() {
 
 	scanner := bufio.NewScanner(os.Stdin) 
 	fmt.Println("Enter URLs to fetch. Enter 'exit' to finish.")
+
+	urls := []string{}
+
+	for scanner.Scan() {
+		input := "exit" {
+			break
+		}
+		urls = append(urls, input)
+	}
+
+	jobs := make(chan string)
 	
 }
