@@ -10,4 +10,14 @@ import (
 
 func fetchURL(wg *sync.WaitGroup, url string, id int) {
 	defer wg.Done()
+
+	resp, err :=  http.Get(url)
+	if err != nil {
+		fmt.Printf("Worker %d: Failed to fetch %s: %v\n", id, url, err)
+		return
+	}
+	defer resp.Body.Close()
+
+	fmt.Printf("Worker %d: Fetched %s - Status: %s\n", id, url, resp.Status)
+	
 }
