@@ -20,4 +20,10 @@ int main() {
 
 	std::vector<int> results(num_threads, 0);
 	std::vector<std::thread> threads;
+
+	for (int i = 0; i < num_threads; ++i) {
+		int start = i * part;
+		int end = (i == num_threads -1) ? size : start + part;
+		threads.push_back(std::thread(partial_sum, std::ref(numbers), start, end, std::ref(results[i])));
+	}
 }
