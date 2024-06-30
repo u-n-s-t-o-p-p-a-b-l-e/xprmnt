@@ -12,3 +12,9 @@ def main():
     parser.add_argument('--threads', type=int, default=2, help='Number of threads to spawn')
     parser.add_argument('--count', type=int, default=5, help='Count to print up to in each thread')
     args = parser.parse_args()
+
+    threads = []
+    for i in range(args.threads):
+        thread = threading.Thread(target=print_numbers, args=(i, args.count))
+        threads.append(thread)
+        thread.start()
