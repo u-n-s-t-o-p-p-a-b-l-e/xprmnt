@@ -18,3 +18,11 @@ def main():
         thread = threading.Thread(target=print_numbers, args=(i, args.count))
         threads.append(thread)
         thread.start()
+
+    for thread in threads:
+        thread.join()
+
+    print("All threads have completed.")
+
+if __name__ == '__main__':
+    main()
