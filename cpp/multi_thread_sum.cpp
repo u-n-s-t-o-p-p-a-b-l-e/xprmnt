@@ -26,4 +26,8 @@ int main() {
 		int end = (i == num_threads -1) ? size : start + part;
 		threads.push_back(std::thread(partial_sum, std::ref(numbers), start, end, std::ref(results[i])));
 	}
+
+	for (auto& thread : threads) {
+		thread.join();
+	}
 }
