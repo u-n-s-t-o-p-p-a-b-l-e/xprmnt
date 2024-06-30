@@ -13,4 +13,11 @@ int main() {
 	for (int i = 1; i <= 100; ++i) {
 		numbers.push_back(i);
 	}
+
+	int num_threads = 4;
+	int size = numbers.size();
+	int part = size / num_threads;
+
+	std::vector<int> results(num_threads, 0);
+	std::vector<std::thread> threads;
 }
