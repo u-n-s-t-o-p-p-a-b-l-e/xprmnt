@@ -30,4 +30,10 @@ int main() {
 	for (auto& thread : threads) {
 		thread.join();
 	}
+
+	int total_sum = std::accumulate(results.begin(), results.end(), 0);
+
+	std::cout << "Total sum: " << total_sum << std::endl;
+
+	return 0;
 }
