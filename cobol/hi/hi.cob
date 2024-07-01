@@ -13,4 +13,8 @@
        01 INPUT-RECORD PIC X(50).
 
        WORKING-STORAGE SECTION.
+       01  WS-NAME       PIC X(50).
+       01  WS-EOF        PIC X VALUE 'N'.
+       01  WS-NAME-LEN   PIC 9(2) VALUE 0.
+       O1  WS-I          PIC 9(2).
 
