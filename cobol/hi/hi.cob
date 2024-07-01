@@ -18,3 +18,12 @@
        01  WS-NAME-LEN   PIC 9(2) VALUE 0.
        O1  WS-I          PIC 9(2).
 
+       PROCEDURE DIVISION.
+       MAIN-PARA.
+           OPEN INPUT INPUT-FILE
+           PERFORM UNTIL WS-EOF = 'Y'
+               READ INPUT-FILE INTO INPUT-RECORD
+                   AT END
+                       MOVE 'Y' TO WS-EOF
+                       NOT AT END
+
