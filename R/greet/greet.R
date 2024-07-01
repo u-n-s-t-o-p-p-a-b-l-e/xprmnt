@@ -17,3 +17,5 @@ greet_user <- function(name) {
 		cat("Hi, ", name, "!\n", sep = "")
 	}
 }
+
+greet_user(opt$name)
