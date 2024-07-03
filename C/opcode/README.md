@@ -10,7 +10,8 @@ Run the executable:
 ./vm
 ```
 <br>
-#Opcodes:<br><br>
+# Opcodes:<br><br>
+
 ### `OP_HALT` : Stop execution. <br>
 
 ### `OP_ADD` : Pop two values from the stack, add them, and push the result.<br>
