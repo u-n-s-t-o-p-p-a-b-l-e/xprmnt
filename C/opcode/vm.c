@@ -29,3 +29,48 @@ void push(VM *vm, int value) {
 int pop(VM *vm) {
 	return vm->stack[vm->sp--];
 }
+
+void execute(VM *vm) {
+	int running = 1;
+	while (running) {
+		unsigned char opcode = vm->code[vm->ip++];
+		int a, b;
+		switch (opcode) {
+			case OP_HALT:
+				running = 0;
+				break;
+			case OP_ADD:
+				b = pop(vm);
+				a = pop(vm);
+				push(vm, a + b);
+				break;
+			case OP_SUB:
+				b = pop(vm);
+				a = pop(vm);
+				push(vm, a - b);
+				break;
+			case OP_MUL:
+				b = pop(vm);
+				a = pop(vm);
+				push(vm, a * b);
+				break;
+			case OP_DIV:
+				b = pop(vm);
+				a = pop(vm);
+				push(vm, a / b);
+				break;
+			case OP_LOAD:
+				a = vm->code[vm->ip++];
+				push(vm, a);
+				break;
+			case OP_PRINT:
+				a = pop(vm);
+				printf("%d\n", a);
+				break;
+			default:
+				printf("Unknown opcode: %02x\n", opcode);
+				running = 0;
+				break;
+		}
+	}
+} 
