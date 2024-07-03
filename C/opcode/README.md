@@ -11,7 +11,7 @@ Run the executable:
 ```
 <br>
 
-# Opcodes:<br><br>
+### Opcodes:<br><br>
 
 `OP_HALT` : Stop execution. <br>
 
@@ -28,7 +28,7 @@ Run the executable:
 `OP_PRINT` : Pop a value from the stack and print it.<br>
 <br>
 
-VM Structure: <br>
+### VM Structure: <br>
  
 `ip`: Instruction pointer.<br>
 `stack`: Stack for storing intermediate values.<br>
