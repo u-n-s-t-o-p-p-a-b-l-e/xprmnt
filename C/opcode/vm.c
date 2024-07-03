@@ -8,3 +8,10 @@
 #define OP_DIV 0x04
 #define OP_LOAD 0x05
 #define OP_PRINT 0x06
+
+typedef struct {
+	int ip;
+	int stack[256];
+	int sp;
+	unsigned char *code;
+} VM;
