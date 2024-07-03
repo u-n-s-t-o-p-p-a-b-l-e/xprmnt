@@ -29,3 +29,7 @@ void init_vm(VM *vm, unsigned char *code) {
 	vm->sp = -1;
 	vm->code = code;
 }
+
+void push(VM *vm, int value) {
+	vm->stack[++vm->sp] = value;
+}
