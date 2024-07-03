@@ -23,3 +23,9 @@ typedef struct {
 	int sp;
 	unsigned char *code;
 } VM;
+
+void init_vm(VM *vm, unsigned char *code) {
+	vm->ip = 0;
+	vm->sp = -1;
+	vm->code = code;
+}
