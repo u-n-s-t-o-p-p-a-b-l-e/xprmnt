@@ -16,3 +16,10 @@
 #define OP_JZ 0x0A
 #define OP_JNZ 0x0B
 #define OP_INPUT 0x0C
+
+typedef struct {
+	int ip;
+	int stack[256];
+	int sp;
+	unsigned char *code;
+} VM;
