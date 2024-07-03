@@ -33,3 +33,7 @@ void init_vm(VM *vm, unsigned char *code) {
 void push(VM *vm, int value) {
 	vm->stack[++vm->sp] = value;
 }
+
+int pop(VM *vm)  {
+	return vm->stack[vm->sp--];
+}
