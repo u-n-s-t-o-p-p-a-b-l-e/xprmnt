@@ -10,6 +10,7 @@ Run the executable:
 ./vm
 ```
 <br>
+
 # Opcodes:<br><br>
 
 `OP_HALT` : Stop execution. <br>
