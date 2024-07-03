@@ -74,3 +74,19 @@ void execute(VM *vm) {
 		}
 	}
 } 
+
+int main() {
+	unsigned char bytecode[] = {
+		OP_LOAD, 10,
+		OP_LOAD, 20,
+		OP_ADD,
+		OP_PRINT,
+		OP_HALT
+	};
+
+	VM vm;
+	init_vm(&vm, bytecode);
+	execute(&vm);
+
+	return 0;
+}
