@@ -37,3 +37,71 @@ void push(VM *vm, int value) {
 int pop(VM *vm)  {
 	return vm->stack[vm->sp--];
 }
+
+void execute(VM *vm) {
+	int running = 1;
+	while (running) {
+		unsigned char opcode = vm->code[vm->ip++];
+		int a, b, addr;
+		switch (opcode) {
+			case OP_HALT:
+				running = 0;
+				break;
+			case OP_ADD:
+				b = pop(vm);
+				a = pop(vm);
+				push(vm, a + b);
+				break;
+			case OP_SUB:
+				b = pop(vm);
+				a = pop(vm);
+				push(vm, a - b);
+				break;
+			case OP_MUL:
+				b = pop(vm);
+				a = pop(vm);
+				push(vm, a * b);
+				break;
+			case OP_LOAD:
+				a = vm->code[vm->ip++];
+				push(vm, a);;
+				break;
+			case OP_PRINT:
+				a = pop(vm);
+				printf("%d\n", a);
+				break;
+			case OP_PUSH:
+				a = vm->code[vm->ip++];
+				push(vm, a);
+				break;
+			case OP_POP:
+				pop(vm);
+				break;
+ 			case OP_JMP:
+				addr = vm->code[vm->ip++];
+				vm->ip = addr;
+				break;
+			case OP_JZ:
+				addr = vm->code[vm->ip++];
+				if (pop(vm) == 0) {
+					vm->ip = addr;
+				}
+				break;
+			case OP_JNZ:
+				addr = vm->code[vm->ip++];
+				if (pop(vm) != 0) {
+					vm->ip = addr;
+				}
+				break;
+			case OP_INPUT:
+				scanf("%d", &a);
+				push(vm, a);
+				break;
+			default:
+				printf("Unknown opcode: %02x\n", opcode);
+				running = 0;
+				break;
+
+		}
+	}
+}
