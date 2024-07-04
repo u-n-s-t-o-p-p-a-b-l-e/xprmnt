@@ -4,17 +4,18 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
-#define OP_HALT 0x00
-#define OP_ADD 0x02
-#define OP_SUB 0x03
-#define OP_MUL 0x04
-#define OP_DIV 0x05
-#define OP_LOAD 0x06
-#define OP_PUSH 0x07
-#define OP_POP 0x08
-#define OP_JMP 0x09
-#define OP_JZ 0x0A
-#define OP_JNZ 0x0B
+#define OP_HALT  0x00
+#define OP_ADD   0x01
+#define OP_SUB   0x02
+#define OP_MUL   0x03
+#define OP_DIV   0x04
+#define OP_LOAD  0x05
+#define OP_PRINT 0x06
+#define OP_PUSH  0x07
+#define OP_POP   0x08
+#define OP_JMP   0x09
+#define OP_JZ    0x0A
+#define OP_JNZ   0x0B
 #define OP_INPUT 0x0C
 
 typedef struct {
@@ -104,4 +105,20 @@ void execute(VM *vm) {
 
 		}
 	}
+}
+
+int main() {
+	unsigned char bytecode[] = {
+		OP_INPUT,
+		OP_PUSH, 20,
+		OP_ADD,
+		OP_PRINT,
+		OP_HALT
+	};
+
+	VM vm;
+	init_vm(&vm, bytecode);
+	execute(&vm);
+
+	return 0;
 }
