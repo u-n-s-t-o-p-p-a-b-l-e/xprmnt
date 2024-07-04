@@ -34,3 +34,9 @@ Run the executable:
 `stack`: Stack for storing intermediate values.<br>
 `sp`: Stack pointer.<br>
 `code`: Pointer to the bytecode.<br>
+
+<br>
+
+For `enhanced_vm.c` run it and give a number.<br>
+
+After entering the number, the VM will add 20 to your input and print the result.
