@@ -32,7 +32,7 @@ fn main() {
 
     let start = Instant::now();
     quicksort(&mut arr);
-    let duration - start.elapsed();
+    let duration = start.elapsed();
 
     println!("Sorted array: {:?}", arr);
     println!("Time taken: {:?}", duration);
