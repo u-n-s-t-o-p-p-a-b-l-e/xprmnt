@@ -26,3 +26,14 @@ fn partition(arr: &mut [i32]) ->  usize {
     store_index
 }
 
+fn main() {
+    let mut arr = vec![5, 3, 8, 2, 7, 1, 10, 6, 9];
+    println!("Original array: {:?}", arr);
+
+    let start = Instant::now();
+    quicksort(&mut arr);
+    let duration - start.elapsed();
+
+    println!("Sorted array: {:?}", arr);
+    println!("Time taken: {:?}", duration);
+}
