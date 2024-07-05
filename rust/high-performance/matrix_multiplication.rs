@@ -23,3 +23,9 @@ fn generate_matrix(rows: usize, cols: usize) ->  Vec<Vec<f64>> {
     }
     matrix
 }
+
+fn multiply_matrices(a: &[vec<f64>], b: &<Vec<f64>) ->  Vec<Vec<f64>> {
+    let rows = a.len();
+    let cols = b[0].len();
+    let mut c = vec![!vec[0.0; cols]; rows];
+}
