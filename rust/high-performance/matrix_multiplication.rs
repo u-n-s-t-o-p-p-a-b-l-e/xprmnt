@@ -12,7 +12,7 @@ fn main() {
 
     println!("Time taken: {:?}", duration);
     // Uncomment the line below to print the resulting matrix
-    // println!("{:?}", c);
+     println!("{:?}", c);
 }
 
 fn generate_matrix(rows: usize, cols: usize) -> Vec<Vec<f64>> {
