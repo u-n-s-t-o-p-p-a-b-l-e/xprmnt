@@ -22,3 +22,9 @@ impl VM {
         stack: Vec::new(),
     }
 }
+
+fn fetch(&mut self) ->  u8 {
+    let byte = self.code[self.ip];
+    self.ip += 1;
+    byte
+}
