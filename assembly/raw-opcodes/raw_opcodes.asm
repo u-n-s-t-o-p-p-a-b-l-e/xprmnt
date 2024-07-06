@@ -2,7 +2,7 @@ section .data
     hello db 'Hello, World!', 0
 
 section .text
-	global_start
+	global _start
 
 _start:
 	db 0x48, 0xc7, 0xc0, 0x01, 0x00, 0x00, 0x00
