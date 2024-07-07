@@ -32,6 +32,12 @@ func connectionHandler(conn net.Conn, wg *sync.WaitGroup) {
 		if err != nil {
 			fmt.Println("Read error:", err)
 			break
+		}
+		conn.SetWriteDeadline(time.now().Add(5 * time.Minute))
+		_, err = writer.Write(buf[:n])
+		if err != nil {
+			fmt.Println("Write error:", err)
+			break
 			
 		}
 	}
