@@ -64,6 +64,9 @@ func main() {
 	}
 
 	fmt.Println("Server started on", address)
+
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
 	
 }
 
