@@ -17,3 +17,8 @@ const (
 	bufferSize   = 4096
 	maxIdleConns = 100
 )
+
+func connectionHandler(conn net.Conn, wg *sync.WaitGroup) {
+	defer wg.Done()
+	defer conn.Close()
+}
