@@ -15,5 +15,12 @@ func main() {
 	}
 	defer conn.Close()
 
-	go func() {}
+	go func() {
+		scanner := bufio.NewScanner(os.Stdin)
+		for scanner.Scan() {
+			text := scanner.Text()
+			fmt.fprintln(conn, text)
+			
+		}
+	}
 }
