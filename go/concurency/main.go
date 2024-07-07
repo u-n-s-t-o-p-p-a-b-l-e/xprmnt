@@ -6,6 +6,7 @@ import (
 	"net"
 	"os"
 	"os/signal"
+	"runtime"
 	"sync"
 	"syscall"
 	"time"
@@ -33,7 +34,7 @@ func connectionHandler(conn net.Conn, wg *sync.WaitGroup) {
 			fmt.Println("Read error:", err)
 			break
 		}
-		conn.SetWriteDeadline(time.now().Add(5 * time.Minute))
+		conn.SetWriteDeadline(time.Now().Add(5 * time.Minute))
 		_, err = writer.Write(buf[:n])
 		if err != nil {
 			fmt.Println("Write error:", err)
@@ -45,15 +46,16 @@ func connectionHandler(conn net.Conn, wg *sync.WaitGroup) {
 
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
+
+	listener, err := net.Listen("tcp", address)
 	if err != nil {
-		listener, err := net.Listen("tcp", address)
 		fmt.Println("Error starting server:", err)
 		return
 	}
 	defer listener.Close()
 
 	var wg sync.WaitGroup
-	connchan := make(chan net.Conn, maxWorkers)
+	connChan := make(chan net.Conn, maxWorkers)
 
 	for i := 0; i < maxWorkers; i++ {
 		go func() {
@@ -78,11 +80,19 @@ func main() {
 	for {
 		conn, err := listener.Accept()
 		if err != nil {
-			if opErr, ok := err.(*net.OpError); ok && opEErr.Op == "accept" {
+			if opErr, ok := err.(*net.OpError); ok && opErr.Op == "accept" {
 				break
 			}
+			fmt.Println("Error accepting connection:", err)
+			continue
 		}
+		wg.Add(1)
+		connChan <- conn
 	}
+
+	wg.Wait()
+	fmt.Println("Server shut down gracefully.")
+	
 	
 }
 
