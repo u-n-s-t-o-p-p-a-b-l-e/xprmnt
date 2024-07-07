@@ -67,6 +67,24 @@ func main() {
 
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
+
+	go func() {
+		<-sigChan
+		fmt.Println("\nShutting down server...")
+		listener.Close()
+		close(connChan)
+	}()
+
+	for {
+		conn, err := listener.Accept()
+		if err != nil {
+			if opErr, ok := err.(*net.OpError); ok && opEErr.Op == "accept" {
+				break
+			}
+		}
+	}
 	
 }
+
+
 
