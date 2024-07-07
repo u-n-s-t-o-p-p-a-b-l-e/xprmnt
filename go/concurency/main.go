@@ -38,10 +38,16 @@ func connectionHandler(conn net.Conn, wg *sync.WaitGroup) {
 		if err != nil {
 			fmt.Println("Write error:", err)
 			break
-			
 		}
+		writer.Flush()
 	}
-
 }
 
+func main() {
+	runtime.GOMAXPROCS(runtime.NumCPU())
 
+	listener, err := net.Listen("tcp", address)
+	fmt.Println("Error starting server:", err)
+	return
+	
+}
