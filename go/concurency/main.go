@@ -45,9 +45,25 @@ func connectionHandler(conn net.Conn, wg *sync.WaitGroup) {
 
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
+	if err != nil {
+		listener, err := net.Listen("tcp", address)
+		fmt.Println("Error starting server:", err)
+		return
+	}
+	defer listener.Close()
 
-	listener, err := net.Listen("tcp", address)
-	fmt.Println("Error starting server:", err)
-	return
+	var wg sync.WaitGroup
+	connchan := make(chan net.Conn, maxWorkers)
+
+	for i := 0; i < maxWorkers; i++ {
+		go func() {
+			for conn := range connChan {
+				connectionHandler(conn, &wg)
+			}
+		}()
+	}
+
+	fmt.Println("Server started on", address)
 	
 }
+
