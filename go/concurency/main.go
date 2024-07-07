@@ -21,4 +21,21 @@ const (
 func connectionHandler(conn net.Conn, wg *sync.WaitGroup) {
 	defer wg.Done()
 	defer conn.Close()
+
+	reader := bufio.NewReader(conn)
+	writer := bufio.NewWriter(conn)
+	buf := make([]byte, bufferSize)
+
+	for {
+		conn.SetReadDeadline(time.Now().Add(5 * time.Minute))
+		n, err := reader.Read(buf)
+		if err != nil {
+			fmt.Println("Read error:", err)
+			break
+			
+		}
+	}
+
 }
+
+
