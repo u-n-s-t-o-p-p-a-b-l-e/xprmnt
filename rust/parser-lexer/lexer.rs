@@ -92,3 +92,16 @@ impl<'a> Lexer<'a> {
         }
     }
 }
+
+fn main() {
+    let input = "fn example(a, b) if else while";
+    let mut lexer = Lexer::new(input);
+
+    loop {
+        let token = lexer.next_token();
+        println!("{:?}", token);
+        if token == Token::Eof {
+            break;
+        }
+    }
+}
