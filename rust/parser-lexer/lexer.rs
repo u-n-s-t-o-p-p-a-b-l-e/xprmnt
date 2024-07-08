@@ -60,4 +60,15 @@ impl<'a> Lexer<'a> {
 
         token
     }
+
+    fn read_identifier(&mut self) -> Token {
+        let position = self.position;
+        while let Some(c) = self.current_char {
+            if c.is_alphanumeric() {
+                self.read_char();
+            } else {
+                break;
+            }
+        }
+    }
 }
