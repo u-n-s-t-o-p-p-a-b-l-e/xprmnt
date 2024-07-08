@@ -56,7 +56,7 @@ impl<'a> Lexer<'a> {
             }
             Some(')') => {
                 self.read_char();
-                Toke::RParen
+                Token::RParen
             }
             Some(',') => {
                 self.read_char();
@@ -81,14 +81,14 @@ impl<'a> Lexer<'a> {
         }
         let identifier = &self.input[position..self.position];
         if self.is_keyword(identifier) {
-            Token::keyword(identifier.to_string())
+            Token::Keyword(identifier.to_string())
         } else {
-            Token::identifier(identifier.to_string())
+            Token::Identifier(identifier.to_string())
         }
     }
 
     fn is_keyword(&self, identifier: &str) -> bool {
-        matches!(identifier, "if", |"else"| "while" | "fn")
+        matches!(identifier, "if" | "else" | "while" | "fn")
     }
 
     fn skip_whitespace(&mut self) {
@@ -114,77 +114,89 @@ impl<'a> Parser<'a> {
             lexer,
             current_token,
         }
+    }
 
-        fn next_token(&mut self) {
-            self.current_token = self.lexer.next_token();
+    fn next_token(&mut self) {
+        self.current_token = self.lexer.next_token();
+    }
+
+    fn parse(&mut self) -> Vec<ASTNode> {
+        let mut nodes = Vec::new();
+
+        while self.current_token != Token::Eof {
+            match &self.current_token {
+                Token::Keyword(keyword) => match keyword.as_str() {
+                    "fn" => nodes.push(self.parse_function()),
+                    "if" => {
+                        nodes.push(ASTNode::If);
+                        self.next_token();
+                    }
+                    "else" => {
+                        nodes.push(ASTNode::Else);
+                        self.next_token();
+                    }
+                    "while" => {
+                        nodes.push(ASTNode::While);
+                        self.next_token();
+                    }
+                    _ => panic!("Unexpected keyword: {}", keyword),
+                },
+                Token::Identifier(identifier) => {
+                    nodes.push(ASTNode::Identifier(identifier.clone()));
+                    self.next_token();
+                }
+                _ => panic!("Unexpected token: {:?}", self.current_token),
+            }
         }
 
-        fn parse(&mut self) -> Vec<ASTNode> {
-            let mut nodes = Vec::new();
-
-            while self.current_token != Token:Eof {
-                match &self.current_token {
-                    Token::Keyword(keyword) => match keyword.as_str() {
-                        "fn" => nodes.push(self.parse_function()),
-                        "if" => {
-                            nodes.push(ASTNode::If);
-                            self.next_token();
-                        }
-                        "else" => {
-                            nodes.push(ASTNode::Else);
-                            self.next_token();
-                        }
-                        "while" => {
-                            nodes.push(ASTNode::While);
-                            self.next_token();
-                        }
-                        _ => panic!("Unexpected token: {:?}", self.current_token),
-                    }
-                }
-
-                nodes
-            }
-
-            fn parse_function(&mut self) -> ASTNode {
-                self.next_token();
-
-                if let Token::Identifier(name) = &self.current_token {
-                    let function_name = name.clone();
-                    self.next_token();
-
-                    self.expect_token(Token::LParen);
-
-                    let mut parameters = Vec::new();
-                    while self.current_token != Token::RParen {
-                        if let Token::Identifier(param) = &self.current_token {
-                            parameters.push(param.clone());
-                            self.next_token();
-                        }
-
-                        if self.current_token == Token::Comma {
-                            self.next_token();
-                        }
-
-                        if self.current_token == Token::Comma {
-                            self.next_token();
-                        }
-                    } 
-
-                    self.expect_token(Token::RParen);
-
-                    ASTNode::Function(function_name, parameters)
-                } else {
-                    panic!("Expected function name, found {:?}", self.current_token);
-                }
-            }
-
-            fn expect_token(&mut self, token: Token) {
-                if self.current_token == token {
-                    self.next_token();
-                } else {
-                    panic!("Expected token: {:?}", token, self.current_token);
-                }
-            }
-        } 
+        nodes
     }
+
+    fn parse_function(&mut self) -> ASTNode {
+        self.next_token(); // Skip 'fn'
+
+        if let Token::Identifier(name) = &self.current_token {
+            let function_name = name.clone();
+            self.next_token(); // Skip function name
+
+            self.expect_token(Token::LParen);
+
+            let mut parameters = Vec::new();
+            while self.current_token != Token::RParen {
+                if let Token::Identifier(param) = &self.current_token {
+                    parameters.push(param.clone());
+                    self.next_token();
+                }
+
+                if self.current_token == Token::Comma {
+                    self.next_token();
+                }
+            }
+
+            self.expect_token(Token::RParen);
+
+            ASTNode::Function(function_name, parameters)
+        } else {
+            panic!("Expected function name, found {:?}", self.current_token);
+        }
+    }
+
+    fn expect_token(&mut self, token: Token) {
+        if self.current_token == token {
+            self.next_token();
+        } else {
+            panic!(
+                "Expected token: {:?}, found: {:?}",
+                token, self.current_token
+            );
+        }
+    }
+}
+
+fn main() {
+    let input = "fn example(a, b) if else while";
+    let lexer = Lexer::new(input);
+    let mut parser = Parser::new(lexer);
+    let ast = parser.parse();
+    println!("{:?}", ast);
 }
