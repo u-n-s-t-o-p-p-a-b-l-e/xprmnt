@@ -16,3 +16,10 @@ enum Token {
     Comma,
     Eof,
 }
+
+struct Lexer<'a> {
+    input: &'a str,
+    position: usize,
+    read_position: usize,
+    current_char: Option<char>,
+}
