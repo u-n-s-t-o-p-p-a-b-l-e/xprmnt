@@ -43,8 +43,21 @@ impl<'a> Lexer<'a> {
         let token = match self.current_char {
             Some('(') => {
                 self.read_char();
-                Toke::LParen
-            })
-        }
+                Token::LParen
+            }
+            Some(')') => {
+                self.read_char();
+                Token::RParen
+            }
+            Some(',') => {
+                self.read_char();
+                Token::Comma
+            }
+            Some(c) if c.is_alphabetic() => self.read_identifier(),
+            None => Token::Eof,
+            _ => panic!("Unexpected character: {:?}", self.current_char),
+        };
+
+        token
     }
 }
