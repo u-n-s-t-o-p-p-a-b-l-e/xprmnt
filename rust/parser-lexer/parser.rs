@@ -54,6 +54,19 @@ impl<'a> Lexer<'a> {
                 self.read_char();
                 Token::LParen
             }
-        }
+            Some(')') => {
+                self.read_char();
+                Toke::RParen
+            }
+            Some(',') => {
+                self.read_char();
+                Token::Comma
+            }
+            Some(c) if c.is_alphabetic() => self.read_identifier(),
+            None => Token::Eof,
+            _ => panic!("Unexpected character: {:?}", self.current_char),
+        };
+
+        token
     }
 }
