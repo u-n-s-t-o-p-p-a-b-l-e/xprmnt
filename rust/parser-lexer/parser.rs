@@ -101,3 +101,18 @@ impl<'a> Lexer<'a> {
         }
     }
 }
+
+struct Parser<'a> {
+    lexer: Lexer<'a>,
+    current_token: Token,
+}
+
+impl<'a> Parser<'a> {
+    fn new(mut lexer: Lexer<'a>) -> Self {
+        let current_token = lexer.next_token();
+        Parser {
+            lexer,
+            current_token,
+        }
+    }
+}
