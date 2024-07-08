@@ -5,3 +5,9 @@ For lexer.rs, run it with:
 ```
  rustc lexer.rs -o lexer && ./lexer
 ```
+
+For parser.rs:
+
+```
+rustc parser.rs -o parser && ./parser
+```
