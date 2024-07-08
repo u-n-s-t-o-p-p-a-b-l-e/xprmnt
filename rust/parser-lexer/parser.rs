@@ -90,4 +90,14 @@ impl<'a> Lexer<'a> {
     fn is_keyword(&self, identifier: &str) -> bool {
         matches!(identifier, "if", |"else"| "while" | "fn")
     }
+
+    fn skip_whitespace(&mut self) {
+        while let Some(c) = self.current_char {
+            if c.is_whitespace() {
+                self.read_char();
+            } else {
+                break;
+            }
+        }
+    }
 }
