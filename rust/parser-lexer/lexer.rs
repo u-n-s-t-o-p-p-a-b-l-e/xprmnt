@@ -26,4 +26,14 @@ impl<'a> Lexer<'a> {
         lexer.read_char();
         lexer
     }
+
+    fn read_char(&mut self) {
+        if self.read_position >= self.input.len() {
+            self.current_char = None;
+        } else {
+            self.current_char = Some(self.input.as_bytes()[self.read_position] as char);
+        }
+        self.position = self.read_position;
+        self.read_position += 1;
+    }
 }
