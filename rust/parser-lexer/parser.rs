@@ -144,6 +144,47 @@ impl<'a> Parser<'a> {
 
                 nodes
             }
+
+            fn parse_function(&mut self) -> ASTNode {
+                self.next_token();
+
+                if let Token::Identifier(name) = &self.current_token {
+                    let function_name = name.clone();
+                    self.next_token();
+
+                    self.expect_token(Token::LParen);
+
+                    let mut parameters = Vec::new();
+                    while self.current_token != Token::RParen {
+                        if let Token::Identifier(param) = &self.current_token {
+                            parameters.push(param.clone());
+                            self.next_token();
+                        }
+
+                        if self.current_token == Token::Comma {
+                            self.next_token();
+                        }
+
+                        if self.current_token == Token::Comma {
+                            self.next_token();
+                        }
+                    } 
+
+                    self.expect_token(Token::RParen);
+
+                    ASTNode::Function(function_name, parameters)
+                } else {
+                    panic!("Expected function name, found {:?}", self.current_token);
+                }
+            }
+
+            fn expect_token(&mut self, token: Token) {
+                if self.current_token == token {
+                    self.next_token();
+                } else {
+                    panic!("Expected token: {:?}", token, self.current_token);
+                }
+            }
         } 
     }
 }
