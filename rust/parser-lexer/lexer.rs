@@ -70,5 +70,11 @@ impl<'a> Lexer<'a> {
                 break;
             }
         }
+        let identifier = &self.input[position..self.position];
+        if self.is_keyword(identifier) {
+            Token::keyword(identifier.to_string())
+        } else {
+            Token::Identifier(identifier.to_string())
+        }
     }
 }
