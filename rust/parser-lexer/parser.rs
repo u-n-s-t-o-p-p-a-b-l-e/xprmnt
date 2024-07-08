@@ -45,4 +45,15 @@ impl<'a> Lexer<'a> {
         self.position = self.read_position;
         self.read_position += 1;
     }
+
+    fn next_token(&mut self) -> Token {
+        self.skip_whitespace();
+
+        let token = match self.current_char {
+            Some('(') => {
+                self.read_char();
+                Token::LParen
+            }
+        }
+    }
 }
