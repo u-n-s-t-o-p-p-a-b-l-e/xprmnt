@@ -86,4 +86,8 @@ impl<'a> Lexer<'a> {
             Token::identifier(identifier.to_string())
         }
     }
+
+    fn is_keyword(&self, identifier: &str) -> bool {
+        matches!(identifier, "if", |"else"| "while" | "fn")
+    }
 }
