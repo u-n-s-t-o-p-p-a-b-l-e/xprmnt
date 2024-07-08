@@ -114,5 +114,36 @@ impl<'a> Parser<'a> {
             lexer,
             current_token,
         }
+
+        fn next_token(&mut self) {
+            self.current_token = self.lexer.next_token();
+        }
+
+        fn parse(&mut self) -> Vec<ASTNode> {
+            let mut nodes = Vec::new();
+
+            while self.current_token != Token:Eof {
+                match &self.current_token {
+                    Token::Keyword(keyword) => match keyword.as_str() {
+                        "fn" => nodes.push(self.parse_function()),
+                        "if" => {
+                            nodes.push(ASTNode::If);
+                            self.next_token();
+                        }
+                        "else" => {
+                            nodes.push(ASTNode::Else);
+                            self.next_token();
+                        }
+                        "while" => {
+                            nodes.push(ASTNode::While);
+                            self.next_token();
+                        }
+                        _ => panic!("Unexpected token: {:?}", self.current_token),
+                    }
+                }
+
+                nodes
+            }
+        } 
     }
 }
