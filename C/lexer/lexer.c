@@ -73,7 +73,7 @@ void get_next_token(Lexer *lexer) {
 			size_t length = lexer->pos - start;
 			char *value = strndup(lexer->input + start, length);
 
-			if (strcmp(value, "if"_) == 0) {
+			if (strcmp(value, "if") == 0) {
 				return create_token(TOKEN_IF, value);
 			} else if (strcmp(value, "else") == 0) {
 				return create_token(TOKEN_ELSE, value);
@@ -81,5 +81,30 @@ void get_next_token(Lexer *lexer) {
 				return create_token(TOKEN_IDENTIFIER, value);
 			}
 		}
+
+		if (current == '{') {
+			advance(lexer);
+			return create_token(TOKEN_LBRACE, "{");
+		}
+
+		if (current == '}') {
+			advance(lexer);
+			return create_token(TOKEN_RBRACE, "}");
+		}
+
+		if (current == '=') {
+			advance(lexer);
+			return create_token(TOKEN_ASSIGN, "=");
+		}
+
+		if (current == ';') {
+			advance(lexer);
+			return create_token(TOKEN_SEMICOLON, ";");
+		}
+
+		advance(lexer);
+		return create_token(TOKEN_INVALID, "INVALID");
 	}
+
+	return create_token(TOKEN_EOF, "EOF");
 }
