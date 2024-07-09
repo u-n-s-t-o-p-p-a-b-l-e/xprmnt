@@ -25,3 +25,18 @@ typedef struct {
 	size_t pos;
 	size_t length;
 } lexer;
+
+Lexer create_lexer(const char *input) {
+	Lexer lexer;
+	lexer.input = input;
+	lexer.pos = 0;
+	lexer.length = strlen(input);
+	return lexer;
+}
+
+char peek(Lexer *lexer) {
+	if (lexer->pos < lexer->length) {
+		return lexer->input[lexer->pos];
+	}
+	return '\0';
+}
