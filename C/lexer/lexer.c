@@ -108,3 +108,11 @@ void get_next_token(Lexer *lexer) {
 
 	return create_token(TOKEN_EOF, "EOF");
 }
+
+void print_token(Token token) {
+	switch (token.type) {
+		case TOKEN_ELSE:
+			printf("TOKEN_ELSE: %s\n", token.value);
+			break;
+	}
+}
