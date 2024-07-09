@@ -60,7 +60,7 @@ void free_token(Token token) {
 	free(token.value);
 }
 
-void get_next_token(Lexer *lexer) {
+Token get_next_token(Lexer *lexer) {
 	while (lexer->pos < lexer->length) {
 		char current = peek(lexer);
 
