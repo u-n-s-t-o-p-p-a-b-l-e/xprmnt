@@ -24,7 +24,7 @@ typedef struct {
 	const char *input;
 	size_t pos;
 	size_t length;
-} lexer;
+} Lexer;
 
 Lexer create_lexer(const char *input) {
 	Lexer lexer;
@@ -54,6 +54,10 @@ Token create_token(TokenType type, const char *value) {
 	token.type = type;
 	token.value = strdup(value);
 	return token;
+}
+
+void free_token(Token token) {
+	free(token.value);
 }
 
 void get_next_token(Lexer *lexer) {
@@ -111,8 +115,46 @@ void get_next_token(Lexer *lexer) {
 
 void print_token(Token token) {
 	switch (token.type) {
+		case TOKEN_IF:
+			printf("TOKEN_IF: %s\n", token.value);
+			break;
 		case TOKEN_ELSE:
 			printf("TOKEN_ELSE: %s\n", token.value);
 			break;
+		case TOKEN_IDENTIFIER:
+			printf("TOKEN_IDENTIFIER: %s\n", token.value);
+			break;
+		case TOKEN_LBRACE:
+			printf("TOKEN_LBRACE: %s\n", token.value);
+			break;
+		case TOKEN_RBRACE:
+			printf("TOKEN_RBRACE: %s\n", token.value);
+			break;
+		case TOKEN_ASSIGN:
+			printf("TOKEN_ASSIGN: %s\n", token.value);
+			break;
+		case TOKEN_SEMICOLON:
+			printf("TOKEN_SEMICOLON: %s\n", token.value);
+			break;
+		case TOKEN_EOF:
+			printf("TOKEN_EOF: %s\n", token.value);
+			break;
+		case TOKEN_INVALID:
+			printf("TOKEN_INVALID: %s\n", token.value);
+			break;
 	}
+}
+
+int main() {
+	const char *input = "if x = y { doSomething(); } else { doSomethingElse(); }";
+	Lexer lexer = create_lexer(input);
+
+	Token token;
+	do {
+		token = get_next_token(&lexer);
+		print_token(token);
+		free_token(token);;;
+	} while (token.type != TOKEN_EOF);
+
+	return 0;
 }
