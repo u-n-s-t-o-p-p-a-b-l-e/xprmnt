@@ -55,3 +55,9 @@ Token create_token(TokenType type, const char *value) {
 	token.value = strdup(value);
 	return token;
 }
+
+void get_next_token(Lexer *lexer) {
+	while (lexer->pos < lexer->length) {
+		char current = peek(lexer);
+	}
+}
