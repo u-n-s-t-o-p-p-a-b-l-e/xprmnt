@@ -59,5 +59,19 @@ Token create_token(TokenType type, const char *value) {
 void get_next_token(Lexer *lexer) {
 	while (lexer->pos < lexer->length) {
 		char current = peek(lexer);
+
+		if (isspace(current)) {
+			advance(lexer);
+			continue;
+		}
+
+		if (isalpha(current)) {
+			size_t start = lexer->pos;
+			while (isalpha(peek(lexer))) {
+				advance(lexer);
+			}
+			size_t length = lexer->pos - start;
+			char *value = strndup(lexer->input + start, length);
+		}
 	}
 }
