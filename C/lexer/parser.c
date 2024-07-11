@@ -36,3 +36,10 @@ Lexer create_lexer(const char *input) {
 	lexer.current_token.value = NULL;
 	return lexer;
 }
+
+char peek(Lexer *lexer) {
+	if (lexer->pos < lexer->length) {
+		return lexer->input[lexer->pos];
+	}
+	return '\0';
+}
