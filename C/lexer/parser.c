@@ -87,5 +87,10 @@ Token get_next_token(Lexer *lexer) {
 				return create_token(TOKEN_IDENTIFIER, value);
 			}
 		}
+
+		if (current == '{') {
+			advance(lexer);
+			return create_token(TOKEN_LBRACE, "{");
+		}
 	}
 }
