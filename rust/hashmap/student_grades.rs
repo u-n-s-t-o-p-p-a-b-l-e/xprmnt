@@ -10,4 +10,6 @@ fn main() {
     for (student, grade) in &grades {
         println!("{}: {}", student, grade);
     }
+
+    grades.insert("Alice", 88);
 }
