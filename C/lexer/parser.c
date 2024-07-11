@@ -114,3 +114,14 @@ Token get_next_token(Lexer *lexer) {
 
 	return create_token(TOKEN_EOF, "EOF");
 }
+
+typedef struct {
+	Lexer lexer;
+} Parser;
+
+Parser create_parser(const char *input) {
+	Parser parser;
+	parser.lexer = create_lexer(input);
+	parser.lexer.current_token = get_next_token(&parser.lexer);
+	return parser;
+}
