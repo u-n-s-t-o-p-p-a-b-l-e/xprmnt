@@ -57,3 +57,7 @@ Token create_token(TokenType type, const char *value) {
 	token.value = strdup(value);
 	return token;
 }
+
+void free_token(Token token) {
+	free(token.value);
+}
