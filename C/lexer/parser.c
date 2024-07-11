@@ -163,3 +163,45 @@ void parse_expression(Parser *parser) {
 		error("Syntax error: expected identifier in expression");
 	}
 }
+
+void parse_block(Parser *parser) {
+	match(parser, TOKEN_LBRACE);
+	while (parser->lexer.current_token.type != TOKEN_RBRACE && parser->lexer.current_token.type != TOKEN_EOF) {
+		parse_statement(parser);
+	}
+	match(parser, TOKEN_RBRACE);
+}
+
+void parse_if_statement(Parser *parser) {
+	match(parser, TOKEN_IF);
+	parse_expression(parser);
+	parse_block(parser);
+
+	if (parser->lexer.current_token.type == TOKEN_ELSE) {
+		match(parser, TOKEN_ELSE);
+		parse_block(parser);
+	}
+}
+
+void parse_statement(Parser *parser) {
+	if (parser->lexer.current_token.type == TOKEN_IF) {
+		parse_if_statement(parser);
+	} else {
+		parse_expression(parser);
+		match(parser, TOKEN_SEMICOLON);
+	}
+}
+
+void parse_program(Parser *parser) {
+	while (parser->lexer.current_token.type  != TOKEN_EOF) {
+		parse_statement(parser);
+	}
+}
+
+int main() {
+	const char *input = "if x = y { doSomething = z; } else { doSomethingElse = z; }";
+	Parser parser = create_parser(input);
+	parse_program(&parser);
+	printf("Parsing completed successfully.\n");
+	return 0;
+}
