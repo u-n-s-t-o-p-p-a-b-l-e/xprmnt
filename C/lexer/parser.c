@@ -26,3 +26,13 @@ typedef struct {
 	size_t length;
 	Token current_token;
 } Lexer;
+
+Lexer create_lexer(const char *input) {
+	Lexer lexer;
+	lexer.input = input;
+	lexer.pos = 0;
+	lexer.length = strlen(input);
+	lexer.current_token.type = TOKEN_INVALID;
+	lexer.current_token.value = NULL;
+	return lexer;
+}
