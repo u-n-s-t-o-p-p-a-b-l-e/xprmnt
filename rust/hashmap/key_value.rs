@@ -10,5 +10,11 @@ fn main() {
     for (key: &String, value: &i32) in &scores {
         println!("Team: {}, Score: {}", key, value);
     }
+
+    let team_name: String = String::from("Blue");
+    match scores.get(&team_name) {
+        Some(score: &i32) => println!("The score for team {} is {}", team_name, score),
+        None => println!("Team {} not found", team_name),
+    }
     
 }
