@@ -125,3 +125,19 @@ Parser create_parser(const char *input) {
 	parser.lexer.current_token = get_next_token(&parser.lexer);
 	return parser;
 }
+
+void error(const char *message) {
+	fprintf(stderr, "%s\n", message);
+	exit(EXIT_FAILURE);
+}
+
+void match(Parser *parser, TokenType type) {
+	if (parser->lexer.current_token.type == type) {
+		free_token(parser->lexer.current_token);
+		parser->lexer.current_token = get_next_token(&parser->lexer);
+	} else {
+		char error_msg[100];
+		snprintf(error_msg, sizeof(error_msg), "Syntax error: unexpected token '%s', expected token type %d", parser->lexer.current_token.value, type);
+		error(error_msg);
+	}
+}
