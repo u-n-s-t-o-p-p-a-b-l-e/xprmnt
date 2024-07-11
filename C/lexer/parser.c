@@ -15,4 +15,14 @@ typedef enum {
 	TOKEN_INVALID
 } TokenType;
 
+typedef struct {
+	TokenType type;
+	char *value;
+} Token;
 
+typedef struct {
+	const char *input;
+	size_t pos;
+	size_t length;
+	Token current_token;
+} Lexer;
