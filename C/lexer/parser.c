@@ -70,5 +70,22 @@ Token get_next_token(Lexer *lexer) {
 			advance(lexer);
 			continue;
 		}
+
+		if (isalpha(current)) {
+			size_t start = lexer->pos;
+			while (isalpha(peek(lexer))) {
+				advance(lexer);
+			}
+			size_t length = lexer->pos - start;
+			char *value = strndup(lexer->input + start, length);
+
+			if (strcmp(value, "if") == 0) {
+				return create_token(TOKEN_IF, value);
+			} else if (strcmp(value, "else") == 0) {
+				return create_token(TOKEN_ELSE, value);
+			} else {
+				return create_token(TOKEN_IDENTIFIER, value);
+			}
+		}
 	}
 }
