@@ -43,3 +43,10 @@ char peek(Lexer *lexer) {
 	}
 	return '\0';
 }
+
+char advance(Lexer *lexer) {
+	if (lexer->pos < lexer->length) {
+		return lexer->input[lexer->pos++];
+	}
+	return '\0';
+}
