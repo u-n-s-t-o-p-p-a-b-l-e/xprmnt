@@ -61,3 +61,14 @@ Token create_token(TokenType type, const char *value) {
 void free_token(Token token) {
 	free(token.value);
 }
+
+Token get_next_token(Lexer *lexer) {
+	while (lexer->pos < lexer->length) {
+		char current = peek(lexer);
+
+		if (isspace(current)) {
+			advance(lexer);
+			continue;
+		}
+	}
+}
