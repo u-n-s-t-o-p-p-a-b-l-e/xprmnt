@@ -16,5 +16,7 @@ fn main() {
         Some(score: &i32) => println!("The score for team {} is {}", team_name, score),
         None => println!("Team {} not found", team_name),
     }
+
+    scores.remove(&team_name);
     
 }
