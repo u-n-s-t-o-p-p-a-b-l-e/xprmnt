@@ -92,5 +92,25 @@ Token get_next_token(Lexer *lexer) {
 			advance(lexer);
 			return create_token(TOKEN_LBRACE, "{");
 		}
+
+		if (current == '}') {
+			advance(lexer);
+			return create_token(TOKEN_RBRACE, "}");
+		}
+
+		if (current == '=') {
+			advance(lexer);
+			return create_token(TOKEN_ASSIGN, "=");
+		}
+
+		if (current == ';') {
+			advance(lexer);
+			return create_token(TOKEN_SEMICOLON, ";");
+		}
+
+		advance(lexer);
+		return create_token(TOKEN_INVALID, "INVALID");
 	}
+
+	return create_token(TOKEN_EOF, "EOF");
 }
