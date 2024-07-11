@@ -6,5 +6,9 @@ fn main() {
     scores.insert(k: String::from("Blue"), v: 10);
     scores.insert(k: String::from("Yellow"), v: 50);
     scores.insert(k: String::from("Green"), v: 30);
+
+    for (key: &String, value: &i32) in &scores {
+        println!("Team: {}, Score: {}", key, value);
+    }
     
 }
