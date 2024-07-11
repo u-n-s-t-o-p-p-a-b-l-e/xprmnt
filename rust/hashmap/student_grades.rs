@@ -16,4 +16,10 @@ fn main() {
     for (student, grade) in &grades {
         println!("{}: {}", student, grade);
     }
+
+    let student_name = "Charlie";
+    match grades.get(student_name) {
+        Some(grade) => println!("{}'s grade is {}", student_name, grade),
+        None => println!("Student {} not found", student_name),
+    }
 }
