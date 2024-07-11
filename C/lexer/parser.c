@@ -50,3 +50,10 @@ char advance(Lexer *lexer) {
 	}
 	return '\0';
 }
+
+Token create_token(TokenType type, const char *value) {
+	Token token;
+	token.type = type;
+	token.value = strdup(value);
+	return token;
+}
