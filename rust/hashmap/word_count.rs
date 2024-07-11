@@ -9,4 +9,8 @@ fn main() {
         let count = word_counts.entry(word).or_insert(0);
         *count += 1;
     }
+
+    for (word, count) in &word_counts {
+        println!("{}: {}", word, count);
+    }
 }
