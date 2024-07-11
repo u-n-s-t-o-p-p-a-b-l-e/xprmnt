@@ -18,5 +18,8 @@ fn main() {
     }
 
     scores.remove(&team_name);
-    
-}
+
+    for (key: &String, value: &i32) in &scores {
+        println!("Team: {}, Score: {}", key, value);
+    }
+} fn main
