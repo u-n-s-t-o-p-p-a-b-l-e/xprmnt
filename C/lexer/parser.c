@@ -141,3 +141,25 @@ void match(Parser *parser, TokenType type) {
 		error(error_msg);
 	}
 }
+
+
+void parse_expression(Parser *parser);
+void parse_statement(Parser *parser);
+
+void parse_expression(Parser *parser) {
+	if (parser->lexer.current_token.type == TOKEN_IDENTIFIER) {
+		match(parser, TOKEN_IDENTIFIER);
+		if (parser->lexer.current_token.type == TOKEN_ASSIGN) {
+			match(parser, TOKEN_ASSIGN);
+			if (parser->lexer.current_token.type == TOKEN_IDENTIFIER) {
+				match(parser, TOKEN_ASSIGN);
+			} else {
+				error("Syntax error: expected identifier after '='");
+			}
+		} else {
+			error("Syntax error: expected '=' after identifier");
+		}
+	} else {
+		error("Syntax error: expected identifier in expression");
+	}
+}
