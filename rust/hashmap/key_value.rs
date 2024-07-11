@@ -1,25 +1,25 @@
 use std::collections::HashMap;
 
 fn main() {
-    let mut scores: HashMap<String, i32> = HashMap::new();
+    let mut scores = HashMap::new();
 
-    scores.insert(k: String::from("Blue"), v: 10);
-    scores.insert(k: String::from("Yellow"), v: 50);
-    scores.insert(k: String::from("Green"), v: 30);
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+    scores.insert(String::from("Green"), 30);
 
-    for (key: &String, value: &i32) in &scores {
+    for (key, value) in &scores {
         println!("Team: {}, Score: {}", key, value);
     }
 
-    let team_name: String = String::from("Blue");
+    let team_name = String::from("Blue");
     match scores.get(&team_name) {
-        Some(score: &i32) => println!("The score for team {} is {}", team_name, score),
+        Some(score) => println!("The score for team {} is {}", team_name, score),
         None => println!("Team {} not found", team_name),
     }
 
     scores.remove(&team_name);
 
-    for (key: &String, value: &i32) in &scores {
+    for (key, value) in &scores {
         println!("Team: {}, Score: {}", key, value);
     }
-} fn main
+}
