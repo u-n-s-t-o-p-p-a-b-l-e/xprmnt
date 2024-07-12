@@ -19,3 +19,13 @@ fn main() {
         None => println!("{} is not in the inventory", item);
     }
 }
+
+fn remove_item(inventory: &mut HashMap<String, u32>, item: &str, quantity: u32) {
+    let count = inventory.entry(item.to_string()).or_insert(0);
+    if *count >= quantity {
+        *count -= quantity;
+        println!("Removed {} {}(s)", quantity, item);
+    } else {
+        println!("Not enough {} to remove", item);
+    }
+}
