@@ -35,3 +35,12 @@ fn remove_item(inventory: &mut HashMap<String, u32>, item: &str, quantity: u32) 
         println!("Not enough {} to remove", item);
     }
 }
+
+fn update_item(inventory: &mut HashMap<String, u32>, item: &str, quantity: u32) {
+    if let some(count) = inventory.get_mut(item) {
+        *count = quantity;
+        println!("Updated {} quantity to {}", item, quantity);
+    } else {
+        println!("{} is not in the inventory", item);
+    }
+}
