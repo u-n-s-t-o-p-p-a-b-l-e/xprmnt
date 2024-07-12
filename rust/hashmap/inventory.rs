@@ -44,3 +44,10 @@ fn update_item(inventory: &mut HashMap<String, u32>, item: &str, quantity: u32) 
         println!("{} is not in the inventory", item);
     }
 }
+
+fn display_inventory(inventory: &HashMap<String, u32>) {
+   println!("\nCurrent inventory:"); 
+   for (item, quantity) in inventory {
+       println!("{}: {}", item, quantity);
+   }
+}
