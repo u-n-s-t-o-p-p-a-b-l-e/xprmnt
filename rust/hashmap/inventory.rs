@@ -15,12 +15,12 @@ fn main() {
 
     let item = "Orange";
     match inventory.get(item) {
-        Some(quantity) => println!("{}: {} left in inventory, item, quantity"),
-        None => println!("{} is not in the inventory", item);
+        Some(quantity) => println!("{}: {} left in inventory", item, quantity),
+        None => println!("{} is not in the inventory", item),
     }
 }
 
-fn add_item(inventory: &muit HashMap<String, u32>, item: &str, quantity: u32) {
+fn add_item(inventory: &mut HashMap<String, u32>, item: &str, quantity: u32) {
     let count = inventory.entry(item.to_string()).or_insert(0);
     *count += quantity;
     println!("Addd {} {}(s)", quantity, item);
@@ -37,7 +37,7 @@ fn remove_item(inventory: &mut HashMap<String, u32>, item: &str, quantity: u32) 
 }
 
 fn update_item(inventory: &mut HashMap<String, u32>, item: &str, quantity: u32) {
-    if let some(count) = inventory.get_mut(item) {
+    if let Some(count) = inventory.get_mut(item) {
         *count = quantity;
         println!("Updated {} quantity to {}", item, quantity);
     } else {
@@ -46,8 +46,8 @@ fn update_item(inventory: &mut HashMap<String, u32>, item: &str, quantity: u32) 
 }
 
 fn display_inventory(inventory: &HashMap<String, u32>) {
-   println!("\nCurrent inventory:"); 
-   for (item, quantity) in inventory {
-       println!("{}: {}", item, quantity);
-   }
+    println!("\nCurrent inventory:");
+    for (item, quantity) in inventory {
+        println!("{}: {}", item, quantity);
+    }
 }
