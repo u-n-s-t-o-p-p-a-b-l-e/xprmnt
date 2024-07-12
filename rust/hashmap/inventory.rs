@@ -20,6 +20,12 @@ fn main() {
     }
 }
 
+fn add_item(inventory: &muit HashMap<String, u32>, item: &str, quantity: u32) {
+    let count = inventory.entry(item.to_string()).or_insert(0);
+    *count += quantity;
+    println!("Addd {} {}(s)", quantity, item);
+}
+
 fn remove_item(inventory: &mut HashMap<String, u32>, item: &str, quantity: u32) {
     let count = inventory.entry(item.to_string()).or_insert(0);
     if *count >= quantity {
