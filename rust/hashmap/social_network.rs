@@ -17,7 +17,7 @@ fn main() {
 }
 
 fn add_friend(network: &mut HashMap<String, Vec<String>>, user: &str, friend: &str) {
-    let friends == network.entry(user.to_string()).or_insert(Vec::new());
+    let friends = network.entry(user.to_string()).or_insert(Vec::new());
     friends.push(friend.to_string());
     println!("Added {} as a friend of {}", friend, user);
 }
