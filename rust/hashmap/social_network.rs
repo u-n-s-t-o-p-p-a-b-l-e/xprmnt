@@ -8,4 +8,10 @@ fn main() {
     add_friend(&mut social_network, "Bob", "Dave");
 
     display_network(&social_network);
+
+    let user = "Alice";
+    match social_network.get(user) {
+        Some(friends) => println!("{}'s friends: {:?}", user, friends),
+        None => println!("{} has no friends in the network", user),
+    }
 }
