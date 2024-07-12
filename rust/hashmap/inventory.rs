@@ -7,7 +7,9 @@ fn main() {
     add_item(&mut inventory, "Banana", 5);
     add_item(&mut inventory, "Orange", 8);
 
-    remove_item(&mut inventory, "Apple", 2);
+    remove_item(&mut inventory, "Banana", 2);
 
     update_item(&mut inventory, "Apple", 15);
+
+    display_inventory(&inventory);
 }
