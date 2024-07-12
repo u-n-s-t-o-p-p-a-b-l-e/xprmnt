@@ -21,3 +21,10 @@ fn add_friend(network: &mut HashMap<String, Vec<String>>, user: &str, friend: &s
     friends.push(friend.to_string());
     println!("Added {} as a friend of {}", friend, user);
 }
+
+fn display_network(network: &HashMap<String, Vec<String>>) {
+    println!("\nSocial Network:");
+    for (user, friends) in network {
+        println!("{}: {:?}", user, friends);
+    }
+}
