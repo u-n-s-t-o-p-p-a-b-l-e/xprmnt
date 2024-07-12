@@ -12,4 +12,10 @@ fn main() {
     update_item(&mut inventory, "Apple", 15);
 
     display_inventory(&inventory);
+
+    let item = "Orange";
+    match inventory.get(item) {
+        Some(quantity) => println!("{}: {} left in inventory, item, quantity"),
+        None => println!("{} is not in the inventory", item);
+    }
 }
