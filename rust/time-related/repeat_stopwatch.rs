@@ -13,4 +13,12 @@ impl Stopwatch {
             duration: Duration::new(0, 0),
         }
     }
+
+    fn start(&mut self) {
+        if self.start.is_none() {
+            self.start = Some(Instant::now());
+        }
+    }
+
+    fn
 }
