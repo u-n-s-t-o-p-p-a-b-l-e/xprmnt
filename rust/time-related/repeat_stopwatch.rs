@@ -31,4 +31,11 @@ impl Stopwatch {
         self.start = None;
         self.duration = Duration::new(0, 0);
     }
+
+    fn elapsed(&self) -> Duration {
+        match self.start {
+            Some(start_time) => self.duration + start_time.elapsed(),
+            None => self.duration,
+        }
+    }
 }
