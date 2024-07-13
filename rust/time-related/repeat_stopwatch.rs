@@ -1,5 +1,5 @@
-use std::time::{Duration, Instant};
 use std::thread::sleep;
+use std::time::{Duration, Instant};
 
 struct Stopwatch {
     start: Option<Instant>,
@@ -20,5 +20,10 @@ impl Stopwatch {
         }
     }
 
-    fn
+    fn stop(&mut self) {
+        if let Some(start_time) = self.start {
+            self.duration += start_time.elapsed();
+            self.start = None;
+        }
+    }
 }
