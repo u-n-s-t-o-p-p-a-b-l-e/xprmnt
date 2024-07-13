@@ -11,4 +11,6 @@ fn main() {
     println!("Sum: {}", sum);
 
     println!("Sleeping for 2 seconds...");
+    std::thread::sleep(Duration::new(2, 0));
+    println!("Awake!");
 }
