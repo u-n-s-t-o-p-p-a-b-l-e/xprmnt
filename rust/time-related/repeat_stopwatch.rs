@@ -26,4 +26,9 @@ impl Stopwatch {
             self.start = None;
         }
     }
+
+    fn reset(&mut self) {
+        self.start = None;
+        self.duration = Duration::new(0, 0);
+    }
 }
