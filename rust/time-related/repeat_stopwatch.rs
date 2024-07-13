@@ -39,3 +39,17 @@ impl Stopwatch {
         }
     }
 }
+
+fn main() {
+    stopwatch.start();
+    sleep(Duration::from_secs(3));
+    stopwatch.stop();
+    println!("Elapsed time: {:?}", stopwatch.elapsed());
+
+    stopwatch.reset();
+    println!("After reset: {:?}", stopwatch.elapsed);
+
+    stopwatch.start();
+    sleep(Duration::from_secs(2));
+    println!("Elapsed time after restart: {:?}", stopwatch.elapsed());
+}
