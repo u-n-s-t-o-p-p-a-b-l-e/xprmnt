@@ -15,4 +15,8 @@ This example demonstrates how to use lifetimes to ensure that a borrowed value d
 
 This example demonstrates how to define a struct that holds references with lifetimes.
 
+`book.rs` Life annotations in methods.
+
+This example shows how to use lifetimes in methods.
+
 
