@@ -12,3 +12,13 @@ impl<'a> Book<'a> {
         self.author
     }
 }
+
+fn main() {
+    let book = Book {
+        title: "1984",
+        author: "George Orwell",
+    };
+
+    println!("Title: {}", book.get_title());
+    println!("Author: {}", book.get_author);
+}
