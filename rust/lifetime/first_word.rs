@@ -9,3 +9,11 @@ fn first_word(s: &str) -> &str {
 
     &s[..]
 }
+
+fn main() {
+    let my_string = String::from("Hey world");
+
+    let word = first_word(&my_string[..]);
+
+    println!("The first word is: {}", word);
+}
