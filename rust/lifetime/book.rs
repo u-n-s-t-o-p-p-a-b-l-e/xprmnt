@@ -4,11 +4,11 @@ struct Book<'a> {
 }
 
 impl<'a> Book<'a> {
-    fn get_title(&self) ->  &'a str {
+    fn get_title(&self) -> &'a str {
         self.title
     }
 
-    fn get_author() {
-        
+    fn get_author(&self) -> &'a str {
+        self.author
     }
 }
