@@ -1,4 +1,4 @@
-This directory is for lifetime in Rust.
+This directory is for `lifetime` in Rust.
 
 Run any file with rustc, eg:
 
@@ -18,5 +18,9 @@ This example demonstrates how to define a struct that holds references with life
 `book.rs` Life annotations in methods.
 
 This example shows how to use lifetimes in methods.
+
+`first_word.rs` Lifetime elision.
+
+This example demonstrates lifetime elision rules in function signatures.
 
 
