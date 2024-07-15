@@ -8,10 +8,9 @@ fn main() {
     } else {
         println!("Dot not found.");
     }
-    // Other way to  do it
+    // Other way to do it
     if let Some(mark2) = text.find('.') {
         let before_dot2 = &text[..mark2];
-
         println!("Word before dot: {}", before_dot);
     } else {
         println!("Dot not found.");
