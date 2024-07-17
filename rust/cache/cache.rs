@@ -26,9 +26,35 @@ impl Cache {
     fn compute(&self, key: u32) -> u32 {
         if let Some(value) = self.get(key) {
             return value;
-        } 
-        let value Some(value) = self.get(key) {
-            return value;
+        }
+        let value = key * key;
+        self.insert(key, value);
+        value
+    }
+}
+
+fn main() {
+    let cache = Arc::new(Cache::new());
+    let mut handles = vec![];
+
+    for i in 0..10 {
+        let cache = Arc::clone(&cache);
+        let handle = thread::spawn(move || {
+            let result = cache.compute(i);
+            println!("Computed {}: {}", i, rewult);
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    for i in 0..10 {
+        if let Some(value) = cache.get(i) {
+            println!("Cache hit {}: {}", i, value);
+        } else {
+            println!("Cache miss {}", i);
         }
     }
 }
