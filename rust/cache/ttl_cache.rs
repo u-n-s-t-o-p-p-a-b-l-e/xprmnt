@@ -7,3 +7,8 @@ struct CacheEntry {
     value: u32,
     expiry: Instant,
 }
+
+struct TTLCache {
+    data: Mutex<HashMap<u32, CacheEntry>>,
+    ttl: Duration,
+}
