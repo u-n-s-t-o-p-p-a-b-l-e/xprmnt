@@ -20,4 +20,15 @@ impl TTLCache {
             ttl,
         }
     }
+
+    fn get(&self, key: u32) -> Option<u32> {
+        let mut data = self.data.lock().unwrap();
+        if let Some(entry) = data.get(&key) {
+            if entry.expiry > Instant::now() {
+                return Some(entry.vallue);
+            } else {
+                data.remove(&key);
+            }
+        }
+    }
 }
