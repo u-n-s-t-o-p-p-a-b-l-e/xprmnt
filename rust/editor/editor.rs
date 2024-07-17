@@ -12,7 +12,11 @@ fn main() {
         Let mut buffer = [0; 1];
         io::stdin().read_exact(&mut buffer).unwrap();
 
-        if buffer[0] == b'q' 
+        if buffer[0] == b'q' {
             break;
+        }
     }
+
+    print!("\x1B[2J\x1B[H");
+    io::stdout().flush().unwrap();
 }
