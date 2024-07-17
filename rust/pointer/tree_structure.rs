@@ -4,7 +4,7 @@ use std::rc::Rc;
 #[derive(Debug)]
 struct Node {
     value: i32,
-    children: Vec<Rc<RefCell<Node>>>,q
+    children: Vec<Rc<RefCell<Node>>>,
 }
 
 impl Node {
