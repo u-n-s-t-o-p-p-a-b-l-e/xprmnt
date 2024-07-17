@@ -11,5 +11,8 @@ fn main() {
     loop {
         Let mut buffer = [0; 1];
         io::stdin().read_exact(&mut buffer).unwrap();
+
+        if buffer[0] == b'q' 
+            break;
     }
 }
