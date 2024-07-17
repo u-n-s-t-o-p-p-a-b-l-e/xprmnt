@@ -23,5 +23,12 @@ impl Cache {
         data.insert(key, value);
     }
 
-    fn compute(&self, key: u32)
+    fn compute(&self, key: u32) -> u32 {
+        if let Some(value) = self.get(key) {
+            return value;
+        } 
+        let value Some(value) = self.get(key) {
+            return value;
+        }
+    }
 }
