@@ -41,4 +41,13 @@ impl TTLCache {
         };
         data.insert(key, entry);
     }
+
+    fn compute(&self, key: u32) -> u32 {
+        if let Some(value) = self.get(key) {
+            return value;
+        }
+        let value = key * key;
+        self.insert(key, value);
+        value
+    }
 }
