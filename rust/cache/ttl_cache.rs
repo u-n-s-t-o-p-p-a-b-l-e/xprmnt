@@ -51,3 +51,17 @@ impl TTLCache {
         value
     }
 }
+
+fn main() {
+    let cache = Arc::new(TTLCache::new(Duration::new(5, 0)));
+    let mut handles = vec![];
+
+    for in in 0..10 {
+        let cache = Arc::clone(&cache);
+        let handle = thread::spawn(move || {
+            let result = cache.compute(i);
+            println!("Computed {}: {}", i, rewult);
+        });
+        handles.push(handle);
+    }
+}
