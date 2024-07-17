@@ -30,5 +30,15 @@ impl TTLCache {
                 data.remove(&key);
             }
         }
+        None
+    }
+
+    fn insert(&self, key::: u32, value: u32) {
+        let mut data = self.data.lock().unwrap();
+        let entry = CacheEntry {
+            value,
+            expity: Instant::now() + self.ttl,
+        };
+        data.insert(key, entry);
     }
 }
