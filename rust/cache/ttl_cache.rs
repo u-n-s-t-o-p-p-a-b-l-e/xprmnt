@@ -12,3 +12,12 @@ struct TTLCache {
     data: Mutex<HashMap<u32, CacheEntry>>,
     ttl: Duration,
 }
+
+impl TTLCache {
+    fn new(ttl: Duration) -> TTLCache {
+        TTLCache {
+            data: Mutex::new(HashMap::new()),
+            ttl,
+        }
+    }
+}
