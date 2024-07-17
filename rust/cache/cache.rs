@@ -17,4 +17,11 @@ impl Cache {
         let data = self.data.lock().unwrap();
         data.get(&key).cloned()
     }
+
+    fn insert(&self, key: u32, value: u32) {
+        let mut data = self.data.lock().unwrap();
+        data.insert(key, value);
+    }
+
+    fn compute(&self, key: u32)
 }
