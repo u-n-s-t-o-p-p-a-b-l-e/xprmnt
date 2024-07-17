@@ -7,4 +7,9 @@ fn main() {
 
     println!("Welcome to Rust Editor!");
     println!("Press 'q' to quit.");
+
+    loop {
+        Let mut buffer = [0; 1];
+        io::stdin().read_exact(&mut buffer).unwrap();
+    }
 }
