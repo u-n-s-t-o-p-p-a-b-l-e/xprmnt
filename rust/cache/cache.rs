@@ -12,4 +12,9 @@ impl Cache {
             data: Mutex::new(HashMap::new()),
         }
     }
+
+    fn get(&self, key: u32) -> Option<u32> {
+        let data = self.data.lock().unwrap();
+        data.get(&key).cloned()
+    }
 }
