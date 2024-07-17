@@ -70,4 +70,12 @@ fn main() {
     }
 
     thread::sleep(Duration::new(6, 0));
+
+    for i in 0..10 {
+        if let Some(value) = cache.get(i) {
+            println!("Cache hit {}: {}", i, value);
+        } else {
+            println!("Cache miss {}", i);
+        }
+    }
 }
