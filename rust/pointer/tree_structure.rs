@@ -27,3 +27,17 @@ impl Node {
         }
     }
 }
+
+fn main() {
+    let root = Node::new(1);
+    let child1 = Node::new(2);
+    let child2 = Node::new(3);
+
+    Node::add_child(&root, child1.clone());
+    Node::add_child(&root, child2.clone());
+    Node::add_child(&child1, Node::new(4));
+    Node::add_child(&child1, Node::new(5));
+    Node::add_child(&child2, Node::new(6));
+
+    Node::print_tree(&root, 0);
+}
