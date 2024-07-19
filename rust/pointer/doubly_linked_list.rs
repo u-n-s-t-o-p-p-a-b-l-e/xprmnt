@@ -31,4 +31,15 @@ impl DoublyLinkedList {
             tail: None,
         }
     }
+
+    fn append(&mut self, value: i32) {
+        let new_code = Node::new(value);
+        match self.tail.take() {
+            Some(old_tail) => {
+                old_tail.borrow_mut().next = Some(new_node.clone());
+                new_node.borrow_mut().prev = Some(Rc::downgrade(&old_tail));
+                self.tail = Some(new_node);
+            }
+        }
+    }
 }
