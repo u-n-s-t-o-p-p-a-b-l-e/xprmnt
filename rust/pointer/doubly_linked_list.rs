@@ -19,7 +19,7 @@ impl Node {
 }
 
 #[derive(Debug)]
-struct DoubliLinkedList {
+struct DoublyLinkedList {
     head: Option<Rc<RefCell<Node>>>,
     tail: Option<Rc<RefCell<Node>>>,
 }
@@ -33,7 +33,7 @@ impl DoublyLinkedList {
     }
 
     fn append(&mut self, value: i32) {
-        let new_code = Node::new(value);
+        let new_node = Node::new(value);
         match self.tail.take() {
             Some(old_tail) => {
                 old_tail.borrow_mut().next = Some(new_node.clone());
@@ -60,6 +60,7 @@ impl DoublyLinkedList {
         let mut current = self.tail.clone();
         while let Some(node) = current {
             print!("{} ", node.borrow().value);
+            current = node.borrow().prev.clone().and_then(|weak| weak.upgrade());
         }
         println!();
     }
