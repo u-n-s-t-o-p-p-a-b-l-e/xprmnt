@@ -40,6 +40,19 @@ impl DoublyLinkedList {
                 new_node.borrow_mut().prev = Some(Rc::downgrade(&old_tail));
                 self.tail = Some(new_node);
             }
+            None => {
+                self.head = Some(new_node.clone());
+                self.tail = Some(new_node);
+            }
         }
+    }
+
+    fn print_forward(&self) {
+        let mut current = self.head.clone();
+        while let Some(node) = current {
+            print!("{} ", node.borrow().value);
+            current = node.borrow().next.clone();
+        }
+        println!();
     }
 }
