@@ -9,6 +9,11 @@ func swap(a, b *int) {
 }
 
 func increment(n *int) {
-	*n++:update
+	*n++
 
+}
+
+type Person struct {
+	name string
+	age int
 }
