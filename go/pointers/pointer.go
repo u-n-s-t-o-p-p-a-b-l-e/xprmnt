@@ -31,4 +31,13 @@ func main() {
 	fmt.Println("b =", b)
 
 	swap(&a, &b)	
+
+	fmt.Println("After swap:")
+	fmt.Println("a =", a)
+	fmt.Println("b =", b)
+
+	num := 5
+	fmt.Println("\nBefore increment:", num)
+	increment(&num)
+	fmt.Println("After increment:", num)
 }
