@@ -8,3 +8,12 @@ Struct Node {
     prev: Option<Weak<RefCell<Node>>>,
 }
 
+impl Node {
+    fn new(value: i32) -> Rc<RefCell<Node>> {
+        Rc::new(RefCell::new(Node {
+            value,
+            next: None,
+            prev: None,
+        }))
+    }
+}
