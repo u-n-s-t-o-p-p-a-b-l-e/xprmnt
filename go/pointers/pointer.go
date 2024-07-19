@@ -17,3 +17,7 @@ type Person struct {
 	name string
 	age int
 }
+
+func updateName(p *Person, newName string) {
+	p.name = newName
+}
