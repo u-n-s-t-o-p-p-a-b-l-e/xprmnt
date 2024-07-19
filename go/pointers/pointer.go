@@ -40,4 +40,9 @@ func main() {
 	fmt.Println("\nBefore increment:", num)
 	increment(&num)
 	fmt.Println("After increment:", num)
+
+	person := Person{name: "Alice", age: 30}
+	fmt.Println("\nBefore name update:", person)
+	updateName(&person, "Bob")
+	fmt.Println("After name update:", person)
 }
