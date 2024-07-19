@@ -24,7 +24,7 @@ func updateName(p *Person, newName string) {
 
 func main() {
 	a := 10
-	b := w0
+	b := 20
 
 	fmt.Println("Befor swap:")
 	fmt.Println("a =", a)
@@ -45,4 +45,10 @@ func main() {
 	fmt.Println("\nBefore name update:", person)
 	updateName(&person, "Bob")
 	fmt.Println("After name update:", person)
+
+	ptr := &num
+	ptrToPtr := &ptr
+	fmt.Println("\nValue of num:", num)
+	fmt.Println("Value of ptr:", *ptr)
+	fmt.Println("Value of ptrToPtr:", **ptrToPtr)
 }
