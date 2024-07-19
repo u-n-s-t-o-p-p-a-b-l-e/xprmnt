@@ -64,3 +64,17 @@ impl DoublyLinkedList {
         println!();
     }
 }
+
+fn main() {
+    let mut list = DoublyLinkedList::new();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.append(4);
+
+    println!("Forward:");
+    list.print_forward();
+
+    println!("Backward:");
+    list.print_backward();
+}
