@@ -17,3 +17,9 @@ impl Node {
         }))
     }
 }
+
+#[derive(Debug)]
+struct DoubliLinkedList {
+    head: Option<Rc<RefCell<Node>>>,
+    tail: Option<Rc<RefCell<Node>>>,
+}
