@@ -23,3 +23,12 @@ struct DoubliLinkedList {
     head: Option<Rc<RefCell<Node>>>,
     tail: Option<Rc<RefCell<Node>>>,
 }
+
+impl DoublyLinkedList {
+    fn new() -> Self {
+        DoublyLinkedList {
+            head: None,
+            tail: None,
+        }
+    }
+}
