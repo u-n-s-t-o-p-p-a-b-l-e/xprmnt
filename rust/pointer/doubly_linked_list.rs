@@ -55,4 +55,12 @@ impl DoublyLinkedList {
         }
         println!();
     }
+
+    fn print_backward(&self) {
+        let mut current = self.tail.clone();
+        while let Some(node) = current {
+            print!("{} ", node.borrow().value);
+        }
+        println!();
+    }
 }
