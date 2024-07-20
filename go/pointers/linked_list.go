@@ -31,4 +31,15 @@ func (list *LinkedList) printList() {
 		fmt.Print(current.value, " -> ")
 		current = current.next
 	}
+	fmt.Println("nil")
+}
+
+func main() {
+	list := LinkedList{}
+
+	list.append(1)
+	list.append(2)
+	list.append(3)
+
+	list.printList()
 }
