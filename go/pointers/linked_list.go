@@ -24,3 +24,11 @@ func (list *LinkedList) append(value int) {
 		current.next = newNode
 	}
 }
+
+func (list *LinkedList) printList() {
+	current := list.head
+	for current != nil {
+		fmt.Print(current.value, " -> ")
+		current = current.next
+	}
+}
