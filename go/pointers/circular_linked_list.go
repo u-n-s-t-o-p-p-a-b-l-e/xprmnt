@@ -44,3 +44,13 @@ func (list *CircularLinkedList) printList() {
 	}
 	fmt.Println("head")
 }
+
+func main() {
+	list := CircularLinkedList{}
+
+	list.append(1)
+	list.append(2)
+	list.append(3)
+
+	list.printList()
+}
