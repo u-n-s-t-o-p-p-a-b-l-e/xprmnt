@@ -7,3 +7,13 @@ func doubleValues(nums *[]int) {
 		(*nums)[i] *= 2
 	}
 }
+
+func main() {
+	nums := []int{1, 2, 3, 4, 5}
+
+	fmt.Println("Before doubling:", nums)
+	doubleValues(&nums)
+	fmt.Println("After doubling:", nums)
+}
+
+
