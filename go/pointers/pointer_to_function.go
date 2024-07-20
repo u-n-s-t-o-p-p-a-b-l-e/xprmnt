@@ -11,3 +11,10 @@ func applyFunction(nums []int, f func(*int)) {
 		f(&nums[i])
 	}
 }
+
+func main() {
+	num := 10
+	fmt.Println("Before modifyValue:", num)
+	modifyValue(&num)
+	fmt.Println("After modifyValue:", num)
+}
