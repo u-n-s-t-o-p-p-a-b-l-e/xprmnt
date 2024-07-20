@@ -17,4 +17,9 @@ func main() {
 	fmt.Println("Before modifyValue:", num)
 	modifyValue(&num)
 	fmt.Println("After modifyValue:", num)
+
+	nums := []int{1, 2, 3, 4, 5}
+	fmt.Println("Before applyFunction:", nums)
+	applyFunction(nums, modifyValue)
+	fmt.Println("After applyFunction:", nums)
 }
