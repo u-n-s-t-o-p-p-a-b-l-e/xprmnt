@@ -26,3 +26,16 @@ func (node *TreeNode) inOrder() {
     fmt.Print(node.value, " ") 
     node.right.inOrder()
 }
+
+func main() {
+	root := &TreeNode{value: 10}
+	values := []int{5, 15, 3, 7, 12, 18}
+
+	for _, v := range values {
+		root.insert(v)
+	}
+
+	fmt.Print("In-order traversal: ")
+	root.inOrder()
+	fmt.Println()
+}
