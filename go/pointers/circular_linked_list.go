@@ -28,3 +28,19 @@ func (list *CircularLinkedList) append(value int) {
 		newNode.next = list.head
 	}
 }
+
+func (list *CircularLinkedList) printList() {
+	if list.head == nil {
+		fmt.Println("List is empty")
+		return
+	}
+	current := list.head
+	for {
+		fmt.Print(current.value, " -> ")
+		current = current.next
+		if current == list.head {
+			break
+		}
+	}
+	fmt.Println("head")
+}
