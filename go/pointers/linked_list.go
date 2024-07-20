@@ -10,3 +10,17 @@ type Node struct {
 type LinkedList struct {
 	head *Node
 }
+
+
+func (list *LinkedList) append(value int) {
+	newNode := &Node{value: value}
+	if list.head == nil {
+		list.head = newNode
+	} else {
+		current := list.head
+		for current.next != nil {
+			current = current.next
+		}
+		current.next = newNode
+	}
+}
