@@ -17,3 +17,12 @@ func (node *TreeNode) insert(value int) {
         }
     }
 }
+
+func (node *TreeNode) inOrder() {
+    if node == nil {
+        return
+    }
+    node.left.inOrder()
+    fmt.Print(node.value, " ") 
+    node.right.inOrder()
+}
