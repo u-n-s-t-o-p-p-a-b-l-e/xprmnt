@@ -12,7 +12,7 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Println("Enter numbers separated by spaces (e.g., 1 2 3)")
-	input, _ = reader.ReadString('\n')
+	input, _ := reader.ReadString('\n')
 
 	numStrings := strings.Fields(input)
 
