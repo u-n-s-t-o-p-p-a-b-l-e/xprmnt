@@ -16,3 +16,8 @@ impl Shape for Circle {
         2.0 * std::f64::consts::PI * self.radius
     }
 }
+
+struct Rectangle {
+    width: f64,
+    height: f64,
+}
