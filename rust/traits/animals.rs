@@ -20,3 +20,9 @@ impl Animal for Dog {
 struct Cat {
     name: String,
 }
+
+impl Animal for Cat {
+    fn spead(&self) -> String {
+        "Meow!".to_string()
+    }
+}
