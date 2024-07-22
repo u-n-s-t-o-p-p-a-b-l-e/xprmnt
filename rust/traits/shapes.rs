@@ -31,3 +31,8 @@ impl Shape for Rectangle {
         2.0 * (self.width + self.height)
     }
 }
+
+fn print_shape_details(shape: &dyn Shape) {
+    println!("Area: {}", shape.area());
+    println!("Perimeter: {}", shape.perimeter());
+}
