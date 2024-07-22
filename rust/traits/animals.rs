@@ -11,4 +11,12 @@ impl Animal for Dog {
     fn spead(&self) -> String {
         "woof!".to_string()
     }
+
+    fn name(&self) -> String {
+        self.name.clone()
+    }
+}
+
+struct Cat {
+    name: String,
 }
