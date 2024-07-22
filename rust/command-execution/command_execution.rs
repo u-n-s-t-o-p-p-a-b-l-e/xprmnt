@@ -15,5 +15,7 @@ fn main() {
         println!("Command output:\n{}", stdout);
     } else {
         let stderr = str::from_utf8(&output.stderr).expect("Failed to parse stderr");
+
+        println!("Command failed:\n{}"m stderr);
     }
 }
