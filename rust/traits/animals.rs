@@ -6,3 +6,9 @@ trait Animal {
 struct Dog {
     name: String,
 }
+
+impl Animal for Dog {
+    fn spead(&self) -> String {
+        "woof!".to_string()
+    }
+}
