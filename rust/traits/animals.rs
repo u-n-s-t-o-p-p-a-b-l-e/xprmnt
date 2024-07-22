@@ -25,4 +25,8 @@ impl Animal for Cat {
     fn spead(&self) -> String {
         "Meow!".to_string()
     }
+
+    fn name(&self) -> String {
+        self.name.clone()
+    }
 }
