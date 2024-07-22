@@ -30,3 +30,7 @@ impl Animal for Cat {
         self.name.clone()
     }
 }
+
+fn print_animal_details(animal: &dyn Animal) {
+    println!("{} says: {}", animal.name(), animal.speak());
+}
