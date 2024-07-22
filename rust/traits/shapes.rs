@@ -36,3 +36,14 @@ fn print_shape_details(shape: &dyn Shape) {
     println!("Area: {}", shape.area());
     println!("Perimeter: {}", shape.perimeter());
 }
+
+fn main() {
+    let circle = Circle { radius: 5.0 };
+    let rectangle = Rectangle { width: 4.0, height: 7.0 };
+
+    println!("Circle");
+    print_shape_details(&circle);
+
+    println!("\nRectangle:");
+    print_shape_details(&rectangle);
+}
