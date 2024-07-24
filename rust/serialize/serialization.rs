@@ -39,4 +39,7 @@ fn main() {
         age: 30,
         email: "alice@example.com".to_string(),
     };
+
+    let serialized = serialize(&person);
+    println!("Serialized: {}", serialized);
 }
