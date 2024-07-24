@@ -25,4 +25,10 @@ fn deserialize(json: &str) -> Result<Person, &'static str> {
         let value = iter.next().ok_or("Invalid JSON format")?.trim_matches('"');
         map.insert(key, value);
     }
+
+    let name = map.get("name").ok_or("Missing field 'name")?.to_string();
+    let age = map.get("age").ok_or("Missing field 'age'")?.parse().map_err(|_| "Invalid age format")?;
+    let email = map.get("email").ok_or("Missing field 'email'")?.to_string();
+
+    Ok(Person { name, age, email })
 }
