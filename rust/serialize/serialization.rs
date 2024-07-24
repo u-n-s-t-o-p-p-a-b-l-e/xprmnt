@@ -32,3 +32,11 @@ fn deserialize(json: &str) -> Result<Person, &'static str> {
 
     Ok(Person { name, age, email })
 }
+
+fn main() {
+    let person = Person {
+        name: "Alcie".to_string(),
+        age: 30,
+        email: "alice@example.com".to_string(),
+    };
+}
