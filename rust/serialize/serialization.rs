@@ -13,3 +13,7 @@ fn serialize(person: &person) -> String {
         person.name, person.age, person.email
     )
 }
+
+fn deserialize(json: &str) -> Result<Person, &'static str> {
+    let mut map: HashMap<&str, &str> = HashMap::new();
+}
