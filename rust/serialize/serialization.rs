@@ -16,4 +16,6 @@ fn serialize(person: &person) -> String {
 
 fn deserialize(json: &str) -> Result<Person, &'static str> {
     let mut map: HashMap<&str, &str> = HashMap::new();
+
+    let json = json.trim_matches(|c| c == '{' || c == '}');
 }
