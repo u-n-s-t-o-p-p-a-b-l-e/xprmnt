@@ -1,13 +1,13 @@
 use std::collections::HashMap;
 
 #[derive(Debug)]
-Struct Person {
+struct Person {
     name: String,
     age: u8,
     email: String,
 }
 
-fn serialize(person: &person) -> String {
+fn serialize(person: &Person) -> String {
     format!(
         "{{\"name\":\"{}\",\"age\":{},\"email\":\"{}\"}}",
         person.name, person.age, person.email
