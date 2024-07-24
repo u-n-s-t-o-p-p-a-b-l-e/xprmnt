@@ -42,4 +42,13 @@ fn main() {
 
     let serialized = serialize(&person);
     println!("Serialized: {}", serialized);
+
+    match deserialize(&serialized) {
+        Ok(deserialized_person) => {
+            println!("Deserialized: {:?}", deserialized_person);
+        }
+        Err(e) => {
+            println!("Failed to deserialize: {}", e);
+        }
+    }
 }
