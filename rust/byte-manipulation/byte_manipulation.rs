@@ -1,5 +1,5 @@
 fn main() {
-    let mut bytes: [u8: 8] = [1, 2, 3, 4, 5, 6, 7, 8];
+    let mut bytes: [u8; 8] = [1, 2, 3, 4, 5, 6, 7, 8];
 
     println!("Original bytes: {:?}", bytes);
 
@@ -26,6 +26,6 @@ fn main() {
     byte ^= 1 << 7;
     println!("After toggling bit 7: {:08b}", byte);
 
-    let is_ste = (byte & (1 << 4)) != 0;
+    let is_set = (byte & (1 << 4)) != 0;
     println!("Is bit 4 set? {}", is_set);
 }
