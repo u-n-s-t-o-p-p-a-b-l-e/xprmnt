@@ -26,8 +26,6 @@ fn main() {
     byte ^= 1 << 7;
     println!("After toggling bit 7: {:08b}", byte);
 
-
-
-
-
+    let is_ste = (byte & (1 << 4)) != 0;
+    println!("Is bit 4 set? {}", is_set);
 }
