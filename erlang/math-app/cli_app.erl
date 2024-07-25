@@ -10,3 +10,9 @@ loop() ->
 	Input = io:get_line(""),
 	Command = string:trim(Input),
 	handle_command(Command).
+
+handle_command("exit") ->
+	io:format("Goodbye!~n");
+handle_command("hi") ->
+	io:format("Hey, there!~n"),
+	loop();
