@@ -16,3 +16,17 @@ handle_command("exit") ->
 handle_command("hi") ->
 	io:format("Hey, there!~n"),
 	loop();
+handle_command(Command) ->
+	case string:tokens(Command, " ") of
+		["add", Num1Str, Num2Str] ->
+			handle_math_command(Num1Str, Num2Str, fun erlang:'+'/2);
+		["substract", Num1Str, Num2Str] ->
+			handle_math_command(Num1Str, Num2Str, fun erlang:'-'/2);
+		["multiply", Num1Str, Num2Str] ->
+			handle_math_command(Num1Str, Num2Str, fun erlang:'*'/2);
+		["divide", Num1Str, Num2Str] ->
+			handle_math_command(Num1Str, Num2Str, fun erlang:'/'/2);
+		_ ->
+			io:format("Unknown command: ~s~n", [Command]),
+			loop()
+	end.
