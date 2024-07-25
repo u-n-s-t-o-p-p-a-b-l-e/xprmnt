@@ -43,3 +43,13 @@ handle_math_command(Num1Str, Num2Str, Operation) ->
 			io:format("Invalid numbers: ~s ~s~n", [Num1Str, Num2Str]),
 			loop()
 	end.
+
+string_to_number(Str) ->
+	case string:to_integer(Str) of
+		{Int, ""} -> {ok, Int};
+		_ ->
+			case string:to_float(Str) of
+				{ok, Num} -> {ok, Num};
+				_ -> {error, invalid_number}
+			end
+	end.
