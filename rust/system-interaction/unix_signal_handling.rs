@@ -23,4 +23,13 @@ fn main() {
     unsafe {
         signal(SIGINT, handle_signal);
     }
+
+    println!("Press Ctrl+C to exit...");
+    while r.load(Ordering::SeqCst) {
+        print!(".");
+        std::io::stdout().flush().unwrap();
+        thread::sleep(Duration::from_secs(1));
+    }
 }
+
+
