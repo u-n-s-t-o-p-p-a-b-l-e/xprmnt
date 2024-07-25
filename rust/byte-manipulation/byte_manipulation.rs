@@ -14,6 +14,9 @@ fn main() {
     let new_bytes = new_number.to_le_bytes();
     println!("Converted back to bytes: {:?}", new_bytes);
 
+    let mut byte: u8 = 0b10101010;
+    println!("Original byte: {:08b}", byte);
+
 
 
 
