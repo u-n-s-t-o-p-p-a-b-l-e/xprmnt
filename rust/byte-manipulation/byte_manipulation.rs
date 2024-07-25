@@ -23,6 +23,9 @@ fn main() {
     byte &= !(1 << 1);
     println!("After clearing bit 1: {:08b}", byte);
 
+    byte ^= 1 << 7;
+    println!("After toggling bit 7: {:08b}", byte);
+
 
 
 
