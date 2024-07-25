@@ -20,6 +20,9 @@ fn main() {
     byte |= 1 << 3;
     println!("After seting bit 3: {:08b}", byte);
 
+    byte &= !(1 << 1);
+    println!("After clearing bit 1: {:08b}", byte);
+
 
 
 
