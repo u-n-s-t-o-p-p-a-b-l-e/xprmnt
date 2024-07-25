@@ -9,7 +9,10 @@ fn main() {
 
     let number = u64::from_le_bytes(bytes);
     println!("Converted to u64: {}", number);
-}
+
+    let new_number: u64 = 1234567890123456789;
+    let new_bytes = new_number.to_le_bytes();
+    println!("Converted back to bytes: {:?}", new_bytes);
 
 
 
