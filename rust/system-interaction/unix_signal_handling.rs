@@ -14,3 +14,13 @@ extern fn handle_signal(_: i32) {
     println!("\nReceived Ctrl+C! Exiting...");
     std::process::exit(0);
 }
+
+
+fn main() {
+    let running = Arc::new(AtomicBool::new(true));
+    let r = running.clone();
+
+    unsafe {
+        signal(SIGINT, handle_signal);
+    }
+}
