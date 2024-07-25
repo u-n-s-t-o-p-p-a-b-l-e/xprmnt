@@ -1,8 +1,8 @@
 use std::process::{Command, Output,Stdio};
-use std::io::{Self, Read};
+use std::io::{self, Read};
 
 fn run_command() -> io::Result<Output> {
-    Commandd::new("ls")
+    Command::new("ls")
         .arg("-l")
         .stdout(Stdio::piped())
         .stderr(Stdio::piped())
