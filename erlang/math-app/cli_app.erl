@@ -30,3 +30,16 @@ handle_command(Command) ->
 			io:format("Unknown command: ~s~n", [Command]),
 			loop()
 	end.
+
+handle_math_command(Num1Str, Num2Str, Operation) ->
+	Num1 = string_to_number(Num1Str),
+	Num2 = string_to_number(Num2Str),
+	case {Num1, Num2} of
+		{{ok, N1}, {ok, N2}} ->
+			Result = Operation(N1, N2),
+			io:format("Result: ~p~n", [Result]),
+			loop();
+		_ ->
+			io:format("Invalid numbers: ~s ~s~n", [Num1Str, Num2Str]),
+			loop()
+	end.
