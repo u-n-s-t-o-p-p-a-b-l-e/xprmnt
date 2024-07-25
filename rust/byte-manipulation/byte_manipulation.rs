@@ -17,6 +17,11 @@ fn main() {
     let mut byte: u8 = 0b10101010;
     println!("Original byte: {:08b}", byte);
 
+    byte |= 1 << 3;
+    println!("After seting bit 3: {:08b}", byte);
 
 
 
+
+
+}
