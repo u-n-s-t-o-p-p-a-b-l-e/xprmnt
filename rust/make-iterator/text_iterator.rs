@@ -6,5 +6,9 @@ struct TextIterator<'a> {
 impl<'a> Iterator for TextIterator<'a> {
     type Item = &'a str;
 
-    fn next(&mut self) -> Option<Self::Item> {}
+    fn next(&mut self) -> Option<Self::Item> {
+        while self.position < self.text.len() && self.text.as_bytes()[self.position].is_ascii_whitespace() {
+            self.position += 1;
+        }
+    }
 }
