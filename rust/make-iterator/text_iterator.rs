@@ -10,5 +10,9 @@ impl<'a> Iterator for TextIterator<'a> {
         while self.position < self.text.len() && self.text.as_bytes()[self.position].is_ascii_whitespace() {
             self.position += 1;
         }
+
+        if self.position >= self.text.len() {
+            return None;
+        }
     }
 }
