@@ -3,4 +3,8 @@ struct Counter {
     max: u32,
 }
 
+impl Iterator for Counter {
+    type Item = u32;
 
+    fn 
+}
