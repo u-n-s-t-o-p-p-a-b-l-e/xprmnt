@@ -19,5 +19,8 @@ impl<'a> Iterator for TextIterator<'a> {
         while self.position < self.text.len() && !self.text.as_bytes()[self.position].is_ascii_whitespace() {
             self.position += 1;
         }
+        let end = self.position;
+
+        Some(&self.text[start..end])
     }
 }
