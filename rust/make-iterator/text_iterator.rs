@@ -29,4 +29,8 @@ fn main() {
     let text = "This is an example of a custom iterator.";
 
     let mut text_iterator = TextIterator { text, position: 0 };
+
+    while let Some(word) = text_iterator.next() {
+        println!("{}", word);
+    }
 }
