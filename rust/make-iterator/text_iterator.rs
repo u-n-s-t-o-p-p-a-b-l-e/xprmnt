@@ -27,4 +27,6 @@ impl<'a> Iterator for TextIterator<'a> {
 
 fn main() {
     let text = "This is an example of a custom iterator.";
+
+    let mut text_iterator = TextIterator { text, position: 0 };
 }
