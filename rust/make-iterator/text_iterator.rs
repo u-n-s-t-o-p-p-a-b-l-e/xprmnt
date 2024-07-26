@@ -24,3 +24,7 @@ impl<'a> Iterator for TextIterator<'a> {
         Some(&self.text[start..end])
     }
 }
+
+fn main() {
+    let text = "This is an example of a custom iterator.";
+}
