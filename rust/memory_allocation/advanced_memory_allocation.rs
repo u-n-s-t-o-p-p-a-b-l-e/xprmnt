@@ -21,5 +21,12 @@ fn main() {
             println!("Exiting...");
             break;
         }
+        let layout = match layout::from_size_align(size, 1) {
+            Ok(l) => l,
+            Err(_) => {
+                eprintln!("Invalid layout for size {}", size);
+                continue;;
+            },
+        };
     }
 }
