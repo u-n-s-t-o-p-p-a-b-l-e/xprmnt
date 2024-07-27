@@ -46,5 +46,11 @@ fn main() {
         print!("Press Enter to deallocate the memory...");
         io::stdout().flush().unwrap();
         io::stdin().read_line(&mut String::new()).unwrap();
+
+        unsafe {
+            dealloc(ptr, layout);
+        }
+
+        println!("Memory deallocated");
     }
 }
