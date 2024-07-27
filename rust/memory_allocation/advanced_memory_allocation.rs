@@ -14,7 +14,12 @@ fn main() {
             Err(_) => {
                 eprintln!("Invalid input. Please enter a valid number.");
                 continue;
-            }
+            },
+        };
+
+        if size == 0 {
+            println!("Exiting...");
+            break;
         }
     }
 }
