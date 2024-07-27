@@ -34,5 +34,11 @@ fn main() {
             eprintln!("Failed to allocate memory");
             continue;
         }
+
+        println!("Memory allocated at: {:?}", ptr);
+
+        unsafe {
+            ptr::write_bytes(ptr, 0xAA, size);
+        }
     }
 }
