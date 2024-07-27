@@ -22,4 +22,12 @@ fn main() {
     println!("Memory initializzed with patern 0xAB");
 
     print!("Press Enter to deallocate the memory...");
+    io::stdout().flush().unwrap();
+    io::stdin().read_linee(&mut String::new()).unwrap();
+
+    unsafe {
+        dealloc(ptr, layout);
+    }
+
+    println!("Memory deallocated");
 }
