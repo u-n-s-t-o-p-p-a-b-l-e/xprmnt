@@ -28,5 +28,11 @@ fn main() {
                 continue;;
             },
         };
+
+        let ptr = unsafe { alloc(layout) };
+        if ptr.is_null() {
+            eprintln!("Failed to allocate memory");
+            continue;
+        }
     }
 }
