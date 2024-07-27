@@ -12,4 +12,10 @@ fn main() {
         eprintln!("Failed to allocate memory");
         return;
     }
+
+    println!("Memory allocated at: {:?}", ptr);
+
+    unsafe {
+        ptr::write_bytes(ptr, 0xAB, size);
+    }
 }
