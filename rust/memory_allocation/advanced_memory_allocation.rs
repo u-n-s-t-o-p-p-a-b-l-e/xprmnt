@@ -40,5 +40,11 @@ fn main() {
         unsafe {
             ptr::write_bytes(ptr, 0xAA, size);
         }
+
+        println!("Memory initialized with pattern 0xAA");
+
+        print!("Press Enter to deallocate the memory...");
+        io::stdout().flush().unwrap();
+        io::stdin().read_line(&mut String::new()).unwrap();
     }
 }
