@@ -18,4 +18,8 @@ fn main() {
     unsafe {
         ptr::write_bytes(ptr, 0xAB, size);
     }
+
+    println!("Memory initializzed with patern 0xAB");
+
+    print!("Press Enter to deallocate the memory...");
 }
