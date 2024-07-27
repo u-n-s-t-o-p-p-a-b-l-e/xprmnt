@@ -5,7 +5,7 @@ use std::io::{self, Write};
 fn main() {
     let size = 1024;
 
-    let layout::from_size_align(size, 1).expect("Failed to create layout");
+    let layout = Layout::from_size_align(size, 1).expect("Failed to create layout");
 
     let ptr = unsafe { alloc(layout) };
     if ptr.is_null() {
@@ -23,7 +23,7 @@ fn main() {
 
     print!("Press Enter to deallocate the memory...");
     io::stdout().flush().unwrap();
-    io::stdin().read_linee(&mut String::new()).unwrap();
+    io::stdin().read_line(&mut String::new()).unwrap();
 
     unsafe {
         dealloc(ptr, layout);
