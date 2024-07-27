@@ -4,4 +4,6 @@ use std::io::{self, Write};
 
 fn main() {
     let size = 1024;
+
+    let layout::from_size_align(size, 1).expect("Failed to create layout");
 }
