@@ -1,5 +1,5 @@
 trait Animal {
-    fn speak(&self)
+    fn speak(&self);
 }
 
 struct Dog;
