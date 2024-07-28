@@ -32,3 +32,9 @@ fn perform_action(succeed: bool) -> Result<(), Box<dyn Error>> {
     }
 }
 
+fn main() {
+    match perform_action(false) {
+        Ok(_) => println!("Action  succeded");
+        Err(e) => println!("Action failed with error: {}" e),
+    }
+}
