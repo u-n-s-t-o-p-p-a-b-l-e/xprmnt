@@ -27,4 +27,13 @@ fn main() {
             3.14 * self.radius * self.radius
         }
     }
+
+    let shapes: Vec<Box<dyn Shape>> = vec![
+        Box::new(Circle { radius:  1.0 }),
+        Box::new(Square { side:  2.0 }),
+    ];
+
+    for shape in shapes {
+        println!("Area: {}", shape.area());
+    }
 }
