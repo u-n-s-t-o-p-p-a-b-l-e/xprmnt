@@ -18,3 +18,8 @@ defmodule Todo do
           """)
     end
   end
+
+  defp add_task(task) do
+    File.write!(@todo_file, "#{task}\n", [:append])
+    IO.puts("Added task: #{task}")
+  end
