@@ -23,3 +23,18 @@ defmodule Todo do
     File.write!(@todo_file, "#{task}\n", [:append])
     IO.puts("Added task: #{task}")
   end
+
+  defp list_tasks do
+    if File.exists?(@todo_file)
+      tasks = File.read!(@todo_file)
+      |> String.split("\n", trim: true)
+
+      tasks
+      |> Enum.with_index()
+      |> Enum.each(fn {task, index} ->
+        IO.puts("#{index + 1}. #{task}")
+      end)
+    else
+      IO.puts("No tasks found.")
+    end
+end
