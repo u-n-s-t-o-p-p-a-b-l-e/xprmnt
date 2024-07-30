@@ -36,3 +36,7 @@ defmodule Calculator do
     IO.puts("Result: #{result}")
   end
 
+  defp perform_operation("multiply", operand1, operand2) do
+    result = operand1 * operand2
+    IO.puts("Result:  #{result}")
+  end
