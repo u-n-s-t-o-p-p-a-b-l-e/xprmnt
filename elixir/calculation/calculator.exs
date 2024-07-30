@@ -50,3 +50,10 @@ defmodule Calculator do
     end
   end
 
+  defp perform_operation(_, _,  _) do
+    IO.puts("Error: Invalid operation")
+  end
+end
+
+Calculator.main(System.argv())
+
