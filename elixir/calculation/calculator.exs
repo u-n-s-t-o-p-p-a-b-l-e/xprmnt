@@ -31,7 +31,7 @@ defmodule Calculator do
     IO.puts("Result: #{result}")
   end
 
-  defp perform_operation("substract", operand1, operand2) do
+  defp perform_operation("subtract", operand1, operand2) do
     result = operand1 - operand2
     IO.puts("Result: #{result}")
   end
@@ -41,7 +41,7 @@ defmodule Calculator do
     IO.puts("Result:  #{result}")
   end
 
-  perform_operation("divide", operand1, operand2) do
+  defp perform_operation("divide", operand1, operand2) do
     if operand2 == 0 do
       IO.puts("Error: Cannot divide by zero")
     else
