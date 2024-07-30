@@ -7,7 +7,7 @@ defmodule Todo do
         add_task(task)
       ["list"]  ->
         list_tasks()
-      ["complete", String.to_integer(index_str)]
+        ["complete", String.to_integer(index_str)]
         complete_task(index)
       _ ->
         IO.puts("""
@@ -25,9 +25,9 @@ defmodule Todo do
   end
 
   defp list_tasks do
-    if File.exists?(@todo_file)
+    if File.exists?(@todo_file) do
       tasks = File.read!(@todo_file)
-      |> String.split("\n", trim: true)
+              |> String.split("\n", trim: true)
 
       tasks
       |> Enum.with_index()
@@ -37,4 +37,25 @@ defmodule Todo do
     else
       IO.puts("No tasks found.")
     end
+  end
+
+  defp complete_task(index) do
+    if File.exists?(@todo_file) do
+      tasks = File.read!(@todo_file)
+              |> String.split("\n" trim: true)
+
+      case Enum.at(tasks, index - 1) do
+        nil ->
+          IO.puts("Invalid task index.")
+        task ->
+          updated_tasks = List.delete_at(tasks, index - 1)
+          File.write!(@todo_file, Enum.join(updated_tasks, "\n"))
+          IO.puts("Completed task: #{task}")
+      end
+    else
+        IO.puts("No tasks found.")
+    end
+  end
 end
+
+Todo.main(System.argv())
