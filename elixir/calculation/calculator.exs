@@ -25,3 +25,9 @@ defmodule Calculator do
       _ -> String.to_float(str)
     end
   end
+
+  defp perform_operation("add", operand1, operand2) do
+    result = operand1 + operand2
+    IO.puts("Result: #{result}")
+  end
+
