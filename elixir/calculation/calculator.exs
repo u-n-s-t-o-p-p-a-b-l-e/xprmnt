@@ -18,3 +18,10 @@ defmodule Calculator do
           """)
     end
   end
+
+  defp parse_number(str) do
+    case Integer.parse(str) do
+      {int, ""} -> int
+      _ -> String.to_float(str)
+    end
+  end
