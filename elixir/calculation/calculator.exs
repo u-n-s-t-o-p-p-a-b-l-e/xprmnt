@@ -12,7 +12,7 @@ defmodule Calculator do
 
           Operations:
           add       - Add two numbers
-          substract - Substract second number from first
+          substract - Subtract second number from first
           Multiply  - Multiply two numbers
           divide    - Divide first number by second
           """)
