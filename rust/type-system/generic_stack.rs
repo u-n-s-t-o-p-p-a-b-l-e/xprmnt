@@ -14,4 +14,8 @@ impl<T> Stack<T> {
     fn pop(&mut self) -> Option<T> {
         self.elements.pop()
     }
+
+    fn peek(&self) -> Option<&T> {
+        self.elements.last()
+    }
 }
