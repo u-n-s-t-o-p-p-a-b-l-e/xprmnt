@@ -15,3 +15,11 @@ fn print_items<T: Printable>(items: &[T]) {
         item.print();
     }
 }
+
+fn main() {
+    let numbers = vec![1, 2, 3];
+    print_items(&numbers);
+
+    let words = vec!["Hi", "world"];
+    print_items(&words);
+}
