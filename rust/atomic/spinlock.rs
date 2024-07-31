@@ -73,5 +73,7 @@ fn main() {
 
         let final_value = shared_data.load(Ordering::SeqCst);
         println!("Final value of shared data after {} threads: {}", num_threads, final_value);
+
+        shared_data.store(0, Ordering::SeqCst);
     }
 }
