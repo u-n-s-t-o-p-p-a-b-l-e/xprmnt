@@ -6,4 +6,8 @@ impl<T> Stack<T> {
     fn new() -> Self {
         Stack { elements: Vec::new() }
     }
+
+    fn push(&mut self, item: T) {
+        self.elements.push(item);
+    }
 }
