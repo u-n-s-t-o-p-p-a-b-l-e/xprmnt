@@ -10,4 +10,8 @@ impl<T> Stack<T> {
     fn push(&mut self, item: T) {
         self.elements.push(item);
     }
+
+    fn pop(&mut self) -> Option<T> {
+        self.elements.pop()
+    }
 }
