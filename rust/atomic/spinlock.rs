@@ -7,3 +7,15 @@ use std::io::{self, Write};
 struct SpinLock {
     locked: AtomicBool,
 }
+
+impl SpinLock {
+    fn new() -> Self {
+        SpinLock {
+            locked: AtomicBool::new(false),
+        }
+    }
+
+    fn lock(&self) {
+        while self.locked.compare_exchange(false, true, Ordering::Acquire, Ordering::Relaxed).is_err() {}
+    }
+}
