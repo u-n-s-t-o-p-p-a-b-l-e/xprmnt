@@ -19,5 +19,10 @@ fn main() {
                 continue;
             },
         };
+
+        if num_threads == 0 {
+            println!("Exiting...");
+            break;
+        }
     }
 }
