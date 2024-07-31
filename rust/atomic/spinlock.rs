@@ -41,5 +41,34 @@ fn main() {
                 continue;
             },
         };
+
+        if num_threads == 0 {
+            println!("Exiting...");
+            break;
+        }
+
+        let mut handles = vec![];
+
+        for _ in 0..num_threads {
+            let spinlock_clone = Arc::clone(&spinlock);
+            let shared_data_clone: Arc<AtomicI32> = Arc::clone(&shared_data);
+            let handle = thread::spawn(move || {
+                for _ in 0..100 {
+                    spinlock_clone.lock();
+
+                    let val = shared_data_clone.load(Ordering::SeqCst);
+                    shared_data_clone.store(val + 1, Ordering::SeqCst);
+
+                    spinlock_clone.unlock();
+
+                    thread::sleep(Duration::from_millis(1));
+                }
+            });
+            handles.push(handle);
+        }
+
+        for handle in handles {
+            handle.join().unwrap();
+        }
     }
 }
