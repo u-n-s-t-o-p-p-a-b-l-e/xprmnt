@@ -6,5 +6,8 @@ use std::io::{self, Write};
 fn main() {
     let atomic_counter = Arc::new(AtomicI32::new(0));
 
-    loop {}
+    loop {
+        print!("Enter the number of threads to spawn (0 to exit): ");
+        io::stdout().flush().unwrap();
+    }
 }
