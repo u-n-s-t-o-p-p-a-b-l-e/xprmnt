@@ -18,4 +18,8 @@ impl SpinLock {
     fn lock(&self) {
         while self.locked.compare_exchange(false, true, Ordering::Acquire, Ordering::Relaxed).is_err() {}
     }
+
+    fn unlock(&self) {
+        self.locked.store(false, Ordering::Release);
+    }
 }
