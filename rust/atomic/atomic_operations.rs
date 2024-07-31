@@ -24,5 +24,16 @@ fn main() {
             println!("Exiting...");
             break;
         }
+
+        let mut handles = vec![];
+
+        for _ in 0..num_threads {
+            let atomic_counter_clone = Arc::clone(&atomic_counter);
+            let handle = thread::spawn(move || {
+                for _ in 0..100 {
+
+                }
+            })
+        }
     }
 }
