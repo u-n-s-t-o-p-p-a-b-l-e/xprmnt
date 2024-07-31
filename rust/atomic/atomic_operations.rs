@@ -31,7 +31,7 @@ fn main() {
             let atomic_counter_clone = Arc::clone(&atomic_counter);
             let handle = thread::spawn(move || {
                 for _ in 0..100 {
-                    atomic_conter_clone.fetch_add(1, Ordering::SeqCst);
+                    atomic_counter_clone.fetch_add(1, Ordering::SeqCst);
                 }
             });
             handles.push(handle);
@@ -43,7 +43,7 @@ fn main() {
 
         let final_value = atomic_counter.load(Ordering::SeqCst);
         println!("Final value of atomic counter after {} threads: {}",
-        num_threads, final value);
+        num_threads, final_value);
 
         atomic_counter.store(0, Ordering::SeqCst);
     }
