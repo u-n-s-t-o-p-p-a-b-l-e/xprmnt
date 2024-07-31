@@ -17,3 +17,15 @@ fn format_timestamp(timestamp: u64, offset_hours: i32) -> String {
 
     format!("Days since epoch: {}, Time: {:02}:{:02}:{:02}", days, hours, mins, secs)
 }
+
+fn main() {
+    let utc_timestamp = current_timestamp();
+    println!("Current UTC timestamp: {}", utc_timestamp);
+    println!("Current UTC time: {}", format_timestamp(utc_timestamp, 0));
+
+    let us_offset_hours = -4;
+    let sweden_offset_hours = 2;
+
+    println!("Current time in US (Eastern Time): {}", format_timestamp(utc_timestamp, us_offset_hours));
+    println!("Current time in sweden: {}", format_timestamp(utc_timestamp, sweden_offset_hours));
+}
