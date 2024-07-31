@@ -31,9 +31,10 @@ fn main() {
             let atomic_counter_clone = Arc::clone(&atomic_counter);
             let handle = thread::spawn(move || {
                 for _ in 0..100 {
-
+                    atomic_conter_clone.fetch_add(1, Ordering::SeqCst);
                 }
-            })
+            });
+            handles.push(handle);
         }
     }
 }
