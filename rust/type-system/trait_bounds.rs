@@ -9,3 +9,9 @@ impl<T: Display> Printable for T {
         println!("{}", self);
     }
 }
+
+fn print_items<T: Printable>(items: &[T]) {
+    for item in items {
+        item.print();
+    }
+}
