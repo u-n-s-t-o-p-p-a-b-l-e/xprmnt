@@ -23,3 +23,13 @@ impl SpinLock {
         self.locked.store(false, Ordering::Release);
     }
 }
+
+fn main() {
+    let spinlock = Arc::new(SpinLock::new());
+    let shared_data = Arc::new(AtomicI32::new(0));
+
+    loop {
+        print!("Enter the number of threads to spawn (0 to exit): ");
+        io::stdout().flush().unwrap();
+    }
+}
