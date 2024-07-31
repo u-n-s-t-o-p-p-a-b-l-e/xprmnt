@@ -40,5 +40,9 @@ fn main() {
         for handle in handles {
             handle.join().unwrap();
         }
+
+        let final_value = atomic_counter.load(Ordering::SeqCst);
+        println!("Final value of atomic counter after {} threads: {}",
+        num_threads, final value);
     }
 }
