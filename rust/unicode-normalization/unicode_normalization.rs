@@ -37,3 +37,10 @@ fn normalize(input: &str) -> Strig {
     let recomposed = recompose(decomposed);
     recomposed
 }
+
+fn main() {
+    let input = "a\u{0301}";
+    let normalized = normalize(input);
+    println!("Original: {}", input);
+    println!("Normalized: {}", normalized);
+}
