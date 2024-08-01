@@ -19,7 +19,7 @@ impl fmt::Display for MyError {
 }
 
 impl Error for MyError {
-    fn source(&self) -> Option<&(dyn Error + 'static')> {
+    fn source(&self) -> Option<&(dyn Error + 'static)> {
         match *self {
             MyError::Io(ref err) => Some(err),
             MyError::NotFound => None,
