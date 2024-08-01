@@ -32,3 +32,10 @@ impl From<io::Error> for MyError {
         MyError::Io(err)
     }
 }
+
+fn read_file_contents(file_path: &str) -> Result<String, MyError> {
+    let mut file = File::open(file_path)?;
+    let mut contents = String::new();
+    file.read_to_string(&mut contents)?;
+    Ok(contents)
+}
