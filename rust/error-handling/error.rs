@@ -39,3 +39,10 @@ fn read_file_contents(file_path: &str) -> Result<String, MyError> {
     file.read_to_string(&mut contents)?;
     Ok(contents)
 }
+
+fn main() {
+    match read_file_contents("example.txt") {
+        Ok(contents) => println!("File contents: {}", contents),
+        Err(e) => eprintln!("Error reading file: {}", e),
+    }
+}
