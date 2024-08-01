@@ -10,7 +10,7 @@ fn is_combining_mark(c: char) -> bool {
     }
 }
 
-dn decompose(input: &str) -> Vec<char> {
+fn decompose(input: &str) -> Vec<char> {
     let mut decomposed = Vec::new();
     for c in input.chars() {
         decomposed.push(c);
@@ -32,7 +32,7 @@ fn recompose(decomposed: Vec<char>) -> String {
     recomposed
 }
 
-fn normalize(input: &str) -> Strig {
+fn normalize(input: &str) -> String {
     let decomposed = decompose(input);
     let recomposed = recompose(decomposed);
     recomposed
