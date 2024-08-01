@@ -26,3 +26,9 @@ impl Error for MyError {
         }
     }
 }
+
+impl From<io::Error> for MyError {
+    fn from(err: io::Error) -> MyError {
+        MyError::Io(err)
+    }
+}
