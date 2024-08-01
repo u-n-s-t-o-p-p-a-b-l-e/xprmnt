@@ -9,3 +9,17 @@ fn is_combining_mark(c: char) -> bool {
         _ => false,
     }
 }
+
+dn decompose(input: &str) -> Vec<char> {
+    let mut decomposed = Vec::new();
+    for c in input.chars() {
+        decomposed.push(c);
+
+        if is_combining_mark(c) {
+            let last_char = decomposed.pop().unwrap();
+            decomposed.push('a');
+            decomposed.push(last_char);
+        }
+    }
+    decomposed
+}
