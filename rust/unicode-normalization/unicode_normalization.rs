@@ -23,3 +23,11 @@ dn decompose(input: &str) -> Vec<char> {
     }
     decomposed
 }
+
+fn recompose(decomposed: Vec<char>) -> String {
+    let mut recomposed = String::new();
+    for c in decomposed {
+        recomposed.push(c);
+    }
+    recomposed
+}
