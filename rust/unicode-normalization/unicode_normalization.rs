@@ -31,3 +31,9 @@ fn recompose(decomposed: Vec<char>) -> String {
     }
     recomposed
 }
+
+fn normalize(input: &str) -> Strig {
+    let decomposed = decompose(input);
+    let recomposed = recompose(decomposed);
+    recomposed
+}
