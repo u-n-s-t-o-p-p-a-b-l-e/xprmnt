@@ -22,11 +22,11 @@ mod tests {
     fn test_is_palindrome() {
         assert!(is_palindrome("racecar"));
         assert!(is_palindrome("madam"));
-        assert!(is_palindrome("hello"));
+        assert!(!is_palindrome("hello"));
     }
 }
 
 
-fn maain() {
+fn main() {
     println!("Run `cargo test` to execute tests.");
 }
