@@ -17,5 +17,16 @@ mod tests {
         assert_eq!(reverse_string("rust"), "tsur");
         assert_eq!(reverse_string(""), "");
     }
+
+    #[test]
+    fn test_is_palindrome() {
+        assert!(is_palindrome("racecar"));
+        assert!(is_palindrome("madam"));
+        assert!(is_palindrome("hello"));
+    }
 }
 
+
+fn maain() {
+    println!("Run `cargo test` to execute tests.");
+}
