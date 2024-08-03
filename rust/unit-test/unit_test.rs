@@ -24,4 +24,11 @@ mod tests {
         assert_eq!(add(-2, -3), -5);
         assert_eq!(add(-2, 3), 1);
     }
+
+    #[test]
+    fn test_is_even() {
+        assert!(is_even(2));
+        assert!(!is_even(3));
+        assert!(is_even(0));
+    }
 }
