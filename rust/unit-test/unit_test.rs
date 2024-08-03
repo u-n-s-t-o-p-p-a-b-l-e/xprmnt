@@ -39,4 +39,10 @@ mod tests {
         assert_eq!(factorial(5), 120);
         assert_eq!(factorial(10), 3_628_800);
     }
+
+    #[test]
+    #[should_panic]
+    fn test_factorial_overflow() {
+        factorial(10000);
+    }
 }
