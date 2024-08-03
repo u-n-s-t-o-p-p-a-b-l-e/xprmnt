@@ -46,3 +46,7 @@ mod tests {
         factorial(10000);
     }
 }
+
+fn main() {
+    println!("Run `cargo test` or `rustc --test <filename>`to execute tests.");
+}
