@@ -12,3 +12,16 @@ pub fn factorial(n: u32) -> u32 {
         _ => n * factorial(n -1),
     }
 }
+
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_add() {
+        assert_eq!(add(2, 3), 5);
+        assert_eq!(add(-2, -3), -5);
+        assert_eq!(add(-2, 3), 1);
+    }
+}
