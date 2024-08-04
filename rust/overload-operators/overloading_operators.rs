@@ -8,6 +8,7 @@ struct Point {
 
 impl Add for Point {
     type Output = Point;
+
     fn add(self, other: Point) -> Point {
         Point{
             x: self.x + other.x,
@@ -17,8 +18,10 @@ impl Add for Point {
 }
 
 impl Sub for Point {
-    type Output = Point {
-        fn sub(self, other: Point) -> Point {
+    type Output = Point;
+
+    fn sub(self, other: Point) -> Point {
+        Point {
             x: self.x + other.x,
             y: self.y + other.y,
         }
