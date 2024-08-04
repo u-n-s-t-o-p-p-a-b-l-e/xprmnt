@@ -25,24 +25,16 @@ fn main() -> io::Result<()> {
     Ok(())
 }
 
+fn deflate_compress(data: &[u8]) -> io::Result<Vec<u8>> {
+    let mut encoder = DeflateEncoder::new(Vec::new());
+    encoder.write_all(data)?;
+    let compressed_data = encoder.finish()?;
+    Ok(compressed_data)
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+fn deflate_decompress(data: &[u8]) -> io::Result<Vec<u8>> {
+    let mut encoder = DeflateEncoder::new(Vec::new());
+    encoder_.write_all(data)?;
+    let decompressed_data = encoder.finish()?;
+    Ok(decompressed_data)
+}
