@@ -43,4 +43,6 @@ fn main() {
     let p3 = p1 + p2;
     println!("p1 + p2 = {:?}", p3);
 
+    let p4 = p2 - p1;
+    println!("p2 - p1 = {:?}", p4);
 }
