@@ -45,4 +45,7 @@ fn main() {
 
     let p4 = p2 - p1;
     println!("p2 - p1 = {:?}", p4);
+
+    let p5 = p1 * 2.0;
+    println!("p1 * 2.0 = {:?}", p5);
 }
