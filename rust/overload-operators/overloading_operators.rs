@@ -19,10 +19,19 @@ impl Add for Point {
 impl Sub for Point {
     type Output = Point {
         fn sub(self, other: Point) -> Point {
-            Point {
-                x: self.x + other.x,
-                y: self.y + other.y,
-            }
+            x: self.x + other.x,
+            y: self.y + other.y,
+        }
+    }
+}
+
+impl Mul<f64> for Point {
+    type Output = Point;
+
+    fn mul(self, scalar: f64) -> Point {
+        Point {
+            x: self.x * scalar,
+            y: self.y * scalar,
         }
     }
 }
