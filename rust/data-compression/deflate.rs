@@ -9,7 +9,7 @@ fn main() -> io::Result<()> {
 
     let compressed_data = deflate_compress(data)?;
 
-    let mut output_file = File::create("compressed.deflatte")?;
+    let mut output_file = File::create("compressed.deflate")?;
     output_file.write_all(&compressed_data)?;
 
     println!("Data compressed and written to compressed.deflate");
@@ -33,7 +33,8 @@ fn deflate_compress(data: &[u8]) -> io::Result<Vec<u8>> {
 }
 
 fn deflate_decompress(data: &[u8]) -> io::Result<Vec<u8>> {
-    let mut encoder = DeflateEncoder::new(data);
+    let mut decoder = DeflateDecoder::new(data);
+    let mut decompressed_data = Vec::new();
     decoder.read_to_end(&mut decompressed_data)?;
     Ok(decompressed_data)
 }
@@ -54,7 +55,7 @@ impl<W: Write> DeflateEncoder<W> {
 
 impl<W: Write> Write for DeflateEncoder<W> {
     fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
-        self.inner.write(bur)
+        self.inner.write(buf)
     }
 
     fn flush(&mut self) -> io::Result<()> {
@@ -63,17 +64,17 @@ impl<W: Write> Write for DeflateEncoder<W> {
 }
 
 
-strut DeflateEncoder<'a> {
+struct DeflateDecoder<'a> {
     inner: &'a [u8],
 }
 
-impl<'a> DeflateEncoder<'a> {
+impl<'a> DeflateDecoder<'a> {
     fn new(inner: &'a [u8]) -> Self {
-        DeflateEncoder { inner }
+        DeflateDecoder { inner }
     }
 }
 
-impl<'a> Read for DeflateEncoder<'a> {
+impl<'a> Read for DeflateDecoder<'a> {
     fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
         (&mut self.inner).read(buf)
     }
