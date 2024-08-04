@@ -17,7 +17,27 @@ fn main() -> io::Result<()> {
     let mut input_file = File::open("compressed.deflate")?;
     let mut compressed_data = Vec::new();
     input_file.read_to_end(&mut compressed_data)?;
+    
+    let decompressed_data = deflate_decompress(&compressed_data)?;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
