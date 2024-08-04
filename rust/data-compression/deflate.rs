@@ -33,8 +33,48 @@ fn deflate_compress(data: &[u8]) -> io::Result<Vec<u8>> {
 }
 
 fn deflate_decompress(data: &[u8]) -> io::Result<Vec<u8>> {
-    let mut encoder = DeflateEncoder::new(Vec::new());
-    encoder_.write_all(data)?;
-    let decompressed_data = encoder.finish()?;
+    let mut encoder = DeflateEncoder::new(data);
+    decoder.read_to_end(&mut decompressed_data)?;
     Ok(decompressed_data)
+}
+
+struct DeflateEncoder<W: Write> {
+    inner: W,
+}
+
+impl<W: Write> DeflateEncoder<W> {
+    fn new(inner: W) -> Self {
+        DeflateEncoder { inner }
+    }
+
+    fn finish(self) -> io::Result<W> {
+        Ok(self.inner)
+    }
+}
+
+impl<W: Write> Write for DeflateEncoder<W> {
+    fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
+        self.inner.write(bur)
+    }
+
+    fn flush(&mut self) -> io::Result<()> {
+        self.inner.flush()
+    }
+}
+
+
+strut DeflateEncoder<'a> {
+    inner: &'a [u8],
+}
+
+impl<'a> DeflateEncoder<'a> {
+    fn new(inner: &'a [u8]) -> Self {
+        DeflateEncoder { inner }
+    }
+}
+
+impl<'a> Read for DeflateEncoder<'a> {
+    fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
+        (&mut self.inner).read(buf)
+    }
 }
