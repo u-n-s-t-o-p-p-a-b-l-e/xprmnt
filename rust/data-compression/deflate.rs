@@ -8,4 +8,9 @@ fn main() -> io::Result<()> {
     let data = b"Example data to compress using the Deflate algorithm in Rust.";
 
     let compressed_data = deflate_compress(data)?;
+
+    let mut output_file = File::create("compressed.deflatte")?;
+    output_file.write_all(&compressed_data)?;
 }
+
+
