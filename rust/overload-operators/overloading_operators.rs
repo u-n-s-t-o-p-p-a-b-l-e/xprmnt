@@ -15,3 +15,14 @@ impl Add for Point {
         }
     }
 }
+
+impl Sub for Point {
+    type Output = Point {
+        fn sub(self, other: Point) -> Point {
+            Point {
+                x: self.x + other.x,
+                y: self.y + other.y,
+            }
+        }
+    }
+}
