@@ -19,6 +19,10 @@ fn main() -> io::Result<()> {
     input_file.read_to_end(&mut compressed_data)?;
     
     let decompressed_data = deflate_decompress(&compressed_data)?;
+
+    println!("Decompressed data: {}", String::from_utf8_lossy(&decompressed_data));
+
+    Ok(())
 }
 
 
