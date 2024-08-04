@@ -11,6 +11,14 @@ fn main() -> io::Result<()> {
 
     let mut output_file = File::create("compressed.deflatte")?;
     output_file.write_all(&compressed_data)?;
+
+    println!("Data compressed and written to compressed.deflate");
+
+    let mut input_file = File::open("compressed.deflate")?;
+    let mut compressed_data = Vec::new();
+    input_file.read_to_end(&mut compressed_data)?;
 }
+
+
 
 
