@@ -48,3 +48,11 @@ fn match_pattern(pattern: &str, text: &str) -> bool {
     }
     false
 }
+
+fn main() {
+    let args: Vec<String> = env::args().collect();
+    if args.len() != 3 {
+        eprintln!("Usage: {}<pattern> <text>", args[0]);
+        std::process::exit(1);
+    }
+}
