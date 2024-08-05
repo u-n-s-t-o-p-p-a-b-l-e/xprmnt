@@ -4,8 +4,7 @@ fn matches_here(pattern: &str, text: &str) -> bool {
     if pattern.is_empty() {
         return true;
     }
-
-    if pattern.len() >= 2 && &pattern[1..2] ==  "*" {
+    if pattern.len() >= 2 && &pattern[1..2] == "*" {
         return matches_star(pattern.chars().nth(0).unwrap(), &pattern[2..], text);
     }
     if pattern == "$" {
@@ -20,7 +19,7 @@ fn matches_here(pattern: &str, text: &str) -> bool {
 fn matches_star(c: char, pattern: &str, text: &str) -> bool {
     let mut i = 0;
     while i <= text.len() {
-        if matches_here(pattern, &text[1..]) {
+        if matches_here(pattern, &text[i..]) {
             return true;
         }
         if i < text.len() && (text.chars().nth(i) == Some(c) || c == '.') {
@@ -38,7 +37,7 @@ fn match_pattern(pattern: &str, text: &str) -> bool {
     }
     if pattern.chars().nth(0) == Some('^') {
         return matches_here(&pattern[1..], text);
-    } 
+    }
     let mut i = 0;
     while i <= text.len() {
         if matches_here(pattern, &text[i..]) {
@@ -52,7 +51,7 @@ fn match_pattern(pattern: &str, text: &str) -> bool {
 fn main() {
     let args: Vec<String> = env::args().collect();
     if args.len() != 3 {
-        eprintln!("Usage: {}<pattern> <text>", args[0]);
+        eprintln!("Usage: {} <pattern> <text>", args[0]);
         std::process::exit(1);
     }
 
@@ -65,3 +64,4 @@ fn main() {
         println!("The text does not match the pattern.");
     }
 }
+
