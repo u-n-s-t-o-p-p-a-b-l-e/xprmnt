@@ -55,4 +55,13 @@ fn main() {
         eprintln!("Usage: {}<pattern> <text>", args[0]);
         std::process::exit(1);
     }
+
+    let pattern = &args[1];
+    let text = &args[2];
+
+    if match_pattern(pattern, text) {
+        println!("The text matches the pattern.");
+    } else {
+        println!("The text does not match the pattern.");
+    }
 }
