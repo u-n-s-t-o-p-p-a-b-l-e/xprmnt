@@ -17,7 +17,7 @@ fn matches_here(pattern: &str, text: &str) -> bool {
     false
 }
 
-fn matches_start(c: char, pattern: &str, text: &str) -> bool {
+fn matches_star(c: char, pattern: &str, text: &str) -> bool {
     let mut i = 0;
     while i <= text.len() {
         if matches_here(pattern, &text[1..]) {
@@ -28,6 +28,23 @@ fn matches_start(c: char, pattern: &str, text: &str) -> bool {
         } else {
             break;
         }
+    }
+    false
+}
+
+fn match_pattern(pattern: &str, text: &str) -> bool {
+    if pattern.is_empty() {
+        return true;
+    }
+    if pattern.chars().nth(0) == Some('^') {
+        return matches_here(&pattern[1..], text);
+    } 
+    let mut i = 0;
+    while i <= text.len() {
+        if matches_here(pattern, &text[i..]) {
+            return true;
+        }
+        i += 1;
     }
     false
 }
