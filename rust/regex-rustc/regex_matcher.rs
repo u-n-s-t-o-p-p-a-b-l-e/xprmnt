@@ -16,3 +16,18 @@ fn matches_here(pattern: &str, text: &str) -> bool {
     }
     false
 }
+
+fn matches_start(c: char, pattern: &str, text: &str) -> bool {
+    let mut i = 0;
+    while i <= text.len() {
+        if matches_here(pattern, &text[1..]) {
+            return true;
+        }
+        if i < text.len() && (text.chars().nth(i) == Some(c) || c == '.') {
+            i += 1;
+        } else {
+            break;
+        }
+    }
+    false
+}
