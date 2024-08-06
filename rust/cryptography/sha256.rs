@@ -35,5 +35,16 @@ fn sha256(message: &[u8]) -> [u8; 32] {
         0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19,
     ];
 
+    for chunk in padded_message.chunks(64) {
+        let mut W = [0u32; 64];
+        for i in 0..16 {
+            W[i] = u32::from_be_bytes([chunk[4 * i], chunk[4 * i + 1], chunk[4 * i + 2], chunk[4 * i + 3]]);
+        }
 
+        for i in 16..64 {
+            let s0 = rotate_right(W[i - 15], 7) ^ rotate_right(W[i - 15], 18) ^ (W[i - 15] >> 3);
+            let s1 = rotate_right(W[i - 2], 17) ^ rotate_right(W[i - 2], 19) ^ (W[i - 2] >> 10);
+            W[i] = W[i -16].wrapping_add(s0).wrapping_add(W[i - 7]).wrapping_add(s1);
+        }
+    }
 }
