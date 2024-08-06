@@ -17,7 +17,7 @@ fn rotate_right(x:  u32, n: u32) -> u32 {
 
 fn sha256_padding(message: &[u8]) -> Vec<u8> {
     let mut padded = Vec::from(message);
-    padded.pudh(0x80);
+    padded.push(0x80);
 
     while (padded.len() * 8) % 512 != 448 {
         padded.push(0);
