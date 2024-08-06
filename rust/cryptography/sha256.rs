@@ -14,3 +14,16 @@ const K: [u32; 64] = [
 fn rotate_right(x:  u32, n: u32) -> u32 {
     (x >> n) | (x << (32 - n))
 }
+
+fn sha256_padding(message: &[u8]) -> Vec<u8> {
+    let mut padded = Vec::from(message);
+    padded.pudh(0x80);
+
+    while (padded.len() * 8) % 512 != 448 {
+        padded.push(0);
+    }
+
+    let bit_len = (message.len() as u64) * 8;
+    padded.extend_from_slice(&bit_len.to_be_bytes());
+    padded
+}
