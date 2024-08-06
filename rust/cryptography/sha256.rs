@@ -73,5 +73,20 @@ fn sha256(message: &[u8]) -> [u8; 32] {
             b = a;
             a = temp1.wrapping_add(temp2);
         }
+
+        H[0] = H[0].wrapping_add(a);
+        H[1] = H[1].wrapping_add(b);
+        H[2] = H[2].wrapping_add(c);
+        H[3] = H[3].wrapping_add(d);
+        H[4] = H[4].wrapping_add(e);
+        H[5] = H[5].wrapping_add(f);
+        H[6] = H[6].wrapping_add(g);
+        H[7] = H[7].wrapping_add(h);
     }
+
+    let mut hash = [0u8; 32];
+    for (i, word) in H.iter().enumerate() {
+        hash[4 * i..4 * i +  4].copy_from_slice(&word.to_be_bytes());
+    }
+    hash
 }
