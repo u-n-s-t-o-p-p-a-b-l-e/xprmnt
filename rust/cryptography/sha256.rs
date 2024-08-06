@@ -46,5 +46,32 @@ fn sha256(message: &[u8]) -> [u8; 32] {
             let s1 = rotate_right(W[i - 2], 17) ^ rotate_right(W[i - 2], 19) ^ (W[i - 2] >> 10);
             W[i] = W[i -16].wrapping_add(s0).wrapping_add(W[i - 7]).wrapping_add(s1);
         }
+
+        let mut a = H[0];
+        let mut b = H[1];
+        let mut c = H[2];
+        let mut d = H[3];
+        let mut e = H[4];
+        let mut f = H[5];
+        let mut g = H[6];
+        let mut h = H[7];
+
+        for i in 0..64 {
+            let s1 = rotate_right(e, 6) ^ rotate_right(e, 11) ^ rotate_right(e, 25);
+            let ch = (e & f) ^ (!e & g);
+            let temp1 = h.wrapping_add(s1).wrapping_add(ch).wrapping_add(K[i]).wrapping_add(W[i]);
+            let S0 = rotate_right(a, 2) ^ rotate_right(a, 13) ^ rotate_right(a, 22);
+            let maj = (a & b) ^ (a & c) ^ (b & c);
+            let temp2 = S0.wrapping_add(maj);
+
+            h = g;
+            g = f;
+            f = e;
+            e = d.wrapping_add(temp1);
+            d = c;
+            c = b;
+            b = a;
+            a = temp1.wrapping_add(temp2);
+        }
     }
 }
