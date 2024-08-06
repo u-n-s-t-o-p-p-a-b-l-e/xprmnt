@@ -90,3 +90,12 @@ fn sha256(message: &[u8]) -> [u8; 32] {
     }
     hash
 }
+
+fn main() {
+    let input = b"Hi there";
+    let hash = sha256(input);
+    for byte in &hash {
+        print!("{:02x}", byte);
+    }
+    println!();
+}
