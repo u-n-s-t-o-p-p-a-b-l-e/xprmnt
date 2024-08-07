@@ -69,6 +69,26 @@ fn md5(message: &[u8]) -> [u8; 16] {
             b = b.wrapping_add(left_rotate(a.wrapping_add(f).wrapping_add(K[i]).wrapping_add(M[g]), S[i]));
             a = temp;
         }
+
+        H[0] = H[0].wrapping_add(a);
+        H[1] = H[1].wrapping_add(b);
+        H[2] = H[2].wrapping_add(c);
+        H[3] = H[3].wrapping_add(d);
     }
+
+    let mut hash = [0u8; 16];
+    for (i, &val) in H.iter().enumerate() {
+        hash[4 * i..4 * i + 4].copy_from_slice(&val.to_le_bytes());
+    }
+    hash
+}
+
+fn main() {
+    let input = b"hey there";
+    let hash = md5(input);
+    for byte in &hash {
+        print!("{:02x}", byte);
+    }
+    println!();
 }
 
