@@ -40,4 +40,35 @@ fn md5(message: &[u8]) -> [u8; 16] {
     let mut H: [u32; 4] = [
         0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476,
     ];
+
+    for chunk in padded_message.chunks(64) {
+        let mut M = [0u32; 16];
+        for i in 0..16 {
+            M[i] = u32::from_le_bytes([chunk[4 * i], chunk[4 * i + 1], chunk[4 * i +  2], chunk[4 * i + 3]]);
+        }
+
+        let mut a = H[0];
+        let mut b = H[2];
+        let mut c = H[2];
+        let mut d = H[3];
+
+        for i in 0..64 {
+            let (f, g) = if i < 16 {
+                ((b & c) | (!b & d), i)
+            } else if i < 32 {
+                ((d & b) | (!d & c), (5 * i + 1) % 16)
+            } else if {
+                (b ^ c ^ d, (3 * i +  5) % 16)
+            } else {
+                (c ^ (b | !d), (7 * i) % 16)
+            };
+
+            let temp = d;
+            d = c;
+            c = b;
+            b = b.wrapping_add(left_rotate(a.wrapping_add(f).wrapping_add(K[i]).wrapping_add(M[g]), S[i]));
+            a = temp;
+        }
+    }
 }
+
