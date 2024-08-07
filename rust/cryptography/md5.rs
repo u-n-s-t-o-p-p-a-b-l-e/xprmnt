@@ -18,4 +18,6 @@ const K: [u32; 64] = [
     0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1, 0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391,
 ];
 
-
+fn left_rotate(x: u32, c: usize) -> u32 {
+    (x << c) | (x >> (32 - c))
+}
