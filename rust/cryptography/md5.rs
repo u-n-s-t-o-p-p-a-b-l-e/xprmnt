@@ -29,4 +29,15 @@ fn md5_padding(message: &[u8]) -> Vec<u8> {
     while (padded.len() * 8) % 512 != 448 {
         padded.push(0);
     }
+
+    let bit_len = (message.len() as u64) * 8;
+    padded.extend_from_slice(&bit_len.to_le_bytes());
+    padded
+}
+
+fn md5(message: &[u8]) -> [u8; 16] {
+    let padded_message = md5_padding(message);
+    let mut H: [u32; 4] = [
+        0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476,
+    ];
 }
