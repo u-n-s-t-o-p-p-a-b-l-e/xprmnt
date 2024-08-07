@@ -11,4 +11,10 @@ pub fn main() !void {
 
     const stdout = std.io.getStdOut().writer();
     const stdin = std.io.getStdIn().reader();
+
+    try stdout.print("Enter your name: " .{});
+    var buffer: [100]u8 = undefined;
+    if (try stdin.readUntilDelimiterOrEof(&buffer, '\n')) |user_input| {
+        try stdout.print("Hello, {s}!\n", .{user_input});
+    }
 }
