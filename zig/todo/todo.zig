@@ -122,10 +122,10 @@ fn loadTodos(todos: *ArrayList(Todo), allocator: std.mem.Allocator) !void {
     while (try in_stream.readUntilDelimiterOrEof(&buf, '\n')) |line| {
         var iter = std.mem.split(u8, line, "|");
         const id = try std.fmt.parseInt(usize, iter.next().?, 10);
-        const description = try allocator.dupt(u8, iter.next().?);
+        const description = try allocator.dupe(u8, iter.next().?);
         errdefer allocator.free(description);
         const completed = if (std.mem.eql(u8, iter.next().?, "true")) true else false;
 
-        try todos.append(Todo{ .id = id, .desctiption = description, .completed = completed });
+        try todos.append(Todo{ .id = id, .description = description, .completed = completed });
     }
 }
