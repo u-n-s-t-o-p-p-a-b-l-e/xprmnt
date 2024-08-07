@@ -8,4 +8,7 @@ pub fn main() !void {
     for (args, 0..) |arg, i| {
         std.debug.print("Argument {d}: {s}\n", .{ i, arg });
     }
+
+    const stdout = std.io.getStdOut().writer();
+    const stdin = std.io.getStdIn().reader();
 }
