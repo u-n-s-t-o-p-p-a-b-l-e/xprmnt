@@ -21,3 +21,12 @@ const K: [u32; 64] = [
 fn left_rotate(x: u32, c: usize) -> u32 {
     (x << c) | (x >> (32 - c))
 }
+
+fn md5_padding(message: &[u8]) -> Vec<u8> {
+    let mut padded = Vec::from(message);
+    padded.push(0x80);
+
+    while (padded.len() * 8) % 512 != 448 {
+        padded.push(0);
+    }
+}
