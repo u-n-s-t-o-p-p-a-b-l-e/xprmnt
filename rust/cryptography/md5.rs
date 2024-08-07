@@ -57,7 +57,7 @@ fn md5(message: &[u8]) -> [u8; 16] {
                 ((b & c) | (!b & d), i)
             } else if i < 32 {
                 ((d & b) | (!d & c), (5 * i + 1) % 16)
-            } else if {
+            } else if i < 48 {
                 (b ^ c ^ d, (3 * i +  5) % 16)
             } else {
                 (c ^ (b | !d), (7 * i) % 16)
