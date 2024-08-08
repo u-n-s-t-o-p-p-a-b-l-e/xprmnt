@@ -33,3 +33,10 @@ fn createMyStruct(allocator: *std.mem.Allocator, value:  i32) !*MyStruct {
 fn destroyMyStruct(allocator: *std.mem.Allocator, instance: *MyStruct) void {
     allocator.destroy(instance);
 }
+
+fn comptimeExample() void {
+    comptime {
+        const array = [_]u8{'H', 'e', 'l', 'l', 'o', '!', '\n'   };
+        _ = array;
+    }
+}
