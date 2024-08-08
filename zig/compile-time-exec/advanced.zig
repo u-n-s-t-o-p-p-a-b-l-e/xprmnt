@@ -10,4 +10,14 @@ const MyStruct = struct {
     pub fn display(self: MyStruct) void {
         std.debug.print("Value: {}\n", .{self.value});
     }
+};
+
+pub fn main() !void {
+    var allocator = std.heap.page_allocator;
+    const instance = try createMyStruct(&allocator, 42);
+
+    defer destroyMyStruct(&allocator, instance);
+
+    instance.display();
+    comptimeExample();
 }
