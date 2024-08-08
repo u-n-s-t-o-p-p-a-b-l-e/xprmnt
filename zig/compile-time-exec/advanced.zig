@@ -21,3 +21,11 @@ pub fn main() !void {
     instance.display();
     comptimeExample();
 }
+
+fn createMyStruct(allocator: *std.mem.Allocator, value:  i32) !*MyStruct {
+    const instance = try allocator.create(MyStruct);
+
+    instance.* = MyStruct.init(value);
+
+    return instance;
+}
