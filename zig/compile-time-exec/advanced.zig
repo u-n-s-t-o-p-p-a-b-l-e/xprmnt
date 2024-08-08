@@ -39,4 +39,7 @@ fn comptimeExample() void {
         const array = [_]u8{'H', 'e', 'l', 'l', 'o', '!', '\n'   };
         _ = array;
     }
+     const array = "Hello, world!\n";
+
+     std.debug.print("Hello Array: {s}", .{array});
 }
