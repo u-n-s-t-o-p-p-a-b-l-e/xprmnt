@@ -22,4 +22,7 @@ const Person = struct {
 pub fn main() void {
     const result = add(3, 4);
     std.debug.print("3 + 4 = {}\n", .{result});
+
+    const fact5 = factorial(5);
+    std.debug.print("Factorial of 5 is {}\n", .{fact5});
 }
