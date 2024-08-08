@@ -18,3 +18,8 @@ const Person = struct {
     name: []const u8,
     age: u32,
 };
+
+pub fn main() void {
+    const result = add(3, 4);
+    std.debug.print("3 + 4 = {}\n", .{result});
+}
