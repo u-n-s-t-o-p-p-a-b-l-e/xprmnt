@@ -29,3 +29,7 @@ fn createMyStruct(allocator: *std.mem.Allocator, value:  i32) !*MyStruct {
 
     return instance;
 }
+
+fn destroyMyStruct(allocator: *std.mem.Allocator, instance: *MyStruct) void {
+    allocator.destroy(instance);
+}
