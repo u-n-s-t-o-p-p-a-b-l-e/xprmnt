@@ -25,4 +25,11 @@ pub fn main() void {
 
     const fact5 = factorial(5);
     std.debug.print("Factorial of 5 is {}\n", .{fact5});
+
+    const div_result = divide(10, 2);
+    if (div_result) |value| {
+        std.debug.print("10 / 2 = {}\n", .{value});
+    } else {
+        std.debug.print("Cannot divide by zero\n", .{});
+    }
 }
