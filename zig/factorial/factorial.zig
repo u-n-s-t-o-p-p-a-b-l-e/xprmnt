@@ -32,4 +32,10 @@ pub fn main() void {
     } else {
         std.debug.print("Cannot divide by zero\n", .{});
     }
+
+    const person = Person {
+        .name = "Alice",
+        .age = 30,
+    };
+    std.debug.print("Name: {s}, Age: {}\n", .{ person.name, person.age });
 }
