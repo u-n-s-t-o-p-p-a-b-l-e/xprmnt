@@ -38,3 +38,24 @@ pub fn main() !void {
 
     try  stdout.print("Result: {d}\n", .{result});
 }
+
+fn getValidOperation(reader: anytype, writer: anytype) !u8 {
+    while (true) {
+        try writer.print("Enter an operation (+, -, *, /): ", .{});
+        var buf: [2]u8 = undefined;
+        if (try reader.readUntilDelimiterOrEof(&buf, '\n')) |user_input| {
+            const trimmed = std.mem.trim(u8, user_input, &std.ascii.whitespace);
+            if (trimmed.len == 1) {
+                const op = trimmed[0];
+                switch (op) {
+                   '+', '-', '*', '/' => return op, 
+                   else => try writer.print("Invalid operation. Please enter +, -, *, /.\n", .{}),
+                }
+            } else {
+                try writer.print("Invalid input. Please enter a single character. \n", .{});
+            }
+        } else {
+            return error.UnexpectedEndOfInput;
+        }
+    }
+}
