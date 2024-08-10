@@ -59,3 +59,24 @@ fn getValidOperation(reader: anytype, writer: anytype) !u8 {
         }
     }
 }
+
+fn getValidFloat(reader: anytype, writer: anytype, prompt: []const u8) !f64 {
+    while (true) {
+        try writer.print("{s}", .{prompt});
+        var buf: [100]u8 = undefined;
+        if (try reader.readUntilDelimiterOrEof(&buf, '\n')) |user_input| {
+            const trimmed = std.mem.trim(u8, user_input, &std.ascii.whitespace);
+            if (trimmed.len > 0) {
+                if (std.fmt.parseFloat(f64, trimmed)) |number| {
+                    return number;
+                } else |_| {
+                    try writer.print("Invalid input. Please enter a valid number. \n", .{});
+                }
+            } else {
+                try writer.print("Input is empty. Please enter a number.\n", .{});
+            }
+        } else {
+            return error.UnexpectedEndOfInput;
+        }
+    }
+}
