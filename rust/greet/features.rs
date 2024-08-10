@@ -13,13 +13,21 @@ fn main() {
         name: String,
         age: u32,
     }
-}
 
-impl Person {
-    fn new(name: &str, age: u32) -> Person {
-        Person {
-            name: name.to_string(),
-            age,
+
+    impl Person {
+        fn new(name: &str, age: u32) -> Person {
+            Person {
+                name: name.to_string(),
+                age,
+            }
+        }
+
+        fn introduce(&self) {
+            println!("Hi, I'm {} and I'm {} years old.", self.name, self.age);
         }
     }
+
+    let person = Person::new("Alice", 30);
+    person.introduce();
 }
