@@ -8,4 +8,9 @@ fn main() {
         .sum();
 
     println!("Sum of squares of even numbers: {}", sum);
+
+    struct Person {
+        name: String,
+        age: u32,
+    }
 }
