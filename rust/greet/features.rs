@@ -14,3 +14,12 @@ fn main() {
         age: u32,
     }
 }
+
+impl Person {
+    fn new(name: &str, age: u32) -> Person {
+        Person {
+            name: name.to_string(),
+            age,
+        }
+    }
+}
