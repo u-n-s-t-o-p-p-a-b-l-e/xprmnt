@@ -26,4 +26,15 @@ pub fn main() !void {
     const op = try.getValidOperation(stdin, stdout);
     const num1 = try getValidFloat(stdin, stdout, "Enter first number: ");
     const num2 = try getValidFloat(stdin, stdout, "Enter second number: ");
+
+    var result: f64 = undefined;
+    switch (op) {
+        '+' => result = add(num1, num2),
+        '-' => result = subtract(num1, num2),
+        '*' => result = multiply(num1, num2),
+        '/' => result = try divide(num1, num2),
+        else => unreachable,
+    }
+
+    try  stdout.print("Result: {d}\n", .{result});
 }
