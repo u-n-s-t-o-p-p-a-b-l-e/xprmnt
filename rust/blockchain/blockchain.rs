@@ -76,4 +76,20 @@ impl Blockchain {
         let new_block = Block::new(previous_block.indx + 1, data, previous_block.hash);
         self.chain.push_back(new_block);
     }
+
+    fn is_valid(&self) -> bool {
+        for i in 1..self.chain.len() {
+            let current_block = &self.chain[i];
+            let previous_block = &self.chain[i - 1];
+
+            if current_block.hash != current_block.calculate_hash() {
+                return false;
+            }
+
+            if current_block.previous_hash != previous_block.hash {
+                return false;
+            }
+        }
+        true
+    }
 }
