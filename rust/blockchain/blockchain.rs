@@ -35,7 +35,7 @@ impl Block {
         simple_hash(input)
     }
 
-    fn mine_block(&mut self) -> Strig {
+    fn mine_block(&mut self) -> String {
         loop {
             let hash = self.calculate_hash();
             if &hash[..4] == "00" {
@@ -73,7 +73,7 @@ impl Blockchain {
 
     fn add_block(&mut self, data: String) {
         let previous_block = self.chain.back().unwrap().clone();
-        let new_block = Block::new(previous_block.indx + 1, data, previous_block.hash);
+        let new_block = Block::new(previous_block.index + 1, data, previous_block.hash);
         self.chain.push_back(new_block);
     }
 
