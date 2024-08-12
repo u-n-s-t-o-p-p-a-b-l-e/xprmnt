@@ -11,5 +11,8 @@ fn main() {
     unsafe {
         let pid = getpid();
         println!("Process ID: {}", pid);
+
+        let message = b"Hello from Rust!\n";
+        write(1, message.as_ptr(), message.len());
     }
 }
