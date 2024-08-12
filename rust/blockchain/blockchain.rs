@@ -26,4 +26,12 @@ impl Block {
         block.hash = block.mine_block();
         block
     }
+
+    fn calculate_hash(&self) -> String {
+        let input = format!(
+            "{}{}{}{}{}",
+            self.index, self.timestamp, self.data, self.previous_hash, self.nonce
+        );
+        simple_hash(input)
+    }
 }
