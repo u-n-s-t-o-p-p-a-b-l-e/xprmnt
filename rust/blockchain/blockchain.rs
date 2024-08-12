@@ -70,4 +70,10 @@ impl Blockchain {
         blockchain.chain.push_back(Block::new(0, "Genesis Block".to_string(), "0".to_string()));
         blockchain
     }
+
+    fn add_block(&mut self, data: String) {
+        let previous_block = self.chain.back().unwrap().clone();
+        let new_block = Block::new(previous_block.indx + 1, data, previous_block.hash);
+        self.chain.push_back(new_block);
+    }
 }
