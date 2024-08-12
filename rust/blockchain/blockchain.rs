@@ -12,4 +12,18 @@ struct Block {
     nonce: u64,
 }
 
-
+impl Block {
+    fn new(index: u64, data: String, previous_hash: String) -> Block {
+        let timestamp = SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_millis();
+        let mut block = Block {
+            index,
+            timestamp,
+            data,
+            previous_hash,
+            hash: String::new(),
+            nonce: 0,
+        };
+        block.hash = block.mine_block();
+        block
+    }
+}
