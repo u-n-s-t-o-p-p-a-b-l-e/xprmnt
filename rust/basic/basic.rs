@@ -22,4 +22,10 @@ fn read_file(path: &str) -> Result<String, FileError> {
             _ => return Err(FileError::Unknown(e.to_string())),
         },
     };
+
+    let mut contents = String::new();
+    match file.read_to_string(&mut contents) {
+        Ok(_) => Ok(content),
+        Err(e) => Err(FileError::Unknown(e.to_string())),
+    }
 }
