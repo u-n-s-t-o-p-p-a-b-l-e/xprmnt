@@ -56,3 +56,18 @@ fn simple_hash(input: String) -> String {
     }
     hash
 }
+
+#[derive(Debug)]
+struct Blockchain {
+    chain: VecDeque<Block>,
+}
+
+impl Blockchain {
+    fn new() -> Blockchain {
+        let mut blockchain = Blockchain {
+            chain: VecDeque::new(),
+        };
+        blockchain.chain.push_back(Block::new(0, "Genesis Block".to_string(), "0".to_string()));
+        blockchain
+    }
+}
