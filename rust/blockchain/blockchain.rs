@@ -48,3 +48,11 @@ impl Block {
         }
     }
 }
+
+fn simple_hash(input: String) -> String {
+    let mut hash = String::new();
+    for byte in input.bytes() {
+        write!(hash, "{:x}", byte).unwrap();
+    }
+    hash
+}
