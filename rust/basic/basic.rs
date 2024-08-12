@@ -47,4 +47,13 @@ fn main() {
         Blue,
         RGB(u8, u8, u8),
     }
+
+    let color = Color::RGB(122, 17, 40);
+
+    match color {
+        Color::Red => println!("The color is red."),
+        Color::Green => println!("The color is green."),
+        Color::Blue => println!("The color is blue."),
+        Color::RGB(r, g, b) => println!("RGB color: ({}, {}, {})", r, g, b),
+    }
 }
