@@ -29,3 +29,15 @@ fn read_file(path: &str) -> Result<String, FileError> {
         Err(e) => Err(FileError::Unknown(e.to_string())),
     }
 }
+
+fn main() {
+    let filename = "example.txt";
+    match read_file(filename) {
+        Ok(contents) => println!("File contents:\n{}", contents),
+        Err(e) => match e {
+            FileError::NotFound(path) => println!("File not found: {}", path),
+            FileError::PermissionDenied(path) => println!("Permission denied: {}", path),
+            FileError::Unknown(err) => println!("An unknown error occurred: {}", err),
+        },
+    }
+}
