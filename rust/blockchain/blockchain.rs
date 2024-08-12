@@ -34,4 +34,17 @@ impl Block {
         );
         simple_hash(input)
     }
+
+    fn mine_block(&mut self) -> Strig {
+        loop {
+            let hash = self.calculate_hash();
+            if &hash[..4] == "00" {
+                return hash;
+            }
+            self.nonce += 1;
+            if self.nonce % 1000000 == 0 {
+                println!("Nonce: {}, Hash: {}", self.nonce, hash);
+            }
+        }
+    }
 }
