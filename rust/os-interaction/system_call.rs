@@ -6,3 +6,10 @@ extern "C" {
     fn getpid() -> i32;
     fn write(fd: i32, buf: *const u8, count: usize) -> isize;
 }
+
+fn main() {
+    unsafe {
+        let pid = getpid();
+        println!("Process ID: {}", pid);
+    }
+}
