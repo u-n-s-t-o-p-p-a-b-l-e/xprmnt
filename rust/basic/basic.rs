@@ -40,4 +40,11 @@ fn main() {
             FileError::Unknown(err) => println!("An unknown error occurred: {}", err),
         },
     }
+
+    enum Color {
+        Red,
+        Green,
+        Blue,
+        RGB(u8, u8, u8),
+    }
 }
