@@ -34,5 +34,9 @@ fn Stack(comptime T: type) type {
         pub fn pop(self: *Self) ?T {
             return if (self.items.items.len == 0) null else self.items.pop();
         }
-    }
+
+        pub fn deinit(self: *Self) void {
+            self.items.deinit();
+        }
+    };
 }
