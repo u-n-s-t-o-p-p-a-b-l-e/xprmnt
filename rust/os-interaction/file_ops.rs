@@ -23,5 +23,12 @@ fn main() {
             eprintln!("Failed to open the file");
             return;
         }
+
+        let bytes_written = write(fd, message.as_ptr(), message.len());
+        if bytes_written < 0 {
+            eprintln!("Failed to write to the file");
+            close(fd);
+            return;
+        }
     }
 }
