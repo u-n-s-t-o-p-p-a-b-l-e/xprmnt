@@ -26,5 +26,9 @@ fn Stack(comptime T: type) type {
                 .items = std.ArrayList(T).init(allocator),
             };
         }
+
+        pub fn push(self: *Self, value: T) !void {
+            try self.items.append(value);
+        }
     }
 }
