@@ -30,5 +30,11 @@ fn main() {
             close(fd);
             return;
         }
+
+        if close(fd) < 0 {
+            eprintln!("Failed to close the file");
+        } else {
+            println!("File operation completed successfully.");
+        }
     }
 }
