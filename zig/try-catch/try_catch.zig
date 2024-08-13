@@ -40,3 +40,10 @@ fn Stack(comptime T: type) type {
         }
     };
 }
+
+pub fn main() !void {
+    const file_result = readFile("secret.txt") catch |err| switch (err) {
+        FileError.NotFound => "File not found",
+        FileError.PermissionDenied => "Access denied",
+    };
+}
