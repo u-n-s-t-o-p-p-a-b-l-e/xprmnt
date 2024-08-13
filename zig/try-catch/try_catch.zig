@@ -14,3 +14,17 @@ fn readFile(path: []const u8) FileError![]const u8 {
     }
     return "File contents";
 }
+
+fn Stack(comptime T: type) type {
+    return struct {
+        items: std.ArrayList(T),
+
+        const Self = @This();
+
+        pub fn init(allocator: std.mem.Allocator) Self {
+            return Self {
+                .items = std.ArrayList(T).init(allocator),
+            };
+        }
+    }
+}
