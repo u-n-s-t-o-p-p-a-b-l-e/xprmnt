@@ -48,7 +48,7 @@ pub fn main() !void {
     };
     std.debug.print("File read result: {s}\n", .{file_result});
 
-    var gpa = std.heap.generalPurposeAllocator(.{}){};
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     defer _ = gpa.deinit();
     const allocator = gpa.allocator();
 
