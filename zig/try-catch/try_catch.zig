@@ -64,6 +64,11 @@ pub fn main() !void {
     }
 
     const computed_array = comptime blk: {
-        var arr: [5]i32 = undefind;
-    }
+        var arr: [5]i32 = undefined;
+        for (&arr, 0..) |*item, i| {
+            item.* = @as(i32, @intCast(i)) * @as(i32, @intCast(i));
+        }
+        break :blk arr;
+    };
+    std.debug.print("Computed array: {any}\n", .{computed_array});
 }
