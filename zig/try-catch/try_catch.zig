@@ -51,4 +51,19 @@ pub fn main() !void {
     var gpa = std.heap.generalPurposeAllocator(.{}){};
     defer _ = gpa.deinit();
     const allocator = gpa.allocator();
+
+    var intStack = Stack(i32).init(allocator);
+    defer intStack.deinit();
+
+    try intStack.push(10);
+    try intStack.push(20);
+    try intStack.push(30);
+
+    while (intStack.pop()) |value| {
+        std.debug.print("Popped: {}\n", .{value});
+    }
+
+    const computed_array = comptime blk: {
+        var arr: [5]i32 = undefind;
+    }
 }
