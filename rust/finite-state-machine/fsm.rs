@@ -27,3 +27,14 @@ impl FSM {
         matches!(self.state, State::End)
     }
 }
+
+fn main() {
+    let mut fsm = FSM::new();
+
+    while !fsm.is_finished() {
+        println!("Current state: {:?}", fsm.state);
+        fsm.transition();
+    }
+
+    println!("Final state: {:?}", fsm.state);
+}
