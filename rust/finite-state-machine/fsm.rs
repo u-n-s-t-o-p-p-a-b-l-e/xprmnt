@@ -4,3 +4,22 @@ enum State {
     Middle,
     End,
 }
+
+#[derive(Debug)]
+struct FSM {
+    state: State,
+}
+
+impl FSM {
+    fn new() -> Self {
+        FSM { state: State::Start }
+    }
+
+    fn transition(&mut self) {
+        self.state = match self.state {
+            State::Start => State::Middle,
+            State::Middle => State::End,
+            State::End => State::End,
+        };
+    }
+}
