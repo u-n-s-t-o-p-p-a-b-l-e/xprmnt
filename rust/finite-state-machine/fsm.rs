@@ -22,4 +22,8 @@ impl FSM {
             State::End => State::End,
         };
     }
+
+    fn is_finished(&self) -> bool {
+        matches!(self.state, State::End)
+    }
 }
