@@ -25,6 +25,14 @@ impl<T: Ord> Node<T> {
                     self.left = Some(Box::new(Node::new(value)));
                 }
             }
+            Ordering::Greater => {
+                if let Some(ref mut right) = self.right {
+                    right.insert(value);
+                } else {
+                    self.right = Some(Box::new(Node::new(value)));
+                }
+            }
+            Ordering::Equal => {}
         }
     }
 }
