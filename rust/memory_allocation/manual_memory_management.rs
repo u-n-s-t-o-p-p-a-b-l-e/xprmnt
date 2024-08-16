@@ -9,4 +9,8 @@ fn main() {
     let mut y = 20;
     let raw_y: *mut i32 = &mut y;
 
+    unsafe {
+        *raw_y += 1;
+    }
+
 }
