@@ -46,3 +46,17 @@ impl<T: Ord> Node<T> {
         }
     }
 }
+
+fn main() {
+    let mut root = Node::new(10);
+    root.insert(5);
+    root.insert(15);
+    root.insert(3);
+    root.insert(7);
+
+    let mut values = Vec::new();
+    root.in_order_traversal(&mut values);
+    for value in values {
+        println!("{}", value);
+    }
+}
