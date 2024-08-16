@@ -11,6 +11,6 @@ fn main() {
 
     unsafe {
         *raw_y += 1;
+        println!("Modified value through raw pointer: {}", *raw_y);
     }
-
 }
