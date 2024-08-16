@@ -35,4 +35,14 @@ impl<T: Ord> Node<T> {
             Ordering::Equal => {}
         }
     }
+
+    fn in_order_traversal<'a>(&'a self, values: &mut Vec<&'a T>) {
+        if let Some(ref left) = self.left {
+            left.in_order_traversal(values);
+        }
+        values.push(&self.value);
+        if let Some(ref right) = self.right {
+            right.in_order_traversal(values);
+        }
+    }
 }
