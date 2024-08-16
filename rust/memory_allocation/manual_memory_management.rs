@@ -6,4 +6,7 @@ fn main() {
         println!("Value through raw pointer: {}", *raw_x);
     }
 
+    let mut y = 20;
+    let raw_y: *mut i32 = &mut y;
+
 }
