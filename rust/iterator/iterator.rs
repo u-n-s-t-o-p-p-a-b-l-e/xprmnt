@@ -20,3 +20,11 @@ impl Iterator for Counter {
         }
     }
 }
+
+fn main() {
+    let mut counter = Counter::new();
+
+    while let Some(num) = counter.next() {
+        println!("{}", num);
+    }
+}
