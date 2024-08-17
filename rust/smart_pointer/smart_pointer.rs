@@ -27,3 +27,11 @@ impl<T> MyRc<T> {
         MyRc { ptr: self.ptr }
     }
 }
+
+impl<T> Deref for MyRc<T> {
+    type Target = T;
+
+    fn deref(&self) -> &Self::Target {
+        unsafe { &(*self.ptr).value }
+    }
+}
