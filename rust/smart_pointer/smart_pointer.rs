@@ -35,3 +35,14 @@ impl<T> Deref for MyRc<T> {
         unsafe { &(*self.ptr).value }
     }
 }
+
+impl<T> Drop for MyRc<T> {
+    fn drop(&mut self) {
+        unsafe {
+            (*self.ptr).ref_count -= 1;
+            if (*self.ptr).ref_count == 0 {
+                let _ = Box::from_raw(self.ptr);
+            }
+        }
+    }
+}
