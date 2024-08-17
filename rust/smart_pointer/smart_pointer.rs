@@ -19,4 +19,11 @@ impl<T> MyRc<T> {
             ptr: Box::into_raw(box_),
         }
     }
+
+    pub fn clone(&self) -> Self {
+        unsafe {
+            (*self.ptr).ref_count += 1;
+        }
+        MyRc { ptr: self.ptr }
+    }
 }
