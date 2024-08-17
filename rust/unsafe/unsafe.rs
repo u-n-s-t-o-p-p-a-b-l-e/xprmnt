@@ -9,7 +9,7 @@ fn main() {
     }
 
     let address = 0x012345usize;
-    let r = addresss as *const i32;
+    let r = address as *const i32;
 
     unsafe {
         println!("r is: {}", *r);
