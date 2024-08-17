@@ -28,7 +28,7 @@ fn print_area(shape: &dyn Shape) {
 }
 
 fn main() {
-    let circle = Cirlle { radius: 5.0 };
+    let circle = Circle { radius: 5.0 };
     let rectangle = Rectangle { width: 4.0, height: 3.0 };
 
     print_area(&circle);
