@@ -46,3 +46,9 @@ impl<T> Drop for MyRc<T> {
         }
     }
 }
+
+fn main() {
+    let a = MyRc::new(10);
+    let b = a.clone();
+    println!("Value in b:: {}", *b);
+}
