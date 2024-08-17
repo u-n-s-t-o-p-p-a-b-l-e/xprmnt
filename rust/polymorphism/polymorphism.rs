@@ -22,3 +22,15 @@ impl Shape for Rectangle {
         self.width * self.height
     }
 }
+
+fn print_area(shape: &dyn Shape) {
+    println!("Area: {}", shape.area());
+}
+
+fn main() {
+    let circle = Cirlle { radius: 5.0 };
+    let rectangle = Rectangle { width: 4.0, height: 3.0 };
+
+    print_area(&circle);
+    print_area(&rectangle);
+}
