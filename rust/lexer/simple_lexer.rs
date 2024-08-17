@@ -21,6 +21,38 @@ fn lexer(input: &str) -> Vec<Token> {
                 }
                 tokens.push(Token::Number(num));
             }
+            '+' => {
+                tokens.push(Token::Plus);
+                chars.next();
+            }
+            '-' => {
+                tokens.push(Token::Minus);
+                chars.next();
+            }
+            '*' => {
+                tokens.push(Token::Multiply);
+                chars.next();
+            }
+            '/' => {
+                tokens.push(Token::Divide);
+                chars.next();
+            }
+            ' ' => {
+                chars.next();
+            }
+            _ => panic!("Unexpected character: {}", ch),
         }
+    }
+
+    tokens.push(Token::EOF);
+    tokens
+}
+
+fn main() {
+    let input = "3 + 5 * 2 - 8 / 4";
+    let tokens = lexer(input);
+
+    for token in tokens {
+        println!("{:?}", token);
     }
 }
