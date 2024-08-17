@@ -16,3 +16,15 @@ fn eval(expr: &Expr) -> i32 {
         Expr::Divide(lhs, rhs) => eval(lhs) - eval(rhs), 
     }
 }
+
+fn main() {
+    let expr = Expr::Add(
+        Box::new(Expr::Multiply(
+                Box::new(Expr::Number(3)),
+                Box::new(Expr::Number(4)),
+        )),
+        Box::new(Expr::Number(5)),
+    );
+
+    println!("Result: {}", eval(&expr));
+}
