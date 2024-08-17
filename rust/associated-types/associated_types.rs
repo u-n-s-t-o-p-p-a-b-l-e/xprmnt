@@ -8,7 +8,7 @@ struct Counter {
     count: usize,
 }
 
-impl Iterator for counter {
+impl Iterator for Counter {
     type Item = usize;
 
     fn next(&mut self) -> Option<Self::Item> {
