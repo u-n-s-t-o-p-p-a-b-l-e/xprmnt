@@ -19,4 +19,17 @@ impl<T> std::ops::Deref for MyBox<T> {
     }
 }
 
+#[allow(unused_must_use)]
+impl<T> Drop for MyBox<T> {
+    fn drop(&mut self) {
+        unsafe {
+            Box::from_raw(self.ptr);
+        }
+        println!("Memory has been deallocated!");
+    }
+}
 
+fn main() {
+    let x = MyBox::new(42);
+    println!("MyBox contains: {}", *x);
+}
