@@ -10,3 +10,5 @@ def batch_rename(directory, prefix='', suffix=''):
     # usage example
     directory = 'path/here'
     batch_rename(directory, prefix='new_')
+
+    # this will add new_ as a prefix to all files in the directory = 'path/here'
