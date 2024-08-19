@@ -33,4 +33,4 @@ body = 'This is a test email.'
 to_email = 'recipient@example.com'
 from_email = 'your_email.example.com'
 password = 'your_password'
-send_email(subject, body, to_email, from_email, password, attachment_path='/patg/to/file')
+send_email(subject, body, to_email, from_email, password, attachment_path='/path/to/file')
