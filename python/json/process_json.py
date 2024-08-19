@@ -14,3 +14,6 @@ def read_and_modify_json(file_path):
         "completed": False
     }
     data['projects'].append(new_project)
+
+    with open(file_path, 'w') as file:
+        json.dump(data, file, indent=4)
