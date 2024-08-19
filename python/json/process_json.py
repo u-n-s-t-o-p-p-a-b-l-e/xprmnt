@@ -17,3 +17,7 @@ def read_and_modify_json(file_path):
 
     with open(file_path, 'w') as file:
         json.dump(data, file, indent=4)
+
+# Usage example
+file_path = 'data.json'
+read_and_modify_json(file_path)
