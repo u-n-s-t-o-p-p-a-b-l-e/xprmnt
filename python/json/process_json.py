@@ -5,3 +5,5 @@ def read_and_modify_json(file_path):
         data = json.load(file)
 
     data['new_key'] = 'new_value'
+
+    data['name'] = 'Jane Doe'
