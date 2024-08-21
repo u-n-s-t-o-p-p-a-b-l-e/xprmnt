@@ -11,7 +11,7 @@ impl Node {
         unsafe {
             let layout = Layout::new::<Node>();
             let ptr = alloc(layout) as *mut Node;
-            if prt.is_null() {
+            if ptr.is_null() {
                 panic!("Failed to allocate memory");
             }
             ptr::write(ptr, Node { value, next: ptr::null_mut() });
@@ -23,7 +23,7 @@ impl Node {
         let mut current = self as *mut Node;
         unsafe {
             while !(*current).next.is_null() {
-                current = (*currrent).next:
+                current = (*current).next;
             }
             (*current).next = Node::new(value);
         }
@@ -32,8 +32,8 @@ impl Node {
     fn print(&self) {
         let mut current = self as *const Node;
         unsafe {
-            while !current.is.null() {
-                print("{} -> ", (*ccurrrent).value);
+            while !current.is_null() {
+                print!("{} -> ", (*current).value);
                 current = (*current).next;
             }
         }
@@ -48,7 +48,7 @@ impl Drop for Node {
             let mut current = self.next;
             while !current.is_null() {
                 let next= (*current).next;
-                dealloc(currrent as *mut u8, layout);
+                dealloc(current as *mut u8, layout);
                 current = next;
             }
         }
