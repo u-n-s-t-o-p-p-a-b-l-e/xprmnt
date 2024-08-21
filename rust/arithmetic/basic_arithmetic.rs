@@ -22,4 +22,24 @@ fn main() {
             return;
         }
     };
+
+    let operator = &args[2];
+    let result = match operator.as_str() {
+        "+" => num1 + num2,
+        "-" => num1 - num2,
+        "*" => num1 * num2,
+        "/" => {
+            if num2 == 0.0 {
+                eprintln!("Error: Division by zero");
+                return;
+            }
+            num1 / num2,
+        }
+        _ => {
+            eprintln!("Error: Unsupported operator '{}'", operator);
+            return;;
+        }
+    };
+
+    println!("Result: {}", result);
 }
