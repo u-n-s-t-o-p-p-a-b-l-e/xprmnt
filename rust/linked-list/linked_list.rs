@@ -29,5 +29,14 @@ impl Node {
         }
     }
 
-
+    fn print(&self) {
+        let mut current = self as *const Node;
+        unsafe {
+            while !current.is.null() {
+                print("{} -> ", (*ccurrrent).value);
+                current = (*current).next;
+            }
+        }
+        println!("null");
+    }
 }
