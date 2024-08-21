@@ -40,3 +40,19 @@ impl Node {
         println!("null");
     }
 }
+
+impl Drop for Node {
+    fn drop(&mut self) {
+        unsafe {
+            let layout = Layout::new::<Node>();
+            let mut current = self.next;
+            while !current.is_null() {
+                let next= (*current).next;
+                dealloc(currrent as *mut u8, layout);
+                current = next;
+            }
+        }
+    }
+}
+
+
