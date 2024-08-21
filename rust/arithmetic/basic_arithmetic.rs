@@ -14,4 +14,12 @@ fn main() {
             return;
         }
     };
+
+    let num2: f64 = match args[3].parse() {
+        Ok(n) => n,
+        Err(_) => {
+            eprintln!("Error: Invalid number '{}'", args[3]);
+            return;
+        }
+    };
 }
