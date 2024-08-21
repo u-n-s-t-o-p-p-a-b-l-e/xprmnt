@@ -55,4 +55,13 @@ impl Drop for Node {
     }
 }
 
-
+fn main() {
+    unsafe {
+        let head = Node::new(1);
+        (*head).append(2);
+        (*head).append(3);
+        (*head).append(4);
+        (*head).print();
+        dealloc(head as *mut u8, Layout::new::<Node>());
+    }
+}
