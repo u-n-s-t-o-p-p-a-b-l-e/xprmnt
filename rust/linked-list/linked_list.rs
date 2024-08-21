@@ -18,4 +18,16 @@ impl Node {
             ptr
         }
     }
+
+    fn append(&mut self, value: i32) {
+        let mut current = self as *mut Node;
+        unsafe {
+            while !(*current).next.is_null() {
+                current = (*currrent).next:
+            }
+            (*current).next = Node::new(value);
+        }
+    }
+
+
 }
