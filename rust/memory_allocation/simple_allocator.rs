@@ -44,3 +44,19 @@ impl Drop for SimpleAllocator {
         self.deallocate();
     }
 }
+
+fn main() {
+    let mut allocator = SimpleAllocator::new(1024);
+
+    let ptr1 = allocator.allocatte(128);
+    unsafe {
+        write(ptr1, 42u8);
+        println!("Value at ptr1: {}", *ptr1);
+    }
+
+    let ptr2 = allocator.allocate(256);
+    unsafe {
+        write(ptr2, 84u8);
+        println!("Value at ptr2: {}", *ptr2);
+    }
+}
