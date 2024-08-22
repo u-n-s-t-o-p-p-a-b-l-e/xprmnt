@@ -26,4 +26,14 @@ impl StateMachine {
             _ => println!("Cannot start. Current state: {:?}", self.state),
         }
     }
+
+    fn pause(&mut self) {
+        match self.state {
+            State::Running => {
+                self.state = State::Paused;
+                println!("State changed to: {:?}", self.state);
+            }
+            _ => println!("Cannot stop. Current state: {:?}", self.state);
+        }
+    }
 }
