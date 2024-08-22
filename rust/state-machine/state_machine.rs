@@ -43,7 +43,7 @@ impl StateMachine {
                 self.state = State::Stopped;
                 println!("State changed to: {:?}", self.state);
             }
-            _ => println!("Cannot stop. Current state: {:?}", self.state);
+            _ => println!("Cannot stop. Current state: {:?}", self.state),
         }
     }
 
