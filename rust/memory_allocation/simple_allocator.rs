@@ -59,4 +59,8 @@ fn main() {
         write(ptr2, 84u8);
         println!("Value at ptr2: {}", *ptr2);
     }
+
+    // Allocating beyond the allocated memory size will trigger a panic
+    // let ptr3 = allocator.allocate(1024); // Uncommenting this line will panic
+    // The memory will be automatically deallocated when allocator goes out of scope
 }
