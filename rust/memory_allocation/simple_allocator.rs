@@ -30,4 +30,11 @@ impl SimpleAllocator {
         self.offset += size;
         ptr
     }
+
+    fn deallocate(mut self) {
+        let layout = Layout::from_size_align(self.size, 8).unwrap();
+        unsafe {
+            dealloc(self.memory, layout);;
+        }
+    }
 }
