@@ -36,4 +36,9 @@ impl StateMachine {
             _ => println!("Cannot stop. Current state: {:?}", self.state);
         }
     }
+
+    fn reset(&mut self) {
+        self.state = State::Start;
+        println!("State reset to: {:?}", self.state);
+    }
 }
