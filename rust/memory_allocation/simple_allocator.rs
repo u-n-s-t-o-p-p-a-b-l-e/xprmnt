@@ -38,3 +38,9 @@ impl SimpleAllocator {
         }
     }
 }
+
+impl Drop for SimpleAllocator {
+    fn drop (&mut self) {
+        self.deallocate();
+    }
+}
