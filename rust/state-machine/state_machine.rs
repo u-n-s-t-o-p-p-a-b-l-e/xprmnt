@@ -42,3 +42,13 @@ impl StateMachine {
         println!("State reset to: {:?}", self.state);
     }
 }
+
+fn main() {
+    let mut machine = StateMachine::new();
+
+    machine.start();
+    machine.pause();
+    machine.start();
+    machine.stop();
+    machine.reset();
+}
