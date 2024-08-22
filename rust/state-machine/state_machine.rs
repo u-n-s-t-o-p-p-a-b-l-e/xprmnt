@@ -9,3 +9,13 @@ enum State {
 struct StateMachine {
     state: State,
 }
+
+impl StateMachine {
+    fn new() -> StateMachine {
+        StateMachine {
+            state: State::Start,
+        }
+    }
+
+    
+}
