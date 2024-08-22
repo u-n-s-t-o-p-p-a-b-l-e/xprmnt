@@ -19,6 +19,15 @@ impl SimpleAllocator {
             size,
             offset: 0,
         }
-        
+    }
+
+    fn allocate(&mut self, size: usize) -> *mut u8 {
+        if self.offset + size > self.size {
+            panic!("Out of memory");
+        }
+
+        let ptr = unsafe { self.memory.add(self.offset) };
+        self.offset += size;
+        ptr
     }
 }
