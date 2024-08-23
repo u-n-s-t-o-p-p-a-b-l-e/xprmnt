@@ -32,6 +32,32 @@ fn main() {
         stdout.execute(Clear(ClearType::All)).unwrap();
 
         let (cols, rows) = crossterm::terminal::size().unwrap();
+
+        for y in 0..rows {
+            for x in 0..cols {
+                let color = match rng.gen_range(0..3) {
+                    0 => Color::DarkGrey,
+                    1 => Color::Grey,
+                    _ => Color::White,
+                };
+                stdout.execute(SetForegroundColor(color)).unwrap();
+
+                if rng.gen_bool(0.1) {
+                    let c = char::from(rng.gen_range(b' '..=b'~'));
+                    stdout.execute(MoveTo(x, y)).unwrap();
+                    stdout.execute(Print(c)).unwrap();
+                }
+            }
+        }
+
+        let middle_row = rows / 2;
+        let middle_col = (cols - (string_length * 2) as u16) / 2;
+
+        for (i, c) in string.chars().enumerate() {
+            if c == ' ' {
+                continue;
+            }
+        }
     }
 }
 
