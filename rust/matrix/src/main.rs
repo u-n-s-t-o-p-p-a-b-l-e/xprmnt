@@ -26,4 +26,13 @@ fn main() {
     let mut timestep = 0;
     let display_speed = 4;
     let initial_delay = 5;
+
+    loop {
+        stdout.execute(MoveTo(0, 0)).unwrap();
+        stdout.execute(Clear(ClearType::All)).unwrap();
+
+        let (cols, rows) = crossterm::terminal::size().unwrap();
+    }
 }
+
+
