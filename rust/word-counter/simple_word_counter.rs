@@ -10,4 +10,12 @@ fn main() {
         println!("Usage: {} <file_path>", args[0]);
         return;
     }
+
+    let file_path = &args[1];
+
+    if !Path::new(file_path).exists() {
+        println!("Error: File '{}' does not exits.", file_path);
+        return;
+    }
+
 }
