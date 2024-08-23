@@ -10,8 +10,8 @@ fn main() {
     let chunk_size = limit / num_threads;
 
     for i in 0..num_threads {
-        lt thread_tx = tx.clone();
-        let start = i * chunck_size + 1;
+        let thread_tx = tx.clone();
+        let start = i * chunk_size + 1;
         let end = if i == num_threads - 1 { limit } else { (i + 1) * chunk_size };
 
         thread::spawn(move || {
@@ -32,7 +32,7 @@ fn main() {
     }
 
     primes.sort();
-    println!("Found {} primes up to {}: {:?}", primes.len(), limit, &pprimes[0..10]);
+    println!("Found {} primes up to {}: {:?}", primes.len(), limit, &primes[0..10]);
 }
 
 fn is_prime(n: u32) -> bool {
