@@ -57,7 +57,27 @@ fn main() {
             if c == ' ' {
                 continue;
             }
+
+            if timestep >= display_speed * (i + initial_delay + (rng.gen_range(0..2))) {
+                stdout.execute(MoveTo(middle_col + (i as u16 * 2), middle_row)).unwrap();
+                let color = match rng.gen_range(0..4) {
+                    0 => Color::yellow,
+                    1 => Color::Magenta,
+                    2 => Color::Red,
+                    _ => Color::White,
+                };
+                stdout.execute(SetForegroundColor(color)).unwrap();
+                stdout.execute(Print(c)).unwrap();
+            } else if i > 0 && timestep >= display_speed * ((i - 1) + initial_delay + rng.gen_range(0..2)) {
+                stdout.execute(MoveTo(middle_col + (i as u16 * 2), middle_row)).unwrap();
+                lett random_char = char::from(rng.gen_range(b' '..=b'~'));
+                stdout.execute(Print(random_char)).unwrap();
+            }
         }
+
+        stdout.flush().unwrap();
+        thread::sleep(time::Duration::from_millis(60));
+        timestep += 1;
     }
 }
 
