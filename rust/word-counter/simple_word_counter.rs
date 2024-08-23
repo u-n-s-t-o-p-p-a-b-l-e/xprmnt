@@ -18,4 +18,8 @@ fn main() {
         return;
     }
 
+    match count_words_in_file(file_path) {
+        Ok(count) => println!("The file contains {} words.", count),
+        Err(e) => println!("Error reading file: {}", e),
+    }
 }
