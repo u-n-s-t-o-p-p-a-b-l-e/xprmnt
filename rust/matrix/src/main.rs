@@ -2,7 +2,7 @@ use crossterm::{
     style::{Color, Print, SetForegroundColor},
     terminal::{Clear, ClearType},
     cursor::MoveTo,
-    ExecutableCommnd,
+    ExecutableCommand,
 };
 use std::io::{stdout, Write};
 use std::{thread, time};
@@ -61,7 +61,7 @@ fn main() {
             if timestep >= display_speed * (i + initial_delay + (rng.gen_range(0..2))) {
                 stdout.execute(MoveTo(middle_col + (i as u16 * 2), middle_row)).unwrap();
                 let color = match rng.gen_range(0..4) {
-                    0 => Color::yellow,
+                    0 => Color::Yellow,
                     1 => Color::Magenta,
                     2 => Color::Red,
                     _ => Color::White,
@@ -70,7 +70,7 @@ fn main() {
                 stdout.execute(Print(c)).unwrap();
             } else if i > 0 && timestep >= display_speed * ((i - 1) + initial_delay + rng.gen_range(0..2)) {
                 stdout.execute(MoveTo(middle_col + (i as u16 * 2), middle_row)).unwrap();
-                lett random_char = char::from(rng.gen_range(b' '..=b'~'));
+                let random_char = char::from(rng.gen_range(b' '..=b'~'));
                 stdout.execute(Print(random_char)).unwrap();
             }
         }
@@ -80,5 +80,4 @@ fn main() {
         timestep += 1;
     }
 }
-
 
