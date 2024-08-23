@@ -23,3 +23,17 @@ fn main() {
         Err(e) => println!("Error reading file: {}", e),
     }
 }
+
+fn count_words_in_file(file_path: &str) -> io::Result<usize> {
+    let file = File::open(file_path)?;
+    let reader = io::BufReader::new(file);
+
+    let mut word_count = 0;
+
+    for line in reader.lines() {
+        let line  = line?;
+        word_count += line.split_whitespace().count();
+    }
+
+    Ok(word_count)
+}
