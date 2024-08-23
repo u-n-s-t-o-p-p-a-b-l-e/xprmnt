@@ -17,4 +17,13 @@ fn main() {
     } else {
         "UNSTOPPABLE"
     };
+
+    let mut rng = rand::thread_rng();
+    let mut stdout = stdout();
+
+    let string_length = string.len();
+
+    let mut timestep = 0;
+    let display_speed = 4;
+    let initial_delay = 5;
 }
