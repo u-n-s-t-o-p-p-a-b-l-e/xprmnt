@@ -13,7 +13,7 @@ typedef struct {
 
 MemoryBlock memory[MAX_BLOCKS];
 int block_count = 0;
-chaar mem[MEMORY_SIZE];
+char mem[MEMORY_SIZE];
 
 void initialize_memory() {
     memset(mem, 0, MEMORY_SIZE);
