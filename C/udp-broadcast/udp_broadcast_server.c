@@ -32,7 +32,7 @@ int main() {
 
     while (1) {
         sendto(sockfd, message, strlen(message), 0, (struct sockaddr *)&broadcast_address, sizeof(broadcast_address));
-        printf("Broadcast message sent: %s]n", message);
+        printf("Broadcast message sent: %s\n", message);
         sleep(2);
     }
 
