@@ -29,8 +29,17 @@ void vm_init(VM* vm) {
 void vm_push(VM* vm, int value) {
     if (vm->sp < STACK_SIZE - 1) {
         vm->stack[++vm->sp] = value;
+    } else {
+        printf("Stack overflow\n");
+        exit(1);
+    }
+}
+
+int vm_pop(VM* vm) {
+    if (vm->sp >= 0) {
+        return vm->stack[vm->sp--];
         } else {
-            printf("Stack overflow\n");
+            printf("Stack underflow\n");
             exit(1);
         }
 }
