@@ -38,8 +38,53 @@ void vm_push(VM* vm, int value) {
 int vm_pop(VM* vm) {
     if (vm->sp >= 0) {
         return vm->stack[vm->sp--];
-        } else {
-            printf("Stack underflow\n");
-            exit(1);
+    } else {
+        printf("Stack underflow\n");
+        exit(1);
+    }
+}
+
+void vm_execute(VM* vm) {
+    while (1) {
+        Instruction instr = vm->code[vm->pc++];
+        switch (instr.op) {
+            case PUSH:
+                vm_push(vm, instr.operand);
+                break;
+                case ADD: {
+                    int b = vm_pop(vm);
+                    int a = vm_pop(vm);
+                    vm_push(vm, a + b);
+                    break;
+                }
+                case SUB: {
+                    int b = vm_pop(vm);
+                    int a = vm_pop(vm);
+                    vm_push(vm, a - b);
+                    break;
+                }
+                case MUL: {
+                    int b = vm_pop(vm);
+                    int a = vm_pop(vm);
+                    vm_push(vm, a * b);
+                    break;
+                }
+                case DIV: {
+                    int b = vm_pop(vm);
+                    int a = vm_pop(vm);
+                    if (b != 0) {
+                        vm_push(vm, a / b);
+                    } else {
+                        printf("Division by zero\n");
+                        exit(1);
+                    }
+                    break;
+                }
+                case PRINT:
+                    printf("%d\n", vm_pop(vm));
+                    break;
+                case HALT:
+                    return;;
         }
+    }
 }
