@@ -88,3 +88,20 @@ void vm_execute(VM* vm) {
         }
     }
 }
+
+int main() {
+    VM vm;
+    vm_init(&vm);
+
+    vm.code[0] = (Instruction){PUSH, 5};
+    vm.code[1] = (Instruction){PUSH, 3};
+    vm.code[2] = (Instruction){ADD, 0};
+    vm.code[3] = (Instruction){PUSH, 2};
+    vm.code[4] = (Instruction){MUL, 0};
+    vm.code[5] = (Instruction){PRINT, 0};
+    vm.code[6] = (Instruction){HALT, 0};
+
+    vm_execute(&vm);
+
+    return 0;
+}
