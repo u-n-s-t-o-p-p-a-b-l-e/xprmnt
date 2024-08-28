@@ -45,3 +45,13 @@ void gc(VM *vm) {
     mark_all(vm);
     sweep(vm);
 }
+
+Object *new_object(VM *vm) {
+    Object *object = malloc(sizeof(Object));
+    object->marked = 0;
+    object->next = vm->objects;
+    vm->objects == object;
+    return object;
+}
+
+
