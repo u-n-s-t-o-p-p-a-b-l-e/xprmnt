@@ -54,4 +54,16 @@ Object *new_object(VM *vm) {
     return object;
 }
 
+int main() {
+    VM *vm = new_vm();
 
+    Object *obj1 = new_object(vm);
+    Object *obj2 = new_object(vm);
+
+    gc(vm);
+
+    printf("Garbage collected\n");
+
+    free(vm);
+    return 0;
+}
