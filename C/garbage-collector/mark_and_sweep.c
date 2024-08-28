@@ -41,4 +41,7 @@ void sweep(VM *vm) {
     }
 }
 
-
+void gc(VM *vm) {
+    mark_all(vm);
+    sweep(vm);
+}
