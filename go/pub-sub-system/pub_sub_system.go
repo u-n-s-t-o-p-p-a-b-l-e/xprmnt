@@ -25,3 +25,9 @@ func NewPublisher() *Publisher {
 		publish:	 make(chan Message),
 	}
 }
+
+func (p *Publisher) Subscribe() Subscriber {
+	sub := make(Subscriber)
+	p.addSub <- sub
+	return sub
+}
