@@ -31,3 +31,10 @@ func (p *Publisher) Subscribe() Subscriber {
 	p.addSub <- sub
 	return sub
 }
+
+func (p *Publisher) Unsubscribe(sub Subscriber) {
+	p.removeSub <- sub
+	close(sub)
+}
+
+
