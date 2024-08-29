@@ -53,3 +53,36 @@ func (p *Publisher) Start() {
 		}
 	}()
 }
+
+func (p *Publisher) Publish(msg Message) {
+	p.publish <- msg
+}
+
+func main() {
+	pub := NewPublisher()
+	pub.Start()
+
+	sub1 := pub.Subscribe()
+	sub2 := pub.Subscribe()
+
+	pub.Publish(Message{Content: "Hello, subscribers!"})
+
+	go func() {
+		for msg := range sub1 {
+			fmt.Println("Subscriber 1 received:", msg.Content)
+		}
+	}()
+
+	go func() {
+		for msg	:= range sub2 {
+			fmt.Println("Subscriber 2 received:", msg.Content)
+		}
+	}()
+
+	time.Sleep(2 * time.Second)
+
+	pub.Unsubscribe(sub1)
+	pub.Publish(Message{Content: "Second message"})
+
+	time.Sleep(1 * time.Second)
+}
