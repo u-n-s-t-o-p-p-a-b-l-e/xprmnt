@@ -9,3 +9,11 @@ func modifyElement(arr []int, index int, newVal int) {
 		fmt.Println("Index out of bounds!")
 	}
 }
+
+func main() {
+	arr := []int{1, 2, 3, 4, 5}
+
+	fmt.Println("Before modification:", arr)
+	modifyElement(arr, 2, 10)
+	fmt.Println("After modification:", arr)
+}
