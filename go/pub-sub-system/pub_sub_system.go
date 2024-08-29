@@ -37,4 +37,19 @@ func (p *Publisher) Unsubscribe(sub Subscriber) {
 	close(sub)
 }
 
-
+func (p *Publisher) Start() {
+	go func() {
+		for {
+			select {
+			case sub :=  <-p.addSub:
+				p.subscribers[sub] = struct{}{}
+			case sub := <-p.removeSub:
+				delete(p.subscribers, sub)
+			case msg := <-p.publish:
+				for sub := range p.subscribers {
+					sub <- msg
+				}
+			}
+		}
+	}()
+}
