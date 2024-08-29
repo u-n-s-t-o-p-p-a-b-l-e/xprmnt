@@ -16,12 +16,3 @@ type Publisher struct {
 	removeSub	chan Subscriber
 	publish		chan Message
 }
-
-func NewPublisher() *Publisher {
-	return &Publisher{
-		subscribers: make(map[Subscriber]struct{}),
-		addSub:		 make(chan Subscriber),
-		removeSub:	 make(chan Subscriber),
-		publish:	 make(chan Message),
-	}
-}
