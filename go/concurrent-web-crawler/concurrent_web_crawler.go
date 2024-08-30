@@ -63,4 +63,14 @@ func main() {
 		wg.Wait()
 		close(results)
 	}()
+
+	for result := range results {
+		if result.Error != nil {
+			fmt.Printf("Error fetching %s: %v\n", result.URL, result.Error)
+		} else {
+			fmt.Printf("Fetched %s - Content length: %d\n", result.URL, len(result.Contents))
+		}
+	}
+
+	fmt.Println("All jobs completed")
 }
