@@ -19,4 +19,19 @@ func fetchURL(url string) Result {
 		return Result{URL: url, Error: err}
 	}
 	defer resp.Body.Close()
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return Result{URL: url, Error: err}
+	}
+
+	return Result{URL: url, Contents: string(body)}
+}
+
+func worker(id int, jobs <-chan string, results chan<- Result, wg *sync.WaitGroup) {
+	defer wg.Done()
+	for url := range jobs {
+		fmt.Printf("Worker %d starting job %s\n", id, url)
+		results <- fetchURL(url)
+	}
 }
