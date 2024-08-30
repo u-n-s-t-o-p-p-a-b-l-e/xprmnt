@@ -17,3 +17,21 @@ func (v valueReceiver) Print() {
 type PointerReceiver struct {
 	value int
 }
+
+func (p *PointerReceiver) Print() {
+	fmt.Println("PointerReceiver:", p.value)
+}
+
+func main() {
+	v := ValueReceiver{value: 10}
+	p := &PointerReceiver{value: 20}
+
+	v.Print()
+	p.Print()
+
+	var printer Printer
+
+
+}
+
+
