@@ -12,3 +12,11 @@ type Result struct {
 	Contents string
 	Error	 error
 }
+
+func fetchURL(url string) Result {
+	resp, err := http.Get(url)
+	if err != nil {
+		return Result{URL: url, Error: err}
+	}
+	defer resp.Body.Close()
+}
