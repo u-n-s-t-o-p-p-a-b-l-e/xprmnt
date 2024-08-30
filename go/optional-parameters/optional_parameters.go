@@ -14,7 +14,7 @@ func NewConfig(port *int, timeout *int) *Config {
 	}
 
 	if port != nil {
-		c.Port = *porrt
+		c.Port = *port
 	}
 	if timeout != nil {
 		c.Timeout = *timeout
