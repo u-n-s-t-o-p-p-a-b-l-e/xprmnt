@@ -53,4 +53,9 @@ func main() {
 		wg.Add(1)
 		go worker(w, jobs, results, &wg)
 	}
+
+	for _, url := range urls {
+		jobs <- url
+	}
+	close(jobs)
 }
