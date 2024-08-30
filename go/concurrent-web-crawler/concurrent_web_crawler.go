@@ -35,3 +35,22 @@ func worker(id int, jobs <-chan string, results chan<- Result, wg *sync.WaitGrou
 		results <- fetchURL(url)
 	}
 }
+
+func main() {
+	urls := []string{
+		"https://goland.org",
+		"https://github.com",
+		"https://stackoverflow.com",
+		"https://invalid.url",
+	}
+
+	numWorkers := 3
+	jobs := make(chan string, len(urls))
+	results := make(chan Result, len(urls))
+
+	var wg sync.WaitGroup
+	for w := 1; w <= numWorkers; w++ {
+		wg.Add(1)
+		go worker(w, jobs, results, &wg)
+	}
+}
