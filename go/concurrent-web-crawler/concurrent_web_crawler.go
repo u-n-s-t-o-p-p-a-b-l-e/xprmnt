@@ -58,4 +58,9 @@ func main() {
 		jobs <- url
 	}
 	close(jobs)
+
+	go func() {
+		wg.Wait()
+		close(results)
+	}()
 }
