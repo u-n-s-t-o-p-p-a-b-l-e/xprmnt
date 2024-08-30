@@ -6,11 +6,11 @@ type Printer interface {
 	Print()
 }
 
-type valueReceiver struct {
+type ValueReceiver struct {
 	value int
 }
 
-func (v valueReceiver) Print() {
+func (v ValueReceiver) Print() {
 	fmt.Println("ValueReceiver:", v.value)
 }
 
@@ -30,6 +30,13 @@ func main() {
 	p.Print()
 
 	var printer Printer
+
+	printer = v
+	printer.Print()
+
+	// The following line would cause a compile error:
+	// printer = &v
+	// printer.Print() // Does not work with pointer to value receiver
 
 
 }
