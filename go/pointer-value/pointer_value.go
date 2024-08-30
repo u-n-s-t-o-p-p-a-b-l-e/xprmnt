@@ -9,3 +9,11 @@ type Printer interface {
 type valueReceiver struct {
 	value int
 }
+
+func (v valueReceiver) Print() {
+	fmt.Println("ValueReceiver:", v.value)
+}
+
+type PointerReceiver struct {
+	value int
+}
