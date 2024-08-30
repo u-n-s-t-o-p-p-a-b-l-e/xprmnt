@@ -29,4 +29,7 @@ func main() {
 
 	config1 := NewConfig(nil, nil)
 	fmt.Printf("Config1:  Port=%d, Timeout=%d\n", config1.Port, config1.Timeout)
+
+	config2 := NewConfig(&port, nil)
+	fmt.Printf("Config2: Port=%d, Timeout=%d\n", config2.Port, config2.Timeout)
 }
