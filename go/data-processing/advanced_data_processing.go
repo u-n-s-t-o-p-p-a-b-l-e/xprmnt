@@ -15,3 +15,7 @@ type Processor interface {
 type pipeline struct {
 	processors []Processor
 }
+
+func NewPipeling(processors ...Processor) *Pipeline {
+	return &Pipeline{processors: processors}
+}
