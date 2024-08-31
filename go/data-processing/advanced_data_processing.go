@@ -93,4 +93,25 @@ func NewAsyncProcessor(p Processor) *AsyncProcessor {
 	return &AsyncProcessor{processor: p}
 }
 
+func (p *AsyncProcessor) Process(ctx context.Context, data interface{}) (interface{}, error) {
+	resultChan := make(chan interface{})
+	errChan := make(chan error)
 
+	go func() {
+		result, err := p.processor.Process(ctx, data)
+		if err != nil {
+			errChan <- err
+		} else {
+			resultChan <- result
+		}
+	}()
+
+	select {
+	case <-ctx.Done():
+		return nil, ctx.Err()
+	case err := <-errChan:
+		return nil, err
+	case result := <-resultChan:
+		return result, nil
+	}
+}
