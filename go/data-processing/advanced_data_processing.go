@@ -17,7 +17,7 @@ type Pipeline struct {
 	processors []Processor
 }
 
-func NewPipeling(processors ...Processor) *Pipeline {
+func NewPipeline(processors ...Processor) *Pipeline {
 	return &Pipeline{processors: processors}
 }
 
@@ -114,4 +114,12 @@ func (p *AsyncProcessor) Process(ctx context.Context, data interface{}) (interfa
 	case result := <-resultChan:
 		return result, nil
 	}
+}
+
+func main() {
+	pipeline := NewPipeline(
+		&StringToIntProcessor{},
+		NewAsyncProcessor(&DoubleIntProcessor{}),
+		&GenericProcessor{},
+	)
 }
