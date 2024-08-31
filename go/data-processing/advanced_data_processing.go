@@ -11,3 +11,7 @@ import (
 type Processor interface {
 	Process(ctx context.Context, data interface{}) (interface{}, error)
 }
+
+type pipeline struct {
+	processors []Processor
+}
