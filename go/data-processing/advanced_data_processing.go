@@ -84,3 +84,7 @@ func (p *GenericProcessor) Process(ctx context.Context, data interface{}) (inter
 		return nil, fmt.Errorf("unsupported type: %v", value.Type())
 	}
 }
+
+type AsyncProcessor struct {
+	processor Processor
+}
