@@ -70,3 +70,17 @@ func (p *DoubleIntProcessor) Process(ctx context.Context, data interface{}) (int
 	return num * 2, nil
 }
 
+type GenericProcessor struct{}
+
+func (p *GenericProcessor) Process(ctx context.Context, data interface{}) (interface{}, error) {
+	value := reflect.ValueOf(data)
+
+	switch value.Kind() {
+	case reflect.Int:
+		return value.Int() + 1, nil
+	case reflect.String:
+		return value.String() + "!", nil
+	default:
+		return nil, fmt.Errorf("unsupported type: %v", value.Type())
+	}
+}
