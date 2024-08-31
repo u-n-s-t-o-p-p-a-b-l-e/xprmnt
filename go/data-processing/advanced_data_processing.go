@@ -88,3 +88,9 @@ func (p *GenericProcessor) Process(ctx context.Context, data interface{}) (inter
 type AsyncProcessor struct {
 	processor Processor
 }
+
+func NewAsyncProcessor(p Processor) *AsyncProcessor {
+	return &AsyncProcessor{processor: p}
+}
+
+
