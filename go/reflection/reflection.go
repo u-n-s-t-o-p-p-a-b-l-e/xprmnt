@@ -22,4 +22,12 @@ func main() {
 		value := v.Field(i).Interface()
 		fmt.Printf("%s: %v\n", field.Name, value)
 	}
+
+	pPointer := reflect.ValueOf(&p).Elem()
+	nameField := pPointer.FieldByName("Name")
+	if nameField.CanSet() {
+		nameField.SetString("Bob")
+	}
+
+	fmt.Println("Modified struct:", p)
 }
