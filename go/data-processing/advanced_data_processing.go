@@ -59,4 +59,14 @@ func (p *StringToIntProcessor) Process(ctx context.Context, data interface{}) (i
 	return result, nil
 }
 
+type DoubleIntProcessor struct{}
+
+func (p *DoubleIntProcessor) Process(ctx context.Context, data interface{}) (interface{}, error) {
+	num, ok := data.(int)
+	if !ok {
+		return nil, errors.New("input is not an int")
+	}
+
+	return num * 2, nil
+}
 
