@@ -122,4 +122,33 @@ func main() {
 		NewAsyncProcessor(&DoubleIntProcessor{}),
 		&GenericProcessor{},
 	)
+
+	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+	defer cancel()
+
+	result, err := pipeline.Execute(ctx, "42")
+	if err != nil {
+		fmt.Printf("Error: %v\n", err)
+		return
+	}
+
+	fmt.Printf("Result %v\n", result)
+
+	var wg sync.WaitGroup
+	inputs := []string{"10", "20", "30"}
+
+	for _, input := range inputs {
+		wg.Add(1)
+		go func(in string) {
+			defer wg.Done()
+			res, err := pipeline.Execute(ctx, in)
+			if err != nil {
+				fmt.Printf("Error processing %s: %v\n", in, err)
+			} else {
+				fmt.Printf("Result for %s: %v\n", in, res)
+			}
+		}(input)
+	}
+
+	wg.Wait()
 }
