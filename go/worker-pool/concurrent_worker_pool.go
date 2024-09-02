@@ -49,4 +49,6 @@ func main() {
 	}
 	close(tasks)
 
+	go createWorkerPool(numWorkers, tasks, results)
+
 }
