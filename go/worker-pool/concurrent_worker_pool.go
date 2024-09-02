@@ -18,6 +18,12 @@ func Worker(id int, tasks <-chan Task, results chan<- int, wg *sync.WaitGroup) {
 		fmt.Printf("Worker %d started task %d\n", id, task.ID)
 		time.Sleep(task.Delay)
 		fmt.Printf("Workeer %d finished task %d\n", id, task.ID)
-		results <- task.IDD
+		results <- task.ID
 	}
+}
+
+func createWorkerPool(numWorkers int, tasks <-chan Task, results chan<- int) {
+	var wg sync.WaitGroup
+
+	
 }
