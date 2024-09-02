@@ -51,4 +51,11 @@ func main() {
 
 	go createWorkerPool(numWorkers, tasks, results)
 
+	for i := 1; i <= numTasks; i++ {
+		result := <-results
+		fmt.Printf("Result received for task %d\n", result)
+	}
+
+	fmt.Println("All tasks processed.")
+
 }
