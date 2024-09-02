@@ -25,5 +25,8 @@ func Worker(id int, tasks <-chan Task, results chan<- int, wg *sync.WaitGroup) {
 func createWorkerPool(numWorkers int, tasks <-chan Task, results chan<- int) {
 	var wg sync.WaitGroup
 
-	
+	for i := 1; i <= numWorkers; i++ {
+		wg.Add(1)
+		go Worker(i, tasks, results, &wg)
+	}
 }
