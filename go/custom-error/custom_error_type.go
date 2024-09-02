@@ -31,6 +31,6 @@ func main() {
 
 	if vErr, ok := err.(*ValidationError); ok {
 		fmt.Println("Field:", vErr.Field)
-		fmt.Println("")
+		fmt.Println("Message:", vErr.Message)
 	}
 }
