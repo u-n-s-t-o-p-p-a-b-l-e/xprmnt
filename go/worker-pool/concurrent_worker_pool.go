@@ -41,4 +41,12 @@ func main() {
 	tasks := make(chan Task, numTasks)
 	results := make(chan int, numTasks)
 
+	for i := 1; i <= numTasks; i++ {
+		tasks <- Task{
+			ID:    i,
+			Delay: time.Duration(i%3+1) * time.Second,
+		}
+	}
+	close(tasks)
+
 }
