@@ -44,3 +44,21 @@ func LongRunningHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Request canceled or timed out", http.StatusRequestTimeout)
 	}
 }
+
+func main() {
+	mux := http.NewServeMux()
+
+	mux.Handle("/work", TimeoutMiddleware(2*time.Second, http.HandlerFunc(LongRunningHandler)))
+
+	loggingMux := LoggingMiddleware(mux)
+
+	server := &http.Server{
+		Addr: ":8080",
+		Handler: loggingMux,
+	}
+
+	log.Println("Starting server on :8080")
+	if err := server.ListenAndServe(); err != nil {
+		log.Fatalf("Server failed: %s", err)
+	}
+}
