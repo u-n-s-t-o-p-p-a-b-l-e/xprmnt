@@ -22,3 +22,10 @@ func validateName(name string) error {
 	}
 	return nil
 }
+
+fn main() {
+	err := validateName("")
+	if err != nil {
+		fmt.Println("Error:", err)
+	}
+}
