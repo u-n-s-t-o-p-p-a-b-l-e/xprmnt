@@ -29,4 +29,16 @@ func createWorkerPool(numWorkers int, tasks <-chan Task, results chan<- int) {
 		wg.Add(1)
 		go Worker(i, tasks, results, &wg)
 	}
+
+	wg.Wait()
+	close(results)
+}
+
+func main() {
+	const numWorkers = 3;
+	const numTasks = 10;
+
+	tasks := make(chan Task, numTasks)
+	results := make(chan int, numTasks)
+
 }
