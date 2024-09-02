@@ -23,9 +23,14 @@ func validateName(name string) error {
 	return nil
 }
 
-fn main() {
+func main() {
 	err := validateName("")
 	if err != nil {
 		fmt.Println("Error:", err)
+	}
+
+	if vErr, ok := err.(*ValidationError); ok {
+		fmt.Println("Field:", vErr.Field)
+		fmt.Println("")
 	}
 }
