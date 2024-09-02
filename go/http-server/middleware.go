@@ -34,3 +34,13 @@ func TimeoutMiddleware(timeout time.Duration, next http.Handler) http.Handler {
 		}
 	})
 }
+
+func LongRunningHandler(w http.ResponseWriter, r *http.Request) {
+	ctx := r.Context()
+	select {
+	case <-time.After(5 * time.Second):
+		fmt.Println(w, "Work completed succesfully")
+	case <-ctx.Done():
+		http.Error(w, "Request canceled or timed out", http.StatusRequestTimeout)
+	}
+}
