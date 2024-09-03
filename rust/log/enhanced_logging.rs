@@ -30,6 +30,13 @@ impl Logger {
                 LogLeve::INFO => "INFO",
                 LogLeve::DEBUG => "DEBUG",
             };
+
+            let log_entry = format!(
+                "[{}] {}: {} ({}:{})\n",
+                timestamp, level_str, message, file, line
+            );
+
+            print!("{}", log_entry);
         }
     }
 }
