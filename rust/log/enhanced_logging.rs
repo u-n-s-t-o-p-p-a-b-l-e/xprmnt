@@ -14,4 +14,8 @@ struct Logger {
     level: LogLevel,
 }
 
-
+impl Logger {
+    fn new(level: LogLevel) -> Self {
+        Logger { level }
+    }
+}
