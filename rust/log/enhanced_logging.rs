@@ -62,4 +62,10 @@ fn main() {
     log!(logger, LogLevel::DEBUG, "Debugging information");
     log!(logger, LogLevel::WARNING, "Low disk space");
     log!(logger, LogLevel::ERROR, "Failed to open file");
+
+    for i in 0..5 {
+        log!(logger, LogLevel::INFO, &format!("Processing item {}", i));
+    }
+
+    log!(logger, LogLevel::INFO, "Application finished");
 }
