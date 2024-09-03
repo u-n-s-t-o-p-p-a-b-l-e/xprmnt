@@ -21,4 +21,10 @@ fn log_message(level: LogLevel, message: &str) {
     let log_entry = format!("[{}] {}: {}\n", timestamp, level_str, message);
 
     print!("{}", log_entry);
+
+    let mut file = OpenOptions::new()
+        .create(true)
+        .append(true)
+        .open("log.txt")
+        .unwrap();
 }
