@@ -54,3 +54,12 @@ macro_rules! log {
         $logger.log($level, $message, file!(), line!());
     };
 }
+
+fn main() {
+    let logger = Logger::new(LogLevel::INFO);
+
+    log!(logger, LogLevel::INFO, "Application started");
+    log!(logger, LogLevel::DEBUG, "Debugging information");
+    log!(logger, LogLevel::WARNING, "Low disk space");
+    log!(logger, LogLevel::ERROR, "Failed to open file");
+}
