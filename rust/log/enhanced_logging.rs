@@ -48,3 +48,9 @@ impl Logger {
         }
     }
 }
+
+macro_rules! log {
+    ($logger:expr, $level:expr, $message:expr) => {
+        $logger.log($level, $message, file!(), line!());
+    };
+}
