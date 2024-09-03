@@ -17,4 +17,8 @@ fn log_message(level: LogLevel, message: &str) {
         LogLevel::WARNING => "WARNING",
         LogLevel::ERROR => "ERROR",
     };
+
+    let log_entry = format!("[{}] {}: {}\n", timestamp, level_str, message);
+
+    print!("{}", log_entry);
 }
