@@ -37,6 +37,14 @@ impl Logger {
             );
 
             print!("{}", log_entry);
+
+            let mut file = OpenOptions::new()
+                .create(true)
+                .append(true)
+                .open("enhanced_log.txt")
+                .unwrap();
+
+            file.write_all(log_entry.as_bytes()).unwrap();
         }
     }
 }
