@@ -23,6 +23,13 @@ impl Logger {
         if level <= self.level {
             let now = SystemTime::now();
             let timestamp = now.duration_since(UNIX_EPOCH).unwrap().as_secs();
+
+            let level_str = match level {
+                LogLeve::ERROR => "ERROR",
+                LogLeve::WARNING => "WARNING",
+                LogLeve::INFO => "INFO",
+                LogLeve::DEBUG => "DEBUG",
+            };
         }
     }
 }
