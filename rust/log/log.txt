@@ -1,0 +1,9 @@
+[1725370948] INFO: Application started
+[1725370948] WARNING: Low disk space
+[1725370948] ERROR: Failed to open file
+[1725370948] INFO: Processing item 0
+[1725370948] INFO: Processing item 1
+[1725370948] INFO: Processing item 2
+[1725370948] INFO: Processing item 3
+[1725370948] INFO: Processing item 4
+[1725370948] INFO: Application finished

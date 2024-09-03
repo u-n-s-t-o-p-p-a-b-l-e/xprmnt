@@ -25,10 +25,10 @@ impl Logger {
             let timestamp = now.duration_since(UNIX_EPOCH).unwrap().as_secs();
 
             let level_str = match level {
-                LogLeve::ERROR => "ERROR",
-                LogLeve::WARNING => "WARNING",
-                LogLeve::INFO => "INFO",
-                LogLeve::DEBUG => "DEBUG",
+                LogLevel::ERROR => "ERROR",
+                LogLevel::WARNING => "WARNING",
+                LogLevel::INFO => "INFO",
+                LogLevel::DEBUG => "DEBUG",
             };
 
             let log_entry = format!(
