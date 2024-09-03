@@ -7,3 +7,8 @@ enum LogLevel {
     WARNING,
     ERROR,
 }
+
+fn log_message(level: LogLevel, message: &str) {
+    let now = SystemTime::now();
+    let timestamp = now.duration_since(UNIX_EPOCH).unwrap().as_secs();
+}
