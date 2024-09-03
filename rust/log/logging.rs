@@ -27,4 +27,12 @@ fn log_message(level: LogLevel, message: &str) {
         .append(true)
         .open("log.txt")
         .unwrap();
+
+    file.write_all(log_entry.as_bytes()).unwrap();
+}
+
+fn main() {
+    log_message(LogLevel::INFO, "Application started");
+    log_message(LogLevel::WARNING, "Low disk space");
+    log_message(LogLevel::ERROR, "Failed to open file");
 }
