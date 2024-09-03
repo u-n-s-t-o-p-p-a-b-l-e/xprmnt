@@ -9,3 +9,9 @@ enum LogLevel {
     INFO,
     DEBUG,
 }
+
+struct Logger {
+    level: LogLevel,
+}
+
+
