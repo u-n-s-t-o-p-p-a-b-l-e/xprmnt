@@ -11,4 +11,10 @@ enum LogLevel {
 fn log_message(level: LogLevel, message: &str) {
     let now = SystemTime::now();
     let timestamp = now.duration_since(UNIX_EPOCH).unwrap().as_secs();
+
+    let level_str = match level {
+        LogLevel::INFO => "INFO",
+        LogLevel::WARNING => "WARNING",
+        LogLevel::ERROR => "ERROR",
+    };
 }
