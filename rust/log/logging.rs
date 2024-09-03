@@ -35,4 +35,10 @@ fn main() {
     log_message(LogLevel::INFO, "Application started");
     log_message(LogLevel::WARNING, "Low disk space");
     log_message(LogLevel::ERROR, "Failed to open file");
+
+    for i in 0..5 {
+        log_message(LogLevel::INFO, &format!("Processing item {}", i));
+    }
+
+    log_message(LogLevel::INFO, "Application finished");
 }
