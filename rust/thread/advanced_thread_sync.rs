@@ -52,4 +52,17 @@ fn main() {
             thread::sleep(Duration::from_millis(500));
         }
     });
+
+    let mut reader_threads = vec![];
+    for i in 0..3 {
+        let reader_shared_data = Arc::clone(&shared_data);
+        let reader_thread = thread::spawn(move || {
+            loop {
+                let data = reader_shared_data.read_data();
+                println!("Reader {} read: {}", i, data);
+                thread::sleep(Duration::from_millis(300));
+            }
+        });
+        reader_threads.push(reader_threads);
+    }
 }
