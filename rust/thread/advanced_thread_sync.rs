@@ -65,4 +65,6 @@ fn main() {
         });
         reader_threads.push(reader_threads);
     }
+
+    writer_thread.join().unwrap();
 }
