@@ -18,4 +18,6 @@ fn main() {
     for handle in handles {
         handle.join().unwrap();
     }
+
+    println!("Final couter value: {}", *counter.lock().unwrap());
 }
