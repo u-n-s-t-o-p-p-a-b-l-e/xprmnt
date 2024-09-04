@@ -16,4 +16,8 @@ impl SharedData {
             condvar: Condvar::new(),
         }
     }
+
+    fn write_data(&self, new_data: String) {
+        let mut write_lock = self.write_in_progress.lock().unwrap();
+    }
 }
