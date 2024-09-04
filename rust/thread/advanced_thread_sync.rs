@@ -38,7 +38,7 @@ impl SharedData {
 
     fn read_data(&self) -> String {
         let data = self.data.read().unwrap();
-        data.clone();
+        data.clone()
     }
 }
 
@@ -63,7 +63,7 @@ fn main() {
                 thread::sleep(Duration::from_millis(300));
             }
         });
-        reader_threads.push(reader_threads);
+        reader_threads.push(reader_thread);
     }
 
     writer_thread.join().unwrap();
