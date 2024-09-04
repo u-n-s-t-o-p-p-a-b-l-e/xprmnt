@@ -31,5 +31,8 @@ impl SharedData {
             *data = new_data;
             println!("Data written: {}", *data);
         }
+
+        *write_lock = false;
+        self.condvar.notify_all();
     }
 }
