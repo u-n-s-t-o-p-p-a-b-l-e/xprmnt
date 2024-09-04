@@ -25,5 +25,11 @@ impl SharedData {
         }
 
         *write_lock = true;
+
+        {
+            let mut data = self.data.write().unwrap();
+            *data = new_data;
+            println!("Data written: {}", *data);
+        }
     }
 }
