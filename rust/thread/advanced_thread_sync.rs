@@ -67,4 +67,9 @@ fn main() {
     }
 
     writer_thread.join().unwrap();
+
+    thread::sleep(Duration::from_secs(2));
+    for reader_thread in reader_threads {
+        reader_thread.join().unwrap();
+    }
 }
