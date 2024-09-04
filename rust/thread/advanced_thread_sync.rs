@@ -23,5 +23,7 @@ impl SharedData {
         while *write_lock {
             write_lock = self.condvar.wait(write_lock).unwrap();
         }
+
+        *write_lock = true;
     }
 }
