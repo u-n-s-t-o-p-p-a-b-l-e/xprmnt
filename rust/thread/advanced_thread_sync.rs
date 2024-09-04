@@ -35,4 +35,9 @@ impl SharedData {
         *write_lock = false;
         self.condvar.notify_all();
     }
+
+    fn read_data(&self) -> String {
+        let data = self.data.read().unwrap();
+        data.clone();
+    }
 }
