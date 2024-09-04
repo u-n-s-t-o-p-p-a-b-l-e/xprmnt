@@ -41,3 +41,15 @@ impl SharedData {
         data.clone();
     }
 }
+
+fn main() {
+    let shared_data = Arc::new(SharedData::new());
+
+    let writer_shared_data = Arc::clone(&shared_data);
+    let writer_thread = thread::spawn(move || {
+        for i in 0..5 {
+            writer_shared_data.write_data(format!("Message {}", i));
+            thread::sleep(Duration::from_millis(500));
+        }
+    });
+}
