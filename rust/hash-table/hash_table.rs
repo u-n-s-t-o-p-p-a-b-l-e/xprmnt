@@ -14,4 +14,8 @@ impl HashTable {
         }
         HashTable { buckets }
     }
+
+    fn hash(&self, key: &str) -> usize {
+        let mut hash: usize = 0;
+    }
 }
