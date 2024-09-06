@@ -72,3 +72,11 @@ impl HashTable {
         found
     }
 }
+
+fn main() {
+    let mut hash_table = HashTable::new();
+
+    hash_table.insert("apple".to_string(), "fruit".to_string());
+    hash_table.insert("carrot".to_string(), "vegetable".to_string());
+    hash_table.insert("banana".to_string(), "fruit".to_string());
+}
