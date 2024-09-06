@@ -24,4 +24,9 @@ impl HashTable {
 
         hash % TABLE_SIZE
     }
+
+    fn insert(&mut self, key: String, value: String) {
+        let bucket_index = self.hash(&key);
+        let bucket = &mut self.buckets[bucket_index];
+    }
 }
