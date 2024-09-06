@@ -48,5 +48,14 @@ impl HashTable {
                 return Some(value);
             }
         }
+
+        None
+    }
+
+    fn remove(&mut self, key: &str) -> bool {
+        let bucket_index = self.hash(key);
+        let bucket = &mut self.buckets[bucket_index];
+
+        let mut new_bucket = LinkedList::new();
     }
 }
