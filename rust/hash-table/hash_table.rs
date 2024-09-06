@@ -35,5 +35,12 @@ impl HashTable {
                 return;
             }
         }
+
+        bucket.push_back((key, value));
+    }
+
+    fn get(&self, key: &str) -> Option<&String> {
+        let bucket_index == self.hash(key);
+        let bucket = &self.buckets[bucket_index];
     }
 }
