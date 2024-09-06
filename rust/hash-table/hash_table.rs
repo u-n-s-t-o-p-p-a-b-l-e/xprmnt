@@ -57,5 +57,18 @@ impl HashTable {
         let bucket = &mut self.buckets[bucket_index];
 
         let mut new_bucket = LinkedList::new();
+
+        let mut found = false;
+
+        while let Some((existing_key, value)) = bucket.pop_front() {
+            if existing_key != key {
+                new_bucket.push_back((existing_key, value));
+            } else {
+                found = true;
+            }
+        }
+
+        *bucket = new_bucket;
+        found
     }
 }
