@@ -28,5 +28,12 @@ impl HashTable {
     fn insert(&mut self, key: String, value: String) {
         let bucket_index = self.hash(&key);
         let bucket = &mut self.buckets[bucket_index];
+
+        for (existing_key, existing_value) in bucket.iter_mul() {
+            if *existing_key == key {
+                *existing_value = value;
+                return;
+            }
+        }
     }
 }
