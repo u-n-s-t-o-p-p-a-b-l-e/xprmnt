@@ -1,4 +1,4 @@
-use std::collection::LinkedList;
+use std::collections::LinkedList;
 
 const TABLE_SIZE: usize = 16;
 
@@ -7,7 +7,7 @@ struct HashTable {
 }
 
 impl HashTable {
-    fn new() -> self {
+    fn new() -> Self {
         let mut buckets = Vec::with_capacity(TABLE_SIZE);
         for _ in 0..TABLE_SIZE {
             buckets.push(LinkedList::new());
@@ -29,7 +29,7 @@ impl HashTable {
         let bucket_index = self.hash(&key);
         let bucket = &mut self.buckets[bucket_index];
 
-        for (existing_key, existing_value) in bucket.iter_mul() {
+        for (existing_key, existing_value) in bucket.iter_mut() {
             if *existing_key == key {
                 *existing_value = value;
                 return;
@@ -40,7 +40,7 @@ impl HashTable {
     }
 
     fn get(&self, key: &str) -> Option<&String> {
-        let bucket_index == self.hash(key);
+        let bucket_index = self.hash(key);
         let bucket = &self.buckets[bucket_index];
 
         for (existing_key, value) in bucket.iter() {
