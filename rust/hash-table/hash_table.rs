@@ -17,5 +17,11 @@ impl HashTable {
 
     fn hash(&self, key: &str) -> usize {
         let mut hash: usize = 0;
+
+        for byte in key.as_bytes() {
+            hash = hash.wrapping_mul(31).wrapping_add(*byte as usize);
+        }
+
+        hash % TABLE_SIZE
     }
 }
