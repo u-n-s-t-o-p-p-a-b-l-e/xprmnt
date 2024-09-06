@@ -42,5 +42,11 @@ impl HashTable {
     fn get(&self, key: &str) -> Option<&String> {
         let bucket_index == self.hash(key);
         let bucket = &self.buckets[bucket_index];
+
+        for (existing_key, value) in bucket.iter() {
+            if *existing_key == key {
+                return Some(value);
+            }
+        }
     }
 }
