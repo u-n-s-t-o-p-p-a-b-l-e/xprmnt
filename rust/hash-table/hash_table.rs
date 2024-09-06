@@ -91,4 +91,11 @@ fn main() {
     if let Some(value) = hash_table.get("banana") {
         println!("banana: {}", value);
     }
+
+    hash_table.remove("apple");
+
+    match hash_table.get("apple") {
+        Some(value) => println!("apple: {}", value),
+        None => println!("apple not found"),
+    }
 }
