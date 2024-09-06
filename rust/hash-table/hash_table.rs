@@ -79,4 +79,16 @@ fn main() {
     hash_table.insert("apple".to_string(), "fruit".to_string());
     hash_table.insert("carrot".to_string(), "vegetable".to_string());
     hash_table.insert("banana".to_string(), "fruit".to_string());
+
+    if let Some(value) = hash_table.get("apple") {
+        println!("apple: {}", value);
+    }
+
+    if let Some(value) = hash_table.get("carrot") {
+        println!("carrot: {}", value);
+    }
+
+    if let Some(value) = hash_table.get("banana") {
+        println!("banana: {}", value);
+    }
 }
