@@ -1,9 +1,9 @@
-use std::comp::Ordering;
+use std::cmp::Ordering;
 
 struct Node<T> {
     value: T,
     left: Option<Box<Node<T>>>,
-    right: Oprion<Box<Node<T>>>,
+    right: Option<Box<Node<T>>>,
 }
 
 impl<T:Ord + std::fmt::Display> Node<T> {
