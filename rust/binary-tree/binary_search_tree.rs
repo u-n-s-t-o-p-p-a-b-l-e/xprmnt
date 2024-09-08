@@ -46,6 +46,24 @@ impl<T:Ord + std::fmt::Display> Node<T> {
                     false
                 }
             }
+            Ordering::Greater => {
+                if let Some(ref right) = self.right {
+                    right.contains(target_value)
+                } else {
+                    false
+                }
+            }
+            Ordering::Equal => true,
+        }
+    }
+
+    fn in_order_traversal(&self) {
+        if let Some(ref left) = self.left {
+            left.in_order_traversal();
+        }
+        println!("{}", self.value);
+        if let Some(ref right) = self.right {
+            right.in_order_traversal();
         }
     }
 }
