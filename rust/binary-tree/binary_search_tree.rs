@@ -14,4 +14,16 @@ impl<T:Ord + std::fmt::Display> Node<T> {
             right: None,
         }
     }
+
+    fn insert (&mut self, new_value: T) {
+        match new_value.cmp(&self.value) {
+            Ordering::Less => {
+                if let Some(ref mut left) = self.left {
+                    left.insert(new_value);
+                } else {
+                    self.left = Some(Box::new(Node::new(new_value)));
+                }
+            }
+        }
+    }
 }
