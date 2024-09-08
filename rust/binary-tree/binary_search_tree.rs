@@ -24,6 +24,13 @@ impl<T:Ord + std::fmt::Display> Node<T> {
                     self.left = Some(Box::new(Node::new(new_value)));
                 }
             }
+            Ordering::Greater => {
+                if let Some(ref mut right) = self.right {
+                    right.insert(new_value);
+                } else {
+                    self.right = Some(Box::new(Node::new(new_value)));
+                }
+            }
         }
     }
 }
