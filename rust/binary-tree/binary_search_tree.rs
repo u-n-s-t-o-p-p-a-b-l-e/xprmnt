@@ -31,6 +31,21 @@ impl<T:Ord + std::fmt::Display> Node<T> {
                     self.right = Some(Box::new(Node::new(new_value)));
                 }
             }
+            Ordering::Equal => {
+                // Do nothing if the new value is equal (no duplicates allowed).
+            }
+        }
+    }
+
+    fn contains(&self, target_value: &T) -> bool {
+        match target_value.cmp(&self.value) {
+            Ordering::Less => {
+                if let Some(ref left) = self.left {
+                    left.contains(target_value)
+                } else {
+                    false
+                }
+            }
         }
     }
 }
