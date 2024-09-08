@@ -67,3 +67,20 @@ impl<T:Ord + std::fmt::Display> Node<T> {
         }
     }
 }
+
+fn main() {
+    let mut bst = Node::new(10);
+
+    bst.insert(5);
+    bst.insert(15);
+    bst.insert(3);
+    bst.insert(7);
+    bst.insert(13);
+    bst.insert(17);
+
+    println!("Containt 7? {}", bst.contains(&7));
+    println!("Containt 6? {}", bst.contains(&6));
+
+    println!("In-order traversal of the tree:");
+    bst.in_order_traversal();
+}
