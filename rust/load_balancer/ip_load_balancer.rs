@@ -35,5 +35,7 @@ impl LoadBalancer {
     fn distribute_request(&mut self, client_ip: &Ipv4Addr) {
         let server = &self.servers[self.current];
         server.handle_request(client_ip);
+
+        self.current = (self.current + 1) % self.servers.len();
     }
 }
