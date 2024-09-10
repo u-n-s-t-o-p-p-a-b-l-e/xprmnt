@@ -39,3 +39,12 @@ impl LoadBalancer {
         self.current = (self.current + 1) % self.servers.len();
     }
 }
+
+fn main() {
+    let servers_ips = vec![
+        Ipv4Addr::new(192, 168, 1, 1),
+        Ipv4Addr::new(192, 168, 1, 2),
+        Ipv4Addr::new(192, 168, 1, 3),
+        Ipv4Addr::new(192, 168, 1, 4),
+    ];
+}
