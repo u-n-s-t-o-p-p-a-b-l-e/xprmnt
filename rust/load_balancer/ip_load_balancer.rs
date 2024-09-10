@@ -19,3 +19,12 @@ struct LoadBalancer {
     servers: VecDeque<Server>,
     current: usize,
 }
+
+impl LoadBalancer {
+    fn new(servers: Vec<Server>) -> LoadBalancer {
+        LoadBalancer {
+            servers: VecDeque::from(servers),
+            current: 0,
+        }
+    }
+}
