@@ -47,4 +47,11 @@ fn main() {
         Ipv4Addr::new(192, 168, 1, 3),
         Ipv4Addr::new(192, 168, 1, 4),
     ];
+
+    let mut load_balancer = LoadBalancer::new(
+        server_ips
+        .into_iter()
+        .map(Server::new)
+        .collet(),
+    );
 }
