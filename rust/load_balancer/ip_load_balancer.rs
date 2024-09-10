@@ -27,4 +27,8 @@ impl LoadBalancer {
             current: 0,
         }
     }
+
+    fn add_server(&mut self, server: Server) {
+        self.servers.push_back(server);
+    }
 }
