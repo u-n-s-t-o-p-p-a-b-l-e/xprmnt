@@ -14,3 +14,8 @@ impl Server {
         println!("Request from {} is being handled by server {}", client_ip, self.ip_address);
     }
 }
+
+struct LoadBalancer {
+    servers: VecDeque<Server>,
+    current: usize,
+}
