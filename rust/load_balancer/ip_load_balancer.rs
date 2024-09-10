@@ -10,4 +10,7 @@ impl Server {
     fn new(ip: Ipv4Addr) -> Server {
         Server { ip_address: ip }
     }
+    fn handle_request(&self, client_ip: &Ipv4Addr) {
+        println!("Request from {} is being handled by server {}", client_ip, self.ip_address);
+    }
 }
