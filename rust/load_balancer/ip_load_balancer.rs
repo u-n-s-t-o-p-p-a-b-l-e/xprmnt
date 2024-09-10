@@ -63,5 +63,7 @@ fn main() {
         Ipv4Addr::new(203, 0, 113, 5),
     ];
 
-
+    for client,ip in client_ips {
+        load_balancer.distribute_request(&client_ip);
+    }
 }
