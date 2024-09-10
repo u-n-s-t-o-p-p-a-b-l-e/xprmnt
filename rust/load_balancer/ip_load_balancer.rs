@@ -69,4 +69,14 @@ fn main() {
 
     println!("Adding a new server with IP 192.168.1.5 ...");
     load_balancer.add_server(Server::new(Ipv4Addr::new(192, 168, 1, 5)));
+
+    let more_client_ips = vec![
+        Ipv4Addr::new(203, 0, 113, 6),
+        Ipv4Addr::new(203, 0, 113, 7),
+        Ipv4Addr::new(203, 0, 113, 8),
+    ];
+
+    for client_ip in more_client_ips {
+        load_balancer.distribute_request(&client_ip);
+    }
 }
