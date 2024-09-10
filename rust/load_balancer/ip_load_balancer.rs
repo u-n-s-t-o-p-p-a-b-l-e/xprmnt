@@ -1,5 +1,5 @@
 use std::net::{Ipv4Addr};
-use std::Collections::VecDeque;
+use std::collections::VecDeque;
 use std::io::{self, Write};
 
 struct Server {
@@ -41,7 +41,7 @@ impl LoadBalancer {
 }
 
 fn main() {
-    let servers_ips = vec![
+    let server_ips = vec![
         Ipv4Addr::new(192, 168, 1, 1),
         Ipv4Addr::new(192, 168, 1, 2),
         Ipv4Addr::new(192, 168, 1, 3),
@@ -52,7 +52,7 @@ fn main() {
         server_ips
         .into_iter()
         .map(Server::new)
-        .collet(),
+        .collect(),
     );
 
     let client_ips = vec![
@@ -63,7 +63,7 @@ fn main() {
         Ipv4Addr::new(203, 0, 113, 5),
     ];
 
-    for client,ip in client_ips {
+    for client_ip in client_ips {
         load_balancer.distribute_request(&client_ip);
     }
 
