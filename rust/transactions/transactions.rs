@@ -23,4 +23,8 @@ impl BankAccount {
             Ok(())
         }
     }
+
+    fn display_balance(&self) {
+        println!("Current balance: ${:.2}", self.balance);
+    }
 }
