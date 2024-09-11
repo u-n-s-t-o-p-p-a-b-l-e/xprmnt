@@ -38,5 +38,10 @@ fn main() {
         println!("2: Withdraw");
         println!("3: Check Balance");
         println!("4: Exit");
+
+        let mut option = String::new();
+        io::stdin().read_line(&mut option).expect("Failed to read input");
+
+        let option = option.trim().parse::<u32>().unwrap_or(0);
     }
 }
