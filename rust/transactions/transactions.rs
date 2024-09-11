@@ -28,3 +28,15 @@ impl BankAccount {
         println!("Current balance: ${:.2}", self.balance);
     }
 }
+
+fn main() {
+    let mut account = BankAccount::new();
+
+    loop {
+        println!("Choose an option: ");
+        println!("1: Deposit");
+        println!("2: Withdraw");
+        println!("3: Check Balance");
+        println!("4: Exit");
+    }
+}
