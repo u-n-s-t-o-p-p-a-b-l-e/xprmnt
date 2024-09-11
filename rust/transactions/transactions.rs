@@ -13,4 +13,14 @@ impl BankAccount {
         self.balance += amount;
         println!("Deposited: ${:.2}", amount);
     }
+
+    fn withdraw(&mut self, amount: f64) -> Result<(), String> {
+        if amount > self.balance {
+            Err("Insufficient funds".to_string())
+        } else {
+            self.balance -= amount;
+            println!("Withdrew: ${:.2}", amount);
+            Ok(())
+        }
+    }
 }
