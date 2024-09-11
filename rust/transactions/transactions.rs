@@ -61,7 +61,7 @@ fn main() {
                 let amount: f64 = amount.trim().parse().expect("Invalid amount");
                 match account.withdraw(amount) {
                     Ok(_) => {}
-                    Err(e) => println!("Error: {}", e);
+                    Err(e) => println!("Error: {}", e),
                 }
             }
             3 => {
