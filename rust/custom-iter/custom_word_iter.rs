@@ -11,4 +11,8 @@ impl<'a> WordIterator<'a> {
 
 impl<'a> Iterator for WordIterator<'a> {
     type Item = &'a str;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        self.text = self.text.trim_start();
+    }
 }
