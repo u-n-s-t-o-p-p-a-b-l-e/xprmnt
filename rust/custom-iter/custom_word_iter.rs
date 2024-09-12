@@ -14,5 +14,11 @@ impl<'a> Iterator for WordIterator<'a> {
 
     fn next(&mut self) -> Option<Self::Item> {
         self.text = self.text.trim_start();
+
+        if self.text.is_empty() {
+            return None;
+        }
+
+        let next_space = self.text.fine(' ').unwrap_or(self.text.len());
     }
 }
