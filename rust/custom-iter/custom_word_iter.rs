@@ -19,7 +19,7 @@ impl<'a> Iterator for WordIterator<'a> {
             return None;
         }
 
-        let next_space = self.text.fine(' ').unwrap_or(self.text.len());
+        let next_space = self.text.find(' ').unwrap_or(self.text.len());
 
         let word = &self.text[..next_space];
 
