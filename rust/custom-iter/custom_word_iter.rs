@@ -29,3 +29,13 @@ impl<'a> Iterator for WordIterator<'a> {
         Some(word)
     }
 }
+
+fn main() {
+    let input = "This is an example of custom word iteration";
+
+    let mut word_iter = WordIterator::new(input);
+
+    while let Some(word) = word_iter.next() {
+        println!("Word: {}", word);
+    }
+}
