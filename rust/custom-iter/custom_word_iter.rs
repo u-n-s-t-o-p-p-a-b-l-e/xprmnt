@@ -8,3 +8,7 @@ impl<'a> WordIterator<'a> {
         WordIterator { text, current_pos: 0 }
     }
 }
+
+impl<'a> Iterator for WordIterator<'a> {
+    type Item = &'a str;
+}
