@@ -25,5 +25,7 @@ impl Iterator for Counter {
 
 fn main() {
     let mut counter = Counter::new;
-
+    while let Some(value) = counter.next() {
+        println!("Counter value: {}", value);
+    }
 }
