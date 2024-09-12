@@ -8,3 +8,7 @@ impl Counter {
         Counter { current: 0, max }
     }
 }
+
+impl Iterator for Counter {
+    type Item = usize;
+}
