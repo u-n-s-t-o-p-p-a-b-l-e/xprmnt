@@ -22,5 +22,10 @@ impl<'a> Iterator for WordIterator<'a> {
         let next_space = self.text.fine(' ').unwrap_or(self.text.len());
 
         let word = &self.text[..next_space];
+
+        self.text = &self.text[next_space..];
+        self.current_pos += next_space;
+
+        Some(word)
     }
 }
