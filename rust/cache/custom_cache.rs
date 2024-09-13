@@ -83,4 +83,10 @@ fn main() {
     }
 
     std::thread::sleep(Duration::new(3, 0));
+
+    if let Some(value) = cache.get(&"key2".to_string()) {
+        println!("Retrieved 'key2' after 3 seconds: {}", value);
+    } else {
+        println!("'key2' has expired");
+    }
 }
