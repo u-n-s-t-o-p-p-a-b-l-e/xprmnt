@@ -3,7 +3,7 @@ use std::time::{Duration, Instant};
 
 struct CacheEntry<T> {
     value: T,
-    expiiration: Option<Instant>,
+    expiration: Option<Instant>,
 }
 
 struct Cache<K, V> {
@@ -61,10 +61,13 @@ impl<K: std::cmp::Eq + std::hash::Hash, V> Cache<K, V> {
 fn main() {
     let mut cache: Cache<String, String> = Cache::new(Some(Duration::new(5, 0)));
 
-    cache.insert("key1".to_string(). "value1".to_string(), None);
+    cache.insert("key1".to_string(), "value1".to_string(), None);
     println!("Inserted 'Key1' with no specific TTL");
 
-    cache.insert("key2".to_string(), "value2".to_string()) {
+    cache.insert("key2".to_string(), "value2".to_string(), Some(Duration::new(2, 0)));
+
+
+    if let Some(value) = cache.get(&"key1".to_string()) {
         println!("Retrieved 'key1': {}", value);
     } else {
         println!("'key1' not found or expired.");
@@ -76,7 +79,7 @@ fn main() {
         println!("'key1' not found or expired.");
     }
 
-    if let Some(value = cache.get(&"key2".to_stirng())) {
+    if let Some(value) = cache.get(&"key2".to_string()) {
         println!("Retrieved 'key2': {}", value);
     } else {
         println!("'key2' not found or expired.");
