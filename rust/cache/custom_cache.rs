@@ -11,4 +11,11 @@ struct Cache<K, V> {
     default_ttl: Option<Duration>,
 }
 
-
+impl<K: std::cmp::Eq + std::hash::Hash, V> Cache<K, V> {
+    fn new(default_ttl: Option<Duration>) -> Self {
+        Cache {
+            store: HashMap::new(),
+            default_ttl,
+        }
+    }
+}
