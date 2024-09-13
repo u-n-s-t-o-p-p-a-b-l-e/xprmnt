@@ -25,3 +25,13 @@ impl<'a> CharIterrator<'a> {
         Some(ch)
     }
 }
+
+fn main() {
+    lt input = "Rust is great!";
+
+    let mut char_iter = CharIterator::new(input);
+
+    while let Some(ch) = char_iter.next() {
+        println!("Character: {}", ch);
+    }
+}
