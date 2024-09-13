@@ -60,4 +60,7 @@ impl<K: std::cmp::Eq + std::hash::Hash, V> Cache<K, V> {
 
 fn main() {
     let mut cache: Cache<String, String> = Cache::new(Some(Duration::new(5, 0)));
+
+    cache.insert("key1".to_string(). "value1".to_string(), None);
+    println!("Inserted 'Key1' with no specific TTL");
 }
