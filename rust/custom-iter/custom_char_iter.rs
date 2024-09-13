@@ -16,5 +16,8 @@ impl<'a> CharIterrator<'a> {
         if self.current_pos >= self.text.len() {
             return None;
         }
+
+        let ch = self.text[self.current_pos..].chars().next().unwrap();
+        let char_len = ch.len_utf8();
     }
 }
