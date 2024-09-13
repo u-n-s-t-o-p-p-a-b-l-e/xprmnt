@@ -19,5 +19,9 @@ impl<'a> CharIterrator<'a> {
 
         let ch = self.text[self.current_pos..].chars().next().unwrap();
         let char_len = ch.len_utf8();
+
+        self.current_pos += char_len;
+
+        Some(ch)
     }
 }
