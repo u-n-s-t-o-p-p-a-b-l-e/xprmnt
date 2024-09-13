@@ -52,4 +52,12 @@ impl<K: std::cmp::Eq + std::hash::Hash, V> Cache<K, V> {
     fn remove(&mut self, key: &K) {
         self.store.remove(key);
     }
+
+    fn clear(&mut self) {
+        self.store.clear();
+    }
+}
+
+fn main() {
+    let mut cache: Cache<String, String> = Cache::new(Some(Duration::new(5, 0)));
 }
