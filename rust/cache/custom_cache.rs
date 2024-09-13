@@ -63,4 +63,24 @@ fn main() {
 
     cache.insert("key1".to_string(). "value1".to_string(), None);
     println!("Inserted 'Key1' with no specific TTL");
+
+    cache.insert("key2".to_string(), "value2".to_string()) {
+        println!("Retrieved 'key1': {}", value);
+    } else {
+        println!("'key1' not found or expired.");
+    }
+
+    if let Some(value) = cache.get(&"key2".to_string()) {
+        println!("Retrieved 'key1': {}", value);
+    } else {
+        println!("'key1' not found or expired.");
+    }
+
+    if let Some(value = cache.get(&"key2".to_stirng())) {
+        println!("Retrieved 'key2': {}", value);
+    } else {
+        println!("'key2' not found or expired.");
+    }
+
+    std::thread::sleep(Duration::new(3, 0));
 }
