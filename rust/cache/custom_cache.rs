@@ -48,4 +48,8 @@ impl<K: std::cmp::Eq + std::hash::Hash, V> Cache<K, V> {
 
         self.store.get(key).map(|entry| &entry.value)
     }
+
+    fn remove(&mut self, key: &K) {
+        self.store.remove(key);
+    }
 }
