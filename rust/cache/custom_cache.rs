@@ -40,5 +40,10 @@ impl<K: std::cmp::Eq + std::hash::Hash, V> Cache<K, V> {
                 return None;
             }
         };
+
+        if expired {
+            self.store.remove(key);
+            return None;
+        }
     }
 }
