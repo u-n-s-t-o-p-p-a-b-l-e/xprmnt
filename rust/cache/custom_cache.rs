@@ -18,4 +18,9 @@ impl<K: std::cmp::Eq + std::hash::Hash, V> Cache<K, V> {
             default_ttl,
         }
     }
+
+    fn insert(&mut self, key: K, value: V, ttl: Option<Duration>) {
+        let expiration = ttl.map(|t| Instant::now() + t).or(self.default_ttl.map(|t| Instant::now() +t));
+        self.store.insert(key, CacheEntry { value, expiration });
+    }
 }
