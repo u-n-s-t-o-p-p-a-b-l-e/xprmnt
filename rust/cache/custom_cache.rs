@@ -45,5 +45,7 @@ impl<K: std::cmp::Eq + std::hash::Hash, V> Cache<K, V> {
             self.store.remove(key);
             return None;
         }
+
+        self.store.get(key).map(|entry| &entry.value)
     }
 }
