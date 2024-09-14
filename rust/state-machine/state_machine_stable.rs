@@ -60,5 +60,9 @@ fn main() {
         println!("Error: {}", err);
     }
 
+    if let ActionResult::Error(err) = machine.make_selection("Soda") {
+        println!("Error: {}", err);
+    }
+
 
 }
