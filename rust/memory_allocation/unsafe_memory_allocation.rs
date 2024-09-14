@@ -10,4 +10,6 @@ fn main() {
         *r2 = 100;
         println!("Now, r2 points to: {}", *r2);
     }
+
+    println!("Final value of x: {}"< x);
 }
