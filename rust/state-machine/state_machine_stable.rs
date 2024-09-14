@@ -8,3 +8,7 @@ enum ActionResult {
     Success,
     Error(String),
 } 
+
+struct  VendingMachine {
+    state: VendingMachineState,
+}
