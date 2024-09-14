@@ -3,3 +3,8 @@ enum VendingMachineState {
     WaitingForSelection,
     Dispensing,
 }
+
+enum ActionResult {
+    Success,
+    Error(String),
+} 
