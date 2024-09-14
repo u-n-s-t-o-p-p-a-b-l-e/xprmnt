@@ -15,6 +15,18 @@ struct  VendingMachine {
 
 impl VendingMachine {
     fn new() -> Self {
-        state: VendingMachineState::WaitingForCoin,
+        Self {
+            state: VendingMachineState::WaitingForCoin,
+        }
+    }
+
+    fn insert_coin(&mut self) -> ActionResult {
+        match self.state {
+            VendingMachineState::WaitingForCoin => {
+                self.state = VendingMachineState::WaitingForSelection;
+                ActionResult::Success
+            }
+            _ => ActionResult::Error("You can't insert a coin now.",into()),
+        }
     }
 }
