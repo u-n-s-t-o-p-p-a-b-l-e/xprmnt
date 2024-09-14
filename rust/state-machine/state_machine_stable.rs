@@ -29,4 +29,15 @@ impl VendingMachine {
             _ => ActionResult::Error("You can't insert a coin now.",into()),
         }
     }
+
+    fn make_selection(&mut self, selection: &str) -> ActionResult {
+        match self.state {
+            VendingMachineState::WaitingForSelection =>  {
+                println!("You selected: {}", selection);
+                self.state = VendingMachineState::Despensing;
+                ActionResult::Success
+            }
+            _ => ActionResult::Error("You need to insert a coin first.".into()),
+        }
+    }
 }
