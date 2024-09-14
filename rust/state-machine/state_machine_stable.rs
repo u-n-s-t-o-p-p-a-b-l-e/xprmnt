@@ -52,3 +52,13 @@ impl VendingMachine {
         }
     }
 }
+
+fn main() {
+    let mut machine =VendingMachine::new();
+
+    if let ActionResult::Error(err) = machine.insert_coin() {
+        println!("Error: {}", err);
+    }
+
+
+}
