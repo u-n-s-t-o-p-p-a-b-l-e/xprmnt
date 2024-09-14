@@ -3,5 +3,10 @@ fn main() {
     let r1: *const i32 = &x;
     let r2: *mut i32 = &mut x;
 
+    unsafe {
+        println!("r1 points to: {}", *r1);
+        println!("r1 points to: {}", *r2);
 
+
+    }
 }
