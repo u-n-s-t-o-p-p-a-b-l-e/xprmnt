@@ -64,5 +64,9 @@ fn main() {
         println!("Error: {}", err);
     }
 
+    if let ActionResult::Error(err) = machine.dispense() {
+        println!("Error: {}", err);
+    }
+
 
 }
