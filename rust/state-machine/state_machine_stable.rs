@@ -26,7 +26,7 @@ impl VendingMachine {
                 self.state = VendingMachineState::WaitingForSelection;
                 ActionResult::Success
             }
-            _ => ActionResult::Error("You can't insert a coin now.",into()),
+            _ => ActionResult::Error("You can't insert a coin now.".into()),
         }
     }
 
@@ -34,7 +34,7 @@ impl VendingMachine {
         match self.state {
             VendingMachineState::WaitingForSelection =>  {
                 println!("You selected: {}", selection);
-                self.state = VendingMachineState::Despensing;
+                self.state = VendingMachineState::Dispensing;
                 ActionResult::Success
             }
             _ => ActionResult::Error("You need to insert a coin first.".into()),
@@ -48,7 +48,7 @@ impl VendingMachine {
                 self.state = VendingMachineState::WaitingForCoin;
                 ActionResult::Success
             }
-            _ => ActionResult::Error("You can't dispense anything now."into()),
+            _ => ActionResult::Error("You can't dispense anything now.".into()),
         }
     }
 }
