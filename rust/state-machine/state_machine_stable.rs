@@ -12,3 +12,9 @@ enum ActionResult {
 struct  VendingMachine {
     state: VendingMachineState,
 }
+
+impl VendingMachine {
+    fn new() -> Self {
+        state: VendingMachineState::WaitingForCoin,
+    }
+}
