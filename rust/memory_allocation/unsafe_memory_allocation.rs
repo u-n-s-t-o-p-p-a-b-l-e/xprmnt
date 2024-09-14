@@ -7,6 +7,7 @@ fn main() {
         println!("r1 points to: {}", *r1);
         println!("r1 points to: {}", *r2);
 
-
+        *r2 = 100;
+        println!("Now, r2 points to: {}", *r2);
     }
 }
