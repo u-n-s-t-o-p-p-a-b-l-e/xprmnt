@@ -40,4 +40,15 @@ impl VendingMachine {
             _ => ActionResult::Error("You need to insert a coin first.".into()),
         }
     }
+
+    fn dispense(&mut self) -> ActionResult {
+        match self.state {
+            VendingMachineState::Dispensing =>  {
+                println!("Dispensing item...");
+                self.state = VendingMachineState::WaitingForCoin;
+                ActionResult::Success
+            }
+            _ => ActionResult::Error("You can't dispense anything now."into()),
+        }
+    }
 }
