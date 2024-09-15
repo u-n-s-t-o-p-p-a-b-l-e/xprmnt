@@ -16,3 +16,15 @@ fn caesar_cypher(text: &str, shift: i8) -> String {
 
     result
 }
+
+fn main() {
+    let plaintext = "Hello, Rust!";
+    let shift = 3;
+
+    let ciphertext = caesar_cipher(plaintext, shift);
+    println!("Plaintext: {}", plaintext);
+    println!("Ciphertext: {}", ciphertext);
+
+    let decrypted = caesar_cipher(&ciphertext, -shift);
+    println!("Decrypted: {}", decrypted);
+}
