@@ -27,4 +27,9 @@ func main() {
 			}
 		}
 	}()
+
+	for i := 1; i <= 3; i++ {
+		eventChan <- Event{Message: fmt.Sprintf("Event #%d", i)}
+		time.Sleep(500 * time.Millisecond)
+	}
 }
