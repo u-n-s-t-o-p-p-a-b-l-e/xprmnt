@@ -9,12 +9,12 @@ type Database interface {
 type RealDatabase struct{}
 
 func (db RealDatabase) GetData() string {
-	return "Datta from the real database"
+	return "Data from the real database"
 }
 
 type MockDatabase struct{}
 
-func (db MockDatabase) getData() string {
+func (db MockDatabase) GetData() string {
 	return "Mock data for testing"
 }
 
@@ -28,4 +28,12 @@ func NewService(db Database) *Service {
 
 func (s *Service) FetchData() string {
 	return s.db.GetData()
+}
+
+func main() {
+	service := NewService(RealDatabase{})
+	fmt.Println(service.FetchData())
+
+	testService := NewService(MockDatabase{})
+	fmt.Println(testService.FetchData())
 }
