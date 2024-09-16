@@ -32,4 +32,7 @@ func main() {
 		eventChan <- Event{Message: fmt.Sprintf("Event #%d", i)}
 		time.Sleep(500 * time.Millisecond)
 	}
+
+	done <- true
+	fmt.Println("All events processed")
 }
