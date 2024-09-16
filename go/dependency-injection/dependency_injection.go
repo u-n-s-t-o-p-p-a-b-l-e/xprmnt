@@ -13,3 +13,7 @@ func (db RealDatabase) GetData() string {
 }
 
 type MockDatabase struct{}
+
+func (db MockDatabase) getData() string {
+	return "Mock data for testing"
+}
