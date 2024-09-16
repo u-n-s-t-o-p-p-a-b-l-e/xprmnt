@@ -25,3 +25,7 @@ type Service struct {
 func NewService(db Database) *Service {
 	return &Service{db: db}
 }
+
+func (s *Service) FetchData() string {
+	return s.db.GetData()
+}
