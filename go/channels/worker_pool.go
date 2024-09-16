@@ -12,3 +12,15 @@ func Worker(id int, tasks <-chan int, results chan<- int) {
 		results <- task * 2
 	}
 }
+
+func main() {
+	const numWorkers = 3
+	const numTasks = 5
+
+	tasks := make(chan int, numTasks)
+	results := make(chan int, numTasks)
+
+	for i := 1; i <= numWorkers; i++ {
+		go Worker(i, tasks, results)
+	}
+}
