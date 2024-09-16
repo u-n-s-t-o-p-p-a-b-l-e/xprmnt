@@ -27,4 +27,10 @@ func main() {
 	for i := 1; i <= numTasks; i++ {
 		tasks <- i
 	}
+	close(tasks)
+
+	for i := 1; i <= numTasks; i++ {
+		result := <-results
+		fmt.Printf("Result: %d\n", result)
+	}
 }
