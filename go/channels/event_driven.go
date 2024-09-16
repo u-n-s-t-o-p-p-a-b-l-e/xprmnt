@@ -16,4 +16,15 @@ func ProcessEvent(e Event) {
 func main() {
 	eventChan := make(chan Event, 5)
 	done := make(chan bool)
+
+	go func() {
+		for {
+			select {
+			case event := <-eventChan:
+				ProcessEvent(event)
+			case <-done:
+				return
+			}
+		}
+	}()
 }
