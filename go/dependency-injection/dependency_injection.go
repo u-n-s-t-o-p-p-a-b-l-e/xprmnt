@@ -5,3 +5,5 @@ import "fmt"
 type Database interface {
 	GetData() string
 }
+
+type RealDatabase struct{}
