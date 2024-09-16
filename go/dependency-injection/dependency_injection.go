@@ -21,3 +21,7 @@ func (db MockDatabase) getData() string {
 type Service struct {
 	db Database
 }
+
+func NewService(db Database) *Service {
+	return &Service{db: db}
+}
