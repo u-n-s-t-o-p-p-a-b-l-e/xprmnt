@@ -17,3 +17,7 @@ type MockDatabase struct{}
 func (db MockDatabase) getData() string {
 	return "Mock data for testing"
 }
+
+type Service struct {
+	db Database
+}
