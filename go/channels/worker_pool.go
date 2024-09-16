@@ -23,4 +23,8 @@ func main() {
 	for i := 1; i <= numWorkers; i++ {
 		go Worker(i, tasks, results)
 	}
+
+	for i := 1; i <= numTasks; i++ {
+		tasks <- i
+	}
 }
