@@ -11,3 +11,12 @@ void print_string(const char *str, int color) {
         print_char(str[i], color);
     }
 }
+
+void kmain(void) {
+    for (int i = 0; i < 80 * 25; i++) {
+        print_char(' ', 0x07);
+    }
+
+    vga_index = 0;
+    print_string("Hey there, kernel here!", 0x0F);
+}
