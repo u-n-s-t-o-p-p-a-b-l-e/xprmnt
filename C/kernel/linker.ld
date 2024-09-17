@@ -16,4 +16,6 @@ SECTIONS
 	} :text
 
 	.data : { *(data) } :data
+
+	.bss : { *(.bss) } :data
 }
