@@ -12,3 +12,9 @@ start:
 	call  kmain
 	cli
 	hlt
+
+section .bss
+	resb 8192
+stack_space:
+section .note.GNU-stack
+	dd 0, 0, 0
