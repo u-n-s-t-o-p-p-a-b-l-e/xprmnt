@@ -18,4 +18,10 @@ SECTIONS
 	.data : { *(data) } :data
 
 	.bss : { *(.bss) } :data
+
+	. = ALIGN(0x1000);
+	.stack :
+	{
+		. = . + 0x4000;
+	}
 }
