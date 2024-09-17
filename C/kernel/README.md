@@ -10,7 +10,7 @@ Link everything with the updated linker script:
 ```
 ld -m elf_i386 -T linker.ld -o kernel.bin boot.o kernel.o
 ```
-Run with Qemu:
+Run in Qemu:
 ```
 qemu-system-i386 -kernel kernel.bin
 ```
