@@ -9,4 +9,11 @@ PHDRS
 SECTIONS
 {
 	. = 0x100000;
+	.text :
+	{
+		*(.multiboot)
+		*(.text)
+	} :text
+
+	.data : { *(data) } :data
 }
