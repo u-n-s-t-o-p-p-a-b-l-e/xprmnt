@@ -30,4 +30,13 @@ fn koch_snowflake(depth: usize) {
     let y2 = y1 + size * (PI / 3.0).sin();
     let x3 = x1 + size * (2.0 * PI / 3.0).cos();
     let y3 = y1 + size * (2.0 * PI / 3.0).sin();
+
+    draw_line(x1, y1, x2, y2, depth);
+    draw_line(x2, y2, x3, y3, depth);
+    draw_line(x3, y3, x1, y1, depth);
+}
+
+fn main() {
+    let depth = 3;
+    kock_snowflake(depth);
 }
