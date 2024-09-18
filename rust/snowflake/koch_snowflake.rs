@@ -14,5 +14,10 @@ fn draw_line(x1: f64, y1: f64, x2: f64, y2: f64, depth:  usize) {
         let angle = PI / 3.0;
         let x4 = (x3 + x5) / 2.0 - (y5 - y3) * angle.sin();
         let y4 = (y3 + y5) / 2.0 + (x5 - x3) * angle.sin();
+
+        draw_line(x1, y1, x3, y3, depth -1);
+        draw_line(x3, y3, x4, y4, depth -1);
+        draw_line(x4, y4, x5, y5, depth -1);
+        draw_line(x5, y5, x2, y2, depth -1);
     }
 }
