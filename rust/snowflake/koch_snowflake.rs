@@ -7,7 +7,7 @@ fn draw_line(x1: f64, y1: f64, x2: f64, y2: f64, depth:  usize) {
         let dx = x2 - x1;
         let dy = y2 - y1;
         let x3 = x1 + dx / 3.0;
-        ley y3 = y1 + dy / 3.0;
+        let y3 = y1 + dy / 3.0;
         let x5 = x1 + 2.0 * dx / 3.0;
         let y5 = y1 + 2.0 * dy / 3.0;
 
@@ -38,5 +38,5 @@ fn koch_snowflake(depth: usize) {
 
 fn main() {
     let depth = 3;
-    kock_snowflake(depth);
+    koch_snowflake(depth);
 }
