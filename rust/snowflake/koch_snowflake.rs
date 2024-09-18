@@ -21,3 +21,13 @@ fn draw_line(x1: f64, y1: f64, x2: f64, y2: f64, depth:  usize) {
         draw_line(x5, y5, x2, y2, depth -1);
     }
 }
+
+fn koch_snowflake(depth: usize) {
+    let size = 200.0;
+    let x1 = 100.0;
+    let y1 = 100.0;
+    let x2 = x1 + size * (PI / 3.0).cos();
+    let y2 = y1 + size * (PI / 3.0).sin();
+    let x3 = x1 + size * (2.0 * PI / 3.0).cos();
+    let y3 = y1 + size * (2.0 * PI / 3.0).sin();
+}
