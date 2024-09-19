@@ -73,5 +73,18 @@ fn main() -> io::Result<()> {
         println!("2. Add task");
         println!("3. Remove task");
         println!("4. Quit");
+
+        let mut choice = String::new();
+        io::stdin().read_line(&mut choice)?;
+
+        match choice.trim() {
+            "1" => display_tasks()?,
+            "2" => add_tasks()?,
+            "3" => remove_task()?,
+            "4" => break,
+            _ => println!("Invalid choice. Please try again.");
+        }
     }
+
+    Ok(())
 }
