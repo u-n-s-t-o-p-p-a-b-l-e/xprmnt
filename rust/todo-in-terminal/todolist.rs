@@ -40,4 +40,7 @@ fn remove_task() -> io::Result<()> {
     display_tasks()?;
 
     println!("Enter the number of the task to remove:");
+    let mut task_number = String::new();
+    io::stdin().read_line(&mut task_number)?;
+    let task_number: usize = task_number.trim().parse().expect("Please enter a valid number");
 }
