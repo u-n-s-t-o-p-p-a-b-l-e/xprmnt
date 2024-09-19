@@ -65,3 +65,13 @@ fn remove_task() -> io::Result<()> {
     println!("Task {} removed.", task_number);
     Ok(())
 }
+
+fn main() -> io::Result<()> {
+    loop {
+        println!("\n--- To Do List ---");
+        println!("1. View tasks");
+        println!("2. Add task");
+        println!("3. Remove task");
+        println!("4. Quit");
+    }
+}
