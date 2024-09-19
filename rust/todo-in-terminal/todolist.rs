@@ -26,4 +26,10 @@ fn add_task() -> io::Result<()> {
     println!("Enter a task to add:");
     let mut task = String::new();
     io::stdin().read_line(&mut task)?;
+
+    let mut file = OpenOptions::new().append(true).create(true).open(path)?;
+    writeln!(file, "{}", task.trim())?;
+
+    println!("Task added: {}", task.trim());
+    Ok(())
 }
