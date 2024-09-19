@@ -5,7 +5,7 @@ use std::path::Path;
 fn display_tasks() -> io::Result<()> {
     let path = "tasks.txt";
 
-    if Path::new(&path).exitst() {
+    if Path::new(&path).exists() {
         let file = File::open(path)?;
         let reader = io::BufReader::new(file);
 
@@ -79,10 +79,10 @@ fn main() -> io::Result<()> {
 
         match choice.trim() {
             "1" => display_tasks()?,
-            "2" => add_tasks()?,
+            "2" => add_task()?,
             "3" => remove_task()?,
             "4" => break,
-            _ => println!("Invalid choice. Please try again.");
+            _ => println!("Invalid choice. Please try again."),
         }
     }
 
