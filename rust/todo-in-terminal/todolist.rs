@@ -53,4 +53,15 @@ fn remove_task() -> io::Result<()> {
         println!("Invalid task number.");
         return Ok(())
     }
+
+    let mut file = OpenOptions::new().write(true).truncate(true).open(path)?;
+
+    for (i, task) in tasks.iter().enumerate() {
+        if i + 1 != task_number {
+            writeln!(file, "{}", task)?;
+        }
+    }
+
+    println!("Task {} removed.", task_number);
+    Ok(())
 }
