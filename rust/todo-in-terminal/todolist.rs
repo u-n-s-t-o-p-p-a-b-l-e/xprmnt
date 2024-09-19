@@ -33,3 +33,11 @@ fn add_task() -> io::Result<()> {
     println!("Task added: {}", task.trim());
     Ok(())
 }
+
+fn remove_task() -> io::Result<()> {
+    let path = "tasks.txt";
+
+    display_tasks()?;
+
+    println!("Enter the number of the task to remove:");
+}
