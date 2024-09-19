@@ -43,4 +43,14 @@ fn remove_task() -> io::Result<()> {
     let mut task_number = String::new();
     io::stdin().read_line(&mut task_number)?;
     let task_number: usize = task_number.trim().parse().expect("Please enter a valid number");
+
+    let file = File::open(path)?;
+    let reader = io::BufReader::new(file);
+
+    let tasks: Vec<String> = reader.lines().map(|line| line.unwrap()).collect();
+
+    if task_number == 0 || task_number > tasks.len() {
+        println!("Invalid task number.");
+        return Ok(())
+    }
 }
