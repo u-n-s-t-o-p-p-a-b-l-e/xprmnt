@@ -19,3 +19,11 @@ fn display_tasks() -> io::Result<()> {
 
     Ok(())
 }
+
+fn add_task() -> io::Result<()> {
+    let path = "tasks.txt";
+
+    println!("Enter a task to add:");
+    let mut task = String::new();
+    io::stdin().read_line(&mut task)?;
+}
