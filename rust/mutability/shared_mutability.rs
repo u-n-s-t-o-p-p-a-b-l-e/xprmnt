@@ -14,4 +14,14 @@ fn main() {
         });
         handles.push(handle);
     }
+
+    {
+        let data_clone = Arc::clone(&data);
+        let handle = thread::spawn(move || {
+            let mut write_guard = data_clone.write().unwrap();
+            *write_guard += 1;
+            println!("Written value: {}", *write_guard);
+        });
+        handles.push(handle);
+    }
 }
