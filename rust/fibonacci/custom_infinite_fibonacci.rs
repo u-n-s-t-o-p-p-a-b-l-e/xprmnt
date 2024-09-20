@@ -16,7 +16,7 @@ impl Iterator for Fibonacci {
         let new_next = self.curr + self.next;
         self.curr = self.next;
         self.next = new_next;
-        some(self.curr)
+        Some(self.curr)
     }
 }
 
