@@ -15,4 +15,8 @@ fn main() {
             }
         });
     }
+
+    for received in rx {
+        println!("Received: {}", received);
+    }
 }
