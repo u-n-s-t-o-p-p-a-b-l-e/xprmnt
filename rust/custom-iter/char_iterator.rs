@@ -15,10 +15,21 @@ impl<'a> Iterator for CharIterator<'a> {
     fn next(&mut self) -> Option<Self::Item> {
         if self.position < self.text.len() {
             let ch = self.text[self.position..].chars().next()?;
-            self.postion += ch.len_utf8();
+            self.position += ch.len_utf8();
             Some(ch)
         } else {
             None
         }
     }
 }
+
+fn main() {
+    let text = "Hey, there!";
+    let mut iterator = CharIterator::new(text);
+
+    while let Some(ch) = iterator.next() {
+        println!("{}", ch);
+    }
+}
+
+
