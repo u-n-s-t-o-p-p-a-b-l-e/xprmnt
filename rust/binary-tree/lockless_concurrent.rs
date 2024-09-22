@@ -7,3 +7,13 @@ struct Node<T> {
     left: AtomicPtr<Node<T>>,
     right: AtomicPtr<Node<T>>,
 }
+
+impl<T: Ord + Clone> Node<T> {
+    fn new(value: T) -> Self {
+        Node {
+            value,
+            left: AtomicPtr::new(ptr::null_mut()),
+            right: AtomicPtr::new(ptr::null_mut()),
+        }
+    }
+}
