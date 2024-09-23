@@ -20,3 +20,13 @@ pub struct Queue<T> {
     head: AtomicPtr<Node<T>>,
     tail: AtomicPtr<Node<T>>,
 }
+
+impl<T> Queue<T> {
+    pub fn new() -> Self {
+        let dummy = Box::into_raw(Box::new(Node::new()));
+        Queue {
+            head: AtomicPtr::new(dummy),
+            tail: AtomicPtr::new(dummy),
+        }
+    }
+}
