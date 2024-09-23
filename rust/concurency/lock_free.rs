@@ -4,7 +4,7 @@ use std::mem::MaybeUninit;
 
 struct Node<T> {
     data: MaybeUninit<T>,
-    next: AtomitPtr<Node<T>>,
+    next: AtomicPtr<Node<T>>,
 }
 
 impl<T> Node<T> {
@@ -41,7 +41,7 @@ impl<T> Queue<T> {
 
             if tail == self.tail.load(Ordering::Acquire) {
                 if next.is_null() {
-                    match unsafe { (*tail).next_compare_exchange(
+                    match unsafe { (*tail).next.compare_exchange(
                         ptr::null_mut(),
                         new_node_ptr,
                         Ordering::Release,
@@ -98,10 +98,10 @@ impl<T> Queue<T> {
                         Ordering::Relaxed,
                     ) {
                         Ok(_) => {
-                            unsafe { Box::form_raw(head); }
+                            unsafe { Box::from_raw(head); }
                             return Some(value);
                         }
-                        Err(_) => continute,
+                        Err(_) => continue,
                     }
                 }
             }
