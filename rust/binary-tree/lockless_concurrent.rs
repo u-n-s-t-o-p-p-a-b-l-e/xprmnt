@@ -49,3 +49,31 @@ impl<T: Ord + Clone> Node<T> {
         }
     }
 }
+
+struct BinaryTree<T> {
+    root: AtomicPtr<Node<T>>,
+}
+
+impl<T: Ord + Clone> BinaryTree<T> {
+    fn new() -> Self {
+        BinaryTree {
+            root: AtomicPtr::new(ptr::null_mut()),
+        }
+    }
+
+    fn insert(&self, value: T) {
+        let node = Box::into_raw(Box::new(Node::new(value.clone())));
+        match self.root.compare_exchange(
+            ptr::null_mut(),
+            node,
+            Ordering::SeqCst,
+            Ordering::SeqCst,
+        ) {
+            Ok(_) => {}
+            Err(root) => unsafe {
+                (*root).insert(&value);
+                drop(Box::from_raw(node));
+            },
+        }
+    }
+}
