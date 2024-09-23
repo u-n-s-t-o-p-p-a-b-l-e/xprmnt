@@ -70,4 +70,12 @@ impl<T> Queue<T> {
             }
         }
     }
+
+    pub fn dequeue(&self) -> Option<T> {
+        loop {
+            let head = self.head.load(Ordering::Acquire);
+            let tail = self.tail.load(Ordering::Acquire);
+            let next = unsafe { (*head).next.load(Ordering::Acquire) };
+        }
+    }
 }
