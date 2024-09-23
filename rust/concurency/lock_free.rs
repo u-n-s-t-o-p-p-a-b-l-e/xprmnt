@@ -35,6 +35,9 @@ impl<T> Queue<T> {
         new_node.data.write(value);
         let new_node_ptr = Box::into_raw(new_node);
 
-        loop {}
+        loop {
+            let tail = self.tail.load(Ordering::Acquire);
+            let next = unsafe { (*tail).next.load(Ordering::Acquire) };
+        }
     }
 }
