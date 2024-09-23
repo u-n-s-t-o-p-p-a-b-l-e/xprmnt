@@ -29,4 +29,12 @@ impl<T> Queue<T> {
             tail: AtomicPtr::new(dummy),
         }
     }
+
+    pub fn enqueue(&self, value: T) {
+        let mut new_node = Box::new(Node::new());
+        new_node.data.write(value);
+        let new_node_ptr = Box::into_raw(new_node);
+
+        loop {}
+    }
 }
