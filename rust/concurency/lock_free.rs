@@ -108,3 +108,20 @@ impl<T> Queue<T> {
         }
     }
 }
+
+impl<T> Drop for Queue<T> {
+    fn drop(&mut self) {
+        while self.dequeue().is_some() {}
+
+        let head = self.head.load(Ordering::Relaxed);
+        unsafe { Box::from_raw(head); }
+    }
+} 
+
+fn main() {
+    let queue = Queue::new();
+
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+}
