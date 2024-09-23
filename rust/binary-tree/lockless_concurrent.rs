@@ -79,7 +79,7 @@ impl<T: Ord + Clone> BinaryTree<T> {
 }
 
 fn main() {
-    leet tree = BinaryTree::new();
+    let tree = BinaryTree::new();
 
     tree.insert(5);
     tree.insert(3);
