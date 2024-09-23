@@ -38,6 +38,36 @@ impl<T> Queue<T> {
         loop {
             let tail = self.tail.load(Ordering::Acquire);
             let next = unsafe { (*tail).next.load(Ordering::Acquire) };
+
+            if tail == self.tail.load(Ordering::Acquire) {
+                if next.is_null() {
+                    match unsafe { (*tail).next_compare_exchange(
+                        ptr::null_mut(),
+                        new_node_ptr,
+                        Ordering::Release,
+                        Ordering::Relaxed,
+                    ) } {
+                        Ok(_) => {
+                            let _ = self.tail.compare_exchange(
+                                tail,
+                                new_node_ptr,
+                                Ordering::Release,
+                                Ordering::Relaxed,
+                            );
+                            return;
+                        }
+
+                        Err(_) => continue,
+                    }
+                } else {
+                    let _ = self.tail.compare_exchange(
+                        tail,
+                        next,
+                        Ordering::Release,
+                        Ordering::Relaxed,
+                    );
+                }
+            }
         }
     }
 }
