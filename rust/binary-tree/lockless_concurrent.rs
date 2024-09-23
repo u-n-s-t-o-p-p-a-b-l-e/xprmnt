@@ -34,6 +34,17 @@ impl<T: Ord + Clone> Node<T> {
                         Err(next) => current = unsafe { &*next },
                     }
                 }
+                _ => {
+                    match current.right.compare_exchange(
+                        ptr::null_mut(),
+                        node,
+                        Ordering::SeqCst,
+                        Ordering::SeqCst,
+                    ) {
+                        Ok(_) => break,
+                        Err(next) => current = unsafe { &*next },
+                    }
+                }
             }
         }
     }
