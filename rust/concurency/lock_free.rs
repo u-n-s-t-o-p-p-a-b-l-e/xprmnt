@@ -6,3 +6,12 @@ struct Node<T> {
     data: MaybeUninit<T>,
     next: AtomitPtr<Node<T>>,
 }
+
+impl<T> Node<T> {
+    fn new() -> Self {
+        Node {
+            data: MaybeUninit::uninit(),
+                  next: AtomicPtr::new(ptr::null_mut()),
+        }
+    }
+}
