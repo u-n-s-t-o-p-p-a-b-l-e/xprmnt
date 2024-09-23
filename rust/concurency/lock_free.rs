@@ -15,3 +15,8 @@ impl<T> Node<T> {
         }
     }
 }
+
+pub struct Queue<T> {
+    head: AtomicPtr<Node<T>>,
+    tail: AtomicPtr<Node<T>>,
+}
