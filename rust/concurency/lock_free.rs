@@ -76,6 +76,35 @@ impl<T> Queue<T> {
             let head = self.head.load(Ordering::Acquire);
             let tail = self.tail.load(Ordering::Acquire);
             let next = unsafe { (*head).next.load(Ordering::Acquire) };
+
+            if head == self.head.load(Ordering::Acquire) {
+                if head == tail {
+                    if next.is_null() {
+                        return None;
+                    }
+
+                    let _ = self.tail.compare_exchange(
+                        tail,
+                        next,
+                        Ordering::Release,
+                        Ordering::Relaxed,
+                    );
+                } else {
+                    let value = unsafe { ptr::read((*next).data.as_ptr()) };
+                    match self.head.compare_exchange(
+                        head,
+                        next,
+                        Ordering::Release,
+                        Ordering::Relaxed,
+                    ) {
+                        Ok(_) => {
+                            unsafe { Box::form_raw(head); }
+                            return Some(value);
+                        }
+                        Err(_) => continute,
+                    }
+                }
+            }
         }
     }
 }
