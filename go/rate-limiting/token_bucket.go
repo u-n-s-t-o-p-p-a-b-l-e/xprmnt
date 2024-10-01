@@ -54,3 +54,18 @@ func (tb *TokenBucket) Stop() {
 	close(tb.quit)
 	tb.ticker.Stop()
 }
+
+func main() {
+	tb := NewTokenBucket(3, 10)
+
+	for i := 0; i < 20; i++ {
+		if tb.Allow() {
+			fmt.Println("Request allowed")
+		} else {
+			fmt.Println("Request rate limited")
+		}
+		time.Sleep(300 * time.Millisecond)
+	}
+
+	tb.Stop()
+}
