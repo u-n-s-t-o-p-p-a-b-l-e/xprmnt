@@ -41,3 +41,11 @@ func (tb *TokenBucket) refill() {
 		}
 	}
 }
+
+func (tb *TokenBucket) Allow() bool {
+	if tb.bucket > 0 {
+		tb.bucket--
+		return true
+	}
+	return false
+}
