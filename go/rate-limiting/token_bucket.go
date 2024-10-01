@@ -49,3 +49,8 @@ func (tb *TokenBucket) Allow() bool {
 	}
 	return false
 }
+
+func (tb *TokenBucket) Stop() {
+	close(tb.quit)
+	tb.ticker.Stop()
+}
