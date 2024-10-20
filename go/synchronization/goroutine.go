@@ -24,5 +24,6 @@ func main() {
 		go Worker(i, &wg)
 	}
 
-
+	wg.Wait()
+	fmt.Println("All workers done")
 }
