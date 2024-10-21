@@ -26,4 +26,9 @@ func main() {
 	for j := 1; j <= numJobs; j++ {
 		jobs <- j
 	}
+	close(jobs)
+
+	for a := 1; a <= numJobs; a++ {
+		fmt.Println("Result:", <-results)
+	}
 }
