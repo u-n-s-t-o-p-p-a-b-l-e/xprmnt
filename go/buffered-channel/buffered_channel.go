@@ -13,3 +13,13 @@ func worker(id int, jobs <-chan int, results chan<- int) {
 		results <- job * 2
 	}
 }
+
+func main() {
+	const numJobs = 5
+	jobs := make(chan int, numJobs)
+	results := make(chan int, numJobs)
+
+	for w := 1; w <= 3; w++ {
+		go worker(w, jobs, results)
+	}
+}
