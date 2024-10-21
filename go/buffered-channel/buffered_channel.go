@@ -22,4 +22,8 @@ func main() {
 	for w := 1; w <= 3; w++ {
 		go worker(w, jobs, results)
 	}
+
+	for j := 1; j <= numJobs; j++ {
+		jobs <- j
+	}
 }
