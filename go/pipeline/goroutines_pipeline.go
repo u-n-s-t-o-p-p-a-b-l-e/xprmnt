@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func gen(nums ..int) <-chan int {
+func gen(nums ...int) <-chan int {
 	out := make(chan int)
 	go func() {
 		for _, num := range nums {
