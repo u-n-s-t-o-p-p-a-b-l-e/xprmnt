@@ -25,3 +25,9 @@ func sq(in <-chan int) <-chan int {
 	}()
 	return out
 }
+
+func main() {
+	nums := gen(1, 2, 3, 4, 5)
+	squared := sq(nums)
+
+}
