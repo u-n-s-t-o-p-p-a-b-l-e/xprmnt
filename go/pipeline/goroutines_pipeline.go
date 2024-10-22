@@ -30,4 +30,7 @@ func main() {
 	nums := gen(1, 2, 3, 4, 5)
 	squared := sq(nums)
 
+	for result := range squared {
+		fmt.Println(result)
+	}
 }
