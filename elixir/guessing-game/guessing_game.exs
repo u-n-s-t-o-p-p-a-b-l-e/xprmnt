@@ -11,3 +11,9 @@ defmodule GuessingGame do
   defp play(secret_number, min, max, attempts) do
     IO.puts("\nGuess a number between #{min} and #{max}:")
     guess = get_guess()
+
+    cond do 
+      guess == secret_number ->
+        IO.puts("Congratulations! You've guessed the correct number: #{secret_number} in #{attempts + 1} attempts.")
+
+      
