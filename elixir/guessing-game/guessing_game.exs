@@ -8,4 +8,6 @@ defmodule GuessingGame do
     play(secret_number, @min, @max, 0)
   end
 
-  
+  defp play(secret_number, min, max, attempts) do
+    IO.puts("\nGuess a number between #{min} and #{max}:")
+    guess = get_guess()
