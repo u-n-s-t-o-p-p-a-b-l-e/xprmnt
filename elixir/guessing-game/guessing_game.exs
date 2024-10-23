@@ -19,3 +19,9 @@ defmodule GuessingGame do
       guess < secret_number ->
         IO.puts("Too low!")
         play(secret_number, min, guess + 1, max, attempts + 1)
+
+      guess > secret_number ->
+        IO.puts("Too high!")
+        play(secret_number, min, guess -1, attempts + 1)
+    end
+  end
