@@ -16,4 +16,6 @@ defmodule GuessingGame do
       guess == secret_number ->
         IO.puts("Congratulations! You've guessed the correct number: #{secret_number} in #{attempts + 1} attempts.")
 
-      
+      guess < secret_number ->
+        IO.puts("Too low!")
+        play(secret_number, min, guess + 1, max, attempts + 1)
