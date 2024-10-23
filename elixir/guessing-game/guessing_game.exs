@@ -25,3 +25,15 @@ defmodule GuessingGame do
         play(secret_number, min, guess -1, attempts + 1)
     end
   end
+
+  defp get_guess do
+    case IO.gets("> ") |> String.trim() |> Integer.parse() do
+      {guess, _} -> guess
+      :error ->
+        IO.puts("Invalid input, please enter a number.")
+        get_guess()
+    end
+  end
+end
+
+GuessingGame.main(System.argv())
