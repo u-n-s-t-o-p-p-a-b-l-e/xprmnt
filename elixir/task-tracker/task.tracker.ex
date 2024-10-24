@@ -13,10 +13,22 @@ defmodule TaskTracker do
         complete_task(id)
       _ ->
         IO.puts("""
-          Usage:
+        Usage:
           mix run -e 'TaskTracker.main(["add", "Task Description"])'
           mix run -e 'TaskTracker.main(["list"])'
           mix run -e 'TaskTracker.main(["complete", "<task_id"])'
-          """)
+        """)
     end
+  end
+
+  defp add_task(task_description) do
+    tasks = read_tasks()
+    new_tasks = %{
+      "id" => Enum.count(tasks) + 1,
+      "description" => task_description,
+      "complete" => false
+    }
+    updated_tasks = tasks ++ [new_task]
+    write_tasks(updated_tasks)
+    IO.puts("Added task: #{new_task["description"]}")
   end
