@@ -77,4 +77,16 @@ defmodule TaskTracker do
     end
   end
 
+  defp write_tasks(tasks) do
+    path = Path.expand("tasks.json")
+    encoded_tasks = Jason.decode!(tasks, pretty: true)
+    case File.write(path, encoded_tasks) do
+      :ok ->
+        IO.puts("Tasks succesfully written to #{path}")
+      {:error, reason} ->
+        IO.puts("Error writing tasks: #{inspect(reason)}")
+    end
+  end
+end
+
 
