@@ -66,7 +66,7 @@ defmodule TaskTracker do
     if File.exist?(path) do
       case File.read(path) do
         {:ok, contents} ->
-          case Json.decode(contents) do
+          case Jason.decode(contents) do
             {:ok, tasks} -> tasks
             {:error, _} -> []
           end
