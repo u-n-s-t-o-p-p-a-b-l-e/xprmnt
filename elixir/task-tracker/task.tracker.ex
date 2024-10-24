@@ -32,3 +32,16 @@ defmodule TaskTracker do
     write_tasks(updated_tasks)
     IO.puts("Added task: #{new_task["description"]}")
   end
+
+  defp list_task(id_str) do
+    tasks = read_tasks()
+    if Enum.empty?(tasks) do
+      IO.puts("No tasks found.")
+    else
+      IO.puts("Your tasks:")
+      Enum.each(tasks, fn task ->
+        status = if task["complete"], do: "[x]", else: "[ ]"
+        IO.puts('#{task["id"]}. #{status} #{task["description"]}')
+      end)
+    end
+  end
