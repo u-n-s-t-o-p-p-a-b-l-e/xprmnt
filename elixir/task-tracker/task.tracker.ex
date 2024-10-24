@@ -45,3 +45,19 @@ defmodule TaskTracker do
       end)
     end
   end
+
+  defp complete_task(id_str) do
+    tasks = read_tasks()
+    id = String.to_integer(id_str)
+    updated_tasks =
+      Enum.map(tasks, fn task ->
+        if task["id"] == id do
+          Map.put(task, "complete", true)
+        else
+          task
+        end
+      end)
+    write_tasks(updated_tasks)
+    IO.puts("Task #{id} marked as complete.")
+  end
+
