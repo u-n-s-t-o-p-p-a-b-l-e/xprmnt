@@ -61,3 +61,20 @@ defmodule TaskTracker do
     IO.puts("Task #{id} marked as complete.")
   end
 
+  defp read_tasks do
+    path = Path.expand("tasks.json")
+    if File.exist?(path) do
+      case File.read(path) do
+        {:ok, contents} ->
+          case Json.decode(contents) do
+            {:ok, tasks} -> tasks
+            {:error, _} -> []
+          end
+        {:error, _} -> []
+      end
+    else
+      []
+    end
+  end
+
+
